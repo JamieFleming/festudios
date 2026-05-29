@@ -54,7 +54,7 @@ export default function Header() {
 
 					<div className="flex items-center gap-2">
 						<a href="#contact" className="btn-primary hidden sm:inline-flex">
-							Start a project
+							Get a quote
 						</a>
 						<button
 							type="button"
@@ -101,7 +101,7 @@ export default function Header() {
 								href="#contact"
 								onClick={() => setOpen(false)}
 								className="btn-primary mt-1 w-full">
-								Start a project
+								Get a quote
 							</a>
 						</div>
 					</motion.div>

@@ -2,6 +2,7 @@ import ProjectCard, { type Project } from "./ProjectCard";
 import SectionLabel from "./SectionLabel";
 import Reveal from "./Reveal";
 import munchsproutsDash from "../../assets/images/munchsprouts_dash.png";
+import munchsproutsApp from "../../assets/images/munchsprouts_app.png";
 import crewmateDash from "../../assets/images/crewmate_dash.png";
 import sussdImage from "../../assets/images/sussd_image.png";
 
@@ -27,6 +28,25 @@ function MunchMock() {
 				</div>
 			</div>
 			<div className="pointer-events-none absolute inset-x-6 bottom-2 h-16 rounded-full bg-emerald-300/20 blur-2xl" />
+			<div className="absolute bottom-3 left-3 rounded-full border border-emerald-200/80 bg-white/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-label text-emerald-700 backdrop-blur">
+				Web Design
+			</div>
+		</div>
+	);
+}
+
+function MunchAppMock() {
+	return (
+		<div className="relative h-full w-full overflow-hidden rounded-[26px] border border-white/70 bg-[#ede7ff] shadow-lift">
+			<img
+				src={munchsproutsApp}
+				alt="MunchSprouts app screen"
+				className="absolute inset-0 h-full w-full object-cover object-[50%_45%]"
+			/>
+			<div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-purple-950/10" />
+			<div className="absolute bottom-3 left-3 rounded-full border border-purple-200/80 bg-white/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-label text-purple-700 backdrop-blur">
+				App UI
+			</div>
 		</div>
 	);
 }
@@ -47,6 +67,9 @@ function CrewMock() {
 			</div>
 			<div className="pointer-events-none absolute -right-2 bottom-5 h-24 w-24 rounded-full bg-cyan-300/20 blur-2xl" />
 			<div className="pointer-events-none absolute left-4 top-8 h-16 w-16 rounded-full bg-sky-300/20 blur-xl" />
+			<div className="absolute bottom-3 left-3 rounded-full border border-sky-200/80 bg-white/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-label text-sky-700 backdrop-blur">
+				Web App
+			</div>
 		</div>
 	);
 }
@@ -63,20 +86,27 @@ function SussMock() {
 			<div className="absolute bottom-3 left-3 rounded-full border border-red-400/35 bg-black/45 px-3 py-1 text-[10px] font-semibold uppercase tracking-label text-red-100 backdrop-blur">
 				Game UI
 			</div>
-			<div className="absolute right-3 top-3 h-2.5 w-2.5 rounded-full bg-red-500 shadow-[0_0_22px_rgba(239,68,68,0.9)]" />
 		</div>
 	);
 }
 
 const projects: Project[] = [
 	{
-		name: "MunchSprouts",
+		name: "MunchSprouts Website",
 		description:
-			"A family-focused app and landing page for baby-led weaning, combining a friendly brand, clear downloads, recipe discovery, and a polished mobile product preview.",
-		category: "App Landing Page · Mobile UI",
+			"A polished launch site for a baby-led weaning product, built around clear app downloads, parent-friendly messaging, and a confident first impression.",
+		category: "App Landing Page · Website Design",
 		tint: "from-emerald-50 via-emerald-100 to-white",
 		mock: <MunchMock />,
 		url: "https://www.munchsprouts.co.uk",
+	},
+	{
+		name: "MunchSprouts App",
+		description:
+			"A mobile app interface for tracking foods, feeds, allergens, routines, and growth in one simple parent-friendly dashboard.",
+		category: "Mobile App UI · Product Design",
+		tint: "from-purple-50 via-violet-100 to-emerald-50",
+		mock: <MunchAppMock />,
 	},
 	{
 		name: "CrewMate",
@@ -116,7 +146,7 @@ export default function Work() {
 					</div>
 				</Reveal>
 
-				<div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				<div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
 					{projects.map((p, i) => (
 						<ProjectCard key={p.name} project={p} index={i} />
 					))}

@@ -27,19 +27,19 @@ export default function ProjectCard({
 				delay: index * 0.08,
 				ease: [0.22, 1, 0.36, 1],
 			}}
-			className="group relative flex flex-col overflow-hidden rounded-4xl border border-line bg-white p-3 shadow-soft transition-all duration-500 ease-smooth hover:-translate-y-1.5 hover:scale-[1.01] hover:shadow-lift">
+			className="group relative flex flex-col overflow-hidden rounded-3xl border border-line bg-white p-2.5 shadow-soft transition-all duration-500 ease-smooth hover:-translate-y-1 hover:shadow-lift">
 			{/* Mock interface canvas */}
 			<div
-				className={`relative aspect-[4/3.15] overflow-hidden rounded-3xl bg-gradient-to-br ${project.tint} shadow-soft transition-transform duration-700 ease-smooth group-hover:scale-[1.02]`}>
+				className={`relative aspect-[4/3.15] overflow-hidden rounded-[22px] bg-gradient-to-br ${project.tint} shadow-soft transition-transform duration-700 ease-smooth group-hover:scale-[1.01]`}>
 				<div
-					className="absolute inset-0 opacity-[0.5]"
+					className="absolute inset-0 opacity-[0.26]"
 					style={{
 						backgroundImage:
 							"linear-gradient(to right, rgba(10,10,11,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(10,10,11,0.03) 1px, transparent 1px)",
 						backgroundSize: "28px 28px",
 					}}
 				/>
-				<div className="absolute inset-0 flex items-center justify-center p-5 transition-transform duration-700 ease-smooth group-hover:scale-[1.03] sm:p-6">
+				<div className="absolute inset-0 flex items-center justify-center p-5 transition-transform duration-700 ease-smooth group-hover:scale-[1.015] sm:p-6">
 					{project.mock}
 				</div>
 			</div>
