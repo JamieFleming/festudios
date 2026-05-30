@@ -1,3 +1,4 @@
+import { LazyMotion, domAnimation } from "framer-motion";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Work from "./components/Work";
@@ -10,18 +11,20 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
-      <Header />
-      <main>
-        <Hero />
-        <Work />
-        <Services />
-        <Process />
-        <About />
-        <FAQ />
-        <CTA />
-      </main>
-      <Footer />
-    </div>
+    <LazyMotion features={domAnimation}>
+      <div className="relative min-h-screen overflow-x-hidden">
+        <Header />
+        <main>
+          <Hero />
+          <Work />
+          <Services />
+          <Process />
+          <About />
+          <FAQ />
+          <CTA />
+        </main>
+        <Footer />
+      </div>
+    </LazyMotion>
   );
 }

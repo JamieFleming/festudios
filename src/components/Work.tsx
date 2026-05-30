@@ -1,10 +1,10 @@
 import ProjectCard, { type Project } from "./ProjectCard";
 import SectionLabel from "./SectionLabel";
 import Reveal from "./Reveal";
-import munchsproutsDash from "../../assets/images/munchsprouts_dash.png";
-import munchsproutsApp from "../../assets/images/munchsprouts_app.png";
-import crewmateDash from "../../assets/images/crewmate_dash.png";
-import sussdImage from "../../assets/images/sussd_image.png";
+import munchsproutsDash from "@/assets/optimized/munchsprouts_dash.jpg";
+import munchsproutsApp from "@/assets/optimized/munchsprouts_app.jpg";
+import crewmateDash from "@/assets/optimized/crewmate_dash.jpg";
+import sussdImage from "@/assets/optimized/sussd_image.jpg";
 
 // Screenshot-based preview windows for the projects.
 function MunchMock() {
@@ -23,6 +23,10 @@ function MunchMock() {
 					<img
 						src={munchsproutsDash}
 						alt="MunchSprouts product page screenshot"
+						width={1600}
+						height={929}
+						loading="lazy"
+						decoding="async"
 						className="h-full w-full object-cover object-top"
 					/>
 				</div>
@@ -41,6 +45,10 @@ function MunchAppMock() {
 			<img
 				src={munchsproutsApp}
 				alt="MunchSprouts app screen"
+				width={416}
+				height={900}
+				loading="lazy"
+				decoding="async"
 				className="absolute inset-0 h-full w-full object-cover object-[50%_45%]"
 			/>
 			<div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-purple-950/10" />
@@ -54,13 +62,17 @@ function MunchAppMock() {
 function CrewMock() {
 	return (
 		<div className="relative flex h-full w-full items-center justify-center">
-			<div className="relative h-[97%] max-h-[334px] aspect-[7/9.8] rounded-[24px] bg-ink p-1.5 shadow-lift ring-1 ring-white/50">
-				<div className="absolute left-1/2 top-1.5 z-10 h-1 w-14 -translate-x-1/2 rounded-full bg-white/15" />
-				<div className="relative h-full overflow-hidden rounded-[19px] bg-white">
+			<div className="relative h-[98%] max-h-[342px] aspect-[7/9.8] rounded-[23px] bg-ink p-1.5 shadow-lift ring-1 ring-white/50 md:h-[99%] md:rounded-[20px] md:p-0.5">
+				<div className="absolute left-1/2 top-1.5 z-10 h-0.5 w-12 -translate-x-1/2 rounded-full bg-white/15 md:top-1" />
+				<div className="relative h-full overflow-hidden rounded-[18px] bg-white md:rounded-[18px]">
 					<img
 						src={crewmateDash}
 						alt="CrewMate tablet dashboard screenshot"
-						className="h-full w-full object-cover object-top"
+						width={637}
+						height={900}
+						loading="lazy"
+						decoding="async"
+						className="mx-auto h-full w-[94%] object-contain object-top lg:w-[92%]"
 					/>
 					<div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white via-white/75 to-transparent" />
 				</div>
@@ -80,6 +92,10 @@ function SussMock() {
 			<img
 				src={sussdImage}
 				alt="Suss'd game screen"
+				width={416}
+				height={900}
+				loading="lazy"
+				decoding="async"
 				className="absolute inset-0 h-full w-full object-cover object-[50%_38%] opacity-95"
 			/>
 			<div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/35" />

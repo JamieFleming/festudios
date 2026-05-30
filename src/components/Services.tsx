@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import SectionLabel from "./SectionLabel";
 import Reveal from "./Reveal";
 
@@ -38,7 +38,7 @@ export default function Services() {
 
 				<div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2">
 					{services.map((s, i) => (
-						<motion.div
+						<m.div
 							key={s.title}
 							initial={{ opacity: 0, y: 20 }}
 							whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +72,7 @@ export default function Services() {
 									</span>
 								))}
 							</div>
-						</motion.div>
+						</m.div>
 					))}
 				</div>
 			</div>

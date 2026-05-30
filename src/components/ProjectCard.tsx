@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import type { ReactNode } from "react";
 
 export type Project = {
@@ -18,7 +18,7 @@ export default function ProjectCard({
 	index: number;
 }) {
 	const card = (
-		<motion.article
+		<m.article
 			initial={{ opacity: 0, y: 30 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true, margin: "-60px" }}
@@ -63,7 +63,7 @@ export default function ProjectCard({
 					</span>
 				</div>
 			</div>
-		</motion.article>
+		</m.article>
 	);
 
 	if (project.url) {

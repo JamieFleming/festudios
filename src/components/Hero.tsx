@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { logos } from "@/assets/logos";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -27,13 +27,16 @@ export default function Hero() {
 					src={logos.monogramOnLight}
 					alt=""
 					aria-hidden
+					width={480}
+					height={480}
+					decoding="async"
 					className="absolute right-[-6%] top-[8%] w-[42vw] max-w-[560px] opacity-[0.035] sm:opacity-[0.04]"
 					draggable={false}
 				/>
 			</div>
 
 			<div className="shell">
-				<motion.div
+				<m.div
 					initial={{ opacity: 0, y: 14 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.7, ease }}
@@ -42,13 +45,13 @@ export default function Hero() {
 					<span className="text-[11px] font-medium uppercase tracking-label text-mist">
 						Websites, apps, and digital product design
 					</span>
-				</motion.div>
+				</m.div>
 
 				<h1 className="mt-7 max-w-4xl text-balance text-[2.6rem] font-semibold leading-[1.04] tracking-tighter2 sm:text-6xl lg:text-[4.4rem]">
 					{["Websites and apps that", "earn trust and enquiries."].map(
 						(line, li) => (
 							<span key={li} className="block overflow-hidden">
-								<motion.span
+								<m.span
 									className="block"
 									initial={{ y: "110%" }}
 									animate={{ y: 0 }}
@@ -61,13 +64,13 @@ export default function Hero() {
 									) : (
 										line
 									)}
-								</motion.span>
+								</m.span>
 							</span>
 						),
 					)}
 				</h1>
 
-				<motion.p
+				<m.p
 					initial={{ opacity: 0, y: 16 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.7, ease, delay: 0.35 }}
@@ -76,9 +79,9 @@ export default function Hero() {
 					clear, polished websites, apps, and digital products. Strategy,
 					UI/UX design, build, and launch handled with the same eye for
 					detail.
-				</motion.p>
+				</m.p>
 
-				<motion.div
+				<m.div
 					initial={{ opacity: 0, y: 16 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.7, ease, delay: 0.45 }}
@@ -89,17 +92,17 @@ export default function Hero() {
 					<a href="#work" className="btn-ghost px-6 py-3">
 						See recent work
 					</a>
-				</motion.div>
+				</m.div>
 
-				<motion.div
+				<m.div
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ duration: 1, delay: 0.7 }}
 					className="relative mt-16 h-px w-full overflow-hidden bg-line sm:mt-24">
 					<span className="absolute top-0 h-px w-24 bg-accent/70" />
-				</motion.div>
+				</m.div>
 
-				<motion.div
+				<m.div
 					initial={{ opacity: 0, y: 16 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.7, ease, delay: 0.8 }}
@@ -115,7 +118,7 @@ export default function Hero() {
 							<p className="mt-1 text-sm text-haze">{sub}</p>
 						</div>
 					))}
-				</motion.div>
+				</m.div>
 			</div>
 		</section>
 	);

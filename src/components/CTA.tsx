@@ -1,11 +1,11 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { logos } from "@/assets/logos";
 
 export default function CTA() {
 	return (
 		<section id="contact" className="relative scroll-mt-24 px-4 pb-10 sm:px-6">
 			<div className="shell !px-0">
-				<motion.div
+				<m.div
 					initial={{ opacity: 0, y: 30 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true, margin: "-80px" }}
@@ -29,6 +29,10 @@ export default function CTA() {
 							src={logos.monogramOnDark}
 							alt=""
 							aria-hidden
+							width={480}
+							height={480}
+							loading="lazy"
+							decoding="async"
 							className="absolute -bottom-12 right-[-4%] w-[48vw] max-w-[430px] opacity-[0.05]"
 							draggable={false}
 						/>
@@ -60,7 +64,7 @@ export default function CTA() {
 							</a>
 						</div>
 					</div>
-				</motion.div>
+				</m.div>
 			</div>
 		</section>
 	);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { logos } from "@/assets/logos";
 
 const NAV = [
@@ -36,6 +36,8 @@ export default function Header() {
 						<img
 							src={logos.wordmarkOnLight}
 							alt="FE Studios"
+							width={420}
+							height={210}
 							className="h-14 w-auto select-none sm:h-16"
 							draggable={false}
 						/>
@@ -81,7 +83,7 @@ export default function Header() {
 
 			<AnimatePresence>
 				{open && (
-					<motion.div
+					<m.div
 						initial={{ opacity: 0, y: -8 }}
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: -8 }}
@@ -104,7 +106,7 @@ export default function Header() {
 								Get a quote
 							</a>
 						</div>
-					</motion.div>
+					</m.div>
 				)}
 			</AnimatePresence>
 		</header>

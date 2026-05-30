@@ -12,6 +12,10 @@ export default function About() {
               src={logos.monogramOnLight}
               alt=""
               aria-hidden
+              width={480}
+              height={480}
+              loading="lazy"
+              decoding="async"
               className="pointer-events-none absolute -right-10 -top-10 w-64 opacity-[0.04] sm:w-96"
               draggable={false}
             />
