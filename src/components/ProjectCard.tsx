@@ -27,7 +27,7 @@ export default function ProjectCard({
 				delay: index * 0.08,
 				ease: [0.22, 1, 0.36, 1],
 			}}
-			className="group relative flex flex-col overflow-hidden rounded-3xl border border-line bg-white p-2.5 shadow-soft transition-all duration-500 ease-smooth hover:-translate-y-1 hover:shadow-lift">
+			className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white p-2.5 shadow-soft transition-all duration-500 ease-smooth hover:-translate-y-1 hover:shadow-lift">
 			{/* Mock interface canvas */}
 			<div
 				className={`relative aspect-[4/3.15] overflow-hidden rounded-[22px] bg-gradient-to-br ${project.tint} shadow-soft transition-transform duration-700 ease-smooth group-hover:scale-[1.01]`}>
@@ -54,7 +54,7 @@ export default function ProjectCard({
 				<p className="mt-2 text-[15px] leading-relaxed text-mist">
 					{project.description}
 				</p>
-				<div className="mt-5 flex items-center gap-2 text-sm font-medium text-ink">
+				<div className="mt-auto flex items-center gap-2 pt-5 text-sm font-medium text-ink">
 					<span className="transition-colors group-hover:text-accent">
 						{project.url ? "Visit site" : "View case"}
 					</span>
@@ -72,7 +72,7 @@ export default function ProjectCard({
 				href={project.url}
 				target="_blank"
 				rel="noreferrer"
-				className="no-underline">
+				className="block h-full no-underline">
 				{card}
 			</a>
 		);

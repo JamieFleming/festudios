@@ -72,9 +72,10 @@ export default function Hero() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.7, ease, delay: 0.35 }}
 					className="mt-6 max-w-xl text-[17px] leading-relaxed text-mist">
-					FE Studios helps businesses and founders turn rough ideas into
-					clear, polished websites and apps. Strategy, design, build, and
-					launch handled with the same eye for detail.
+					FE Studios helps UK businesses and founders turn rough ideas into
+					clear, polished websites, apps, and digital products. Strategy,
+					UI/UX design, build, and launch handled with the same eye for
+					detail.
 				</motion.p>
 
 				<motion.div

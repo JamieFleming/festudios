@@ -5,18 +5,18 @@ import Reveal from "./Reveal";
 const services = [
 	{
 		title: "Website Design",
-		copy: "Custom landing pages, business sites, and portfolios that make the offer clear, look current, and guide visitors toward action.",
-		points: ["Landing pages", "Business websites", "Portfolio sites"],
+		copy: "Custom website design for landing pages, business sites, and portfolios that make the offer clear, look current, and guide visitors toward action.",
+		points: ["Landing pages", "Business websites", "Responsive web design"],
 	},
 	{
 		title: "App Development",
-		copy: "App concepts and responsive builds with proper user flows, tidy interface systems, and screens that feel ready to use.",
-		points: ["MVP interfaces", "Mobile-first apps", "Interactive prototypes"],
+		copy: "App development and product builds with proper user flows, tidy interface systems, and screens that feel ready to use.",
+		points: ["MVP interfaces", "Mobile-first apps", "Product prototypes"],
 	},
 	{
 		title: "UI/UX Design",
-		copy: "Wireframes, prototypes, design systems, and polished interface design for products that need to be easy to understand.",
-		points: ["User journeys", "Wireframes", "Design systems"],
+		copy: "UI/UX design, wireframes, prototypes, design systems, and polished interface design for products that need to be easy to understand.",
+		points: ["User journeys", "Wireframes", "UX audits"],
 	},
 	{
 		title: "Brand Systems",

@@ -4,6 +4,7 @@ const links = [
   { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
   { label: "Process", href: "#process" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -20,8 +21,9 @@ export default function Footer() {
             draggable={false}
           />
           <p className="mt-4 text-[15px] leading-relaxed text-mist">
-            Websites, apps, and interface design for businesses that want their
-            digital presence to feel current, clear, and credible.
+            Website design, app development, and UI/UX design for businesses
+            that want their digital presence to feel current, clear, and
+            credible.
           </p>
         </div>
 

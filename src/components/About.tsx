@@ -21,11 +21,11 @@ export default function About() {
                 Small studio attention. Product-level finish.
               </h2>
               <p className="mt-6 text-[17px] leading-relaxed text-graphite">
-                FE Studios works with businesses and founders who want a website
-                or app that feels bespoke, not pulled from the same template as
-                everyone else. The focus is simple: strong visual direction,
-                practical user experience, and clean implementation that holds
-                up on real devices.
+                FE Studios works with UK businesses and founders who want a
+                website, app, or digital product that feels bespoke, not pulled
+                from the same template as everyone else. The focus is simple:
+                strong visual direction, practical user experience, and clean
+                implementation that holds up on real devices.
               </p>
               <div className="mt-8 h-px w-full bg-line" />
               <p className="mt-8 max-w-xl text-[15px] leading-relaxed text-mist">

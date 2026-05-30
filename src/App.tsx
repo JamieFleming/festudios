@@ -4,6 +4,7 @@ import Work from "./components/Work";
 import Services from "./components/Services";
 import Process from "./components/Process";
 import About from "./components/About";
+import FAQ from "./components/FAQ";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 
@@ -17,6 +18,7 @@ export default function App() {
         <Services />
         <Process />
         <About />
+        <FAQ />
         <CTA />
       </main>
       <Footer />
