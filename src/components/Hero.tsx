@@ -36,18 +36,7 @@ export default function Hero() {
 			</div>
 
 			<div className="shell">
-				<m.div
-					initial={{ opacity: 0, y: 14 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.7, ease }}
-					className="mx-auto inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-3.5 py-1.5 shadow-soft backdrop-blur">
-					<span className="h-1.5 w-1.5 rounded-full bg-accent" />
-					<span className="text-[11px] font-medium uppercase tracking-label text-mist">
-						Websites, apps, and digital product design
-					</span>
-				</m.div>
-
-				<h1 className="mt-7 max-w-4xl text-balance text-[2.6rem] font-semibold leading-[1.04] tracking-tighter2 sm:text-6xl lg:text-[4.4rem]">
+				<h1 className="max-w-4xl text-balance text-[2.6rem] font-semibold leading-[1.04] tracking-tighter2 sm:text-6xl lg:text-[4.4rem]">
 					{["Websites and apps that", "earn trust and enquiries."].map(
 						(line, li) => (
 							<span key={li} className="block overflow-hidden">
