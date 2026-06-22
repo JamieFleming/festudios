@@ -17,8 +17,7 @@ export default function Hero() {
 						backgroundImage:
 							"linear-gradient(to right, rgba(10,10,11,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(10,10,11,0.04) 1px, transparent 1px)",
 						backgroundSize: "72px 72px",
-						maskImage:
-							"linear-gradient(to bottom, black, transparent 78%)",
+						maskImage: "linear-gradient(to bottom, black, transparent 78%)",
 						WebkitMaskImage:
 							"linear-gradient(to bottom, black, transparent 78%)",
 					}}
@@ -37,7 +36,7 @@ export default function Hero() {
 
 			<div className="shell">
 				<h1 className="max-w-4xl text-balance text-[2.6rem] font-semibold leading-[1.04] tracking-tighter2 sm:text-6xl lg:text-[4.4rem]">
-					{["Websites and apps that", "earn trust and enquiries."].map(
+					{["From a rough idea.", "To something work showing off."].map(
 						(line, li) => (
 							<span key={li} className="block overflow-hidden">
 								<m.span
@@ -47,8 +46,8 @@ export default function Hero() {
 									transition={{ duration: 0.9, ease, delay: 0.1 + li * 0.08 }}>
 									{li === 1 ? (
 										<>
-											earn trust and{" "}
-											<span className="text-accent">enquiries.</span>
+											To something worth{" "}
+											<span className="text-accent">showing off.</span>
 										</>
 									) : (
 										line
@@ -65,9 +64,8 @@ export default function Hero() {
 					transition={{ duration: 0.7, ease, delay: 0.35 }}
 					className="mt-6 max-w-xl text-[17px] leading-relaxed text-mist">
 					FE Studios helps UK businesses and founders turn rough ideas into
-					clear, polished websites, apps, and digital products. Strategy,
-					UI/UX design, build, and launch handled with the same eye for
-					detail.
+					clear, polished websites, apps, and digital products. Strategy, UI/UX
+					design, build, and launch handled with the same eye for detail.
 				</m.p>
 
 				<m.div
@@ -97,7 +95,7 @@ export default function Hero() {
 					transition={{ duration: 0.7, ease, delay: 0.8 }}
 					className="mt-8 grid grid-cols-2 gap-y-8 sm:grid-cols-4">
 					{[
-						["Clear offer", "Visitors understand fast"],
+						["Designed to convert", "Not just pretty but purposeful"],
 						["Modern design", "Distinct, not templated"],
 						["Reliable build", "Responsive and tidy"],
 						["Launch ready", "Tested and handed over"],

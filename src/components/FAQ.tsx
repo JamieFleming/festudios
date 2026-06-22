@@ -5,12 +5,12 @@ const faqs = [
 	{
 		question: "What does FE Studios design and build?",
 		answer:
-			"Custom websites, landing pages, app interfaces, UI/UX systems, digital product prototypes, and launch-ready brand systems for businesses and founders.",
+			"Custom websites, landing pages, app interfaces and UI/UX systems for businesses and founders.",
 	},
 	{
 		question: "Can FE Studios help with both design and development?",
 		answer:
-			"Yes. Projects can cover strategy, UX, visual design, responsive frontend build, launch support, and careful handover so the finished site or app feels coherent from first click to final detail.",
+			"Yes. Projects can cover strategy, UX, visual design, responsive frontend build, launch support, and careful handover so the finished site or app feels coherent from the first click.",
 	},
 	{
 		question: "Who is a good fit for a project?",

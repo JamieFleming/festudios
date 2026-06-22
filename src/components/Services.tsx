@@ -5,13 +5,13 @@ import Reveal from "./Reveal";
 const services = [
 	{
 		title: "Website Design",
-		copy: "Custom website design for landing pages, business sites, and portfolios that make the offer clear, look current, and guide visitors toward action.",
+		copy: "Your website is often the first impression — it should make people feel like they're in good hands immediately. I design custom sites that look sharp, communicate clearly, and turn visitors into enquiries.",
 		points: ["Landing pages", "Business websites", "Responsive web design"],
 	},
 	{
 		title: "App Development",
-		copy: "App development and product builds with proper user flows, tidy interface systems, and screens that feel ready to use.",
-		points: ["MVP interfaces", "Mobile-first apps", "Product prototypes"],
+		copy: "Got an idea for a product? I'll take it from rough concept to a real, usable app with thoughtful user flows and an interface that feels natural from the first tap.",
+		points: ["Mobile-first apps", "Product prototypes", "iOS and Android"],
 	},
 	{
 		title: "UI/UX Design",
@@ -20,7 +20,7 @@ const services = [
 	},
 	{
 		title: "Brand Systems",
-		copy: "Digital-first identity work: typography, colour, logo usage, and visual rules that keep your product consistent everywhere.",
+		copy: "A strong visual identity does a lot of the heavy lifting for you. I'll build a digital-first brand system — typography, colour, logo, and visual rules — that keeps everything consistent and looking intentional.",
 		points: ["Visual direction", "Typography", "Colour systems"],
 	},
 ];

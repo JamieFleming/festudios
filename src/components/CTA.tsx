@@ -47,15 +47,14 @@ export default function CTA() {
 								Ready for a website or app people take seriously?
 							</h2>
 							<p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white/60">
-								Send over the idea, the current site, or the brief. You will get
-								a practical next step, not a vague sales call.
+								Send over the idea, the current site, or the brief. We will work
+								together for a practical next step.
 							</p>
 						</div>
 						<div className="flex flex-col items-start gap-5 lg:items-end">
 							<div className="grid gap-2 text-sm text-white/60">
 								<span>Website design</span>
 								<span>App UI and product builds</span>
-								<span>Brand direction for launch</span>
 							</div>
 							<a
 								href="mailto:jamie@festudios.co.uk"
