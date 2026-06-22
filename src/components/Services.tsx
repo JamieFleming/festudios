@@ -27,7 +27,7 @@ const services = [
 
 export default function Services() {
 	return (
-		<section id="services" className="relative scroll-mt-24 py-24 sm:py-32">
+		<section id="services" className="relative scroll-mt-24 py-24 sm:py-32 bg-[#f5f8ff]">
 			<div className="shell">
 				<Reveal>
 					<SectionLabel index="02">Services</SectionLabel>

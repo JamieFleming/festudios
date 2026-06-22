@@ -10,7 +10,15 @@ export default function Hero() {
 			className="relative overflow-hidden pb-20 pt-36 sm:pb-28 sm:pt-44">
 			<div className="pointer-events-none absolute inset-0 -z-10">
 				<div className="absolute inset-x-0 top-0 h-px bg-line" />
-				<div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(247,247,245,0)_52%)]" />
+				{/* colour glow — sits under the white overlay */}
+				<div
+					className="absolute inset-0"
+					style={{
+						background:
+							"radial-gradient(ellipse 75% 65% at 80% -10%, rgba(99,120,255,0.28) 0%, transparent 65%), radial-gradient(ellipse 55% 50% at -5% 40%, rgba(139,92,246,0.14) 0%, transparent 60%)",
+					}}
+				/>
+				<div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.68),rgba(247,247,245,0)_52%)]" />
 				<div
 					className="absolute inset-0 opacity-[0.32]"
 					style={{
