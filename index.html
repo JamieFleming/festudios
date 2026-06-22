@@ -1,150 +1,405 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="theme-color" content="#0A0A0B" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="canonical" href="https://www.festudios.co.uk/" />
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <title>FE Studios | Website Design, App Development & UI/UX Studio UK</title>
-    <meta
-      name="description"
-      content="FE Studios designs and builds custom websites, apps, UI/UX systems, and digital products for UK businesses and founders who want more trust, enquiries, and launch-ready polish."
-    />
-    <meta
-      name="keywords"
-      content="website design studio, app development studio, UI UX design, web design UK, custom websites, digital product design, landing page design, app UI design, FE Studios"
-    />
-    <meta name="author" content="FE Studios" />
-    <meta name="application-name" content="FE Studios" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FE Studios — Website Design &amp; App Development</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
 
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="FE Studios" />
-    <meta property="og:title" content="FE Studios | Website Design, App Development & UI/UX Studio UK" />
-    <meta
-      property="og:description"
-      content="Custom websites, apps, UI/UX systems, and digital product design for businesses and founders who want a clearer, more credible digital presence."
-    />
-    <meta property="og:url" content="https://www.festudios.co.uk/" />
-    <meta property="og:image" content="https://www.festudios.co.uk/og-image.png" />
-    <meta property="og:image:alt" content="FE Studios website and app design studio" />
-    <meta property="og:locale" content="en_GB" />
+  <!-- ══════════════════ HEADER ══════════════════ -->
+  <header class="site-header">
+    <div class="shell">
+      <div class="nav-pill" id="navPill">
+        <a href="#top" aria-label="FE Studios home">
+          <img src="assets/lg_logo-light.png" alt="FE Studios" class="logo-img" draggable="false" />
+        </a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-right">
+          <a href="#contact" class="btn btn-primary header-cta">Get a quote</a>
+          <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="shell mobile-nav" id="mobileNav">
+      <div class="mobile-nav-inner">
+        <a href="#work"     onclick="closeNav()">Work</a>
+        <a href="#services" onclick="closeNav()">Services</a>
+        <a href="#process"  onclick="closeNav()">Process</a>
+        <a href="#contact"  onclick="closeNav()">Contact</a>
+        <a href="#contact" class="btn btn-primary" onclick="closeNav()">Get a quote</a>
+      </div>
+    </div>
+  </header>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="FE Studios | Website Design, App Development & UI/UX Studio UK" />
-    <meta
-      name="twitter:description"
-      content="Custom websites, apps, UI/UX systems, and digital product design for UK businesses and founders."
-    />
-    <meta name="twitter:image" content="https://www.festudios.co.uk/og-image.png" />
+  <main>
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Organization",
-            "@id": "https://www.festudios.co.uk/#organization",
-            "name": "FE Studios",
-            "url": "https://www.festudios.co.uk/",
-            "logo": "https://www.festudios.co.uk/apple-touch-icon.png",
-            "email": "jamie@festudios.co.uk",
-            "description": "FE Studios designs and builds custom websites, apps, UI/UX systems, and digital products for businesses and founders."
-          },
-          {
-            "@type": "WebSite",
-            "@id": "https://www.festudios.co.uk/#website",
-            "url": "https://www.festudios.co.uk/",
-            "name": "FE Studios",
-            "publisher": {
-              "@id": "https://www.festudios.co.uk/#organization"
-            },
-            "inLanguage": "en-GB"
-          },
-          {
-            "@type": "ProfessionalService",
-            "@id": "https://www.festudios.co.uk/#business",
-            "name": "FE Studios",
-            "url": "https://www.festudios.co.uk/",
-            "image": "https://www.festudios.co.uk/og-image.png",
-            "email": "jamie@festudios.co.uk",
-            "priceRange": "$$",
-            "areaServed": [
-              {
-                "@type": "Country",
-                "name": "United Kingdom"
-              }
-            ],
-            "knowsAbout": [
-              "Website design",
-              "App development",
-              "UI/UX design",
-              "Digital product design",
-              "Landing page design",
-              "Brand systems"
-            ]
-          },
-          {
-            "@type": "Service",
-            "@id": "https://www.festudios.co.uk/#services",
-            "name": "Website design, app development, and UI/UX design",
-            "provider": {
-              "@id": "https://www.festudios.co.uk/#organization"
-            },
-            "areaServed": {
-              "@type": "Country",
-              "name": "United Kingdom"
-            },
-            "serviceType": [
-              "Website Design",
-              "App Development",
-              "UI/UX Design",
-              "Digital Product Design",
-              "Brand Systems"
-            ],
-            "url": "https://www.festudios.co.uk/#services"
-          },
-          {
-            "@type": "FAQPage",
-            "@id": "https://www.festudios.co.uk/#faq",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What does FE Studios design and build?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "FE Studios designs and builds custom websites, landing pages, app interfaces, UI/UX systems, digital product prototypes, and launch-ready brand systems."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Who does FE Studios work with?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "FE Studios works with businesses, founders, and teams that need a modern website, app, or digital product experience with clear strategy, polished design, and tidy implementation."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How do I start a project with FE Studios?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Send the idea, current website, or project brief to jamie@festudios.co.uk. FE Studios will reply with practical next steps for the design or build."
-                }
-              }
-            ]
-          }
-        ]
-      }
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <!-- ══════════════════ HERO ══════════════════ -->
+    <section class="hero" id="top">
+      <div class="hero-bg">
+        <div class="hero-bg-topline"></div>
+        <div class="hero-bg-gradient"></div>
+        <div class="hero-bg-grid"></div>
+        <img src="assets/logo-light.png" alt="" aria-hidden="true" class="hero-mono" draggable="false" />
+      </div>
+      <div class="shell">
+        <h1 class="hero-h1">
+          From a rough idea.<br>
+          To something worth <span class="accent">showing off.</span>
+        </h1>
+        <p class="hero-p">
+          FE Studios helps UK businesses and founders turn rough ideas into clear, polished
+          websites, apps, and digital products. Strategy, UI/UX design, build, and launch
+          handled with the same eye for detail.
+        </p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-primary" style="padding:.75rem 1.5rem">Get a project quote</a>
+          <a href="#work"    class="btn btn-ghost"   style="padding:.75rem 1.5rem">See recent work</a>
+        </div>
+        <div class="hero-rule"><span class="hero-rule-dot"></span></div>
+        <div class="hero-props">
+          <div>
+            <p class="prop-title">Designed to convert</p>
+            <p class="prop-sub">Not just pretty — purposeful</p>
+          </div>
+          <div>
+            <p class="prop-title">Built to stand out</p>
+            <p class="prop-sub">No templates, no shortcuts</p>
+          </div>
+          <div>
+            <p class="prop-title">Solid under the hood</p>
+            <p class="prop-sub">Fast, accessible, responsive</p>
+          </div>
+          <div>
+            <p class="prop-title">Full handover</p>
+            <p class="prop-sub">Yours to own, no lock-in</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ WORK ══════════════════ -->
+    <section class="section" id="work">
+      <div class="shell">
+        <div class="reveal">
+          <div class="work-header">
+            <div>
+              <span class="label" data-n="01">Selected work</span>
+              <h2 class="h2">Recent work across websites, apps, and product interfaces.</h2>
+            </div>
+            <p class="work-sub">Each project is shaped around a real use case, from first impression to the details people tap, read, and rely on.</p>
+          </div>
+        </div>
+
+        <div class="project-grid">
+
+          <!-- MunchSprouts Website -->
+          <a href="https://www.munchsprouts.co.uk" target="_blank" rel="noreferrer" class="card reveal">
+            <div class="card-media tint-green">
+              <div class="card-media-grid"></div>
+              <div class="card-media-center">
+                <div class="browser">
+                  <div class="browser-bar">
+                    <div class="dots">
+                      <span class="dot dot-r"></span>
+                      <span class="dot dot-y"></span>
+                      <span class="dot dot-g"></span>
+                    </div>
+                    <span class="url-bar"></span>
+                  </div>
+                  <img src="assets/munchsprouts_dash.jpg" alt="MunchSprouts website" loading="lazy" />
+                </div>
+              </div>
+              <span class="card-badge badge-green">Web Design</span>
+            </div>
+            <div class="card-body">
+              <span class="card-cat">App Landing Page · Website Design</span>
+              <h3 class="card-name">MunchSprouts Website</h3>
+              <p class="card-desc">A polished launch site for a baby-led weaning product, built around clear app downloads, parent-friendly messaging, and a confident first impression.</p>
+              <div class="card-cta">
+                <span class="card-cta-text">Visit site</span>
+                <span class="arrow">&rarr;</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- MunchSprouts App -->
+          <div class="card reveal">
+            <div class="card-media tint-purple" style="position:relative">
+              <div class="card-media-grid"></div>
+              <div class="media-fill app-pos">
+                <img src="assets/munchsprouts_app.jpg" alt="MunchSprouts app" loading="lazy" />
+                <div class="media-fill-overlay-purple"></div>
+              </div>
+              <span class="card-badge badge-purple">App UI</span>
+            </div>
+            <div class="card-body">
+              <span class="card-cat">Mobile App UI · Product Design</span>
+              <h3 class="card-name">MunchSprouts App</h3>
+              <p class="card-desc">A mobile app interface for tracking foods, feeds, allergens, routines, and growth in one simple parent-friendly dashboard.</p>
+              <div class="card-cta">
+                <span class="card-cta-text">View case</span>
+                <span class="arrow">&rarr;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CrewMate -->
+          <a href="https://jamiefleming.github.io/ePCR-App/" target="_blank" rel="noreferrer" class="card reveal">
+            <div class="card-media tint-blue">
+              <div class="card-media-grid"></div>
+              <div class="card-media-center">
+                <div class="phone">
+                  <div class="phone-notch"></div>
+                  <div class="phone-screen">
+                    <img src="assets/crewmate_dash.jpg" alt="CrewMate dashboard" loading="lazy" />
+                    <div class="phone-fade"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="card-badge badge-blue">Web App</span>
+            </div>
+            <div class="card-body">
+              <span class="card-cat">Healthcare App · Workflow UI</span>
+              <h3 class="card-name">CrewMate</h3>
+              <p class="card-desc">A practical ePCR and on-scene workflow tool for crews, designed around fast access to patient forms, scoring tools, observations, and clinical reference tasks.</p>
+              <div class="card-cta">
+                <span class="card-cta-text">Visit site</span>
+                <span class="arrow">&rarr;</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Suss'd -->
+          <div class="card reveal">
+            <div class="card-media tint-dark" style="position:relative">
+              <div class="card-media-grid"></div>
+              <div class="media-fill dark-pos">
+                <img src="assets/sussd_image.jpg" alt="Suss'd game" loading="lazy" />
+                <div class="media-fill-overlay-dark"></div>
+              </div>
+              <span class="card-badge badge-dark">Game UI</span>
+            </div>
+            <div class="card-body">
+              <span class="card-cat">Game UI · Mobile Experience</span>
+              <h3 class="card-name">Suss'd</h3>
+              <p class="card-desc">A social deception game concept with a bold visual identity, moody interface direction, and a mobile menu system built to feel immediate and replayable.</p>
+              <div class="card-cta">
+                <span class="card-cta-text">View case</span>
+                <span class="arrow">&rarr;</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ SERVICES ══════════════════ -->
+    <section class="section" id="services">
+      <div class="shell">
+        <div class="reveal">
+          <span class="label" data-n="02">Services</span>
+          <h2 class="h2">What you can hire FE Studios to design and build.</h2>
+        </div>
+        <div class="services-grid reveal">
+          <div class="svc">
+            <div class="svc-top"><span class="svc-num">01</span><span class="svc-arrow">&rarr;</span></div>
+            <h3 class="svc-title">Website Design</h3>
+            <p class="svc-copy">Your website is often the first impression — it should make people feel like they're in good hands immediately. I design custom sites that look sharp, communicate clearly, and turn visitors into enquiries.</p>
+            <div class="svc-tags">
+              <span class="svc-tag">Landing pages</span>
+              <span class="svc-tag">Business websites</span>
+              <span class="svc-tag">Responsive web design</span>
+            </div>
+          </div>
+          <div class="svc">
+            <div class="svc-top"><span class="svc-num">02</span><span class="svc-arrow">&rarr;</span></div>
+            <h3 class="svc-title">App Development</h3>
+            <p class="svc-copy">Got an idea for a product? I'll take it from rough concept to a real, usable app with thoughtful user flows and an interface that feels natural from the first tap.</p>
+            <div class="svc-tags">
+              <span class="svc-tag">MVP interfaces</span>
+              <span class="svc-tag">Mobile-first apps</span>
+              <span class="svc-tag">Product prototypes</span>
+            </div>
+          </div>
+          <div class="svc">
+            <div class="svc-top"><span class="svc-num">03</span><span class="svc-arrow">&rarr;</span></div>
+            <h3 class="svc-title">UI/UX Design</h3>
+            <p class="svc-copy">Good design is invisible — people just know where to go and what to do. I create interfaces, wireframes, and design systems that make your product easy to understand and enjoyable to use.</p>
+            <div class="svc-tags">
+              <span class="svc-tag">User journeys</span>
+              <span class="svc-tag">Wireframes</span>
+              <span class="svc-tag">UX audits</span>
+            </div>
+          </div>
+          <div class="svc">
+            <div class="svc-top"><span class="svc-num">04</span><span class="svc-arrow">&rarr;</span></div>
+            <h3 class="svc-title">Brand Systems</h3>
+            <p class="svc-copy">A strong visual identity does a lot of the heavy lifting for you. I'll build a digital-first brand system — typography, colour, logo, and visual rules — that keeps everything consistent and looking intentional.</p>
+            <div class="svc-tags">
+              <span class="svc-tag">Visual direction</span>
+              <span class="svc-tag">Typography</span>
+              <span class="svc-tag">Colour systems</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ PROCESS ══════════════════ -->
+    <section class="section" id="process">
+      <div class="shell">
+        <div class="process-layout">
+          <div class="process-sticky reveal">
+            <span class="label" data-n="03">Process</span>
+            <h2 class="h2">A straightforward path from rough idea to finished product.</h2>
+            <p class="process-layout-sub">The process is built to keep decisions moving. You get structure, honest design thinking, and a finished site or app that feels considered instead of assembled in a rush.</p>
+          </div>
+          <div>
+            <div class="step reveal">
+              <span class="step-n">01</span>
+              <div>
+                <h3 class="step-title">Discover</h3>
+                <p class="step-copy">We start with a conversation. What are you building, who's it for, and what does success actually look like? We pin down the goals, audience, and must-haves before a single pixel gets placed.</p>
+              </div>
+            </div>
+            <div class="step reveal">
+              <span class="step-n">02</span>
+              <div>
+                <h3 class="step-title">Design</h3>
+                <p class="step-copy">With a clear direction, we map out the core screens and shape the visual identity. You'll see exactly how it looks and feels before anything gets built — no surprises.</p>
+              </div>
+            </div>
+            <div class="step reveal">
+              <span class="step-n">03</span>
+              <div>
+                <h3 class="step-title">Build</h3>
+                <p class="step-copy">The designs come to life as a fast, responsive product. Every detail is considered — spacing, motion, accessibility, and how it behaves on every device.</p>
+              </div>
+            </div>
+            <div class="step reveal">
+              <span class="step-n">04</span>
+              <div>
+                <h3 class="step-title">Refine</h3>
+                <p class="step-copy">We test, tighten, and polish until everything feels right. Copy, interactions, performance — nothing ships until it's something we're both proud of.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ ABOUT ══════════════════ -->
+    <section class="section" id="about">
+      <div class="shell">
+        <div class="about-layout">
+          <div class="reveal">
+            <span class="label" data-n="04">About</span>
+            <h2 class="about-h2">Good work, done properly.</h2>
+          </div>
+          <div class="about-body reveal">
+            <p>I started FE Studios because I believe small teams and independent businesses deserve the same quality of design and build that bigger companies take for granted.</p>
+            <p>I work with UK founders and businesses who want a website or digital product that actually reflects how good they are — not something cobbled together from a template and forgotten about. My focus is straightforward: strong visual direction, user experience that makes sense, and clean, solid code. I care about the details because the details are what people notice.</p>
+            <p>If you want someone who's invested from the first conversation to the final launch, let's talk.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ FAQ ══════════════════ -->
+    <section class="section" id="faq">
+      <div class="shell">
+        <div class="reveal">
+          <span class="label" data-n="05">FAQ</span>
+          <h2 class="h2">Website design and app development questions.</h2>
+        </div>
+        <div class="faq-list reveal">
+          <article class="faq-item">
+            <h3 class="faq-q">What does FE Studios design and build?</h3>
+            <p class="faq-a">Custom websites, landing pages, app interfaces and UI/UX systems for businesses and founders.</p>
+          </article>
+          <article class="faq-item">
+            <h3 class="faq-q">Can FE Studios help with both design and development?</h3>
+            <p class="faq-a">Yes. Projects can cover strategy, UX, visual design, responsive frontend build, launch support, and careful handover so the finished site or app feels coherent from the first click.</p>
+          </article>
+          <article class="faq-item">
+            <h3 class="faq-q">Who is a good fit for a project?</h3>
+            <p class="faq-a">Businesses, founders, and small teams that need a clearer digital presence, a polished product interface, or a custom website that looks credible and drives enquiries.</p>
+          </article>
+          <article class="faq-item">
+            <h3 class="faq-q">How do I start?</h3>
+            <p class="faq-a">Send the idea, current website, or brief to jamie@festudios.co.uk. You will get a practical next step for the website, app, or product design work.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ CTA ══════════════════ -->
+    <div class="cta-wrap" id="contact">
+      <div class="cta-box reveal">
+        <div class="cta-topline"></div>
+        <div class="cta-grid-bg"></div>
+        <img src="assets/logo-dark.png" alt="" aria-hidden="true" class="cta-mono" loading="lazy" draggable="false" />
+        <div class="cta-inner">
+          <div>
+            <span class="cta-eyebrow">Start a project</span>
+            <h2 class="cta-h2">Ready for a website or app people take seriously?</h2>
+            <p class="cta-sub">Send over the idea, the current site, or the brief. We will work together for a practical next step.</p>
+          </div>
+          <div class="cta-right">
+            <div class="cta-svc-list">
+              <span>Website design</span>
+              <span>App UI and product builds</span>
+            </div>
+            <a href="mailto:jamie@festudios.co.uk" class="btn btn-light" style="padding:.875rem 1.75rem;font-size:15px">
+              Get a project quote
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-rule"></div>
+      <div class="footer-body">
+        <div>
+          <img src="assets/lg_logo-light.png" alt="FE Studios" class="footer-logo" loading="lazy" draggable="false" />
+          <p class="footer-tag">Website design, app development, and UI/UX design for businesses that want their digital presence to feel current, clear, and credible.</p>
+        </div>
+        <nav>
+          <span class="footer-nav-label">Navigate</span>
+          <ul class="footer-nav">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 FE Studios. All rights reserved.</p>
+        <p class="footer-built">Designed &amp; built in-house</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+
+</body>
 </html>
