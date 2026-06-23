@@ -3,10 +3,17 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap"
+			rel="stylesheet" />
 
 		<!-- Primary meta -->
 		<title>FE Studios — Website Design &amp; App Development UK</title>
-		<meta name="description" content="FE Studios is a UK web design and app development studio. We design and build custom websites, apps, and digital products for businesses and founders — strategy, UI/UX, and launch all handled in-house." />
+		<meta
+			name="description"
+			content="FE Studios is a UK web design and app development studio. We design and build custom websites, apps, and digital products for businesses and founders — strategy, UI/UX, and launch all handled in-house." />
 		<meta name="author" content="FE Studios" />
 		<meta name="robots" content="index, follow" />
 		<link rel="canonical" href="https://festudios.co.uk/" />
@@ -14,35 +21,52 @@
 		<!-- Open Graph (Facebook, LinkedIn, WhatsApp previews) -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://festudios.co.uk/" />
-		<meta property="og:title" content="FE Studios — Website Design &amp; App Development UK" />
-		<meta property="og:description" content="Custom websites, apps, and digital products for UK businesses and founders. Strategy, design, build, and launch — all handled with the same eye for detail." />
-		<meta property="og:image" content="https://festudios.co.uk/assets/og-image.png" />
+		<meta
+			property="og:title"
+			content="FE Studios — Website Design &amp; App Development UK" />
+		<meta
+			property="og:description"
+			content="Custom websites, apps, and digital products for UK businesses and founders. Strategy, design, build, and launch — all handled with the same eye for detail." />
+		<meta
+			property="og:image"
+			content="https://festudios.co.uk/assets/og-image.png" />
 		<meta property="og:locale" content="en_GB" />
 		<meta property="og:site_name" content="FE Studios" />
 
 		<!-- Twitter / X card -->
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="FE Studios — Website Design &amp; App Development UK" />
-		<meta name="twitter:description" content="Custom websites, apps, and digital products for UK businesses and founders. Strategy, design, build, and launch — all in-house." />
-		<meta name="twitter:image" content="https://festudios.co.uk/assets/og-image.png" />
+		<meta
+			name="twitter:title"
+			content="FE Studios — Website Design &amp; App Development UK" />
+		<meta
+			name="twitter:description"
+			content="Custom websites, apps, and digital products for UK businesses and founders. Strategy, design, build, and launch — all in-house." />
+		<meta
+			name="twitter:image"
+			content="https://festudios.co.uk/assets/og-image.png" />
 
 		<!-- Theme colour (browser chrome on mobile) -->
 		<meta name="theme-color" content="#f7f7f5" />
 
 		<!-- Structured data — Professional Service -->
 		<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "ProfessionalService",
-			"name": "FE Studios",
-			"url": "https://festudios.co.uk",
-			"email": "jamie@festudios.co.uk",
-			"description": "UK web design and app development studio specialising in custom websites, app interfaces, UI/UX design, and brand systems for businesses and founders.",
-			"areaServed": "GB",
-			"serviceType": ["Website Design", "App Development", "UI/UX Design", "Brand Systems"],
-			"priceRange": "££",
-			"sameAs": []
-		}
+			{
+				"@context": "https://schema.org",
+				"@type": "ProfessionalService",
+				"name": "FE Studios",
+				"url": "https://festudios.co.uk",
+				"email": "jamie@festudios.co.uk",
+				"description": "UK web design and app development studio specialising in custom websites, app interfaces, UI/UX design, and brand systems for businesses and founders.",
+				"areaServed": "GB",
+				"serviceType": [
+					"Website Design",
+					"App Development",
+					"UI/UX Design",
+					"Brand Systems"
+				],
+				"priceRange": "££",
+				"sameAs": []
+			}
 		</script>
 
 		<link rel="stylesheet" href="styles.css" />
@@ -68,9 +92,10 @@
 						</ul>
 					</nav>
 					<div class="header-right">
-						<a href="#contact" class="btn btn-primary header-cta"
-							>Get a quote</a
-						>
+						<button class="btn btn-primary header-cta js-open-contact">
+							Get a quote
+						</button>
+
 						<button
 							class="burger"
 							id="burger"
@@ -87,7 +112,7 @@
 					<a href="#services">Services</a>
 					<a href="#process">Process</a>
 					<a href="#contact">Contact</a>
-					<a href="#contact" class="btn btn-primary">Get a quote</a>
+					<button class="btn btn-primary js-open-contact">Get a quote</button>
 				</div>
 			</div>
 		</header>
@@ -111,6 +136,7 @@
 						From a rough idea.<br />
 						To something worth <span class="accent">showing off.</span>
 					</h1>
+					<p class="hero-eyebrow">Web &amp; App Design Studio &middot; UK</p>
 					<p class="hero-p">
 						FE Studios helps UK businesses and founders turn rough ideas into
 						clear, polished websites, apps, and digital products. Strategy,
@@ -118,16 +144,18 @@
 						detail.
 					</p>
 					<div class="hero-btns">
-						<a href="#contact" class="btn btn-primary btn-md"
-							>Get a project quote</a
-						>
+						<button class="btn btn-primary btn-md js-open-contact">
+							Get a project quote
+						</button>
 						<a href="#work" class="btn btn-ghost btn-md">See recent work</a>
 					</div>
 					<div class="hero-rule"><span class="hero-rule-dot"></span></div>
 					<div class="hero-props">
 						<div>
-							<p class="prop-title">Designed to convert</p>
-							<p class="prop-sub">Not just pretty but purposeful</p>
+							<p class="prop-title">Live Launch</p>
+							<p class="prop-sub">
+								Apps live on the App Store and Google Play.
+							</p>
 						</div>
 						<div>
 							<p class="prop-title">Built to stand out</p>
@@ -151,7 +179,7 @@
 					<div class="reveal">
 						<div class="work-header">
 							<div>
-								<span class="label" data-n="01">Selected work</span>
+								<span class="label" data-n="01">Portfolio</span>
 								<h2 class="h2">
 									Recent work across websites, apps, and product interfaces.
 								</h2>
@@ -205,30 +233,37 @@
 						</a>
 
 						<!-- MunchSprouts App -->
-						<div class="card reveal">
-							<div class="card-media tint-purple">
-								<div class="media-fill app-pos">
-									<img
-										src="assets/munchsprouts_app.jpg"
-										alt="MunchSprouts app"
-										loading="lazy" />
-									<div class="media-fill-overlay-purple"></div>
+						<a
+							href="https://apps.apple.com/gb/app/munch-sprouts-baby-tracker/id6763142582"
+							target="_blank"
+							rel="noreferrer"
+							class="card reveal">
+							<div class="card reveal">
+								<div class="card-media tint-purple">
+									<div class="media-fill app-pos">
+										<img
+											src="assets/munchsprouts_app.jpg"
+											alt="MunchSprouts app"
+											loading="lazy" />
+										<div class="media-fill-overlay-purple"></div>
+									</div>
+									<span class="card-badge badge-purple">App UI</span>
 								</div>
-								<span class="card-badge badge-purple">App UI</span>
-							</div>
-							<div class="card-body">
-								<span class="card-cat">Mobile App UI · Product Design</span>
-								<h3 class="card-name">MunchSprouts App</h3>
-								<p class="card-desc">
-									A mobile app interface for tracking foods, feeds, allergens,
-									routines, and growth in one simple parent-friendly dashboard.
-								</p>
-								<div class="card-cta">
-									<span class="card-cta-text">View case</span>
-									<span class="arrow">&rarr;</span>
+								<div class="card-body">
+									<span class="card-cat">Mobile App UI · Product Design</span>
+									<h3 class="card-name">MunchSprouts App</h3>
+									<p class="card-desc">
+										A mobile app interface for tracking foods, feeds, allergens,
+										routines, and growth in one simple parent-friendly
+										dashboard. Live on the App Store and Google Play.
+									</p>
+									<div class="card-cta">
+										<span class="card-cta-text">View case</span>
+										<span class="arrow">&rarr;</span>
+									</div>
 								</div>
 							</div>
-						</div>
+						</a>
 
 						<!-- CrewMate -->
 						<a
@@ -255,8 +290,8 @@
 								<span class="card-cat">Healthcare App · Workflow UI</span>
 								<h3 class="card-name">CrewMate</h3>
 								<p class="card-desc">
-									A practical ePCR and on-scene workflow tool for crews,
-									designed around fast access to patient forms, scoring tools,
+									A practical assistance tool for ambulance workers designed
+									around fast access to patient forms, scoring tools,
 									observations, and clinical reference tasks.
 								</p>
 								<div class="card-cta">
@@ -267,31 +302,36 @@
 						</a>
 
 						<!-- Suss'd -->
-						<div class="card reveal">
-							<div class="card-media tint-dark">
-								<div class="media-fill dark-pos">
-									<img
-										src="assets/sussd_image.jpg"
-										alt="Suss'd game"
-										loading="lazy" />
-									<div class="media-fill-overlay-dark"></div>
+						<a
+							href="https://apps.apple.com/gb/app/sussd/id6774063502"
+							target="_blank"
+							rel="noreferrer"
+							class="card reveal">
+							<div class="card reveal">
+								<div class="card-media tint-dark">
+									<div class="media-fill dark-pos">
+										<img
+											src="assets/sussd_image.jpg"
+											alt="Suss'd game"
+											loading="lazy" />
+										<div class="media-fill-overlay-dark"></div>
+									</div>
+									<span class="card-badge badge-dark">Game UI</span>
 								</div>
-								<span class="card-badge badge-dark">Game UI</span>
-							</div>
-							<div class="card-body">
-								<span class="card-cat">Game UI · Mobile Experience</span>
-								<h3 class="card-name">Suss'd</h3>
-								<p class="card-desc">
-									A social deception game concept with a bold visual identity,
-									moody interface direction, and a mobile menu system built to
-									feel immediate and replayable.
-								</p>
-								<div class="card-cta">
-									<span class="card-cta-text">View case</span>
-									<span class="arrow">&rarr;</span>
+								<div class="card-body">
+									<span class="card-cat">Game UI · Mobile Experience</span>
+									<h3 class="card-name">Suss'd</h3>
+									<p class="card-desc">
+										A social deception game with a bold visual identity, moody
+										interface direction, with the ability to add paid features.
+									</p>
+									<div class="card-cta">
+										<span class="card-cta-text">View case</span>
+										<span class="arrow">&rarr;</span>
+									</div>
 								</div>
 							</div>
-						</div>
+						</a>
 					</div>
 				</div>
 			</section>
@@ -338,7 +378,7 @@
 							<div class="svc-tags">
 								<span class="svc-tag">MVP interfaces</span>
 								<span class="svc-tag">Mobile-first apps</span>
-								<span class="svc-tag">Product prototypes</span>
+								<span class="svc-tag">iOS and Android</span>
 							</div>
 						</div>
 						<div class="svc">
@@ -348,7 +388,7 @@
 							</div>
 							<h3 class="svc-title">UI/UX Design</h3>
 							<p class="svc-copy">
-								Good design is invisible — people just know where to go and what
+								Good design is invisible, people just know where to go and what
 								to do. I create interfaces, wireframes, and design systems that
 								make your product easy to understand and enjoyable to use.
 							</p>
@@ -401,8 +441,8 @@
 								<div>
 									<h3 class="step-title">Discover</h3>
 									<p class="step-copy">
-										We start with a conversation. What are you building, who's
-										it for, and what does success actually look like? We pin
+										I start with a conversation. What are you building, who's it
+										for, and what does success actually look like? We will pin
 										down the goals, audience, and must-haves before a single
 										pixel gets placed.
 									</p>
@@ -413,7 +453,7 @@
 								<div>
 									<h3 class="step-title">Design</h3>
 									<p class="step-copy">
-										With a clear direction, we map out the core screens and
+										With a clear direction, I will map out the core screens and
 										shape the visual identity. You'll see exactly how it looks
 										and feels before anything gets built — no surprises.
 									</p>
@@ -435,9 +475,9 @@
 								<div>
 									<h3 class="step-title">Refine</h3>
 									<p class="step-copy">
-										We test, tighten, and polish until everything feels right.
-										Copy, interactions, performance — nothing ships until it's
-										something we're both proud of.
+										I test, we tighten, and I polish until everything feels
+										right. Copy, interactions, performance — nothing ships until
+										it's something we're both proud of.
 									</p>
 								</div>
 							</div>
@@ -548,11 +588,9 @@
 								<span>Website design</span>
 								<span>App UI and product builds</span>
 							</div>
-							<a
-								href="mailto:jamie@festudios.co.uk"
-								class="btn btn-light btn-lg"
-								>Get a project quote</a
-							>
+							<button class="btn btn-light btn-lg js-open-contact">
+								Get a project quote
+							</button>
 						</div>
 					</div>
 				</div>
@@ -594,6 +632,96 @@
 				</div>
 			</div>
 		</footer>
+
+		<!-- CONTACT MODAL -->
+		<div
+			class="modal-overlay"
+			id="contactModal"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="modalTitle">
+			<div class="modal-card">
+				<button class="modal-close" id="modalClose" aria-label="Close">
+					&times;
+				</button>
+
+				<div id="modalFormWrap">
+					<span class="modal-eyebrow">Start a project</span>
+					<h2 class="modal-title" id="modalTitle">
+						Tell us what you&rsquo;re building.
+					</h2>
+					<p class="modal-sub">
+						Fill in the details and we&rsquo;ll get back to you within one
+						working day.
+					</p>
+
+					<form class="contact-form" id="contactForm" novalidate>
+						<div class="form-row">
+							<div class="form-group">
+								<label class="form-label" for="cf-name">Your name</label>
+								<input
+									class="form-input"
+									type="text"
+									id="cf-name"
+									name="name"
+									placeholder="Jane Smith"
+									required />
+							</div>
+							<div class="form-group">
+								<label class="form-label" for="cf-email">Email address</label>
+								<input
+									class="form-input"
+									type="email"
+									id="cf-email"
+									name="email"
+									placeholder="jane@company.co.uk"
+									required />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="form-label" for="cf-type">Project type</label>
+							<select class="form-select" id="cf-type" name="project_type">
+								<option value="">Select a service&hellip;</option>
+								<option value="Website Design">Website Design</option>
+								<option value="App Development">App Development</option>
+								<option value="UI/UX Design">UI/UX Design</option>
+								<option value="Brand System">Brand System</option>
+								<option value="Other">Other / Not sure yet</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="form-label" for="cf-message">Brief or idea</label>
+							<textarea
+								class="form-textarea"
+								id="cf-message"
+								name="message"
+								placeholder="Describe the project, where you&rsquo;re at, and what you need&hellip;"
+								required></textarea>
+						</div>
+						<p class="form-error" id="formError" hidden>
+							Something went wrong — please try again or email
+							<a href="mailto:jamie@festudios.co.uk">jamie@festudios.co.uk</a>
+							directly.
+						</p>
+						<button
+							type="submit"
+							class="btn btn-primary btn-md form-submit"
+							id="formSubmit">
+							<span id="submitText">Send enquiry</span>
+						</button>
+					</form>
+				</div>
+
+				<div class="modal-success" id="modalSuccess" hidden>
+					<div class="success-icon">&#10003;</div>
+					<h3 class="success-title">Enquiry sent.</h3>
+					<p class="success-sub">
+						Thanks — I&rsquo;ll be in touch within 7 working days.
+					</p>
+					<button class="btn btn-ghost btn-md" id="modalDone">Close</button>
+				</div>
+			</div>
+		</div>
 
 		<script src="main.js"></script>
 	</body>
