@@ -1,20 +1,22 @@
 /* ─── Variables ─── */
 :root {
-	--ink: #0a0a0b;
-	--graphite: #3a3d44;
-	--mist: #6b6f76;
-	--haze: #9aa0a8;
-	--line: rgba(10, 10, 11, 0.08);
-	--paper: #f7f7f5;
+	--ink: #f0f0ec;
+	--graphite: #b0b4be;
+	--mist: #7a7f8c;
+	--haze: #3a3f4a;
+	--line: rgba(240, 240, 236, 0.08);
+	--paper: #0c0c10;
 	--white: #ffffff;
-	--accent: #3b6cf6;
+	--accent: #8095ff;
+	--surface: #13131a;
+	--surface-2: #0f0f16;
 	--shadow-soft:
-		0 1px 2px rgba(10, 10, 11, 0.04), 0 12px 40px -12px rgba(10, 10, 11, 0.12);
+		0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 40px -12px rgba(0, 0, 0, 0.55);
 	--shadow-lift:
-		0 2px 4px rgba(10, 10, 11, 0.04), 0 24px 64px -20px rgba(10, 10, 11, 0.22);
+		0 2px 4px rgba(0, 0, 0, 0.4), 0 24px 64px -20px rgba(0, 0, 0, 0.7);
 	--shadow-glass:
-		inset 0 1px 0 rgba(255, 255, 255, 0.6),
-		0 8px 30px -10px rgba(10, 10, 11, 0.18);
+		inset 0 1px 0 rgba(255, 255, 255, 0.06),
+		0 8px 30px -10px rgba(0, 0, 0, 0.55);
 	--ease: cubic-bezier(0.22, 1, 0.36, 1);
 	--max: 1180px;
 	--r3xl: 28px;
@@ -44,7 +46,7 @@ body {
 }
 
 ::selection {
-	background: rgba(59, 108, 246, 0.18);
+	background: rgba(128, 149, 255, 0.28);
 }
 img {
 	max-width: 100%;
@@ -130,35 +132,36 @@ a {
 		border-color 300ms;
 }
 .btn-primary {
-	background: var(--ink);
-	color: var(--white);
+	background: var(--white);
+	color: #0c0c10;
 	padding: 0.625rem 1.25rem;
 	box-shadow: var(--shadow-soft);
 }
 .btn-primary:hover {
 	transform: translateY(-2px);
 	box-shadow: var(--shadow-lift);
+	background: #f0f0ec;
 }
 .btn-primary:active {
 	transform: none;
 }
 
 .btn-ghost {
-	border: 1px solid var(--line);
-	background: rgba(255, 255, 255, 0.6);
+	border: 1px solid rgba(240, 240, 236, 0.14);
+	background: rgba(255, 255, 255, 0.04);
 	color: var(--ink);
 	padding: 0.625rem 1.25rem;
 	backdrop-filter: blur(8px);
 }
 .btn-ghost:hover {
 	transform: translateY(-2px);
-	border-color: rgba(10, 10, 11, 0.2);
-	background: var(--white);
+	border-color: rgba(240, 240, 236, 0.28);
+	background: rgba(255, 255, 255, 0.08);
 }
 
 .btn-light {
 	background: var(--white);
-	color: var(--ink);
+	color: #0c0c10;
 	padding: 0.625rem 1.25rem;
 	box-shadow: var(--shadow-soft);
 }
@@ -205,7 +208,11 @@ a {
 	align-items: center;
 	justify-content: space-between;
 	border-radius: 9999px;
-	border: 1px solid transparent;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	background: rgba(235, 235, 240, 0.92);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
 	padding: 0.5rem 0.75rem 0.5rem 1.25rem;
 	transition:
 		border-color 500ms var(--ease),
@@ -219,17 +226,18 @@ a {
 }
 
 .nav-pill.scrolled {
-	border-color: var(--line);
-	background: rgba(255, 255, 255, 0.7);
-	box-shadow: var(--shadow-glass);
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
+	border-color: rgba(255, 255, 255, 0.22);
+	background: rgba(240, 240, 245, 0.96);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+	backdrop-filter: blur(28px);
+	-webkit-backdrop-filter: blur(28px);
 }
 
 .logo-img {
 	height: 3.5rem;
 	width: auto;
 	user-select: none;
+	filter: brightness(0);
 }
 @media (min-width: 640px) {
 	.logo-img {
@@ -253,11 +261,11 @@ a {
 	border-radius: 9999px;
 	padding: 0.5rem 0.875rem;
 	font-size: 14px;
-	color: var(--graphite);
+	color: #3a3d44;
 	transition: color 200ms;
 }
 .nav-links a:hover {
-	color: var(--ink);
+	color: #0a0a0b;
 }
 
 .header-right {
@@ -267,6 +275,8 @@ a {
 }
 
 .header-cta {
+	background: #0a0a0b !important;
+	color: #ffffff !important;
 	display: none;
 }
 @media (min-width: 640px) {
@@ -282,9 +292,8 @@ a {
 	align-items: center;
 	justify-content: center;
 	border-radius: 9999px;
-	border: 1px solid var(--line);
-	background: rgba(255, 255, 255, 0.6);
-	backdrop-filter: blur(8px);
+	border: 1px solid rgba(10, 10, 11, 0.12);
+	background: rgba(10, 10, 11, 0.06);
 	cursor: pointer;
 	position: relative;
 }
@@ -298,7 +307,7 @@ a {
 	position: absolute;
 	width: 1rem;
 	height: 1px;
-	background: var(--ink);
+	background: #0a0a0b;
 	transition:
 		transform 300ms,
 		top 300ms,
@@ -334,8 +343,8 @@ a {
 .mobile-nav-inner {
 	margin-top: 0.5rem;
 	border-radius: var(--r3xl);
-	border: 1px solid var(--line);
-	background: rgba(255, 255, 255, 0.85);
+	border: 1px solid rgba(240, 240, 236, 0.1);
+	background: rgba(14, 14, 20, 0.96);
 	padding: 0.75rem;
 	box-shadow: var(--shadow-glass);
 	backdrop-filter: blur(20px);
@@ -367,11 +376,11 @@ a {
 .hero {
 	position: relative;
 	overflow: hidden;
-	padding: 9rem 0 5rem;
+	padding: 11rem 0 6rem;
 }
 @media (min-width: 640px) {
 	.hero {
-		padding: 11rem 0 7rem;
+		padding: 14rem 0 9rem;
 	}
 }
 
@@ -394,53 +403,65 @@ a {
 	inset: 0;
 	background:
 		radial-gradient(
-			ellipse 75% 65% at 80% -10%,
-			rgba(99, 120, 255, 0.28) 0%,
+			ellipse 70% 60% at 80% -5%,
+			rgba(80, 100, 220, 0.45) 0%,
 			transparent 65%
 		),
 		radial-gradient(
-			ellipse 55% 50% at -5% 40%,
-			rgba(139, 92, 246, 0.14) 0%,
+			ellipse 55% 50% at -5% 45%,
+			rgba(100, 60, 200, 0.22) 0%,
 			transparent 60%
 		),
-		linear-gradient(
-			180deg,
-			rgba(255, 255, 255, 0.68),
-			rgba(247, 247, 245, 0) 52%
+		radial-gradient(
+			ellipse 60% 40% at 50% 110%,
+			rgba(8, 8, 16, 0.9) 0%,
+			transparent 65%
 		);
 }
 .hero-bg-grid {
 	position: absolute;
 	inset: 0;
-	opacity: 0.32;
+	opacity: 0.5;
 	background-image:
-		linear-gradient(to right, rgba(10, 10, 11, 0.04) 1px, transparent 1px),
-		linear-gradient(to bottom, rgba(10, 10, 11, 0.04) 1px, transparent 1px);
+		linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 	background-size: 72px 72px;
 	mask-image: linear-gradient(to bottom, black, transparent 78%);
 	-webkit-mask-image: linear-gradient(to bottom, black, transparent 78%);
 }
 .hero-mono {
 	position: absolute;
-	right: -6%;
-	top: 8%;
-	width: 42vw;
-	max-width: 560px;
-	opacity: 0.035;
+	right: -8%;
+	top: 2%;
+	width: 55vw;
+	max-width: 720px;
+	opacity: 0.12;
 	user-select: none;
+	filter: brightness(0) invert(1);
 }
 @media (min-width: 640px) {
 	.hero-mono {
-		opacity: 0.04;
+		opacity: 0.16;
 	}
+}
+
+.hero-logo {
+	height: 7rem;
+	width: auto;
+	margin-bottom: 2.25rem;
+	user-select: none;
+	filter: brightness(0) invert(1);
+}
+@media (min-width: 640px) {
+	.hero-logo { height: 10rem; margin-bottom: 2.75rem; }
 }
 
 .hero-h1 {
 	max-width: 56rem;
-	font-size: clamp(2.4rem, 6vw, 4.4rem);
-	font-weight: 600;
-	line-height: 1.04;
-	letter-spacing: -0.035em;
+	font-size: clamp(2.8rem, 7.5vw, 5.5rem);
+	font-weight: 700;
+	line-height: 1.02;
+	letter-spacing: -0.04em;
 	text-wrap: balance;
 }
 .hero-h1 .accent {
@@ -559,20 +580,22 @@ a {
 .card {
 	display: flex;
 	flex-direction: column;
-	background: var(--white);
+	background: #1e1e2a;
 	border-radius: var(--r3xl);
-	border: 1px solid var(--line);
+	border: 1px solid rgba(240, 240, 236, 0.13);
 	padding: 0.625rem;
-	box-shadow: var(--shadow-soft);
+	box-shadow: 0 2px 12px rgba(0,0,0,0.4), 0 0 0 0 transparent;
 	overflow: hidden;
 	color: inherit;
 	transition:
 		transform 500ms var(--ease),
-		box-shadow 500ms var(--ease);
+		box-shadow 500ms var(--ease),
+		border-color 500ms var(--ease);
 }
 .card:hover {
 	transform: translateY(-4px);
-	box-shadow: var(--shadow-lift);
+	border-color: rgba(128, 149, 255, 0.32);
+	box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(128,149,255,0.15);
 }
 
 .card-media {
@@ -615,24 +638,24 @@ a {
 }
 
 .tint-green {
-	background: linear-gradient(to bottom right, #ecfdf5, #d1fae5, #fff);
+	background: linear-gradient(to bottom right, #091a11, #0d2418, #0a1020);
 }
 .tint-purple {
-	background: linear-gradient(to bottom right, #f5f3ff, #ede9fe, #ecfdf5);
+	background: linear-gradient(to bottom right, #100d22, #180e30, #090f18);
 }
 .tint-blue {
-	background: linear-gradient(to bottom right, #f0f9ff, #e0f2fe, #fff);
+	background: linear-gradient(to bottom right, #091428, #0c1e3c, #091428);
 }
 .tint-dark {
-	background: linear-gradient(to bottom right, #18181b, #2e1065, #4c0519);
+	background: linear-gradient(to bottom right, #0e0e12, #1a0d3a, #280510);
 }
 
 /* browser chrome mockup */
 .browser {
 	width: 112%;
 	border-radius: 22px;
-	border: 1px solid rgba(255, 255, 255, 0.7);
-	background: var(--white);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: #1a1a24;
 	box-shadow: var(--shadow-lift);
 	overflow: hidden;
 }
@@ -641,8 +664,8 @@ a {
 	height: 1.75rem;
 	align-items: center;
 	justify-content: space-between;
-	border-bottom: 1px solid var(--line);
-	background: rgba(255, 255, 255, 0.85);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+	background: #1e1e2a;
 	padding: 0 0.75rem;
 	backdrop-filter: blur(4px);
 }
@@ -702,7 +725,7 @@ a {
 	height: 100%;
 	overflow: hidden;
 	border-radius: 18px;
-	background: #fff;
+	background: #1a1a24;
 }
 .phone-screen img {
 	width: 94%;
@@ -720,8 +743,8 @@ a {
 	height: 5rem;
 	background: linear-gradient(
 		to top,
-		#fff,
-		rgba(255, 255, 255, 0.75),
+		#1a1a24,
+		rgba(26, 26, 36, 0.75),
 		transparent
 	);
 	pointer-events: none;
@@ -850,7 +873,7 @@ a {
    SERVICES
 ══════════════════════════════════════ */
 #services {
-	background: #f5f8ff;
+	background: var(--surface-2);
 }
 
 .services-grid {
@@ -869,12 +892,12 @@ a {
 }
 
 .svc {
-	background: var(--white);
+	background: var(--surface);
 	padding: 2rem 2.5rem;
 	transition: background 500ms;
 }
 .svc:hover {
-	background: var(--paper);
+	background: #17171f;
 }
 
 .svc-top {
@@ -1001,7 +1024,7 @@ a {
    ABOUT
 ══════════════════════════════════════ */
 #about {
-	background: #f5f8ff;
+	background: var(--surface-2);
 }
 
 .about-layout {
@@ -1073,7 +1096,8 @@ a {
 	position: relative;
 	overflow: hidden;
 	border-radius: var(--r3xl);
-	background: var(--ink);
+	background: linear-gradient(135deg, #111428 0%, #0c0d1a 60%, #0f0a1e 100%);
+	border: 1px solid rgba(128, 149, 255, 0.15);
 	padding: 4rem 1.75rem;
 	max-width: var(--max);
 	margin: 0 auto;
@@ -1388,12 +1412,12 @@ a {
 .form-textarea {
 	width: 100%;
 	padding: 0.7rem 0.9rem;
-	border: 1.5px solid rgba(10, 10, 11, 0.12);
+	border: 1.5px solid rgba(10, 10, 11, 0.14);
 	border-radius: 10px;
 	font-family: inherit;
 	font-size: 15px;
-	color: var(--ink);
-	background: var(--paper);
+	color: #0c0c10;
+	background: #f7f7f5;
 	outline: none;
 	transition: border-color 180ms;
 	appearance: none;
@@ -1401,7 +1425,7 @@ a {
 }
 .form-input::placeholder,
 .form-textarea::placeholder {
-	color: var(--haze);
+	color: #9aa0a8;
 }
 .form-input:focus,
 .form-select:focus,
