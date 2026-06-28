@@ -74,8 +74,40 @@
     if (m && e.target === m) window.closeContact();
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') window.closeContact();
+    if (e.key !== 'Escape') return;
+    var menu = document.getElementById('mobileMenu');
+    if (menu && menu.getAttribute('data-open') === '1') { window.toggleMenu(); return; }
+    window.closeContact();
   });
+
+  window.toggleMenu = function () {
+    var m = document.getElementById('mobileMenu');
+    if (!m) return;
+    var open = m.getAttribute('data-open') === '1';
+    if (open) {
+      m.style.opacity = '0';
+      m.style.transform = 'translateY(-8px)';
+      m.setAttribute('data-open', '0');
+      document.body.style.overflow = '';
+      setTimeout(function () { m.style.display = 'none'; }, 280);
+    } else {
+      m.style.display = 'flex';
+      m.setAttribute('data-open', '1');
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          m.style.opacity = '1';
+          m.style.transform = 'none';
+        });
+      });
+    }
+  };
+
+  window.openContactFromMenu = function () {
+    var m = document.getElementById('mobileMenu');
+    if (m) { m.style.display = 'none'; m.setAttribute('data-open', '0'); }
+    openContact();
+  };
 
   document.addEventListener('DOMContentLoaded', function () { initHeader(); initCarousel(); });
 })();
