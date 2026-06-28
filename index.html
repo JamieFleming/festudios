@@ -1,733 +1,372 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap"
-			rel="stylesheet" />
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FE Studios — Website &amp; App Design Studio, UK</title>
+<meta name="description" content="Independent UK web &amp; app design studio. Custom websites, apps and product interfaces for founders and small businesses, by Jamie." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div style="--ac:#1a1814;--ac-d:#000000;--ac-t:#e7e3da;--ink:#1a1814;--mut:#56524a;--fnt:#8a857a;--line:rgba(26,24,20,0.12);background:#f2f0ea;color:#1a1814;font-family:Manrope,ui-sans-serif,system-ui,-apple-system,sans-serif;min-height:100vh;position:relative;overflow-x:hidden;line-height:1.5">
+  <div aria-hidden="true" style="position:fixed;inset:0;z-index:2;pointer-events:none;opacity:0.05;mix-blend-mode:multiply;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');background-size:140px 140px"></div>
 
-		<!-- Primary meta -->
-		<title>FE Studios — Website Design &amp; App Development UK</title>
-		<meta
-			name="description"
-			content="FE Studios is a UK web design and app development studio. We design and build custom websites, apps, and digital products for businesses and founders — strategy, UI/UX, and launch all handled in-house." />
-		<meta name="author" content="FE Studios" />
-		<meta name="robots" content="index, follow" />
-		<link rel="canonical" href="https://festudios.co.uk/" />
+  <!-- HEADER -->
+  <header id="siteHeader" style="position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(242,240,234,0.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:background .4s ease,border-color .4s ease">
+    <div style="max-width:1240px;margin:0 auto;padding:15px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px">
+      <a href="#top" aria-label="FE Studios home" style="display:flex;align-items:center">
+        <img src="assets/lg_logo-light.png" alt="FE Studios" draggable="false" style="height:28px;width:auto;user-select:none" />
+      </a>
+      <nav style="display:flex;align-items:center;gap:30px">
+        <a href="#work" style="font-size:13.5px;font-weight:500;color:var(--ink);opacity:.62;transition:opacity .2s" class="fx0">Work</a>
+        <a href="#services" style="font-size:13.5px;font-weight:500;color:var(--ink);opacity:.62;transition:opacity .2s" class="fx1">Services</a>
+        <a href="#process" style="font-size:13.5px;font-weight:500;color:var(--ink);opacity:.62;transition:opacity .2s" class="fx2">Studio</a>
+        <a href="#about" style="font-size:13.5px;font-weight:500;color:var(--ink);opacity:.62;transition:opacity .2s" class="fx3">About</a>
+      </nav>
+      <button onclick="openContact()" style="display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#f2f0ea;border:none;border-radius:999px;padding:11px 20px;font-family:inherit;font-size:13.5px;font-weight:600;cursor:pointer;transition:transform .2s,background .2s" class="fx4">Start a project <span aria-hidden="true">&rarr;</span></button>
+    </div>
+  </header>
 
-		<!-- Open Graph (Facebook, LinkedIn, WhatsApp previews) -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://festudios.co.uk/" />
-		<meta
-			property="og:title"
-			content="FE Studios — Website Design &amp; App Development UK" />
-		<meta
-			property="og:description"
-			content="Custom websites, apps, and digital products for UK businesses and founders. Strategy, design, build, and launch — all handled with the same eye for detail." />
-		<meta
-			property="og:image"
-			content="https://festudios.co.uk/assets/og-image.png" />
-		<meta property="og:locale" content="en_GB" />
-		<meta property="og:site_name" content="FE Studios" />
+  <!-- HERO -->
+  <section id="top" style="position:relative;overflow:hidden;scroll-margin-top:90px;min-height:94vh;display:flex;align-items:center;padding:clamp(140px,15vw,180px) 16px clamp(44px,6vw,72px)">
+    <img src="assets/logo-light.png" alt="" aria-hidden="true" draggable="false" style="position:absolute;right:-14%;top:50%;transform:translateY(-48%);width:min(92vw,1000px);opacity:0.055;pointer-events:none;user-select:none;filter:grayscale(1) contrast(1.1)" />
+    <div style="position:relative;z-index:1;max-width:1180px;margin:0 auto;width:100%">
+      <div style="opacity:1;transform:none;max-width:60rem">
+        <h1 style="margin:0;font-size:clamp(3rem,8.4vw,6.6rem);font-weight:800;line-height:0.96;letter-spacing:-0.045em;text-wrap:balance">Websites &amp; apps,<br/>made by hand.</h1>
+        <p style="margin:32px 0 0;max-width:35rem;font-size:clamp(16px,1.5vw,19px);line-height:1.6;color:var(--mut)">Hi, I'm Jamie. I help founders and small UK businesses turn a rough idea into a website or app that actually feels like them &mdash; considered, characterful and built properly. No templates, no jargon, no agency price tag.</p>
+        <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:12px">
+          <button onclick="openContact()" style="display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#f2f0ea;border:none;border-radius:999px;padding:15px 28px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:transform .25s,background .25s" class="fx5">Start a project <span aria-hidden="true">&rarr;</span></button>
+          <a href="#work" style="background:transparent;color:var(--ink);border:1px solid rgba(26,24,20,0.2);border-radius:999px;padding:15px 28px;font-size:15px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;transition:border-color .25s,background .25s" class="fx6">See recent work</a>
+        </div>
+        <div style="margin-top:46px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:9px;font-size:14px;color:var(--mut)">
+          <span style="display:inline-flex;align-items:center;gap:9px;font-weight:600;color:var(--ink)"><span style="width:8px;height:8px;border-radius:999px;background:var(--ink)"></span>Independent studio, UK</span>
+          <span style="color:var(--fnt)">&middot;</span>
+          <span>currently taking on a few new projects for 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-		<!-- Twitter / X card -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta
-			name="twitter:title"
-			content="FE Studios — Website Design &amp; App Development UK" />
-		<meta
-			name="twitter:description"
-			content="Custom websites, apps, and digital products for UK businesses and founders. Strategy, design, build, and launch — all in-house." />
-		<meta
-			name="twitter:image"
-			content="https://festudios.co.uk/assets/og-image.png" />
+  <!-- WORK CAROUSEL -->
+  <section id="work" style="scroll-margin-top:90px;padding:clamp(30px,4vw,56px) 0 clamp(60px,8vw,104px);overflow:hidden">
+    <div style="max-width:1180px;margin:0 auto;padding:0 16px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:18px">
+      <div>
+        <span style="display:inline-block;font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ac)">Recent work</span>
+        <h2 style="margin:14px 0 0;font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;max-width:16ch;text-wrap:balance">A few things I've made lately.</h2>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="font-size:13px;font-weight:500;color:var(--fnt)">Drag to explore</span>
+        <div style="display:flex;gap:9px">
+          <button onclick="scrollWork(-1)" aria-label="Previous" style="width:46px;height:46px;border-radius:999px;border:1px solid rgba(20,20,30,0.14);background:#fff;color:var(--ink);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s,transform .2s" class="fx7">←</button>
+          <button onclick="scrollWork(1)" aria-label="Next" style="width:46px;height:46px;border-radius:999px;border:1px solid rgba(20,20,30,0.14);background:#fff;color:var(--ink);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s,transform .2s" class="fx8">→</button>
+        </div>
+      </div>
+    </div>
 
-		<!-- Theme colour (browser chrome on mobile) -->
-		<meta name="theme-color" content="#f7f7f5" />
+    <div id="workTrack" style="margin-top:clamp(28px,3.5vw,44px);display:flex;gap:clamp(16px,2vw,26px);overflow-x:auto;scroll-snap-type:x mandatory;cursor:grab;padding:6px max(16px,calc((100vw - 1180px)/2 + 16px)) 26px">
 
-		<!-- Structured data — Professional Service -->
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "ProfessionalService",
-				"name": "FE Studios",
-				"url": "https://festudios.co.uk",
-				"email": "jamie@festudios.co.uk",
-				"description": "UK web design and app development studio specialising in custom websites, app interfaces, UI/UX design, and brand systems for businesses and founders.",
-				"areaServed": "GB",
-				"serviceType": [
-					"Website Design",
-					"App Development",
-					"UI/UX Design",
-					"Brand Systems"
-				],
-				"priceRange": "££",
-				"sameAs": []
-			}
-		</script>
+      <a href="https://www.munchsprouts.co.uk" target="_blank" rel="noreferrer" data-slide style="flex:0 0 auto;width:clamp(288px,80vw,540px);scroll-snap-align:start;color:inherit">
+        <div style="position:relative;aspect-ratio:5/4;border-radius:18px;overflow:hidden;background:#e6e3da;box-shadow:0 2px 8px rgba(26,24,20,.05),0 28px 54px -30px rgba(26,24,20,.45);transition:transform .4s cubic-bezier(.22,1,.36,1)" class="fx9">
+          <img src="assets/munchsprouts_dash.jpg" alt="MunchSprouts website" loading="lazy" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top" />
+        </div>
+        <div style="padding:20px 4px 0">
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--fnt)">Website · App landing page</span>
+          <div style="margin-top:7px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <h3 style="margin:0;font-size:1.35rem;font-weight:700;letter-spacing:-0.02em">MunchSprouts Website</h3>
+            <span style="flex:0 0 auto;width:36px;height:36px;border-radius:999px;border:1px solid rgba(20,20,30,0.14);display:flex;align-items:center;justify-content:center;color:var(--ac);font-size:15px">→</span>
+          </div>
+          <p style="margin:9px 0 0;font-size:14.5px;line-height:1.6;color:var(--mut);max-width:30rem">A warm, parent-friendly launch site for a baby weaning app — clear downloads and a confident first impression.</p>
+        </div>
+      </a>
 
-		<link rel="stylesheet" href="styles.css" />
-	</head>
-	<body>
-		<!-- HEADER -->
-		<header class="site-header">
-			<div class="shell">
-				<div class="nav-pill" id="navPill">
-					<a href="#top" aria-label="FE Studios home">
-						<img
-							src="assets/lg_logo-light.png"
-							alt="FE Studios"
-							class="logo-img"
-							draggable="false" />
-					</a>
-					<nav>
-						<ul class="nav-links">
-							<li><a href="#work">Work</a></li>
-							<li><a href="#services">Services</a></li>
-							<li><a href="#process">Process</a></li>
-							<li><a href="#contact">Contact</a></li>
-						</ul>
-					</nav>
-					<div class="header-right">
-						<button class="btn btn-primary header-cta js-open-contact">
-							Get a quote
-						</button>
+      <a href="https://apps.apple.com/gb/app/munch-sprouts-baby-tracker/id6763142582" target="_blank" rel="noreferrer" data-slide style="flex:0 0 auto;width:clamp(288px,80vw,540px);scroll-snap-align:start;color:inherit">
+        <div style="position:relative;aspect-ratio:5/4;border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#dcd4f4,#cbbcec);box-shadow:0 2px 8px rgba(26,24,20,.05),0 28px 54px -30px rgba(26,24,20,.4);display:flex;align-items:center;justify-content:center;transition:transform .4s cubic-bezier(.22,1,.36,1)" class="fx10">
+          <img src="assets/munchsprouts_app.jpg" alt="MunchSprouts app" loading="lazy" draggable="false" style="height:100%;width:auto;max-width:none;object-fit:cover" />
+        </div>
+        <div style="padding:20px 4px 0">
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--fnt)">Mobile app · Product design</span>
+          <div style="margin-top:7px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <h3 style="margin:0;font-size:1.35rem;font-weight:700;letter-spacing:-0.02em">MunchSprouts App</h3>
+            <span style="flex:0 0 auto;width:36px;height:36px;border-radius:999px;border:1px solid rgba(20,20,30,0.14);display:flex;align-items:center;justify-content:center;color:var(--ac);font-size:15px">→</span>
+          </div>
+          <p style="margin:9px 0 0;font-size:14.5px;line-height:1.6;color:var(--mut);max-width:30rem">A gentle app for tracking foods, feeds and growth in one simple dashboard. Live on the App Store and Google Play.</p>
+        </div>
+      </a>
 
-						<button
-							class="burger"
-							id="burger"
-							aria-label="Toggle menu"
-							aria-expanded="false">
-							<span></span><span></span>
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="shell mobile-nav" id="mobileNav">
-				<div class="mobile-nav-inner">
-					<a href="#work">Work</a>
-					<a href="#services">Services</a>
-					<a href="#process">Process</a>
-					<a href="#contact">Contact</a>
-					<button class="btn btn-primary js-open-contact">Get a quote</button>
-				</div>
-			</div>
-		</header>
+      <a href="https://jamiefleming.github.io/ePCR-App/" target="_blank" rel="noreferrer" data-slide style="flex:0 0 auto;width:clamp(288px,80vw,540px);scroll-snap-align:start;color:inherit">
+        <div style="position:relative;aspect-ratio:5/4;border-radius:18px;overflow:hidden;background:linear-gradient(155deg,#eceae3,#e0dcd2);box-shadow:0 2px 8px rgba(26,24,20,.05),0 28px 54px -30px rgba(26,24,20,.4);display:flex;align-items:center;justify-content:center;transition:transform .4s cubic-bezier(.22,1,.36,1)" class="fx11">
+          <div style="position:relative;height:88%;aspect-ratio:10/20;border-radius:30px;background:#15151c;padding:7px;box-shadow:0 26px 50px -20px rgba(26,24,20,.55)">
+            <div style="position:absolute;left:50%;top:9px;transform:translateX(-50%);width:46px;height:4px;border-radius:999px;background:rgba(255,255,255,0.2);z-index:2"></div>
+            <div style="position:relative;height:100%;border-radius:24px;overflow:hidden;background:#fff">
+              <img src="assets/crewmate_dash.jpg" alt="CrewMate clinical app" loading="lazy" draggable="false" style="width:100%;height:100%;object-fit:cover;object-position:top" />
+              <div style="position:absolute;bottom:0;left:0;right:0;height:64px;background:linear-gradient(to top,#fff,transparent);pointer-events:none"></div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:20px 4px 0">
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--fnt)">Healthcare · Workflow UI</span>
+          <div style="margin-top:7px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <h3 style="margin:0;font-size:1.35rem;font-weight:700;letter-spacing:-0.02em">CrewMate</h3>
+            <span style="flex:0 0 auto;width:36px;height:36px;border-radius:999px;border:1px solid rgba(20,20,30,0.14);display:flex;align-items:center;justify-content:center;color:var(--ac);font-size:15px">→</span>
+          </div>
+          <p style="margin:9px 0 0;font-size:14.5px;line-height:1.6;color:var(--mut);max-width:30rem">A calm, fast assistant for ambulance crews — quick access to patient forms, scoring tools and clinical reference.</p>
+        </div>
+      </a>
 
-		<main>
-			<!-- HERO -->
-			<section class="hero" id="top">
-				<div class="hero-bg">
-					<div class="hero-bg-topline"></div>
-					<div class="hero-bg-gradient"></div>
-					<div class="hero-bg-grid"></div>
-					<img
-						src="assets/logo-light.png"
-						alt=""
-						aria-hidden="true"
-						class="hero-mono"
-						draggable="false" />
-				</div>
-				<div class="shell">
-					<img
-						src="assets/logo-light.png"
-						alt="FE Studios"
-						class="hero-logo"
-						draggable="false" />
-					<h1 class="hero-h1">
-						From a rough idea.<br />
-						To something worth <span class="accent">showing off.</span>
-					</h1>
-					<p class="hero-eyebrow">Web &amp; App Design Studio &middot; UK</p>
-					<p class="hero-p">
-						FE Studios helps UK businesses and founders turn rough ideas into
-						clear, polished websites, apps, and digital products. Strategy,
-						UI/UX design, build, and launch handled with the same eye for
-						detail.
-					</p>
-					<div class="hero-btns">
-						<button class="btn btn-primary btn-md js-open-contact">
-							Get a project quote
-						</button>
-						<a href="#work" class="btn btn-ghost btn-md">See recent work</a>
-					</div>
-					<div class="hero-rule"><span class="hero-rule-dot"></span></div>
-					<div class="hero-props">
-						<div>
-							<p class="prop-title">Live Launch</p>
-							<p class="prop-sub">
-								Apps live on the App Store and Google Play.
-							</p>
-						</div>
-						<div>
-							<p class="prop-title">Built to stand out</p>
-							<p class="prop-sub">No templates, no shortcuts</p>
-						</div>
-						<div>
-							<p class="prop-title">Solid under the hood</p>
-							<p class="prop-sub">Fast, accessible, responsive</p>
-						</div>
-						<div>
-							<p class="prop-title">Full handover</p>
-							<p class="prop-sub">Yours to own, no lock-in</p>
-						</div>
-					</div>
-				</div>
-			</section>
+      <a href="https://apps.apple.com/gb/app/sussd/id6774063502" target="_blank" rel="noreferrer" data-slide style="flex:0 0 auto;width:clamp(288px,80vw,540px);scroll-snap-align:start;color:inherit">
+        <div style="position:relative;aspect-ratio:5/4;border-radius:18px;overflow:hidden;background:linear-gradient(155deg,#211a2b,#2a1024);box-shadow:0 2px 8px rgba(26,24,20,.08),0 28px 54px -30px rgba(26,24,20,.6);display:flex;align-items:center;justify-content:center;transition:transform .4s cubic-bezier(.22,1,.36,1)" class="fx12">
+          <img src="assets/sussd_image.jpg" alt="Suss'd game" loading="lazy" draggable="false" style="height:100%;width:auto;max-width:none;object-fit:cover" />
+        </div>
+        <div style="padding:20px 4px 0">
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--fnt)">Game UI · Mobile</span>
+          <div style="margin-top:7px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <h3 style="margin:0;font-size:1.35rem;font-weight:700;letter-spacing:-0.02em">Suss'd</h3>
+            <span style="flex:0 0 auto;width:36px;height:36px;border-radius:999px;border:1px solid rgba(20,20,30,0.14);display:flex;align-items:center;justify-content:center;color:var(--ac);font-size:15px">→</span>
+          </div>
+          <p style="margin:9px 0 0;font-size:14.5px;line-height:1.6;color:var(--mut);max-width:30rem">A social deception party game with a bold, moody identity — and in-app purchases built in from day one.</p>
+        </div>
+      </a>
 
-			<!-- WORK -->
-			<section class="section" id="work">
-				<div class="shell">
-					<div class="reveal">
-						<div class="work-header">
-							<div>
-								<span class="label" data-n="01">Portfolio</span>
-								<h2 class="h2">
-									Recent work across websites, apps, and product interfaces.
-								</h2>
-							</div>
-							<p class="work-sub">
-								Each project is shaped around a real use case, from first
-								impression to the details people tap, read, and rely on.
-							</p>
-						</div>
-					</div>
+    </div>
+  </section>
 
-					<div class="project-grid">
-						<!-- MunchSprouts Website -->
-						<a
-							href="https://www.munchsprouts.co.uk"
-							target="_blank"
-							rel="noreferrer"
-							class="card reveal">
-							<div class="card-media tint-green">
-								<div class="card-media-center">
-									<div class="browser">
-										<div class="browser-bar">
-											<div class="dots">
-												<span class="dot dot-r"></span>
-												<span class="dot dot-y"></span>
-												<span class="dot dot-g"></span>
-											</div>
-											<span class="url-bar"></span>
-										</div>
-										<img
-											src="assets/munchsprouts_dash.jpg"
-											alt="MunchSprouts website"
-											loading="lazy" />
-									</div>
-								</div>
-								<span class="card-badge badge-green">Web Design</span>
-							</div>
-							<div class="card-body">
-								<span class="card-cat">App Landing Page · Website Design</span>
-								<h3 class="card-name">MunchSprouts Website</h3>
-								<p class="card-desc">
-									A polished launch site for a baby-led weaning product, built
-									around clear app downloads, parent-friendly messaging, and a
-									confident first impression.
-								</p>
-								<div class="card-cta">
-									<span class="card-cta-text">Visit site</span>
-									<span class="arrow">&rarr;</span>
-								</div>
-							</div>
-						</a>
+  <!-- SERVICES -->
+  <section id="services" style="scroll-margin-top:90px;padding:clamp(70px,9vw,120px) 16px">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="opacity:1;transform:none;transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)">
+        <span style="display:inline-block;font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ac)">What I do</span>
+        <h2 style="margin:14px 0 0;font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;max-width:20ch;text-wrap:balance">Everything you need to get online and look the part.</h2>
+      </div>
+      <div style="opacity:1;transform:none;transition:opacity .7s cubic-bezier(.22,1,.36,1) .1s,transform .7s cubic-bezier(.22,1,.36,1) .1s;margin-top:clamp(34px,4vw,52px);display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 30px 32px;transition:transform .3s,box-shadow .3s" class="fx13">
+          <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px;font-weight:700;color:var(--ac)">01</span></div>
+          <h3 style="margin:22px 0 0;font-size:1.35rem;font-weight:700;letter-spacing:-0.02em">Website design</h3>
+          <p style="margin:11px 0 0;font-size:15px;line-height:1.65;color:var(--mut)">Your website is usually the first thing people see. I design custom sites that feel welcoming, read clearly and quietly turn visitors into enquiries.</p>
+          <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:8px">
+            <span style="border:1px solid var(--line);background:#faf9f7;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#52525a">Landing pages</span>
+            <span style="border:1px solid var(--line);background:#faf9f7;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#52525a">Business sites</span>
+            <span style="border:1px solid var(--line);background:#faf9f7;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#52525a">Responsive</span>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 30px 32px;transition:transform .3s,box-shadow .3s" class="fx14">
+          <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px;font-weight:700;color:var(--ac)">02</span></div>
+          <h3 style="margin:22px 0 0;font-size:1.35rem;font-weight:700;letter-spacing:-0.02em">App development</h3>
+          <p style="margin:11px 0 0;font-size:15px;line-height:1.65;color:var(--mut)">Got an idea for a product? I'll take it from rough concept to a real, usable app — with thoughtful flows and an interface that feels natural from the first tap.</p>
+          <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:8px">
+            <span style="border:1px solid var(--line);background:#faf9f7;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#52525a">MVP interfaces</span>
+            <span style="border:1px solid var(--line);background:#faf9f7;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#52525a">Mobile-first</span>
+            <span style="border:1px solid var(--line);background:#faf9f7;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#52525a">iOS &amp; Android</span>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 30px 32px;transition:transform .3s,box-shadow .3s" class="fx15">
+          <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px;font-weight:700;color:var(--ac)">03</span></div>
+          <h3 style="margin:22px 0 0;font-size:1.35rem;font-weight:700;letter-spacing:-0.02em">UI / UX design</h3>
+          <p style="margin:11px 0 0;font-size:15px;line-height:1.65;color:var(--mut)">The best design is the kind you don't notice — people just know where to go. I create interfaces and simple design systems that make your product easy and enjoyable to use.</p>
+          <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:8px">
+            <span style="border:1px solid var(--line);background:#faf9f7;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#52525a">User journeys</span>
+            <span style="border:1px solid var(--line);background:#faf9f7;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#52525a">Wireframes</span>
+            <span style="border:1px solid var(--line);background:#faf9f7;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#52525a">UX audits</span>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 30px 32px;transition:transform .3s,box-shadow .3s" class="fx16">
+          <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px;font-weight:700;color:var(--ac)">04</span></div>
+          <h3 style="margin:22px 0 0;font-size:1.35rem;font-weight:700;letter-spacing:-0.02em">Brand systems</h3>
+          <p style="margin:11px 0 0;font-size:15px;line-height:1.65;color:var(--mut)">A clear visual identity does a lot of the heavy lifting. I'll build a digital-first brand — type, colour, logo and a few simple rules — so everything looks intentional and consistent.</p>
+          <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:8px">
+            <span style="border:1px solid var(--line);background:#faf9f7;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#52525a">Visual direction</span>
+            <span style="border:1px solid var(--line);background:#faf9f7;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#52525a">Typography</span>
+            <span style="border:1px solid var(--line);background:#faf9f7;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#52525a">Colour</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-						<!-- MunchSprouts App -->
-						<a
-							href="https://apps.apple.com/gb/app/munch-sprouts-baby-tracker/id6763142582"
-							target="_blank"
-							rel="noreferrer"
-							class="card reveal">
-							<div class="card reveal">
-								<div class="card-media tint-purple">
-									<div class="media-fill app-pos">
-										<img
-											src="assets/munchsprouts_app.jpg"
-											alt="MunchSprouts app"
-											loading="lazy" />
-										<div class="media-fill-overlay-purple"></div>
-									</div>
-									<span class="card-badge badge-purple">App UI</span>
-								</div>
-								<div class="card-body">
-									<span class="card-cat">Mobile App UI · Product Design</span>
-									<h3 class="card-name">MunchSprouts App</h3>
-									<p class="card-desc">
-										A mobile app interface for tracking foods, feeds, allergens,
-										routines, and growth in one simple parent-friendly
-										dashboard. Live on the App Store and Google Play.
-									</p>
-									<div class="card-cta">
-										<span class="card-cta-text">View case</span>
-										<span class="arrow">&rarr;</span>
-									</div>
-								</div>
-							</div>
-						</a>
+  <!-- PROCESS — DARK FEATURE BAND -->
+  <section id="process" style="scroll-margin-top:90px;padding:0 16px">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="opacity:1;transform:none;transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;border-radius:16px;background:#19191e;color:#f3f2ef;padding:clamp(44px,6vw,80px) clamp(26px,5vw,68px)">
+        <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(50% 60% at 85% 0%,rgba(26,24,20,0.28) 0%,transparent 60%),radial-gradient(40% 50% at 0% 100%,rgba(26,24,20,0.18) 0%,transparent 60%)"></div>
+        <div style="position:relative;display:grid;gap:clamp(40px,5vw,72px);grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+          <div style="align-self:start">
+            <span style="display:inline-block;font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#c9c4b8">How I work</span>
+            <h2 style="margin:16px 0 0;font-size:clamp(1.8rem,3.6vw,2.7rem);font-weight:800;letter-spacing:-0.03em;line-height:1.08;text-wrap:balance">A simple path from rough idea to finished thing.</h2>
+            <p style="margin:18px 0 0;max-width:26rem;font-size:15px;line-height:1.7;color:#a4a4ae">No mystery, no jargon. You'll always know what's happening, why, and what's next — and you'll see it taking shape before anything gets built.</p>
+            <button onclick="openContact()" style="margin-top:28px;background:#fff;color:#19191e;border:none;border-radius:999px;padding:13px 24px;font-family:inherit;font-size:14.5px;font-weight:600;cursor:pointer;transition:transform .25s,box-shadow .25s" class="fx17">Let's talk it through</button>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:24px 0;border-top:1px solid rgba(255,255,255,0.1)">
+              <span style="font-size:13px;font-weight:700;color:#c9c4b8;padding-top:3px">01</span>
+              <div><h3 style="margin:0;font-size:1.3rem;font-weight:700;letter-spacing:-0.02em">Discover</h3><p style="margin:8px 0 0;font-size:14.5px;line-height:1.65;color:#a4a4ae;max-width:30rem">We start with a proper chat. What are you building, who's it for, and what does success actually look like? We pin down the goals before a single pixel goes down.</p></div>
+            </div>
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:24px 0;border-top:1px solid rgba(255,255,255,0.1)">
+              <span style="font-size:13px;font-weight:700;color:#c9c4b8;padding-top:3px">02</span>
+              <div><h3 style="margin:0;font-size:1.3rem;font-weight:700;letter-spacing:-0.02em">Design</h3><p style="margin:8px 0 0;font-size:14.5px;line-height:1.65;color:#a4a4ae;max-width:30rem">With a clear direction, I map out the core screens and shape the look and feel. You'll see exactly how it comes together before anything gets built — no surprises.</p></div>
+            </div>
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:24px 0;border-top:1px solid rgba(255,255,255,0.1)">
+              <span style="font-size:13px;font-weight:700;color:#c9c4b8;padding-top:3px">03</span>
+              <div><h3 style="margin:0;font-size:1.3rem;font-weight:700;letter-spacing:-0.02em">Build</h3><p style="margin:8px 0 0;font-size:14.5px;line-height:1.65;color:#a4a4ae;max-width:30rem">The designs come to life as a fast, responsive product. Every detail gets attention — spacing, motion, accessibility, and how it behaves on every device.</p></div>
+            </div>
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:24px 0;border-top:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.1)">
+              <span style="font-size:13px;font-weight:700;color:#c9c4b8;padding-top:3px">04</span>
+              <div><h3 style="margin:0;font-size:1.3rem;font-weight:700;letter-spacing:-0.02em">Refine &amp; launch</h3><p style="margin:8px 0 0;font-size:14.5px;line-height:1.65;color:#a4a4ae;max-width:30rem">We test, tighten and polish until it feels right. Then it ships — and you get the keys. Full handover, nothing locked away.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-						<!-- CrewMate -->
-						<a
-							href="https://jamiefleming.github.io/ePCR-App/"
-							target="_blank"
-							rel="noreferrer"
-							class="card reveal">
-							<div class="card-media tint-blue">
-								<div class="card-media-center">
-									<div class="phone">
-										<div class="phone-notch"></div>
-										<div class="phone-screen">
-											<img
-												src="assets/crewmate_dash.jpg"
-												alt="CrewMate dashboard"
-												loading="lazy" />
-											<div class="phone-fade"></div>
-										</div>
-									</div>
-								</div>
-								<span class="card-badge badge-blue">Web App</span>
-							</div>
-							<div class="card-body">
-								<span class="card-cat">Healthcare App · Workflow UI</span>
-								<h3 class="card-name">CrewMate</h3>
-								<p class="card-desc">
-									A practical assistance tool for ambulance workers designed
-									around fast access to patient forms, scoring tools,
-									observations, and clinical reference tasks.
-								</p>
-								<div class="card-cta">
-									<span class="card-cta-text">Visit site</span>
-									<span class="arrow">&rarr;</span>
-								</div>
-							</div>
-						</a>
+  <!-- ABOUT -->
+  <section id="about" style="scroll-margin-top:90px;padding:clamp(70px,9vw,120px) 16px">
+    <div style="max-width:1180px;margin:0 auto;display:grid;gap:clamp(36px,5vw,72px);grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:center">
+      <div style="opacity:1;transform:none;transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)">
+        <span style="display:inline-block;font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ac)">About</span>
+        <h2 style="margin:14px 0 0;font-size:clamp(1.8rem,3.6vw,2.7rem);font-weight:800;letter-spacing:-0.03em;line-height:1.08;text-wrap:balance">Good work, done properly.</h2>
+        <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:26px 36px">
+          <div><p style="margin:0;font-size:1.7rem;font-weight:800;letter-spacing:-0.02em">UK</p><p style="margin:3px 0 0;font-size:13px;color:var(--fnt)">Based &amp; working</p></div>
+          <div><p style="margin:0;font-size:1.7rem;font-weight:800;letter-spacing:-0.02em">1:1</p><p style="margin:3px 0 0;font-size:13px;color:var(--fnt)">You work with me, directly</p></div>
+          <div><p style="margin:0;font-size:1.7rem;font-weight:800;letter-spacing:-0.02em">End&#8209;to&#8209;end</p><p style="margin:3px 0 0;font-size:13px;color:var(--fnt)">Design through to launch</p></div>
+        </div>
+      </div>
+      <div style="opacity:1;transform:none;transition:opacity .7s cubic-bezier(.22,1,.36,1) .1s,transform .7s cubic-bezier(.22,1,.36,1) .1s">
+        <p style="margin:0 0 18px;font-size:15.5px;line-height:1.8;color:var(--mut)">I started FE Studios because I think small teams and independent businesses deserve the same care and quality that bigger companies take for granted.</p>
+        <p style="margin:0 0 18px;font-size:15.5px;line-height:1.8;color:var(--mut)">I work with UK founders and businesses who want something that actually reflects how good they are — not a template that gets forgotten about. Strong visual direction, an experience that makes sense, and clean, solid code underneath. I care about the small stuff, because the small stuff is what people notice.</p>
+        <p style="margin:0;font-size:15.5px;line-height:1.8;color:var(--mut)">If you want someone who's genuinely invested — from the first conversation to launch day — let's talk.</p>
+      </div>
+    </div>
+  </section>
 
-						<!-- Suss'd -->
-						<a
-							href="https://apps.apple.com/gb/app/sussd/id6774063502"
-							target="_blank"
-							rel="noreferrer"
-							class="card reveal">
-							<div class="card reveal">
-								<div class="card-media tint-dark">
-									<div class="media-fill dark-pos">
-										<img
-											src="assets/sussd_image.jpg"
-											alt="Suss'd game"
-											loading="lazy" />
-										<div class="media-fill-overlay-dark"></div>
-									</div>
-									<span class="card-badge badge-dark">Game UI</span>
-								</div>
-								<div class="card-body">
-									<span class="card-cat">Game UI · Mobile Experience</span>
-									<h3 class="card-name">Suss'd</h3>
-									<p class="card-desc">
-										A social deception game with a bold visual identity, moody
-										interface direction, with the ability to add paid features.
-									</p>
-									<div class="card-cta">
-										<span class="card-cta-text">View case</span>
-										<span class="arrow">&rarr;</span>
-									</div>
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-			</section>
+  <!-- FAQ -->
+  <section id="faq" style="scroll-margin-top:90px;padding:0 16px clamp(70px,9vw,110px)">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="opacity:1;transform:none;transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)">
+        <span style="display:inline-block;font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ac)">Good to know</span>
+        <h2 style="margin:14px 0 0;font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1">A few common questions.</h2>
+      </div>
+      <div style="opacity:1;transform:none;transition:opacity .7s cubic-bezier(.22,1,.36,1) .08s,transform .7s cubic-bezier(.22,1,.36,1) .08s;margin-top:34px;border-top:1px solid var(--line)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 48px;padding:26px 0;border-bottom:1px solid var(--line)">
+          <h3 style="margin:0;font-size:1.05rem;font-weight:700;letter-spacing:-0.01em">What do you design and build?</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.7;color:var(--mut)">Custom websites, landing pages, app interfaces and the UX behind them — for businesses and founders.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 48px;padding:26px 0;border-bottom:1px solid var(--line)">
+          <h3 style="margin:0;font-size:1.05rem;font-weight:700;letter-spacing:-0.01em">Can you do both design and the build?</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.7;color:var(--mut)">Yes — strategy, UX, visual design, the responsive build, launch and a careful handover, so the whole thing feels coherent from the first click.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 48px;padding:26px 0;border-bottom:1px solid var(--line)">
+          <h3 style="margin:0;font-size:1.05rem;font-weight:700;letter-spacing:-0.01em">Who's a good fit?</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.7;color:var(--mut)">Founders, small teams and growing businesses who want a clearer presence, a polished product, or a site that looks credible and brings in enquiries.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 48px;padding:26px 0;border-bottom:1px solid var(--line)">
+          <h3 style="margin:0;font-size:1.05rem;font-weight:700;letter-spacing:-0.01em">How do I get started?</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.7;color:var(--mut)">Send me the idea, your current site, or a rough brief at jamie@festudios.co.uk — or use the button. I'll come back with a practical next step.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-			<!-- SERVICES -->
-			<section class="section" id="services">
-				<div class="shell">
-					<div class="reveal">
-						<span class="label" data-n="02">Services</span>
-						<h2 class="h2">
-							What you can hire FE Studios to design and build.
-						</h2>
-					</div>
-					<div class="services-grid reveal">
-						<div class="svc">
-							<div class="svc-top">
-								<span class="svc-num">01</span
-								><span class="svc-arrow">&rarr;</span>
-							</div>
-							<h3 class="svc-title">Website Design</h3>
-							<p class="svc-copy">
-								Your website is often the first impression — it should make
-								people feel like they're in good hands immediately. I design
-								custom sites that look sharp, communicate clearly, and turn
-								visitors into enquiries.
-							</p>
-							<div class="svc-tags">
-								<span class="svc-tag">Landing pages</span>
-								<span class="svc-tag">Business websites</span>
-								<span class="svc-tag">Responsive web design</span>
-							</div>
-						</div>
-						<div class="svc">
-							<div class="svc-top">
-								<span class="svc-num">02</span
-								><span class="svc-arrow">&rarr;</span>
-							</div>
-							<h3 class="svc-title">App Development</h3>
-							<p class="svc-copy">
-								Got an idea for a product? I'll take it from rough concept to a
-								real, usable app with thoughtful user flows and an interface
-								that feels natural from the first tap.
-							</p>
-							<div class="svc-tags">
-								<span class="svc-tag">MVP interfaces</span>
-								<span class="svc-tag">Mobile-first apps</span>
-								<span class="svc-tag">iOS and Android</span>
-							</div>
-						</div>
-						<div class="svc">
-							<div class="svc-top">
-								<span class="svc-num">03</span
-								><span class="svc-arrow">&rarr;</span>
-							</div>
-							<h3 class="svc-title">UI/UX Design</h3>
-							<p class="svc-copy">
-								Good design is invisible, people just know where to go and what
-								to do. I create interfaces, wireframes, and design systems that
-								make your product easy to understand and enjoyable to use.
-							</p>
-							<div class="svc-tags">
-								<span class="svc-tag">User journeys</span>
-								<span class="svc-tag">Wireframes</span>
-								<span class="svc-tag">UX audits</span>
-							</div>
-						</div>
-						<div class="svc">
-							<div class="svc-top">
-								<span class="svc-num">04</span
-								><span class="svc-arrow">&rarr;</span>
-							</div>
-							<h3 class="svc-title">Brand Systems</h3>
-							<p class="svc-copy">
-								A strong visual identity does a lot of the heavy lifting for
-								you. I'll build a digital-first brand system — typography,
-								colour, logo, and visual rules — that keeps everything
-								consistent and looking intentional.
-							</p>
-							<div class="svc-tags">
-								<span class="svc-tag">Visual direction</span>
-								<span class="svc-tag">Typography</span>
-								<span class="svc-tag">Colour systems</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+  <!-- CTA -->
+  <section id="contact" style="scroll-margin-top:90px;padding:0 16px clamp(40px,5vw,64px)">
+    <div style="opacity:1;transform:none;transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;max-width:1180px;margin:0 auto;border-radius:20px;background:linear-gradient(150deg,#eceae3,#e4e1d8);border:1px solid rgba(255,255,255,0.7);box-shadow:0 2px 8px rgba(26,24,20,.04),0 36px 70px -40px rgba(26,24,20,.3);padding:clamp(44px,6vw,76px) clamp(26px,5vw,64px)">
+      <img src="assets/logo-light.png" alt="" aria-hidden="true" draggable="false" style="position:absolute;right:-6%;bottom:-22%;width:min(58vw,540px);opacity:0.1;pointer-events:none;user-select:none;filter:grayscale(1) contrast(1.05)" />
+      <div style="position:relative;z-index:1;display:grid;gap:clamp(28px,4vw,52px);grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:end">
+        <div>
+          <span style="display:inline-block;font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ac)">Start a project</span>
+          <h2 style="margin:16px 0 0;font-size:clamp(2rem,4.4vw,3.2rem);font-weight:800;letter-spacing:-0.035em;line-height:1.05;text-wrap:balance;max-width:16ch">Ready for something you're proud to show off?</h2>
+          <p style="margin:18px 0 0;max-width:32rem;font-size:16px;line-height:1.65;color:var(--mut)">Send over the idea, your current site, or just a rough brief. I'll get back to you within one working day with a practical next step.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+          <div style="display:grid;gap:8px;font-size:14px;color:var(--mut)">
+            <span style="display:flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:999px;background:var(--ac)"></span>Website design</span>
+            <span style="display:flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:999px;background:var(--ac)"></span>App &amp; product builds</span>
+          </div>
+          <button onclick="openContact()" style="background:var(--ac);color:#fff;border:none;border-radius:999px;padding:15px 28px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.06),0 14px 30px -14px rgba(26,24,20,.6);transition:background .25s,transform .25s" class="fx18">Get a project quote</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-			<!-- PROCESS -->
-			<section class="section" id="process">
-				<div class="shell">
-					<div class="process-layout">
-						<div class="process-sticky reveal">
-							<span class="label" data-n="03">Process</span>
-							<h2 class="h2">
-								A straightforward path from rough idea to finished product.
-							</h2>
-							<p class="muted-text">
-								The process is built to keep decisions moving. You get
-								structure, honest design thinking, and a finished site or app
-								that feels considered instead of assembled in a rush.
-							</p>
-						</div>
-						<div>
-							<div class="step reveal">
-								<span class="step-n">01</span>
-								<div>
-									<h3 class="step-title">Discover</h3>
-									<p class="step-copy">
-										I start with a conversation. What are you building, who's it
-										for, and what does success actually look like? We will pin
-										down the goals, audience, and must-haves before a single
-										pixel gets placed.
-									</p>
-								</div>
-							</div>
-							<div class="step reveal">
-								<span class="step-n">02</span>
-								<div>
-									<h3 class="step-title">Design</h3>
-									<p class="step-copy">
-										With a clear direction, I will map out the core screens and
-										shape the visual identity. You'll see exactly how it looks
-										and feels before anything gets built — no surprises.
-									</p>
-								</div>
-							</div>
-							<div class="step reveal">
-								<span class="step-n">03</span>
-								<div>
-									<h3 class="step-title">Build</h3>
-									<p class="step-copy">
-										The designs come to life as a fast, responsive product.
-										Every detail is considered — spacing, motion, accessibility,
-										and how it behaves on every device.
-									</p>
-								</div>
-							</div>
-							<div class="step reveal">
-								<span class="step-n">04</span>
-								<div>
-									<h3 class="step-title">Refine</h3>
-									<p class="step-copy">
-										I test, we tighten, and I polish until everything feels
-										right. Copy, interactions, performance — nothing ships until
-										it's something we're both proud of.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+  <!-- FOOTER -->
+  <footer style="padding:clamp(48px,6vw,72px) 16px clamp(32px,4vw,48px)">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="height:1px;background:var(--line)"></div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:36px;padding-top:40px">
+        <div style="max-width:22rem">
+          <img src="assets/lg_logo-light.png" alt="FE Studios" loading="lazy" draggable="false" style="height:30px;width:auto" />
+          <p style="margin:16px 0 0;font-size:14.5px;line-height:1.7;color:var(--mut)">Friendly, considered websites and apps for UK businesses that want to look as good as they are.</p>
+        </div>
+        <div style="display:flex;gap:56px;flex-wrap:wrap">
+          <div>
+            <span style="display:block;margin-bottom:14px;font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--fnt)">Navigate</span>
+            <div style="display:flex;flex-direction:column;gap:11px;font-size:14.5px;color:var(--mut)">
+              <a href="#work" style="transition:color .2s" class="fx19">Work</a>
+              <a href="#services" style="transition:color .2s" class="fx20">Services</a>
+              <a href="#process" style="transition:color .2s" class="fx21">How I work</a>
+              <a href="#about" style="transition:color .2s" class="fx22">About</a>
+            </div>
+          </div>
+          <div>
+            <span style="display:block;margin-bottom:14px;font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--fnt)">Get in touch</span>
+            <div style="display:flex;flex-direction:column;gap:11px;font-size:14.5px;color:var(--mut)">
+              <a href="mailto:jamie@festudios.co.uk" style="transition:color .2s" class="fx23">jamie@festudios.co.uk</a>
+              <button onclick="openContact()" style="text-align:left;background:none;border:none;padding:0;font-family:inherit;font-size:14.5px;color:var(--ac);font-weight:600;cursor:pointer">Start a project →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:40px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:var(--fnt)">
+        <span>© 2026 FE Studios. All rights reserved.</span>
+        <span style="letter-spacing:0.14em;text-transform:uppercase;font-size:12px">Designed &amp; built in-house</span>
+      </div>
+    </div>
+  </footer>
 
-			<!-- ABOUT -->
-			<section class="section" id="about">
-				<div class="shell">
-					<div class="about-layout">
-						<div class="reveal">
-							<span class="label" data-n="04">About</span>
-							<h2 class="h2">Good work, done properly.</h2>
-						</div>
-						<div class="about-body reveal">
-							<p>
-								I started FE Studios because I believe small teams and
-								independent businesses deserve the same quality of design and
-								build that bigger companies take for granted.
-							</p>
-							<p>
-								I work with UK founders and businesses who want a website or
-								digital product that actually reflects how good they are — not
-								something cobbled together from a template and forgotten about.
-								My focus is straightforward: strong visual direction, user
-								experience that makes sense, and clean, solid code. I care about
-								the details because the details are what people notice.
-							</p>
-							<p>
-								If you want someone who's invested from the first conversation
-								to the final launch, let's talk.
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
+  <!-- CONTACT MODAL -->
+  <div id="contactModal" style="display:none;position:fixed;inset:0;z-index:900;background:rgba(20,20,26,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .3s ease">
+    <div data-modal-card style="position:relative;width:100%;max-width:540px;background:#fff;border-radius:18px;padding:clamp(26px,4vw,40px);box-shadow:0 40px 90px -30px rgba(26,24,20,.5);max-height:90dvh;overflow-y:auto;transform:translateY(18px) scale(0.98);transition:transform .35s cubic-bezier(.22,1,.36,1)">
+      <button onclick="closeContact()" aria-label="Close" style="position:absolute;top:18px;right:18px;width:32px;height:32px;border-radius:999px;border:1px solid var(--line);background:#faf9f7;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:18px;line-height:1;transition:background .2s,color .2s" class="fx24">×</button>
+      <div id="contactFormWrap">
+        <span style="display:block;font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ac);margin-bottom:10px">Start a project</span>
+        <h2 style="margin:0;font-size:clamp(1.4rem,3vw,1.8rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15">Tell me what you're building.</h2>
+        <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:var(--mut)">Fill in a few details and I'll get back to you within one working day.</p>
+        <form onsubmit="submitContact(event)" style="margin-top:24px;display:grid;gap:14px">
+          <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+            <label style="display:grid;gap:6px;font-size:13px;font-weight:600;color:var(--ink)">Your name
+              <input type="text" name="name" required placeholder="Jane Smith" style="width:100%;padding:11px 13px;border:1.5px solid rgba(20,20,30,0.13);border-radius:11px;font-family:inherit;font-size:15px;color:var(--ink);background:#faf9f7;outline:none;transition:border-color .18s,background .18s" class="fx25" />
+            </label>
+            <label style="display:grid;gap:6px;font-size:13px;font-weight:600;color:var(--ink)">Email
+              <input type="email" name="email" required placeholder="jane@company.co.uk" style="width:100%;padding:11px 13px;border:1.5px solid rgba(20,20,30,0.13);border-radius:11px;font-family:inherit;font-size:15px;color:var(--ink);background:#faf9f7;outline:none;transition:border-color .18s,background .18s" class="fx26" />
+            </label>
+          </div>
+          <label style="display:grid;gap:6px;font-size:13px;font-weight:600;color:var(--ink)">Project type
+            <select name="project_type" style="width:100%;padding:11px 13px;border:1.5px solid rgba(20,20,30,0.13);border-radius:11px;font-family:inherit;font-size:15px;color:var(--ink);background:#faf9f7;outline:none;cursor:pointer;appearance:none;-webkit-appearance:none" class="fx27">
+              <option value="">Select a service…</option>
+              <option>Website design</option>
+              <option>App development</option>
+              <option>UI / UX design</option>
+              <option>Brand system</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+          <label style="display:grid;gap:6px;font-size:13px;font-weight:600;color:var(--ink)">Your idea or brief
+            <textarea name="message" required placeholder="Tell me about the project, where you're at, and what you need…" style="width:100%;padding:11px 13px;border:1.5px solid rgba(20,20,30,0.13);border-radius:11px;font-family:inherit;font-size:15px;color:var(--ink);background:#faf9f7;outline:none;resize:vertical;min-height:110px;line-height:1.6;transition:border-color .18s,background .18s" class="fx28"></textarea>
+          </label>
+          <button type="submit" style="width:100%;justify-content:center;background:var(--ac);color:#fff;border:none;border-radius:999px;padding:14px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;margin-top:4px;transition:background .25s" class="fx29">Send enquiry</button>
+        </form>
+      </div>
+      <div id="contactSuccess" style="display:none;place-items:center;text-align:center;gap:10px;padding:24px 0 8px">
+        <div style="width:54px;height:54px;border-radius:999px;background:var(--ac-t);color:var(--ac);font-size:24px;display:flex;align-items:center;justify-content:center;margin-bottom:6px">✓</div>
+        <h3 style="margin:0;font-size:1.4rem;font-weight:800;letter-spacing:-0.02em">Enquiry sent.</h3>
+        <p style="margin:0;font-size:15px;color:var(--mut);line-height:1.6;max-width:26rem">Thanks — I'll be in touch within one working day.</p>
+        <button onclick="closeContact()" style="margin-top:8px;background:#fff;color:var(--ink);border:1px solid rgba(20,20,30,0.13);border-radius:999px;padding:11px 22px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer">Close</button>
+      </div>
+    </div>
+  </div>
 
-			<!-- FAQ -->
-			<section class="section" id="faq">
-				<div class="shell">
-					<div class="reveal">
-						<span class="label" data-n="05">FAQ</span>
-						<h2 class="h2">Website design and app development questions.</h2>
-					</div>
-					<div class="faq-list reveal">
-						<article class="faq-item">
-							<h3 class="faq-q">What does FE Studios design and build?</h3>
-							<p class="faq-a">
-								Custom websites, landing pages, app interfaces and UI/UX systems
-								for businesses and founders.
-							</p>
-						</article>
-						<article class="faq-item">
-							<h3 class="faq-q">
-								Can FE Studios help with both design and development?
-							</h3>
-							<p class="faq-a">
-								Yes. Projects can cover strategy, UX, visual design, responsive
-								frontend build, launch support, and careful handover so the
-								finished site or app feels coherent from the first click.
-							</p>
-						</article>
-						<article class="faq-item">
-							<h3 class="faq-q">Who is a good fit for a project?</h3>
-							<p class="faq-a">
-								Businesses, founders, and small teams that need a clearer
-								digital presence, a polished product interface, or a custom
-								website that looks credible and drives enquiries.
-							</p>
-						</article>
-						<article class="faq-item">
-							<h3 class="faq-q">How do I start?</h3>
-							<p class="faq-a">
-								Send the idea, current website, or brief to
-								jamie@festudios.co.uk. You will get a practical next step for
-								the website, app, or product design work.
-							</p>
-						</article>
-					</div>
-				</div>
-			</section>
-
-			<!-- CTA -->
-			<section class="cta-wrap" id="contact">
-				<div class="cta-box reveal">
-					<img
-						src="assets/logo-dark.png"
-						alt=""
-						aria-hidden="true"
-						class="cta-mono"
-						loading="lazy"
-						draggable="false" />
-					<div class="cta-inner">
-						<div>
-							<span class="cta-eyebrow">Start a project</span>
-							<h2 class="cta-h2">
-								Ready for a website or app people take seriously?
-							</h2>
-							<p class="cta-sub">
-								Send over the idea, the current site, or the brief. We will work
-								together for a practical next step.
-							</p>
-						</div>
-						<div class="cta-right">
-							<div class="cta-svc-list">
-								<span>Website design</span>
-								<span>App UI and product builds</span>
-							</div>
-							<button class="btn btn-light btn-lg js-open-contact">
-								Get a project quote
-							</button>
-						</div>
-					</div>
-				</div>
-			</section>
-		</main>
-
-		<!-- FOOTER -->
-		<footer class="site-footer">
-			<div class="shell">
-				<div class="footer-rule"></div>
-				<div class="footer-body">
-					<div>
-						<img
-							src="assets/lg_logo-light.png"
-							alt="FE Studios"
-							class="footer-logo"
-							loading="lazy"
-							draggable="false" />
-						<p class="footer-tag">
-							Website design, app development, and UI/UX design for businesses
-							that want their digital presence to feel current, clear, and
-							credible.
-						</p>
-					</div>
-					<nav>
-						<span class="footer-nav-label">Navigate</span>
-						<ul class="footer-nav">
-							<li><a href="#work">Work</a></li>
-							<li><a href="#services">Services</a></li>
-							<li><a href="#process">Process</a></li>
-							<li><a href="#faq">FAQ</a></li>
-							<li><a href="#contact">Contact</a></li>
-						</ul>
-					</nav>
-				</div>
-				<div class="footer-bottom">
-					<p>&copy; 2026 FE Studios. All rights reserved.</p>
-					<p class="footer-built">Designed &amp; built in-house</p>
-				</div>
-			</div>
-		</footer>
-
-		<!-- CONTACT MODAL -->
-		<div
-			class="modal-overlay"
-			id="contactModal"
-			role="dialog"
-			aria-modal="true"
-			aria-labelledby="modalTitle">
-			<div class="modal-card">
-				<button class="modal-close" id="modalClose" aria-label="Close">
-					&times;
-				</button>
-
-				<div id="modalFormWrap">
-					<span class="modal-eyebrow">Start a project</span>
-					<h2 class="modal-title" id="modalTitle">
-						Tell us what you&rsquo;re building.
-					</h2>
-					<p class="modal-sub">
-						Fill in the details and we&rsquo;ll get back to you within one
-						working day.
-					</p>
-
-					<form class="contact-form" id="contactForm" novalidate>
-						<div class="form-row">
-							<div class="form-group">
-								<label class="form-label" for="cf-name">Your name</label>
-								<input
-									class="form-input"
-									type="text"
-									id="cf-name"
-									name="name"
-									placeholder="Jane Smith"
-									required />
-							</div>
-							<div class="form-group">
-								<label class="form-label" for="cf-email">Email address</label>
-								<input
-									class="form-input"
-									type="email"
-									id="cf-email"
-									name="email"
-									placeholder="jane@company.co.uk"
-									required />
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="form-label" for="cf-type">Project type</label>
-							<select class="form-select" id="cf-type" name="project_type">
-								<option value="">Select a service&hellip;</option>
-								<option value="Website Design">Website Design</option>
-								<option value="App Development">App Development</option>
-								<option value="UI/UX Design">UI/UX Design</option>
-								<option value="Brand System">Brand System</option>
-								<option value="Other">Other / Not sure yet</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label class="form-label" for="cf-message">Brief or idea</label>
-							<textarea
-								class="form-textarea"
-								id="cf-message"
-								name="message"
-								placeholder="Describe the project, where you&rsquo;re at, and what you need&hellip;"
-								required></textarea>
-						</div>
-						<p class="form-error" id="formError" hidden>
-							Something went wrong — please try again or email
-							<a href="mailto:jamie@festudios.co.uk">jamie@festudios.co.uk</a>
-							directly.
-						</p>
-						<button
-							type="submit"
-							class="btn btn-primary btn-md form-submit"
-							id="formSubmit">
-							<span id="submitText">Send enquiry</span>
-						</button>
-					</form>
-				</div>
-
-				<div class="modal-success" id="modalSuccess" hidden>
-					<div class="success-icon">&#10003;</div>
-					<h3 class="success-title">Enquiry sent.</h3>
-					<p class="success-sub">
-						Thanks — I&rsquo;ll be in touch within 7 working days.
-					</p>
-					<button class="btn btn-ghost btn-md" id="modalDone">Close</button>
-				</div>
-			</div>
-		</div>
-
-		<script src="main.js"></script>
-	</body>
+</div>
+<script src="main.js"></script>
+</body>
 </html>
