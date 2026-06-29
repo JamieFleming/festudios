@@ -1,420 +1,338 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FE Studios — Website &amp; App Design Studio, UK</title>
-  <meta name="description" content="Independent UK web &amp; app design studio. Custom websites, apps and product interfaces for founders and small businesses, by Jamie." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FE Studios — Independent Web &amp; App Design Studio, UK</title>
+<meta name="description" content="Independent UK web & app design studio. Custom websites, apps and product interfaces for founders and small businesses, by Jamie." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<div class="page">
-  <div class="noise" aria-hidden="true"></div>
+<div style="--paper:#f6f4ee;--ink:#1a1814;--mut:#615c54;--mono:#9a958b;--line:rgba(26,24,20,0.12);background:#f6f4ee;color:#1a1814;font-family:Manrope,ui-sans-serif,system-ui,-apple-system,sans-serif;min-height:100vh;position:relative;overflow-x:hidden;line-height:1.5">
 
-  <!-- HEADER -->
-  <header id="siteHeader" class="site-header">
-    <div class="header-inner">
-      <a href="#top" aria-label="FE Studios home" class="header-logo">
-        <img src="assets/lg_logo-light.png" alt="FE Studios" draggable="false" />
+  <!-- TOP META BAR -->
+  <header id="siteHeader" style="position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(246,244,238,0.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:background .4s,border-color .4s">
+    <div style="max-width:1080px;margin:0 auto;padding:14px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px">
+      <a href="#top" style="display:flex;align-items:center;gap:11px">
+        <img src="assets/lg_logo-light.png" alt="FE Studios" draggable="false" style="height:24px;width:auto;user-select:none">
       </a>
-      <nav class="header-nav">
-        <a href="#work">Work</a>
-        <a href="#services">Services</a>
-        <a href="#process">Studio</a>
-        <a href="#about">About</a>
-      </nav>
-      <button onclick="openContact()" class="header-cta">Start a project <span aria-hidden="true">&rarr;</span></button>
-      <button id="menuToggle" onclick="toggleMenu()" aria-label="Open menu" class="menu-toggle">
-        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-          <line x1="0" y1="1" x2="18" y2="1"/>
-          <line x1="0" y1="7" x2="18" y2="7"/>
-          <line x1="0" y1="13" x2="18" y2="13"/>
-        </svg>
-      </button>
+      <div style="display:flex;align-items:center;gap:22px">
+        <a href="#work" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;color:var(--mut);transition:color .2s" class="fx0">work</a>
+        <a href="#receipts" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;color:var(--mut);transition:color .2s" class="fx1">receipts</a>
+        <button onclick="openContact()" style="font-family:'JetBrains Mono',monospace;background:var(--ink);color:var(--paper);border:none;border-radius:9px;padding:9px 15px;font-size:12px;font-weight:500;letter-spacing:0.03em;cursor:pointer;transition:transform .2s,background .2s" class="fx2">start a project</button>
+      </div>
     </div>
   </header>
 
-  <!-- MOBILE MENU -->
-  <div id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation">
-    <div class="mobile-menu-header">
-      <a href="#top" onclick="toggleMenu()" aria-label="FE Studios home" class="header-logo">
-        <img src="assets/lg_logo-light.png" alt="FE Studios" draggable="false" />
-      </a>
-      <button onclick="toggleMenu()" aria-label="Close menu" class="mobile-menu-close">&times;</button>
-    </div>
-    <nav class="mobile-menu-nav">
-      <a href="#work"     onclick="toggleMenu()">Work</a>
-      <a href="#services" onclick="toggleMenu()">Services</a>
-      <a href="#process"  onclick="toggleMenu()">Studio</a>
-      <a href="#about"    onclick="toggleMenu()">About</a>
-    </nav>
-    <div class="mobile-menu-footer">
-      <button onclick="openContactFromMenu()">Start a project <span aria-hidden="true">&rarr;</span></button>
-    </div>
-  </div>
-
   <!-- HERO -->
-  <section id="top" class="hero">
-    <img src="assets/logo-light.png" alt="" aria-hidden="true" draggable="false" class="hero-bg" />
-    <div class="hero-inner">
-      <div class="hero-content">
-        <h1 class="hero-title">Websites &amp; apps,<br/>made by hand.</h1>
-        <p class="hero-desc">Hi, I'm Jamie. I help founders and small UK businesses turn a rough idea into a website or app that actually feels like them &mdash; considered, characterful and built properly. No templates, no jargon, no agency price tag.</p>
-        <div class="hero-ctas">
-          <button onclick="openContact()" class="btn-primary">Start a project <span aria-hidden="true">&rarr;</span></button>
-          <a href="#work" class="btn-outline">See recent work</a>
-        </div>
-        <div class="hero-meta">
-          <span class="hero-meta-badge"><span class="dot"></span>Independent studio, UK</span>
-          <span class="mid-dot">&middot;</span>
-          <span>currently taking on a few new projects for 2026</span>
-        </div>
+  <section id="top" style="position:relative;scroll-margin-top:80px;max-width:1080px;margin:0 auto;padding:clamp(120px,15vw,170px) 26px clamp(40px,6vw,68px)">
+    <!-- pixel clouds -->
+    <div aria-hidden="true" style="position:absolute;top:clamp(96px,12vw,150px);right:26px;width:170px;height:90px;pointer-events:none">
+      <svg viewBox="0 0 34 18" width="120" class="pix" style="position:absolute;top:0;right:18px;opacity:.9;animation:drift 9s ease-in-out infinite alternate">
+        <g fill="#cdd9ea"><rect x="10" y="4" width="14" height="6"></rect><rect x="6" y="8" width="22" height="4"></rect><rect x="8" y="6" width="6" height="2"></rect><rect x="18" y="2" width="8" height="2"></rect></g>
+        <g fill="#bccbe0"><rect x="6" y="12" width="22" height="2"></rect></g>
+      </svg>
+      <svg viewBox="0 0 34 18" width="84" class="pix" style="position:absolute;top:42px;right:90px;opacity:.7;animation:drift 11s ease-in-out infinite alternate-reverse">
+        <g fill="#d7dfec"><rect x="10" y="4" width="14" height="6"></rect><rect x="6" y="8" width="22" height="4"></rect><rect x="18" y="2" width="8" height="2"></rect></g>
+      </svg>
+    </div>
+
+    <div style="display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:8px;padding:5px 6px;background:rgba(255,255,255,0.5)">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.02em;background:var(--ink);color:var(--paper);border-radius:5px;padding:3px 9px">Studio</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.02em;color:var(--mut);padding:3px 7px">Personal</span>
+    </div>
+
+    <p style="margin:24px 0 0;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.7;letter-spacing:0.02em;color:var(--mono)">Independent web &amp; app design studio<br>2026 · taking on new projects</p>
+
+    <h1 style="margin:18px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(3.2rem,9vw,6.2rem);font-weight:800;line-height:0.94;letter-spacing:-0.035em;text-wrap:balance">FE&nbsp;Studios</h1>
+
+    <p style="margin:22px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:600;letter-spacing:-0.02em;line-height:1.15;max-width:24ch">I design it, build it, and make it feel like you.</p>
+
+    <p style="margin:20px 0 0;max-width:40rem;font-size:clamp(15.5px,1.4vw,17.5px);line-height:1.65;color:var(--mut)">Hi, I'm Jamie. I'm a one-person studio helping UK founders and small businesses turn a rough idea into a website or app that's genuinely theirs — friendly, considered and built properly. Two apps live on the App Store. No templates, no jargon, no agency price tag.</p>
+
+    <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center">
+      <button onclick="openContact()" style="font-family:inherit;display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:var(--paper);border:none;border-radius:11px;padding:14px 24px;font-size:15px;font-weight:600;cursor:pointer;transition:transform .25s,background .25s" class="fx3">Start a project <span aria-hidden="true">→</span></button>
+      <div style="display:flex;align-items:center;gap:18px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mut)">
+        <a href="mailto:jamie@festudios.co.uk" style="transition:color .2s" class="fx4">email</a>
+        <span style="width:4px;height:4px;border-radius:9px;background:var(--mono)"></span>
+        <a href="#work" style="transition:color .2s" class="fx5">see the work</a>
       </div>
     </div>
   </section>
 
-  <!-- WORK CAROUSEL -->
-  <section id="work" class="work-section">
-    <div class="work-header-row">
-      <div>
-        <span class="section-label">Recent work</span>
-        <h2 class="section-title" style="max-width:16ch">A few things I've made lately.</h2>
-      </div>
-      <div class="work-nav">
-        <div class="work-arrows">
-          <button onclick="scrollWork(-1)" aria-label="Previous" class="work-arrow">←</button>
-          <button onclick="scrollWork(1)"  aria-label="Next"     class="work-arrow">→</button>
-        </div>
-      </div>
+  <!-- STACK -->
+  <section style="max-width:1080px;margin:0 auto;padding:clamp(24px,4vw,44px) 26px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--mono)">Toolkit</span>
+    <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:9px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 15px;box-shadow:0 1px 0 rgba(26,24,20,0.04)">Figma</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 15px;box-shadow:0 1px 0 rgba(26,24,20,0.04)">HTML</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 15px;box-shadow:0 1px 0 rgba(26,24,20,0.04)">CSS</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 15px;box-shadow:0 1px 0 rgba(26,24,20,0.04)">JavaScript</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 15px;box-shadow:0 1px 0 rgba(26,24,20,0.04)">React</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 15px;box-shadow:0 1px 0 rgba(26,24,20,0.04)">UI / UX</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 15px;box-shadow:0 1px 0 rgba(26,24,20,0.04)">Brand &amp; identity</span>
+    
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" style="scroll-margin-top:80px;max-width:1080px;margin:0 auto;padding:clamp(44px,6vw,76px) 26px clamp(30px,4vw,48px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px">
+      <h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2rem,4.4vw,3rem);font-weight:800;letter-spacing:-0.03em;line-height:1">Selected work</h2>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mono)">2024 — 2026</span>
     </div>
 
-    <div id="workTrack">
+    <div style="margin-top:clamp(34px,4vw,52px);display:grid;gap:clamp(34px,4vw,48px) clamp(22px,3vw,36px);grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
 
-      <a href="https://www.munchsprouts.co.uk" target="_blank" rel="noreferrer" class="slide" data-slide>
-        <div class="slide-img fill slide-bg-cream">
-          <img src="assets/munchsprouts_dash.jpg" alt="MunchSprouts website" loading="lazy" draggable="false" />
-        </div>
-        <div class="slide-info">
-          <span class="slide-tag">Website · App landing page</span>
-          <div class="slide-title-row">
-            <h3>MunchSprouts Website</h3>
-            <span class="slide-arrow">→</span>
-          </div>
-          <p class="slide-desc">A warm, parent-friendly launch site for a baby weaning app — clear downloads and a confident first impression.</p>
-        </div>
-      </a>
-
-      <a href="https://apps.apple.com/gb/app/munch-sprouts-baby-tracker/id6763142582" target="_blank" rel="noreferrer" class="slide" data-slide>
-        <div class="slide-img center slide-bg-purple">
-          <img src="assets/munchsprouts_app.jpg" alt="MunchSprouts app" loading="lazy" draggable="false" />
-        </div>
-        <div class="slide-info">
-          <span class="slide-tag">Mobile app · Product design</span>
-          <div class="slide-title-row">
-            <h3>MunchSprouts App</h3>
-            <span class="slide-arrow">→</span>
-          </div>
-          <p class="slide-desc">A gentle app for tracking foods, feeds and growth in one simple dashboard. Live on the App Store and Google Play.</p>
-        </div>
-      </a>
-
-      <a href="https://jamiefleming.github.io/ePCR-App/" target="_blank" rel="noreferrer" class="slide" data-slide>
-        <div class="slide-img center slide-bg-sand">
-          <div class="phone-mockup">
-            <div class="phone-pill"></div>
-            <div class="phone-screen">
-              <img src="assets/crewmate_dash.jpg" alt="CrewMate clinical app" loading="lazy" draggable="false" />
-              <div class="phone-fade"></div>
+      <!-- MunchSprouts Website -->
+      <a href="https://www.munchsprouts.co.uk" target="_blank" rel="noreferrer" data-tile style="display:block;color:inherit">
+        <div data-card style="position:relative;border-radius:18px;background:#cfead7;padding:clamp(22px,3vw,34px) clamp(18px,2.4vw,26px);transition:transform .4s cubic-bezier(.22,1,.36,1)">
+          <div style="position:absolute;inset:0;border-radius:18px;background:#bfe1c9;transform:rotate(-3deg) translate(6px,8px);z-index:0"></div>
+          <div style="position:relative;z-index:1;background:#fff;padding:9px 9px 14px;border-radius:7px;box-shadow:0 12px 26px -12px rgba(26,40,28,0.4);transform:rotate(-1.6deg)">
+            <div style="border-radius:4px;overflow:hidden;aspect-ratio:16/11;background:#eef">
+              <img src="assets/munchsprouts_dash.jpg" alt="MunchSprouts website" loading="lazy" draggable="false" style="width:100%;height:100%;object-fit:cover;object-position:top">
             </div>
+            <p style="margin:9px 4px 0;font-family:'JetBrains Mono',monospace;font-size:11px;color:#5b6b5f">munchsprouts.co.uk</p>
           </div>
         </div>
-        <div class="slide-info">
-          <span class="slide-tag">Healthcare · Workflow UI</span>
-          <div class="slide-title-row">
-            <h3>CrewMate</h3>
-            <span class="slide-arrow">→</span>
-          </div>
-          <p class="slide-desc">A calm, fast assistant for ambulance crews — quick access to patient forms, scoring tools and clinical reference.</p>
+        <div style="margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:-0.02em">MunchSprouts Website</h3>
+          <span style="flex:0 0 auto;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mono)">→</span>
         </div>
+        <p style="margin:6px 0 0;font-size:14.5px;line-height:1.6;color:var(--mut)">A warm, parent-friendly launch site for a baby weaning app.</p>
       </a>
 
-      <a href="https://apps.apple.com/gb/app/sussd/id6774063502" target="_blank" rel="noreferrer" class="slide" data-slide>
-        <div class="slide-img center slide-bg-dark">
-          <img src="assets/sussd_image.jpg" alt="Suss'd game" loading="lazy" draggable="false" />
-        </div>
-        <div class="slide-info">
-          <span class="slide-tag">Game UI · Mobile</span>
-          <div class="slide-title-row">
-            <h3>Suss'd</h3>
-            <span class="slide-arrow">→</span>
+      <!-- MunchSprouts App -->
+      <a href="https://apps.apple.com/gb/app/munch-sprouts-baby-tracker/id6763142582" target="_blank" rel="noreferrer" data-tile style="display:block;color:inherit">
+        <div data-card style="position:relative;border-radius:18px;background:#ddd3f3;padding:clamp(22px,3vw,34px) clamp(18px,2.4vw,26px);transition:transform .4s cubic-bezier(.22,1,.36,1)">
+          <div style="position:absolute;inset:0;border-radius:18px;background:#cfc2ec;transform:rotate(3deg) translate(-6px,8px);z-index:0"></div>
+          <div style="position:relative;z-index:1;background:#fff;padding:9px 9px 14px;border-radius:7px;box-shadow:0 12px 26px -12px rgba(40,28,60,0.4);transform:rotate(1.6deg)">
+            <div style="border-radius:4px;overflow:hidden;aspect-ratio:16/11;background:#efe">
+              <img src="assets/munchsprouts_app.jpg" alt="MunchSprouts app" loading="lazy" draggable="false" style="width:100%;height:100%;object-fit:cover;object-position:center">
+            </div>
+            <p style="margin:9px 4px 0;font-family:'JetBrains Mono',monospace;font-size:11px;color:#665b78">iOS · Android</p>
           </div>
-          <p class="slide-desc">A social deception party game with a bold, moody identity — and in-app purchases built in from day one.</p>
         </div>
+        <div style="margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:-0.02em">MunchSprouts App</h3>
+          <span style="flex:0 0 auto;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mono)">→</span>
+        </div>
+        <p style="margin:6px 0 0;font-size:14.5px;line-height:1.6;color:var(--mut)">A gentle tracker for foods, feeds &amp; growth. Live on both stores.</p>
+      </a>
+
+      <!-- CrewMate -->
+      <a href="https://jamiefleming.github.io/ePCR-App/" target="_blank" rel="noreferrer" data-tile style="display:block;color:inherit">
+        <div data-card style="position:relative;border-radius:18px;background:#cfe0f4;padding:clamp(22px,3vw,34px) clamp(18px,2.4vw,26px);transition:transform .4s cubic-bezier(.22,1,.36,1)">
+          <div style="position:absolute;inset:0;border-radius:18px;background:#bfd2ec;transform:rotate(-3deg) translate(-6px,8px);z-index:0"></div>
+          <div style="position:relative;z-index:1;background:#fff;padding:9px 9px 14px;border-radius:7px;box-shadow:0 12px 26px -12px rgba(28,40,60,0.4);transform:rotate(-1.6deg)">
+            <div style="border-radius:4px;overflow:hidden;aspect-ratio:16/11;background:#eef;display:flex;align-items:flex-start;justify-content:center">
+              <img src="assets/crewmate_dash.jpg" alt="CrewMate clinical app" loading="lazy" draggable="false" style="width:100%;height:100%;object-fit:cover;object-position:top">
+            </div>
+            <p style="margin:9px 4px 0;font-family:'JetBrains Mono',monospace;font-size:11px;color:#5b6678">clinical · web app</p>
+          </div>
+        </div>
+        <div style="margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:-0.02em">CrewMate</h3>
+          <span style="flex:0 0 auto;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mono)">→</span>
+        </div>
+        <p style="margin:6px 0 0;font-size:14.5px;line-height:1.6;color:var(--mut)">A calm, fast assistant ambulance crews rely on mid-shift.</p>
+      </a>
+
+      <!-- Suss'd -->
+      <a href="https://apps.apple.com/gb/app/sussd/id6774063502" target="_blank" rel="noreferrer" data-tile style="display:block;color:inherit">
+        <div data-card style="position:relative;border-radius:18px;background:#f4d4c9;padding:clamp(22px,3vw,34px) clamp(18px,2.4vw,26px);transition:transform .4s cubic-bezier(.22,1,.36,1)">
+          <div style="position:absolute;inset:0;border-radius:18px;background:#eec3b4;transform:rotate(3deg) translate(6px,8px);z-index:0"></div>
+          <div style="position:relative;z-index:1;background:#fff;padding:9px 9px 14px;border-radius:7px;box-shadow:0 12px 26px -12px rgba(60,30,24,0.4);transform:rotate(1.6deg)">
+            <div style="border-radius:4px;overflow:hidden;aspect-ratio:16/11;background:#211a2b">
+              <img src="assets/sussd_image.jpg" alt="Suss'd game" loading="lazy" draggable="false" style="width:100%;height:100%;object-fit:cover;object-position:center">
+            </div>
+            <p style="margin:9px 4px 0;font-family:'JetBrains Mono',monospace;font-size:11px;color:#7a5b52">game UI · iOS</p>
+          </div>
+        </div>
+        <div style="margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:-0.02em">Suss'd</h3>
+          <span style="flex:0 0 auto;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mono)">→</span>
+        </div>
+        <p style="margin:6px 0 0;font-size:14.5px;line-height:1.6;color:var(--mut)">A bold party game, shipped with in-app purchases from day one.</p>
       </a>
 
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="services-section">
-    <div class="services-inner">
-      <span class="section-label">What I do</span>
-      <h2 class="section-title" style="max-width:20ch">Everything you need to get online and look the part.</h2>
-      <div class="services-grid">
+  <!-- RECEIPTS -->
+  <section id="receipts" style="scroll-margin-top:80px;max-width:1080px;margin:0 auto;padding:clamp(50px,7vw,90px) 26px">
+    <h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2rem,4.4vw,3rem);font-weight:800;letter-spacing:-0.03em;line-height:1">Receipts</h2>
+    <p style="margin:10px 0 0;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mono)">Proof, not promises.</p>
 
-        <div class="service-card">
-          <span class="service-num">01</span>
-          <h3>Website design</h3>
-          <p>Your website is usually the first thing people see. I design custom sites that feel welcoming, read clearly and quietly turn visitors into enquiries.</p>
-          <div class="service-tags">
-            <span class="service-tag">Landing pages</span>
-            <span class="service-tag">Business sites</span>
-            <span class="service-tag">Responsive</span>
-          </div>
+    <div style="margin-top:clamp(28px,3.5vw,42px);max-width:520px;display:flex;flex-direction:column;gap:9px">
+      <div style="align-self:flex-end;max-width:80%;background:var(--ink);color:var(--paper);border-radius:18px 18px 5px 18px;padding:11px 16px;font-size:14.5px;line-height:1.45">so… is the work actually any good?</div>
+      <div style="align-self:flex-start;max-width:80%;background:#fff;border:1px solid var(--line);border-radius:18px 18px 18px 5px;padding:11px 16px;font-size:14.5px;line-height:1.45;color:var(--ink)">let me show you.</div>
+      <div style="align-self:flex-start;max-width:84%;background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 16px;font-size:14.5px;line-height:1.5;color:var(--ink)">MunchSprouts — designed the app <em>and</em> the launch site. Live on the App Store &amp; Google Play, used by real parents.</div>
+      <div style="align-self:flex-start;max-width:84%;background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 16px;font-size:14.5px;line-height:1.5;color:var(--ink)">CrewMate — a clinical tool ambulance crews actually use on shift.</div>
+      <div style="align-self:flex-start;max-width:84%;background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 16px;font-size:14.5px;line-height:1.5;color:var(--ink)">Suss'd — a full party game, shipped to iOS with in-app purchases.</div>
+      <div style="align-self:flex-end;max-width:80%;background:var(--ink);color:var(--paper);border-radius:18px;padding:11px 16px;font-size:14.5px;line-height:1.45">wait, that's a proper range.</div>
+      <div style="align-self:flex-start;max-width:80%;background:#fff;border:1px solid var(--line);border-radius:18px 18px 18px 5px;padding:11px 16px;font-size:14.5px;line-height:1.45;color:var(--ink)">design through to launch — all by one person.</div>
+    </div>
+  </section>
+
+  <!-- WHAT I DO -->
+  <section style="max-width:1080px;margin:0 auto;padding:clamp(20px,3vw,40px) 26px clamp(40px,5vw,64px)">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--mono)">What I can do</span>
+    <div style="margin-top:22px;border-top:1px solid var(--line)">
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:14px 28px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline">
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.2rem,2.2vw,1.5rem);font-weight:700;letter-spacing:-0.02em">Website design</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--mut);max-width:42ch">Custom sites that feel welcoming, read clearly and quietly turn visitors into enquiries.</p>
         </div>
-
-        <div class="service-card">
-          <span class="service-num">02</span>
-          <h3>App development</h3>
-          <p>Got an idea for a product? I'll take it from rough concept to a real, usable app — with thoughtful flows and an interface that feels natural from the first tap.</p>
-          <div class="service-tags">
-            <span class="service-tag">MVP interfaces</span>
-            <span class="service-tag">Mobile-first</span>
-            <span class="service-tag">iOS &amp; Android</span>
-          </div>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:14px 28px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline">
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.2rem,2.2vw,1.5rem);font-weight:700;letter-spacing:-0.02em">App &amp; product design</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--mut);max-width:42ch">From rough concept to a real, usable app — thoughtful flows and an interface that feels natural from the first tap.</p>
         </div>
-
-        <div class="service-card">
-          <span class="service-num">03</span>
-          <h3>UI / UX design</h3>
-          <p>The best design is the kind you don't notice — people just know where to go. I create interfaces and simple design systems that make your product easy and enjoyable to use.</p>
-          <div class="service-tags">
-            <span class="service-tag">User journeys</span>
-            <span class="service-tag">Wireframes</span>
-            <span class="service-tag">UX audits</span>
-          </div>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:14px 28px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline">
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.2rem,2.2vw,1.5rem);font-weight:700;letter-spacing:-0.02em">UI / UX</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--mut);max-width:42ch">Interfaces and simple design systems that make your product easy, and genuinely enjoyable, to use.</p>
         </div>
-
-        <div class="service-card">
-          <span class="service-num">04</span>
-          <h3>Brand systems</h3>
-          <p>A clear visual identity does a lot of the heavy lifting. I'll build a digital-first brand — type, colour, logo and a few simple rules — so everything looks intentional and consistent.</p>
-          <div class="service-tags">
-            <span class="service-tag">Visual direction</span>
-            <span class="service-tag">Typography</span>
-            <span class="service-tag">Colour</span>
-          </div>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:14px 28px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline">
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.2rem,2.2vw,1.5rem);font-weight:700;letter-spacing:-0.02em">Brand systems</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--mut);max-width:42ch">A digital-first identity — type, colour, logo and a few simple rules — so everything looks intentional.</p>
         </div>
-
-      </div>
+      
     </div>
   </section>
 
   <!-- PROCESS -->
-  <section id="process" class="process-section">
-    <div class="process-inner">
-      <div class="process-card">
-        <div class="process-card-bg"></div>
-        <div class="process-grid">
-
-          <div class="process-left">
-            <span class="process-eyebrow">How I work</span>
-            <h2>A simple path from rough idea to finished thing.</h2>
-            <p>No mystery, no jargon. You'll always know what's happening, why, and what's next — and you'll see it taking shape before anything gets built.</p>
-            <button onclick="openContact()" class="btn-white">Let's talk it through</button>
-          </div>
-
-          <div class="process-steps">
-            <div class="process-step">
-              <span class="process-step-num">01</span>
-              <div class="process-step-body">
-                <h3>Discover</h3>
-                <p>We start with a proper chat. What are you building, who's it for, and what does success actually look like? We pin down the goals before a single pixel goes down.</p>
-              </div>
-            </div>
-            <div class="process-step">
-              <span class="process-step-num">02</span>
-              <div class="process-step-body">
-                <h3>Design</h3>
-                <p>With a clear direction, I map out the core screens and shape the look and feel. You'll see exactly how it comes together before anything gets built — no surprises.</p>
-              </div>
-            </div>
-            <div class="process-step">
-              <span class="process-step-num">03</span>
-              <div class="process-step-body">
-                <h3>Build</h3>
-                <p>The designs come to life as a fast, responsive product. Every detail gets attention — spacing, motion, accessibility, and how it behaves on every device.</p>
-              </div>
-            </div>
-            <div class="process-step">
-              <span class="process-step-num">04</span>
-              <div class="process-step-body">
-                <h3>Refine &amp; launch</h3>
-                <p>We test, tighten and polish until it feels right. Then it ships — and you get the keys. Full handover, nothing locked away.</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
+  <section id="process" style="scroll-margin-top:80px;max-width:1080px;margin:0 auto;padding:clamp(44px,6vw,76px) 26px">
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px">
+      <h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2rem,4.4vw,3rem);font-weight:800;letter-spacing:-0.03em;line-height:1">How I work</h2>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mono)">idea → launch</span>
     </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="about-section">
-    <div class="about-inner">
-
-      <div>
-        <span class="section-label">About</span>
-        <h2 class="about-title">Good work, done properly.</h2>
-        <div class="about-stats">
-          <div>
-            <p class="about-stat-num">UK</p>
-            <p class="about-stat-label">Based &amp; working</p>
+    <p style="margin:14px 0 0;max-width:42rem;font-size:15px;line-height:1.65;color:var(--mut)">No mystery, no jargon. You'll always know what's happening, why, and what's next — and you'll see it taking shape before anything gets built.</p>
+    <div style="margin-top:clamp(28px,3.5vw,44px);display:flex;flex-direction:column;gap:clamp(16px,2vw,24px)">
+      <div style="display:flex">
+        <div style="width:min(100%,540px);background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px;box-shadow:0 2px 8px rgba(26,24,20,.04),0 24px 44px -34px rgba(26,24,20,.4)">
+          <div style="display:flex;align-items:center;gap:13px">
+            <span style="flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center">01</span>
+            <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.3rem,2.4vw,1.6rem);font-weight:700;letter-spacing:-0.02em">Discover</h3>
           </div>
-          <div>
-            <p class="about-stat-num">1:1</p>
-            <p class="about-stat-label">You work with me, directly</p>
-          </div>
-          <div>
-            <p class="about-stat-num">End&#8209;to&#8209;end</p>
-            <p class="about-stat-label">Design through to launch</p>
-          </div>
+          <p style="margin:14px 0 0;font-size:14.5px;line-height:1.6;color:var(--mut)">We start with a proper chat. What are you building, who's it for, and what does success actually look like? We pin down the goals before a single pixel goes down.</p>
         </div>
       </div>
-
-      <div class="about-right">
-        <p>I started FE Studios because I think small teams and independent businesses deserve the same care and quality that bigger companies take for granted.</p>
-        <p>I work with UK founders and businesses who want something that actually reflects how good they are — not a template that gets forgotten about. Strong visual direction, an experience that makes sense, and clean, solid code underneath. I care about the small stuff, because the small stuff is what people notice.</p>
-        <p>If you want someone who's genuinely invested — from the first conversation to launch day — let's talk.</p>
+      <div style="display:flex">
+        <div style="width:min(100%,540px);margin-left:auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px;box-shadow:0 2px 8px rgba(26,24,20,.04),0 24px 44px -34px rgba(26,24,20,.4)">
+          <div style="display:flex;align-items:center;gap:13px">
+            <span style="flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center">02</span>
+            <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.3rem,2.4vw,1.6rem);font-weight:700;letter-spacing:-0.02em">Design</h3>
+          </div>
+          <p style="margin:14px 0 0;font-size:14.5px;line-height:1.6;color:var(--mut)">With a clear direction, I map out the core screens and shape the look and feel. You'll see exactly how it comes together before anything gets built — no surprises.</p>
+        </div>
       </div>
-
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="faq-section">
-    <div class="faq-inner">
-      <span class="section-label">Good to know</span>
-      <h2 class="section-title">A few common questions.</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <h3>What do you design and build?</h3>
-          <p>Custom websites, landing pages, app interfaces and the UX behind them — for businesses and founders.</p>
+      <div style="display:flex">
+        <div style="width:min(100%,540px);background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px;box-shadow:0 2px 8px rgba(26,24,20,.04),0 24px 44px -34px rgba(26,24,20,.4)">
+          <div style="display:flex;align-items:center;gap:13px">
+            <span style="flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center">03</span>
+            <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.3rem,2.4vw,1.6rem);font-weight:700;letter-spacing:-0.02em">Build</h3>
+          </div>
+          <p style="margin:14px 0 0;font-size:14.5px;line-height:1.6;color:var(--mut)">The designs come to life as a fast, responsive product. Every detail gets attention — spacing, motion, accessibility, and how it behaves on every device.</p>
         </div>
-        <div class="faq-item">
-          <h3>Can you do both design and the build?</h3>
-          <p>Yes — strategy, UX, visual design, the responsive build, launch and a careful handover, so the whole thing feels coherent from the first click.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Who's a good fit?</h3>
-          <p>Founders, small teams and growing businesses who want a clearer presence, a polished product, or a site that looks credible and brings in enquiries.</p>
-        </div>
-        <div class="faq-item">
-          <h3>How do I get started?</h3>
-          <p>Send me the idea, your current site, or a rough brief at jamie@festudios.co.uk — or use the button. I'll come back with a practical next step.</p>
+      </div>
+      <div style="display:flex">
+        <div style="width:min(100%,540px);margin-left:auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px;box-shadow:0 2px 8px rgba(26,24,20,.04),0 24px 44px -34px rgba(26,24,20,.4)">
+          <div style="display:flex;align-items:center;gap:13px">
+            <span style="flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center">04</span>
+            <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.3rem,2.4vw,1.6rem);font-weight:700;letter-spacing:-0.02em">Refine &amp; launch</h3>
+          </div>
+          <p style="margin:14px 0 0;font-size:14.5px;line-height:1.6;color:var(--mut)">We test, tighten and polish until it feels right. Then it ships — and you get the keys. Full handover, nothing locked away.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section id="contact" class="cta-section">
-    <div class="cta-card">
-      <img src="assets/logo-light.png" alt="" aria-hidden="true" draggable="false" class="cta-bg" />
-      <div class="cta-grid">
-        <div class="cta-left">
-          <span class="cta-label">Start a project</span>
-          <h2>Ready for something you're proud to show off?</h2>
-          <p>Send over the idea, your current site, or just a rough brief. I'll get back to you within one working day with a practical next step.</p>
+  <!-- FAQ -->
+  <section id="faq" style="scroll-margin-top:80px;max-width:1080px;margin:0 auto;padding:clamp(20px,3vw,40px) 26px clamp(40px,5vw,64px)">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--mono)">Good to know</span>
+    <h2 style="margin:14px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800;letter-spacing:-0.03em;line-height:1.05">A few common questions.</h2>
+    <div style="margin-top:clamp(24px,3vw,36px);border-top:1px solid var(--line)">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 36px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline">
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:-0.01em">What do you design and build?</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.65;color:var(--mut);max-width:48ch">Custom websites, landing pages, app interfaces and the UX behind them — for businesses and founders.</p>
         </div>
-        <div class="cta-right">
-          <div class="cta-services">
-            <span><span class="dot"></span>Website design</span>
-            <span><span class="dot"></span>App &amp; product builds</span>
-          </div>
-          <button onclick="openContact()" class="btn-cta">Get a project quote</button>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 36px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline">
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:-0.01em">Can you do both the design and the build?</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.65;color:var(--mut);max-width:48ch">Yes — strategy, UX, visual design, the responsive build, launch and a careful handover, so the whole thing feels coherent from the first click.</p>
         </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 36px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline">
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:-0.01em">Who's a good fit?</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.65;color:var(--mut);max-width:48ch">Founders, small teams and growing businesses who want a clearer presence, a polished product, or a site that looks credible and brings in enquiries.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 36px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline">
+          <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:-0.01em">How do I get started?</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.65;color:var(--mut);max-width:48ch">Send me the idea, your current site, or a rough brief at jamie@festudios.co.uk — or use the button. I&rsquo;ll come back with a practical next step.</p>
+        </div>
+      
+    </div>
+  </section>
+
+  <!-- CTA CARD -->
+  <section style="max-width:1080px;margin:0 auto;padding:clamp(16px,2.5vw,32px) 26px">
+    <div style="position:relative;overflow:hidden;border-radius:24px;background:#fff;border:1px solid var(--line);padding:clamp(36px,5vw,68px) clamp(26px,4vw,58px);box-shadow:0 2px 8px rgba(26,24,20,.04),0 36px 70px -42px rgba(26,24,20,.32)">
+      <img src="assets/logo-light.png" alt="" aria-hidden="true" draggable="false" style="position:absolute;right:-5%;bottom:-26%;width:min(54vw,460px);opacity:0.05;pointer-events:none;user-select:none;filter:grayscale(1)">
+      <div style="position:relative;z-index:1;max-width:30ch">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--mono)">Start a project</span>
+        <h2 style="margin:16px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2rem,4.6vw,3.2rem);font-weight:800;letter-spacing:-0.035em;line-height:1.02;text-wrap:balance">Ready for something you're proud to show off?</h2>
+        <p style="margin:18px 0 0;max-width:40ch;font-size:15.5px;line-height:1.65;color:var(--mut)">Send over the idea, your current site, or just a rough brief. I'll get back to you within one working day with a practical next step.</p>
+        <button onclick="openContact()" style="font-family:inherit;margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:var(--paper);border:none;border-radius:11px;padding:15px 26px;font-size:15px;font-weight:600;cursor:pointer;transition:transform .25s,background .25s" class="fx6">Get a project quote <span aria-hidden="true">→</span></button>
       </div>
+    </div>
+  </section>
+
+
+  <!-- CLOSING SIGN-OFF -->
+  <section id="contact" style="max-width:1080px;margin:0 auto;padding:clamp(50px,7vw,96px) 26px clamp(36px,5vw,60px)">
+    
+    <h2 style="margin:18px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2.8rem,8vw,5.4rem);font-weight:800;letter-spacing:-0.04em;line-height:0.96;text-wrap:balance">Let's build<br>something real.</h2>
+    <div style="margin-top:26px;display:flex;align-items:center;gap:20px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mut)">
+      <a href="mailto:jamie@festudios.co.uk" style="transition:color .2s" class="fx7">Email</a>
+      <span style="width:4px;height:4px;border-radius:9px;background:var(--mono)"></span>
+      <a href="#work" style="transition:color .2s" class="fx8">Work</a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-rule"></div>
-      <div class="footer-main">
-        <div class="footer-brand">
-          <img src="assets/lg_logo-light.png" alt="FE Studios" loading="lazy" draggable="false" />
-          <p>Friendly, considered websites and apps for UK businesses that want to look as good as they are.</p>
-        </div>
-        <div class="footer-cols">
-          <div>
-            <span class="footer-col-head">Navigate</span>
-            <div class="footer-col-links">
-              <a href="#work">Work</a>
-              <a href="#services">Services</a>
-              <a href="#process">How I work</a>
-              <a href="#about">About</a>
-            </div>
-          </div>
-          <div>
-            <span class="footer-col-head">Get in touch</span>
-            <div class="footer-col-links">
-              <a href="mailto:jamie@festudios.co.uk">jamie@festudios.co.uk</a>
-              <button onclick="openContact()">Start a project &rarr;</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 FE Studios. All rights reserved.</span>
-        <span class="footer-bottom-right">Designed &amp; built in-house</span>
-      </div>
-    </div>
+  <footer style="max-width:1080px;margin:0 auto;padding:26px 26px clamp(34px,4vw,48px);border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mono)">
+    <span>© 2026 FE Studios</span>
+    <span>Designed &amp; built by hand, in the UK</span>
   </footer>
 
   <!-- CONTACT MODAL -->
-  <div id="contactModal" class="modal-overlay">
-    <div data-modal-card class="modal-card">
-      <button onclick="closeContact()" aria-label="Close" class="modal-close">&times;</button>
+  <div id="contactModal" style="display:none;position:fixed;inset:0;z-index:900;background:rgba(20,20,18,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .3s ease">
+    <div data-modal-card style="position:relative;width:100%;max-width:520px;background:var(--paper);border-radius:20px;padding:clamp(26px,4vw,40px);box-shadow:0 40px 90px -30px rgba(20,18,12,.5);max-height:90dvh;overflow-y:auto;transform:translateY(18px) scale(0.98);transition:transform .35s cubic-bezier(.22,1,.36,1)">
+      <button onclick="closeContact()" aria-label="Close" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:9px;border:1px solid var(--line);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:18px;line-height:1">×</button>
       <div id="contactFormWrap">
-        <span class="modal-tag">Start a project</span>
-        <h2>Tell me what you're building.</h2>
-        <p class="modal-intro">Fill in a few details and I'll get back to you within one working day.</p>
-        <form onsubmit="submitContact(event)" class="modal-form">
-          <div class="modal-row">
-            <label class="modal-label">Your name
-              <input type="text" name="name" required placeholder="Jane Smith" class="modal-input" />
+        <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--mono);margin-bottom:12px">Start a project</span>
+        <h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.5rem,3vw,1.9rem);font-weight:800;letter-spacing:-0.025em;line-height:1.1">Tell me what you're building.</h2>
+        <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:var(--mut)">A few details and I'll get back to you within one working day.</p>
+        <form onsubmit="submitContact(event)" style="margin-top:22px;display:grid;gap:13px">
+          <div style="display:grid;gap:13px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">
+            <label style="display:grid;gap:6px;font-size:13px;font-weight:600;color:var(--ink)">Your name
+              <input type="text" name="name" required placeholder="Jane Smith" style="width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;font-size:15px;color:var(--ink);background:#fff;outline:none;transition:border-color .18s" class="fx9">
             </label>
-            <label class="modal-label">Email
-              <input type="email" name="email" required placeholder="jane@company.co.uk" class="modal-input" />
+            <label style="display:grid;gap:6px;font-size:13px;font-weight:600;color:var(--ink)">Email
+              <input type="email" name="email" required placeholder="jane@company.co.uk" style="width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;font-size:15px;color:var(--ink);background:#fff;outline:none;transition:border-color .18s" class="fx10">
             </label>
           </div>
-          <label class="modal-label">Project type
-            <select name="project_type" class="modal-select">
-              <option value="">Select a service&hellip;</option>
-              <option>Website design</option>
-              <option>App development</option>
-              <option>UI / UX design</option>
-              <option>Brand system</option>
-              <option>Not sure yet</option>
-            </select>
+          <label style="display:grid;gap:6px;font-size:13px;font-weight:600;color:var(--ink)">What are you building?
+            <textarea name="message" required placeholder="Tell me about the project, where you're at, and what you need…" style="width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;font-size:15px;color:var(--ink);background:#fff;outline:none;resize:vertical;min-height:108px;line-height:1.6;transition:border-color .18s" class="fx11"></textarea>
           </label>
-          <label class="modal-label">Your idea or brief
-            <textarea name="message" required placeholder="Tell me about the project, where you're at, and what you need&hellip;" class="modal-textarea"></textarea>
-          </label>
-          <button type="submit" class="modal-submit">Send enquiry</button>
+          <button type="submit" style="width:100%;justify-content:center;background:var(--ink);color:var(--paper);border:none;border-radius:11px;padding:14px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;margin-top:2px;transition:background .25s" class="fx12">Send enquiry</button>
         </form>
       </div>
-      <div id="contactSuccess" class="modal-success">
-        <div class="modal-success-icon">&#10003;</div>
-        <h3>Enquiry sent.</h3>
-        <p>Thanks &mdash; I'll be in touch within one working day.</p>
-        <button onclick="closeContact()">Close</button>
+      <div id="contactSuccess" style="display:none;place-items:center;text-align:center;gap:10px;padding:24px 0 8px">
+        <div style="width:52px;height:52px;border-radius:14px;background:var(--ink);color:var(--paper);font-size:22px;display:flex;align-items:center;justify-content:center;margin-bottom:4px">✓</div>
+        <h3 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:1.4rem;font-weight:800;letter-spacing:-0.02em">Enquiry sent.</h3>
+        <p style="margin:0;font-size:15px;color:var(--mut);line-height:1.6;max-width:26rem">Thanks — I'll be in touch within one working day.</p>
+        <button onclick="closeContact()" style="margin-top:8px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:11px;padding:11px 22px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer">Close</button>
       </div>
     </div>
   </div>
