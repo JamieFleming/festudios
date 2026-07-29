@@ -25,6 +25,34 @@
     });
   }
 
+  function initWorkCarousel() {
+    document.querySelectorAll('[data-work-carousel]').forEach(function (carousel) {
+      var track = carousel.querySelector('[data-work-track]');
+      var previous = carousel.querySelector('[data-work-previous]');
+      var next = carousel.querySelector('[data-work-next]');
+      var firstCard = track && track.querySelector('.work-card');
+      if (!track || !previous || !next || !firstCard) return;
+
+      function updateControls() {
+        var maxScroll = track.scrollWidth - track.clientWidth;
+        previous.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft >= maxScroll - 2;
+      }
+
+      function scrollByCard(direction) {
+        var gap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
+        var amount = firstCard.getBoundingClientRect().width + gap;
+        track.scrollBy({ left: amount * direction, behavior: 'smooth' });
+      }
+
+      previous.addEventListener('click', function () { scrollByCard(-1); });
+      next.addEventListener('click', function () { scrollByCard(1); });
+      track.addEventListener('scroll', updateControls, { passive: true });
+      window.addEventListener('resize', updateControls);
+      updateControls();
+    });
+  }
+
   function openContact() {
     var m = document.getElementById('contactModal');
     if (!m) return;
@@ -79,6 +107,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     initHeader();
     initTiles();
+    initWorkCarousel();
     initContactControls();
   });
 })();

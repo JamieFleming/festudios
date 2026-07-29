@@ -1053,3 +1053,66 @@ a{text-decoration:none;color:inherit}
 								font-weight: 600;
 								cursor: pointer;
 }
+
+/* Selected work carousel */
+.work-carousel {
+	margin-top: clamp(34px, 4vw, 52px);
+}
+
+.work-carousel .work-grid {
+	margin-top: 0;
+	display: flex;
+	gap: clamp(22px, 3vw, 36px);
+	overflow-x: auto;
+	padding: 8px 2px 20px;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+}
+
+.work-carousel .work-grid::-webkit-scrollbar {
+	display: none;
+}
+
+.work-carousel .work-card {
+	flex: 0 0 min(78%, 500px);
+	scroll-snap-align: start;
+}
+
+.work-carousel__controls {
+	margin-top: 8px;
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+}
+
+.work-carousel__button {
+	width: 42px;
+	height: 42px;
+	display: grid;
+	place-items: center;
+	border: 1px solid var(--line);
+	border-radius: 50%;
+	background: #fff;
+	color: var(--ink);
+	font: 500 18px/1 "JetBrains Mono", monospace;
+	cursor: pointer;
+	transition: transform 0.2s, background 0.2s, opacity 0.2s;
+}
+
+.work-carousel__button:hover:not(:disabled) {
+	transform: translateY(-2px);
+	background: var(--ink);
+	color: var(--paper);
+}
+
+.work-carousel__button:disabled {
+	opacity: 0.35;
+	cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+	.work-carousel .work-card {
+		flex-basis: 88%;
+	}
+}
