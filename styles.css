@@ -1054,6 +1054,13 @@ a{text-decoration:none;color:inherit}
 								cursor: pointer;
 }
 
+.contact-form__error {
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.5;
+	color: #b42318;
+}
+
 /* Selected work carousel */
 .work-carousel {
 	margin-top: clamp(34px, 4vw, 52px);

@@ -75,13 +75,38 @@
     setTimeout(function () { m.style.display = 'none'; }, 300);
   }
 
-  function submitContact(e) {
-    if (e && e.preventDefault) e.preventDefault();
+  async function submitContact(e) {
+    e.preventDefault();
+    var form = e.currentTarget;
     var f = document.getElementById('contactFormWrap');
     var s = document.getElementById('contactSuccess');
-    if (f) f.style.display = 'none';
-    if (s) s.style.display = 'grid';
-    return false;
+    var error = document.getElementById('contactError');
+    var submit = form.querySelector('[type="submit"]');
+    var originalLabel = submit ? submit.textContent : '';
+    if (error) error.hidden = true;
+    if (submit) {
+      submit.disabled = true;
+      submit.textContent = 'Sending…';
+    }
+
+    try {
+      var response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+      if (!response.ok) throw new Error('Form submission failed');
+      form.reset();
+      if (f) f.style.display = 'none';
+      if (s) s.style.display = 'grid';
+    } catch (err) {
+      if (error) error.hidden = false;
+    } finally {
+      if (submit) {
+        submit.disabled = false;
+        submit.textContent = originalLabel;
+      }
+    }
   }
 
   function initContactControls() {
