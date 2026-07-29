@@ -15,141 +15,36 @@
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
-		<div
-			style="
-				--paper: #f6f4ee;
-				--ink: #1a1814;
-				--mut: #615c54;
-				--mono: #9a958b;
-				--line: rgba(26, 24, 20, 0.12);
-				background: #f6f4ee;
-				color: #1a1814;
-				font-family:
-					Manrope,
-					ui-sans-serif,
-					system-ui,
-					-apple-system,
-					sans-serif;
-				min-height: 100vh;
-				position: relative;
-				overflow-x: hidden;
-				line-height: 1.5;
-			">
+		<div class="site-shell">
 			<!-- TOP META BAR -->
-			<header
-				id="siteHeader"
-				style="
-					position: fixed;
-					top: 0;
-					left: 0;
-					right: 0;
-					z-index: 60;
-					background: rgba(246, 244, 238, 0.7);
-					backdrop-filter: blur(14px);
-					-webkit-backdrop-filter: blur(14px);
-					border-bottom: 1px solid transparent;
-					transition:
-						background 0.4s,
-						border-color 0.4s;
-				">
-				<div
-					style="
-						max-width: 1080px;
-						margin: 0 auto;
-						padding: 14px 26px;
-						display: flex;
-						align-items: center;
-						justify-content: space-between;
-						gap: 18px;
-					">
-					<a href="#top" style="display: flex; align-items: center; gap: 11px">
+			<header id="siteHeader" class="site-header">
+				<div class="site-header__content">
+					<a href="#top" class="site-header__brand">
 						<img
 							src="assets/lg_logo-light.png"
 							alt="FE Studios"
 							draggable="false"
-							style="height: 24px; width: auto; user-select: none" />
+							class="site-header__logo" />
 					</a>
-					<div style="display: flex; align-items: center; gap: 22px">
-						<a
-							href="#work"
-							style="
-								font-family: &quot;JetBrains Mono&quot;, monospace;
-								font-size: 12px;
-								letter-spacing: 0.04em;
-								color: var(--mut);
-								transition: color 0.2s;
-							"
-							class="fx0"
-							>work</a
-						>
+					<div class="site-header__nav">
 						<!-- <a
-							href="#receipts"
-							style="
-								font-family: &quot;JetBrains Mono&quot;, monospace;
-								font-size: 12px;
-								letter-spacing: 0.04em;
-								color: var(--mut);
-								transition: color 0.2s;
-							"
-							class="fx1"
-							>receipts</a
+							href="#work"
+
+						 class="fx0 site-header__link"
+							>work</a
 						> -->
-						<button
-							onclick="openContact()"
-							style="
-								font-family: &quot;JetBrains Mono&quot;, monospace;
-								background: var(--ink);
-								color: var(--paper);
-								border: none;
-								border-radius: 9px;
-								padding: 9px 15px;
-								font-size: 12px;
-								font-weight: 500;
-								letter-spacing: 0.03em;
-								cursor: pointer;
-								transition:
-									transform 0.2s,
-									background 0.2s;
-							"
-							class="fx2">
-							start a project
+						<button data-action="open-contact" class="fx2 site-header__cta">
+							Start a Project
 						</button>
 					</div>
 				</div>
 			</header>
 
 			<!-- HERO -->
-			<section
-				id="top"
-				style="
-					position: relative;
-					scroll-margin-top: 80px;
-					max-width: 1080px;
-					margin: 0 auto;
-					padding: clamp(120px, 15vw, 170px) 26px clamp(40px, 6vw, 68px);
-				">
+			<section id="top" class="hero">
 				<!-- pixel clouds -->
-				<div
-					aria-hidden="true"
-					style="
-						position: absolute;
-						top: clamp(96px, 12vw, 150px);
-						right: 26px;
-						width: 170px;
-						height: 90px;
-						pointer-events: none;
-					">
-					<svg
-						viewBox="0 0 34 18"
-						width="120"
-						class="pix"
-						style="
-							position: absolute;
-							top: 0;
-							right: 18px;
-							opacity: 0.9;
-							animation: drift 9s ease-in-out infinite alternate;
-						">
+				<div aria-hidden="true" class="hero__clouds">
+					<svg viewBox="0 0 34 18" width="120" class="pix hero__cloud--large">
 						<g fill="#cdd9ea">
 							<rect x="10" y="4" width="14" height="6"></rect>
 							<rect x="6" y="8" width="22" height="4"></rect>
@@ -160,17 +55,7 @@
 							<rect x="6" y="12" width="22" height="2"></rect>
 						</g>
 					</svg>
-					<svg
-						viewBox="0 0 34 18"
-						width="84"
-						class="pix"
-						style="
-							position: absolute;
-							top: 42px;
-							right: 90px;
-							opacity: 0.7;
-							animation: drift 11s ease-in-out infinite alternate-reverse;
-						">
+					<svg viewBox="0 0 34 18" width="84" class="pix hero__cloud--small">
 						<g fill="#d7dfec">
 							<rect x="10" y="4" width="14" height="6"></rect>
 							<rect x="6" y="8" width="22" height="4"></rect>
@@ -179,419 +64,93 @@
 					</svg>
 				</div>
 
-				<div
-					style="
-						display: inline-flex;
-						align-items: center;
-						gap: 7px;
-						border: 1px solid var(--line);
-						border-radius: 8px;
-						padding: 5px 6px;
-						background: rgba(255, 255, 255, 0.5);
-					">
-					<span
-						style="
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 11px;
-							font-weight: 500;
-							letter-spacing: 0.02em;
-							background: var(--ink);
-							color: var(--paper);
-							border-radius: 5px;
-							padding: 3px 9px;
-						"
-						>Studio</span
-					>
-					<span
-						style="
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 11px;
-							font-weight: 500;
-							letter-spacing: 0.02em;
-							color: var(--mut);
-							padding: 3px 7px;
-						"
-						>Personal</span
-					>
+				<div class="hero__eyebrow">
+					<span class="hero__eyebrow-label">Studio</span>
+					<span class="hero__eyebrow-label--muted">Personal</span>
 				</div>
 
-				<p
-					style="
-						margin: 24px 0 0;
-						font-family: &quot;JetBrains Mono&quot;, monospace;
-						font-size: 13px;
-						line-height: 1.7;
-						letter-spacing: 0.02em;
-						color: var(--mono);
-					">
+				<p class="hero__availability">
 					Independent web &amp; app design studio<br />2026 · taking on new
 					projects
 				</p>
 
-				<h1
-					style="
-						margin: 18px 0 0;
-						font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-						font-size: clamp(3.2rem, 9vw, 6.2rem);
-						font-weight: 800;
-						line-height: 0.94;
-						letter-spacing: -0.035em;
-						text-wrap: balance;
-					">
-					FE&nbsp;Studios
-				</h1>
+				<h1 class="hero__title">FE Studios</h1>
 
-				<p
-					style="
-						margin: 22px 0 0;
-						font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-						font-size: clamp(1.4rem, 3vw, 2rem);
-						font-weight: 600;
-						letter-spacing: -0.02em;
-						line-height: 1.15;
-						max-width: 24ch;
-					">
-					I design it, build it, and make it feel like you.
+				<p class="hero__tagline">
+					Modern websites and apps, made to get noticed and used.
 				</p>
 
-				<p
-					style="
-						margin: 20px 0 0;
-						max-width: 40rem;
-						font-size: clamp(15.5px, 1.4vw, 17.5px);
-						line-height: 1.65;
-						color: var(--mut);
-					">
-					Hi, I'm Jamie. I'm a one-person studio helping UK founders and small
-					businesses turn a rough idea into a website or app that's genuinely
-					theirs — friendly, considered and built properly. Two apps live on the
-					App Store. No templates, no jargon, no agency price tag.
+				<p class="hero__intro">
+					I’m Jamie, an independent designer and developer helping businesses
+					look sharper online and give their customers a better experience. I
+					design and build modern websites and apps from start to finish - from
+					the first conversation and initial designs to a finished product ready
+					for iOS, Android or the web. No unnecessary agency layers, just good
+					work, clear communication and a price that stays grounded.
 				</p>
 
-				<div
-					style="
-						margin-top: 30px;
-						display: flex;
-						flex-wrap: wrap;
-						gap: 10px 22px;
-						align-items: center;
-					">
-					<button
-						onclick="openContact()"
-						style="
-							font-family: inherit;
-							display: inline-flex;
-							align-items: center;
-							gap: 9px;
-							background: var(--ink);
-							color: var(--paper);
-							border: none;
-							border-radius: 11px;
-							padding: 14px 24px;
-							font-size: 15px;
-							font-weight: 600;
-							cursor: pointer;
-							transition:
-								transform 0.25s,
-								background 0.25s;
-						"
-						class="fx3">
+				<div class="hero__actions">
+					<button data-action="open-contact" class="fx3 hero__primary-cta">
 						Start a project <span aria-hidden="true">→</span>
 					</button>
-					<div
-						style="
-							display: flex;
-							align-items: center;
-							gap: 18px;
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 13px;
-							color: var(--mut);
-						">
-						<a
-							href="mailto:jamie@festudios.co.uk"
-							style="transition: color 0.2s"
-							class="fx4"
+					<div class="hero__secondary-links">
+						<a href="mailto:jamie@festudios.co.uk" class="fx4 text-link"
 							>email</a
 						>
-						<span
-							style="
-								width: 4px;
-								height: 4px;
-								border-radius: 9px;
-								background: var(--mono);
-							"></span>
-						<a href="#work" style="transition: color 0.2s" class="fx5"
-							>see the work</a
-						>
+						<span class="link-separator"></span>
+						<a href="#work" class="fx5 text-link">see the work</a>
 					</div>
 				</div>
 			</section>
 
 			<!-- STACK -->
-			<section
-				style="
-					max-width: 1080px;
-					margin: 0 auto;
-					padding: clamp(24px, 4vw, 44px) 26px;
-				">
-				<span
-					style="
-						font-family: &quot;JetBrains Mono&quot;, monospace;
-						font-size: 11px;
-						font-weight: 600;
-						letter-spacing: 0.18em;
-						text-transform: uppercase;
-						color: var(--mono);
-					"
-					>Toolkit</span
-				>
-				<div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 9px">
-					<span
-						style="
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 13px;
-							font-weight: 500;
-							color: var(--ink);
-							background: #fff;
-							border: 1px solid var(--line);
-							border-radius: 10px;
-							padding: 9px 15px;
-							box-shadow: 0 1px 0 rgba(26, 24, 20, 0.04);
-						"
-						>Figma</span
-					>
-					<span
-						style="
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 13px;
-							font-weight: 500;
-							color: var(--ink);
-							background: #fff;
-							border: 1px solid var(--line);
-							border-radius: 10px;
-							padding: 9px 15px;
-							box-shadow: 0 1px 0 rgba(26, 24, 20, 0.04);
-						"
-						>HTML</span
-					>
-					<span
-						style="
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 13px;
-							font-weight: 500;
-							color: var(--ink);
-							background: #fff;
-							border: 1px solid var(--line);
-							border-radius: 10px;
-							padding: 9px 15px;
-							box-shadow: 0 1px 0 rgba(26, 24, 20, 0.04);
-						"
-						>CSS</span
-					>
-					<span
-						style="
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 13px;
-							font-weight: 500;
-							color: var(--ink);
-							background: #fff;
-							border: 1px solid var(--line);
-							border-radius: 10px;
-							padding: 9px 15px;
-							box-shadow: 0 1px 0 rgba(26, 24, 20, 0.04);
-						"
-						>JavaScript</span
-					>
-					<span
-						style="
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 13px;
-							font-weight: 500;
-							color: var(--ink);
-							background: #fff;
-							border: 1px solid var(--line);
-							border-radius: 10px;
-							padding: 9px 15px;
-							box-shadow: 0 1px 0 rgba(26, 24, 20, 0.04);
-						"
-						>React</span
-					>
-					<span
-						style="
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 13px;
-							font-weight: 500;
-							color: var(--ink);
-							background: #fff;
-							border: 1px solid var(--line);
-							border-radius: 10px;
-							padding: 9px 15px;
-							box-shadow: 0 1px 0 rgba(26, 24, 20, 0.04);
-						"
-						>UI / UX</span
-					>
-					<span
-						style="
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 13px;
-							font-weight: 500;
-							color: var(--ink);
-							background: #fff;
-							border: 1px solid var(--line);
-							border-radius: 10px;
-							padding: 9px 15px;
-							box-shadow: 0 1px 0 rgba(26, 24, 20, 0.04);
-						"
-						>Brand &amp; identity</span
-					>
+			<section class="toolkit-section">
+				<span class="section-eyebrow">Toolkit</span>
+				<div class="toolkit-list">
+					<span class="toolkit-tag">Figma</span>
+					<span class="toolkit-tag">HTML</span>
+					<span class="toolkit-tag">CSS</span>
+					<span class="toolkit-tag">JavaScript</span>
+					<span class="toolkit-tag">React</span>
+					<span class="toolkit-tag">UI / UX</span>
+					<span class="toolkit-tag">Brand &amp; identity</span>
 				</div>
 			</section>
 
 			<!-- WORK -->
-			<section
-				id="work"
-				style="
-					scroll-margin-top: 80px;
-					max-width: 1080px;
-					margin: 0 auto;
-					padding: clamp(44px, 6vw, 76px) 26px clamp(30px, 4vw, 48px);
-				">
-				<div
-					style="
-						display: flex;
-						flex-wrap: wrap;
-						align-items: baseline;
-						justify-content: space-between;
-						gap: 12px;
-					">
-					<h2
-						style="
-							margin: 0;
-							font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-							font-size: clamp(2rem, 4.4vw, 3rem);
-							font-weight: 800;
-							letter-spacing: -0.03em;
-							line-height: 1;
-						">
-						Selected work
-					</h2>
-					<span
-						style="
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 12.5px;
-							color: var(--mono);
-						"
-						>2024 — 2026</span
-					>
+			<section id="work" class="work-section">
+				<div class="section-heading-row">
+					<h2 class="section-title">Selected work</h2>
+					<span class="section-meta">2026</span>
 				</div>
 
-				<div
-					style="
-						margin-top: clamp(34px, 4vw, 52px);
-						display: grid;
-						gap: clamp(34px, 4vw, 48px) clamp(22px, 3vw, 36px);
-						grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-					">
+				<div class="work-grid">
 					<!-- MunchSprouts Website -->
 					<a
 						href="https://www.munchsprouts.co.uk"
 						target="_blank"
 						rel="noreferrer"
 						data-tile
-						style="display: block; color: inherit">
-						<div
-							data-card
-							style="
-								position: relative;
-								border-radius: 18px;
-								background: #cfead7;
-								padding: clamp(22px, 3vw, 34px) clamp(18px, 2.4vw, 26px);
-								transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-							">
-							<div
-								style="
-									position: absolute;
-									inset: 0;
-									border-radius: 18px;
-									background: #bfe1c9;
-									transform: rotate(-3deg) translate(6px, 8px);
-									z-index: 0;
-								"></div>
-							<div
-								style="
-									position: relative;
-									z-index: 1;
-									background: #fff;
-									padding: 9px 9px 14px;
-									border-radius: 7px;
-									box-shadow: 0 12px 26px -12px rgba(26, 40, 28, 0.4);
-									transform: rotate(-1.6deg);
-								">
-								<div
-									style="
-										border-radius: 4px;
-										overflow: hidden;
-										aspect-ratio: 16/11;
-										background: #eef;
-									">
+						class="work-card">
+						<div data-card class="work-card__visual--munch-website">
+							<div class="work-card__shadow--green"></div>
+							<div class="work-card__preview--green">
+								<div class="work-card__media">
 									<img
 										src="assets/munchsprouts_dash.jpg"
 										alt="MunchSprouts website"
 										loading="lazy"
 										draggable="false"
-										style="
-											width: 100%;
-											height: 100%;
-											object-fit: cover;
-											object-position: top;
-										" />
+										class="work-card__image--top" />
 								</div>
-								<p
-									style="
-										margin: 9px 4px 0;
-										font-family: &quot;JetBrains Mono&quot;, monospace;
-										font-size: 11px;
-										color: #5b6b5f;
-									">
-									munchsprouts.co.uk
-								</p>
+								<p class="work-card__caption--green">munchsprouts.co.uk</p>
 							</div>
 						</div>
-						<div
-							style="
-								margin-top: 18px;
-								display: flex;
-								align-items: center;
-								justify-content: space-between;
-								gap: 12px;
-							">
-							<h3
-								style="
-									margin: 0;
-									font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-									font-size: 1.3rem;
-									font-weight: 700;
-									letter-spacing: -0.02em;
-								">
-								MunchSprouts Website
-							</h3>
-							<span
-								style="
-									flex: 0 0 auto;
-									font-family: &quot;JetBrains Mono&quot;, monospace;
-									font-size: 12px;
-									color: var(--mono);
-								"
-								>→</span
-							>
+						<div class="work-card__details">
+							<h3 class="work-card__title">MunchSprouts Website</h3>
+							<span class="work-card__arrow">→</span>
 						</div>
-						<p
-							style="
-								margin: 6px 0 0;
-								font-size: 14.5px;
-								line-height: 1.6;
-								color: var(--mut);
-							">
+						<p class="work-card__description">
 							A warm, parent-friendly launch site for a baby weaning app.
 						</p>
 					</a>
@@ -602,100 +161,26 @@
 						target="_blank"
 						rel="noreferrer"
 						data-tile
-						style="display: block; color: inherit">
-						<div
-							data-card
-							style="
-								position: relative;
-								border-radius: 18px;
-								background: #ddd3f3;
-								padding: clamp(22px, 3vw, 34px) clamp(18px, 2.4vw, 26px);
-								transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-							">
-							<div
-								style="
-									position: absolute;
-									inset: 0;
-									border-radius: 18px;
-									background: #cfc2ec;
-									transform: rotate(3deg) translate(-6px, 8px);
-									z-index: 0;
-								"></div>
-							<div
-								style="
-									position: relative;
-									z-index: 1;
-									background: #fff;
-									padding: 9px 9px 14px;
-									border-radius: 7px;
-									box-shadow: 0 12px 26px -12px rgba(40, 28, 60, 0.4);
-									transform: rotate(1.6deg);
-								">
-								<div
-									style="
-										border-radius: 4px;
-										overflow: hidden;
-										aspect-ratio: 16/11;
-										background: #efe;
-									">
+						class="work-card">
+						<div data-card class="work-card__visual--munch-app">
+							<div class="work-card__shadow--purple"></div>
+							<div class="work-card__preview--purple">
+								<div class="work-card__media--light">
 									<img
 										src="assets/munchsprouts_app.jpg"
 										alt="MunchSprouts app"
 										loading="lazy"
 										draggable="false"
-										style="
-											width: 100%;
-											height: 100%;
-											object-fit: cover;
-											object-position: center;
-										" />
+										class="work-card__image--center" />
 								</div>
-								<p
-									style="
-										margin: 9px 4px 0;
-										font-family: &quot;JetBrains Mono&quot;, monospace;
-										font-size: 11px;
-										color: #665b78;
-									">
-									iOS · Android
-								</p>
+								<p class="work-card__caption--purple">iOS · Android</p>
 							</div>
 						</div>
-						<div
-							style="
-								margin-top: 18px;
-								display: flex;
-								align-items: center;
-								justify-content: space-between;
-								gap: 12px;
-							">
-							<h3
-								style="
-									margin: 0;
-									font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-									font-size: 1.3rem;
-									font-weight: 700;
-									letter-spacing: -0.02em;
-								">
-								MunchSprouts App
-							</h3>
-							<span
-								style="
-									flex: 0 0 auto;
-									font-family: &quot;JetBrains Mono&quot;, monospace;
-									font-size: 12px;
-									color: var(--mono);
-								"
-								>→</span
-							>
+						<div class="work-card__details">
+							<h3 class="work-card__title">MunchSprouts App</h3>
+							<span class="work-card__arrow">→</span>
 						</div>
-						<p
-							style="
-								margin: 6px 0 0;
-								font-size: 14.5px;
-								line-height: 1.6;
-								color: var(--mut);
-							">
+						<p class="work-card__description">
 							A gentle tracker for foods, feeds &amp; growth. Live on both
 							stores.
 						</p>
@@ -707,103 +192,26 @@
 						target="_blank"
 						rel="noreferrer"
 						data-tile
-						style="display: block; color: inherit">
-						<div
-							data-card
-							style="
-								position: relative;
-								border-radius: 18px;
-								background: #cfe0f4;
-								padding: clamp(22px, 3vw, 34px) clamp(18px, 2.4vw, 26px);
-								transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-							">
-							<div
-								style="
-									position: absolute;
-									inset: 0;
-									border-radius: 18px;
-									background: #bfd2ec;
-									transform: rotate(-3deg) translate(-6px, 8px);
-									z-index: 0;
-								"></div>
-							<div
-								style="
-									position: relative;
-									z-index: 1;
-									background: #fff;
-									padding: 9px 9px 14px;
-									border-radius: 7px;
-									box-shadow: 0 12px 26px -12px rgba(28, 40, 60, 0.4);
-									transform: rotate(-1.6deg);
-								">
-								<div
-									style="
-										border-radius: 4px;
-										overflow: hidden;
-										aspect-ratio: 16/11;
-										background: #eef;
-										display: flex;
-										align-items: flex-start;
-										justify-content: center;
-									">
+						class="work-card">
+						<div data-card class="work-card__visual--crewmate">
+							<div class="work-card__shadow--blue"></div>
+							<div class="work-card__preview--blue">
+								<div class="work-card__media--crewmate">
 									<img
 										src="assets/crewmate_dash.jpg"
 										alt="CrewMate clinical app"
 										loading="lazy"
 										draggable="false"
-										style="
-											width: 100%;
-											height: 100%;
-											object-fit: cover;
-											object-position: top;
-										" />
+										class="work-card__image--top" />
 								</div>
-								<p
-									style="
-										margin: 9px 4px 0;
-										font-family: &quot;JetBrains Mono&quot;, monospace;
-										font-size: 11px;
-										color: #5b6678;
-									">
-									clinical · web app
-								</p>
+								<p class="work-card__caption--blue">clinical · web app</p>
 							</div>
 						</div>
-						<div
-							style="
-								margin-top: 18px;
-								display: flex;
-								align-items: center;
-								justify-content: space-between;
-								gap: 12px;
-							">
-							<h3
-								style="
-									margin: 0;
-									font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-									font-size: 1.3rem;
-									font-weight: 700;
-									letter-spacing: -0.02em;
-								">
-								CrewMate
-							</h3>
-							<span
-								style="
-									flex: 0 0 auto;
-									font-family: &quot;JetBrains Mono&quot;, monospace;
-									font-size: 12px;
-									color: var(--mono);
-								"
-								>→</span
-							>
+						<div class="work-card__details">
+							<h3 class="work-card__title">CrewMate</h3>
+							<span class="work-card__arrow">→</span>
 						</div>
-						<p
-							style="
-								margin: 6px 0 0;
-								font-size: 14.5px;
-								line-height: 1.6;
-								color: var(--mut);
-							">
+						<p class="work-card__description">
 							A calm, fast assistant ambulance crews rely on mid-shift.
 						</p>
 					</a>
@@ -814,262 +222,63 @@
 						target="_blank"
 						rel="noreferrer"
 						data-tile
-						style="display: block; color: inherit">
-						<div
-							data-card
-							style="
-								position: relative;
-								border-radius: 18px;
-								background: #f4d4c9;
-								padding: clamp(22px, 3vw, 34px) clamp(18px, 2.4vw, 26px);
-								transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-							">
-							<div
-								style="
-									position: absolute;
-									inset: 0;
-									border-radius: 18px;
-									background: #eec3b4;
-									transform: rotate(3deg) translate(6px, 8px);
-									z-index: 0;
-								"></div>
-							<div
-								style="
-									position: relative;
-									z-index: 1;
-									background: #fff;
-									padding: 9px 9px 14px;
-									border-radius: 7px;
-									box-shadow: 0 12px 26px -12px rgba(60, 30, 24, 0.4);
-									transform: rotate(1.6deg);
-								">
-								<div
-									style="
-										border-radius: 4px;
-										overflow: hidden;
-										aspect-ratio: 16/11;
-										background: #211a2b;
-									">
+						class="work-card">
+						<div data-card class="work-card__visual--sussd">
+							<div class="work-card__shadow--coral"></div>
+							<div class="work-card__preview--coral">
+								<div class="work-card__media--dark">
 									<img
 										src="assets/sussd_image.jpg"
 										alt="Suss'd game"
 										loading="lazy"
 										draggable="false"
-										style="
-											width: 100%;
-											height: 100%;
-											object-fit: cover;
-											object-position: center;
-										" />
+										class="work-card__image--center" />
 								</div>
-								<p
-									style="
-										margin: 9px 4px 0;
-										font-family: &quot;JetBrains Mono&quot;, monospace;
-										font-size: 11px;
-										color: #7a5b52;
-									">
-									game UI · iOS
-								</p>
+								<p class="work-card__caption--coral">game UI · iOS</p>
 							</div>
 						</div>
-						<div
-							style="
-								margin-top: 18px;
-								display: flex;
-								align-items: center;
-								justify-content: space-between;
-								gap: 12px;
-							">
-							<h3
-								style="
-									margin: 0;
-									font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-									font-size: 1.3rem;
-									font-weight: 700;
-									letter-spacing: -0.02em;
-								">
-								Suss'd
-							</h3>
-							<span
-								style="
-									flex: 0 0 auto;
-									font-family: &quot;JetBrains Mono&quot;, monospace;
-									font-size: 12px;
-									color: var(--mono);
-								"
-								>→</span
-							>
+						<div class="work-card__details">
+							<h3 class="work-card__title">Suss'd</h3>
+							<span class="work-card__arrow">→</span>
 						</div>
-						<p
-							style="
-								margin: 6px 0 0;
-								font-size: 14.5px;
-								line-height: 1.6;
-								color: var(--mut);
-							">
+						<p class="work-card__description">
 							A bold party game, shipped with in-app purchases from day one.
 						</p>
 					</a>
 				</div>
 			</section>
 
-			<!-- RECEIPTS -->
-			<!-- <section id="receipts" style="scroll-margin-top:80px;max-width:1080px;margin:0 auto;padding:clamp(50px,7vw,90px) 26px">
-    <h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2rem,4.4vw,3rem);font-weight:800;letter-spacing:-0.03em;line-height:1">Receipts</h2>
-    <p style="margin:10px 0 0;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mono)">Proof, not promises.</p>
-
-    <div style="margin-top:clamp(28px,3.5vw,42px);max-width:520px;display:flex;flex-direction:column;gap:9px">
-      <div style="align-self:flex-end;max-width:80%;background:var(--ink);color:var(--paper);border-radius:18px 18px 5px 18px;padding:11px 16px;font-size:14.5px;line-height:1.45">so… is the work actually any good?</div>
-      <div style="align-self:flex-start;max-width:80%;background:#fff;border:1px solid var(--line);border-radius:18px 18px 18px 5px;padding:11px 16px;font-size:14.5px;line-height:1.45;color:var(--ink)">let me show you.</div>
-      <div style="align-self:flex-start;max-width:84%;background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 16px;font-size:14.5px;line-height:1.5;color:var(--ink)">MunchSprouts — designed the app <em>and</em> the launch site. Live on the App Store &amp; Google Play, used by real parents.</div>
-      <div style="align-self:flex-start;max-width:84%;background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 16px;font-size:14.5px;line-height:1.5;color:var(--ink)">CrewMate — a clinical tool ambulance crews actually use on shift.</div>
-      <div style="align-self:flex-start;max-width:84%;background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 16px;font-size:14.5px;line-height:1.5;color:var(--ink)">Suss'd — a full party game, shipped to iOS with in-app purchases.</div>
-      <div style="align-self:flex-end;max-width:80%;background:var(--ink);color:var(--paper);border-radius:18px;padding:11px 16px;font-size:14.5px;line-height:1.45">wait, that's a proper range.</div>
-      <div style="align-self:flex-start;max-width:80%;background:#fff;border:1px solid var(--line);border-radius:18px 18px 18px 5px;padding:11px 16px;font-size:14.5px;line-height:1.45;color:var(--ink)">design through to launch — all by one person.</div>
-    </div>
-  </section> -->
-
 			<!-- WHAT I DO -->
-			<section
-				style="
-					max-width: 1080px;
-					margin: 0 auto;
-					padding: clamp(20px, 3vw, 40px) 26px clamp(40px, 5vw, 64px);
-				">
-				<span
-					style="
-						font-family: &quot;JetBrains Mono&quot;, monospace;
-						font-size: 11px;
-						font-weight: 600;
-						letter-spacing: 0.18em;
-						text-transform: uppercase;
-						color: var(--mono);
-					"
-					>What I can do</span
-				>
-				<div style="margin-top: 22px; border-top: 1px solid var(--line)">
-					<div
-						style="
-							display: grid;
-							grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-							gap: 14px 28px;
-							padding: 20px 0;
-							border-bottom: 1px solid var(--line);
-							align-items: baseline;
-						">
-						<h3
-							style="
-								margin: 0;
-								font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-								font-size: clamp(1.2rem, 2.2vw, 1.5rem);
-								font-weight: 700;
-								letter-spacing: -0.02em;
-							">
-							Website design
-						</h3>
-						<p
-							style="
-								margin: 0;
-								font-size: 14.5px;
-								line-height: 1.6;
-								color: var(--mut);
-								max-width: 42ch;
-							">
+			<section class="services-section">
+				<div class="section-heading-row">
+					<h2 class="section-title">What I Can Do</h2>
+				</div>
+				<div class="services-list">
+					<div class="services-item">
+						<h3 class="services-item__title">Website design</h3>
+						<p class="services-item__description">
 							Custom sites that feel welcoming, read clearly and quietly turn
 							visitors into enquiries.
 						</p>
 					</div>
-					<div
-						style="
-							display: grid;
-							grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-							gap: 14px 28px;
-							padding: 20px 0;
-							border-bottom: 1px solid var(--line);
-							align-items: baseline;
-						">
-						<h3
-							style="
-								margin: 0;
-								font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-								font-size: clamp(1.2rem, 2.2vw, 1.5rem);
-								font-weight: 700;
-								letter-spacing: -0.02em;
-							">
-							App &amp; product design
-						</h3>
-						<p
-							style="
-								margin: 0;
-								font-size: 14.5px;
-								line-height: 1.6;
-								color: var(--mut);
-								max-width: 42ch;
-							">
+					<div class="services-item">
+						<h3 class="services-item__title">App &amp; product design</h3>
+						<p class="services-item__description">
 							From rough concept to a real, usable app — thoughtful flows and an
 							interface that feels natural from the first tap.
 						</p>
 					</div>
-					<div
-						style="
-							display: grid;
-							grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-							gap: 14px 28px;
-							padding: 20px 0;
-							border-bottom: 1px solid var(--line);
-							align-items: baseline;
-						">
-						<h3
-							style="
-								margin: 0;
-								font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-								font-size: clamp(1.2rem, 2.2vw, 1.5rem);
-								font-weight: 700;
-								letter-spacing: -0.02em;
-							">
-							UI / UX
-						</h3>
-						<p
-							style="
-								margin: 0;
-								font-size: 14.5px;
-								line-height: 1.6;
-								color: var(--mut);
-								max-width: 42ch;
-							">
+					<div class="services-item">
+						<h3 class="services-item__title">UI / UX</h3>
+						<p class="services-item__description">
 							Interfaces and simple design systems that make your product easy,
-							and genuinely enjoyable, to use.
+							and enjoyable, to use.
 						</p>
 					</div>
-					<div
-						style="
-							display: grid;
-							grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-							gap: 14px 28px;
-							padding: 20px 0;
-							border-bottom: 1px solid var(--line);
-							align-items: baseline;
-						">
-						<h3
-							style="
-								margin: 0;
-								font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-								font-size: clamp(1.2rem, 2.2vw, 1.5rem);
-								font-weight: 700;
-								letter-spacing: -0.02em;
-							">
-							Brand systems
-						</h3>
-						<p
-							style="
-								margin: 0;
-								font-size: 14.5px;
-								line-height: 1.6;
-								color: var(--mut);
-								max-width: 42ch;
-							">
-							A digital-first identity — type, colour, logo and a few simple
+					<div class="services-item">
+						<h3 class="services-item__title">Brand systems</h3>
+						<p class="services-item__description">
+							A digital-first identity. Type, colour, logo and a few simple
 							rules — so everything looks intentional.
 						</p>
 					</div>
@@ -1077,275 +286,66 @@
 			</section>
 
 			<!-- PROCESS -->
-			<section
-				id="process"
-				style="
-					scroll-margin-top: 80px;
-					max-width: 1080px;
-					margin: 0 auto;
-					padding: clamp(44px, 6vw, 76px) 26px;
-				">
-				<div
-					style="
-						display: flex;
-						flex-wrap: wrap;
-						align-items: baseline;
-						justify-content: space-between;
-						gap: 12px;
-					">
-					<h2
-						style="
-							margin: 0;
-							font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-							font-size: clamp(2rem, 4.4vw, 3rem);
-							font-weight: 800;
-							letter-spacing: -0.03em;
-							line-height: 1;
-						">
-						How I work
-					</h2>
-					<span
-						style="
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 12.5px;
-							color: var(--mono);
-						"
-						>idea → launch</span
-					>
+			<section id="process" class="process-section">
+				<div class="section-heading-row">
+					<h2 class="section-title">How I work</h2>
+					<span class="section-meta">from idea to launch</span>
 				</div>
-				<p
-					style="
-						margin: 14px 0 0;
-						max-width: 42rem;
-						font-size: 15px;
-						line-height: 1.65;
-						color: var(--mut);
-					">
-					No mystery, no jargon. You'll always know what's happening, why, and
-					what's next — and you'll see it taking shape before anything gets
-					built.
+				<p class="process-intro">
+					Getting a new website or app built shouldn’t feel complicated. I’ll
+					keep things clear, guide you through each stage, and make sure you
+					always know what’s happening next.
 				</p>
-				<div
-					style="
-						margin-top: clamp(28px, 3.5vw, 44px);
-						display: flex;
-						flex-direction: column;
-						gap: clamp(16px, 2vw, 24px);
-					">
-					<div style="display: flex">
-						<div
-							style="
-								width: min(100%, 540px);
-								background: #fff;
-								border: 1px solid var(--line);
-								border-radius: 18px;
-								padding: 24px 26px;
-								box-shadow:
-									0 2px 8px rgba(26, 24, 20, 0.04),
-									0 24px 44px -34px rgba(26, 24, 20, 0.4);
-							">
-							<div style="display: flex; align-items: center; gap: 13px">
-								<span
-									style="
-										flex: 0 0 auto;
-										width: 34px;
-										height: 34px;
-										border-radius: 10px;
-										background: var(--ink);
-										color: var(--paper);
-										font-family: &quot;JetBrains Mono&quot;, monospace;
-										font-size: 13px;
-										font-weight: 500;
-										display: flex;
-										align-items: center;
-										justify-content: center;
-									"
-									>01</span
-								>
-								<h3
-									style="
-										margin: 0;
-										font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-										font-size: clamp(1.3rem, 2.4vw, 1.6rem);
-										font-weight: 700;
-										letter-spacing: -0.02em;
-									">
-									Discover
-								</h3>
+				<div class="process-list">
+					<div class="process-row">
+						<div class="process-card">
+							<div class="process-card__heading">
+								<span class="process-card__number">01</span>
+								<h3 class="process-card__title">Start with a chat</h3>
 							</div>
-							<p
-								style="
-									margin: 14px 0 0;
-									font-size: 14.5px;
-									line-height: 1.6;
-									color: var(--mut);
-								">
-								We start with a proper chat. What are you building, who's it
-								for, and what does success actually look like? We pin down the
-								goals before a single pixel goes down.
+							<p class="process-card__description">
+								Tell me about your business, your idea and what you need the
+								site or app to do. We’ll work out what matters most and agree on
+								a clear plan before we get started.
 							</p>
 						</div>
 					</div>
-					<div style="display: flex">
-						<div
-							style="
-								width: min(100%, 540px);
-								margin-left: auto;
-								background: #fff;
-								border: 1px solid var(--line);
-								border-radius: 18px;
-								padding: 24px 26px;
-								box-shadow:
-									0 2px 8px rgba(26, 24, 20, 0.04),
-									0 24px 44px -34px rgba(26, 24, 20, 0.4);
-							">
-							<div style="display: flex; align-items: center; gap: 13px">
-								<span
-									style="
-										flex: 0 0 auto;
-										width: 34px;
-										height: 34px;
-										border-radius: 10px;
-										background: var(--ink);
-										color: var(--paper);
-										font-family: &quot;JetBrains Mono&quot;, monospace;
-										font-size: 13px;
-										font-weight: 500;
-										display: flex;
-										align-items: center;
-										justify-content: center;
-									"
-									>02</span
-								>
-								<h3
-									style="
-										margin: 0;
-										font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-										font-size: clamp(1.3rem, 2.4vw, 1.6rem);
-										font-weight: 700;
-										letter-spacing: -0.02em;
-									">
-									Design
-								</h3>
+					<div class="process-row">
+						<div class="process-card--right">
+							<div class="process-card__heading">
+								<span class="process-card__number">02</span>
+								<h3 class="process-card__title">Design</h3>
 							</div>
-							<p
-								style="
-									margin: 14px 0 0;
-									font-size: 14.5px;
-									line-height: 1.6;
-									color: var(--mut);
-								">
-								With a clear direction, I map out the core screens and shape the
-								look and feel. You'll see exactly how it comes together before
-								anything gets built — no surprises.
+							<p class="process-card__description">
+								I’ll create the look, layout and key screens for you to review.
+								You’ll see how it will work before anything is built, with
+								plenty of room for feedback.
 							</p>
 						</div>
 					</div>
-					<div style="display: flex">
-						<div
-							style="
-								width: min(100%, 540px);
-								background: #fff;
-								border: 1px solid var(--line);
-								border-radius: 18px;
-								padding: 24px 26px;
-								box-shadow:
-									0 2px 8px rgba(26, 24, 20, 0.04),
-									0 24px 44px -34px rgba(26, 24, 20, 0.4);
-							">
-							<div style="display: flex; align-items: center; gap: 13px">
-								<span
-									style="
-										flex: 0 0 auto;
-										width: 34px;
-										height: 34px;
-										border-radius: 10px;
-										background: var(--ink);
-										color: var(--paper);
-										font-family: &quot;JetBrains Mono&quot;, monospace;
-										font-size: 13px;
-										font-weight: 500;
-										display: flex;
-										align-items: center;
-										justify-content: center;
-									"
-									>03</span
-								>
-								<h3
-									style="
-										margin: 0;
-										font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-										font-size: clamp(1.3rem, 2.4vw, 1.6rem);
-										font-weight: 700;
-										letter-spacing: -0.02em;
-									">
-									Build
-								</h3>
+					<div class="process-row">
+						<div class="process-card">
+							<div class="process-card__heading">
+								<span class="process-card__number">03</span>
+								<h3 class="process-card__title">Build</h3>
 							</div>
-							<p
-								style="
-									margin: 14px 0 0;
-									font-size: 14.5px;
-									line-height: 1.6;
-									color: var(--mut);
-								">
-								The designs come to life as a fast, responsive product. Every
-								detail gets attention — spacing, motion, accessibility, and how
-								it behaves on every device.
+							<p class="process-card__description">
+								Once the design is agreed, I build the website or app so it
+								works smoothly across the devices your customers use. I keep you
+								updated as it comes together.
 							</p>
 						</div>
 					</div>
-					<div style="display: flex">
-						<div
-							style="
-								width: min(100%, 540px);
-								margin-left: auto;
-								background: #fff;
-								border: 1px solid var(--line);
-								border-radius: 18px;
-								padding: 24px 26px;
-								box-shadow:
-									0 2px 8px rgba(26, 24, 20, 0.04),
-									0 24px 44px -34px rgba(26, 24, 20, 0.4);
-							">
-							<div style="display: flex; align-items: center; gap: 13px">
-								<span
-									style="
-										flex: 0 0 auto;
-										width: 34px;
-										height: 34px;
-										border-radius: 10px;
-										background: var(--ink);
-										color: var(--paper);
-										font-family: &quot;JetBrains Mono&quot;, monospace;
-										font-size: 13px;
-										font-weight: 500;
-										display: flex;
-										align-items: center;
-										justify-content: center;
-									"
-									>04</span
-								>
-								<h3
-									style="
-										margin: 0;
-										font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-										font-size: clamp(1.3rem, 2.4vw, 1.6rem);
-										font-weight: 700;
-										letter-spacing: -0.02em;
-									">
-									Refine &amp; launch
-								</h3>
+					<div class="process-row">
+						<div class="process-card--right">
+							<div class="process-card__heading">
+								<span class="process-card__number">04</span>
+								<h3 class="process-card__title">Refine &amp; launch</h3>
 							</div>
-							<p
-								style="
-									margin: 14px 0 0;
-									font-size: 14.5px;
-									line-height: 1.6;
-									color: var(--mut);
-								">
-								We test, tighten and polish until it feels right. Then it ships
-								— and you get the keys. Full handover, nothing locked away.
+							<p class="process-card__description">
+								Before it goes live, I check the details, fix any final bits and
+								make sure you’re happy with it. Then I’ll help get it launched
+								and hand everything over clearly.
 							</p>
 						</div>
 					</div>
@@ -1353,163 +353,38 @@
 			</section>
 
 			<!-- FAQ -->
-			<section
-				id="faq"
-				style="
-					scroll-margin-top: 80px;
-					max-width: 1080px;
-					margin: 0 auto;
-					padding: clamp(20px, 3vw, 40px) 26px clamp(40px, 5vw, 64px);
-				">
-				<span
-					style="
-						font-family: &quot;JetBrains Mono&quot;, monospace;
-						font-size: 11px;
-						font-weight: 600;
-						letter-spacing: 0.18em;
-						text-transform: uppercase;
-						color: var(--mono);
-					"
-					>Good to know</span
-				>
-				<h2
-					style="
-						margin: 14px 0 0;
-						font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-						font-size: clamp(1.7rem, 3.4vw, 2.4rem);
-						font-weight: 800;
-						letter-spacing: -0.03em;
-						line-height: 1.05;
-					">
-					A few common questions.
-				</h2>
-				<div
-					style="
-						margin-top: clamp(24px, 3vw, 36px);
-						border-top: 1px solid var(--line);
-					">
-					<div
-						style="
-							display: grid;
-							grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-							gap: 10px 36px;
-							padding: 22px 0;
-							border-bottom: 1px solid var(--line);
-							align-items: baseline;
-						">
-						<h3
-							style="
-								margin: 0;
-								font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-								font-size: 1.1rem;
-								font-weight: 700;
-								letter-spacing: -0.01em;
-							">
-							What do you design and build?
-						</h3>
-						<p
-							style="
-								margin: 0;
-								font-size: 14.5px;
-								line-height: 1.65;
-								color: var(--mut);
-								max-width: 48ch;
-							">
+			<section id="faq" class="faq-section">
+				<span class="section-eyebrow">Good to know</span>
+				<h2 class="faq-title">A few common questions.</h2>
+				<div class="faq-list">
+					<div class="faq-item">
+						<h3 class="faq-question">What do you design and build?</h3>
+						<p class="faq-answer">
 							Custom websites, landing pages, app interfaces and the UX behind
-							them — for businesses and founders.
+							them.
 						</p>
 					</div>
-					<div
-						style="
-							display: grid;
-							grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-							gap: 10px 36px;
-							padding: 22px 0;
-							border-bottom: 1px solid var(--line);
-							align-items: baseline;
-						">
-						<h3
-							style="
-								margin: 0;
-								font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-								font-size: 1.1rem;
-								font-weight: 700;
-								letter-spacing: -0.01em;
-							">
+					<div class="faq-item">
+						<h3 class="faq-question">
 							Can you do both the design and the build?
 						</h3>
-						<p
-							style="
-								margin: 0;
-								font-size: 14.5px;
-								line-height: 1.65;
-								color: var(--mut);
-								max-width: 48ch;
-							">
+						<p class="faq-answer">
 							Yes — strategy, UX, visual design, the responsive build, launch
-							and a careful handover, so the whole thing feels coherent from the
-							first click.
+							and handover, so the whole thing feels coherent from the first
+							click.
 						</p>
 					</div>
-					<div
-						style="
-							display: grid;
-							grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-							gap: 10px 36px;
-							padding: 22px 0;
-							border-bottom: 1px solid var(--line);
-							align-items: baseline;
-						">
-						<h3
-							style="
-								margin: 0;
-								font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-								font-size: 1.1rem;
-								font-weight: 700;
-								letter-spacing: -0.01em;
-							">
-							Who's a good fit?
-						</h3>
-						<p
-							style="
-								margin: 0;
-								font-size: 14.5px;
-								line-height: 1.65;
-								color: var(--mut);
-								max-width: 48ch;
-							">
+					<div class="faq-item">
+						<h3 class="faq-question">Who's a good fit?</h3>
+						<p class="faq-answer">
 							Founders, small teams and growing businesses who want a clearer
 							presence, a polished product, or a site that looks credible and
 							brings in enquiries.
 						</p>
 					</div>
-					<div
-						style="
-							display: grid;
-							grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-							gap: 10px 36px;
-							padding: 22px 0;
-							border-bottom: 1px solid var(--line);
-							align-items: baseline;
-						">
-						<h3
-							style="
-								margin: 0;
-								font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-								font-size: 1.1rem;
-								font-weight: 700;
-								letter-spacing: -0.01em;
-							">
-							How do I get started?
-						</h3>
-						<p
-							style="
-								margin: 0;
-								font-size: 14.5px;
-								line-height: 1.65;
-								color: var(--mut);
-								max-width: 48ch;
-							">
+					<div class="faq-item">
+						<h3 class="faq-question">How do I get started?</h3>
+						<p class="faq-answer">
 							Send me the idea, your current site, or a rough brief at
 							jamie@festudios.co.uk — or use the button. I&rsquo;ll come back
 							with a practical next step.
@@ -1519,95 +394,27 @@
 			</section>
 
 			<!-- CTA CARD -->
-			<section
-				style="
-					max-width: 1080px;
-					margin: 0 auto;
-					padding: clamp(16px, 2.5vw, 32px) 26px;
-				">
-				<div
-					style="
-						position: relative;
-						overflow: hidden;
-						border-radius: 24px;
-						background: #fff;
-						border: 1px solid var(--line);
-						padding: clamp(36px, 5vw, 68px) clamp(26px, 4vw, 58px);
-						box-shadow:
-							0 2px 8px rgba(26, 24, 20, 0.04),
-							0 36px 70px -42px rgba(26, 24, 20, 0.32);
-					">
+			<section class="project-cta-section">
+				<div class="project-cta-card">
 					<img
 						src="assets/logo-light.png"
 						alt=""
 						aria-hidden="true"
 						draggable="false"
-						style="
-							position: absolute;
-							right: -5%;
-							bottom: -26%;
-							width: min(54vw, 460px);
-							opacity: 0.05;
-							pointer-events: none;
-							user-select: none;
-							filter: grayscale(1);
-						" />
-					<div style="position: relative; z-index: 1; max-width: 30ch">
-						<span
-							style="
-								font-family: &quot;JetBrains Mono&quot;, monospace;
-								font-size: 11px;
-								font-weight: 600;
-								letter-spacing: 0.16em;
-								text-transform: uppercase;
-								color: var(--mono);
-							"
-							>Start a project</span
-						>
-						<h2
-							style="
-								margin: 16px 0 0;
-								font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-								font-size: clamp(2rem, 4.6vw, 3.2rem);
-								font-weight: 800;
-								letter-spacing: -0.035em;
-								line-height: 1.02;
-								text-wrap: balance;
-							">
+						class="project-cta-card__watermark" />
+					<div class="project-cta-card__content">
+						<span class="project-cta-card__eyebrow">Start a project</span>
+						<h2 class="project-cta-card__title">
 							Ready for something you're proud to show off?
 						</h2>
-						<p
-							style="
-								margin: 18px 0 0;
-								max-width: 40ch;
-								font-size: 15.5px;
-								line-height: 1.65;
-								color: var(--mut);
-							">
+						<p class="project-cta-card__description">
 							Send over the idea, your current site, or just a rough brief. I'll
-							get back to you within one working day with a practical next step.
+							get back to you within seven working days with a practical next
+							step.
 						</p>
 						<button
-							onclick="openContact()"
-							style="
-								font-family: inherit;
-								margin-top: 26px;
-								display: inline-flex;
-								align-items: center;
-								gap: 9px;
-								background: var(--ink);
-								color: var(--paper);
-								border: none;
-								border-radius: 11px;
-								padding: 15px 26px;
-								font-size: 15px;
-								font-weight: 600;
-								cursor: pointer;
-								transition:
-									transform 0.25s,
-									background 0.25s;
-							"
-							class="fx6">
+							data-action="open-contact"
+							class="fx6 project-cta-card__button">
 							Get a project quote <span aria-hidden="true">→</span>
 						</button>
 					</div>
@@ -1615,335 +422,77 @@
 			</section>
 
 			<!-- CLOSING SIGN-OFF -->
-			<section
-				id="contact"
-				style="
-					max-width: 1080px;
-					margin: 0 auto;
-					padding: clamp(50px, 7vw, 96px) 26px clamp(36px, 5vw, 60px);
-				">
-				<h2
-					style="
-						margin: 18px 0 0;
-						font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-						font-size: clamp(2.8rem, 8vw, 5.4rem);
-						font-weight: 800;
-						letter-spacing: -0.04em;
-						line-height: 0.96;
-						text-wrap: balance;
-					">
-					Let's build<br />something real.
-				</h2>
-				<div
-					style="
-						margin-top: 26px;
-						display: flex;
-						align-items: center;
-						gap: 20px;
-						font-family: &quot;JetBrains Mono&quot;, monospace;
-						font-size: 13px;
-						color: var(--mut);
-					">
-					<a
-						href="mailto:jamie@festudios.co.uk"
-						style="transition: color 0.2s"
-						class="fx7"
-						>Email</a
-					>
-					<span
-						style="
-							width: 4px;
-							height: 4px;
-							border-radius: 9px;
-							background: var(--mono);
-						"></span>
-					<a href="#work" style="transition: color 0.2s" class="fx8">Work</a>
+			<section id="contact" class="closing-section">
+				<h2 class="closing-section__title">Let's build<br />something real.</h2>
+				<div class="closing-section__links">
+					<a href="mailto:jamie@festudios.co.uk" class="fx7 text-link">Email</a>
+					<span class="closing-section__separator"></span>
+					<a href="#work" class="fx8 text-link">Work</a>
 				</div>
 			</section>
 
 			<!-- FOOTER -->
-			<footer
-				style="
-					max-width: 1080px;
-					margin: 0 auto;
-					padding: 26px 26px clamp(34px, 4vw, 48px);
-					border-top: 1px solid var(--line);
-					display: flex;
-					flex-wrap: wrap;
-					justify-content: space-between;
-					gap: 12px;
-					font-family: &quot;JetBrains Mono&quot;, monospace;
-					font-size: 12px;
-					color: var(--mono);
-				">
+			<footer class="site-footer">
 				<span>© 2026 FE Studios</span>
 				<span>Designed &amp; built by hand, in the UK</span>
 			</footer>
 
 			<!-- CONTACT MODAL -->
-			<div
-				id="contactModal"
-				style="
-					display: none;
-					position: fixed;
-					inset: 0;
-					z-index: 900;
-					background: rgba(20, 20, 18, 0.5);
-					backdrop-filter: blur(8px);
-					-webkit-backdrop-filter: blur(8px);
-					align-items: center;
-					justify-content: center;
-					padding: 20px;
-					opacity: 0;
-					transition: opacity 0.3s ease;
-				">
-				<div
-					data-modal-card
-					style="
-						position: relative;
-						width: 100%;
-						max-width: 520px;
-						background: var(--paper);
-						border-radius: 20px;
-						padding: clamp(26px, 4vw, 40px);
-						box-shadow: 0 40px 90px -30px rgba(20, 18, 12, 0.5);
-						max-height: 90dvh;
-						overflow-y: auto;
-						transform: translateY(18px) scale(0.98);
-						transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-					">
+			<div id="contactModal" class="contact-modal">
+				<div data-modal-card class="contact-modal__card">
 					<button
-						onclick="closeContact()"
+						data-action="close-contact"
 						aria-label="Close"
-						style="
-							position: absolute;
-							top: 16px;
-							right: 16px;
-							width: 32px;
-							height: 32px;
-							border-radius: 9px;
-							border: 1px solid var(--line);
-							background: #fff;
-							cursor: pointer;
-							display: flex;
-							align-items: center;
-							justify-content: center;
-							color: var(--mut);
-							font-size: 18px;
-							line-height: 1;
-						">
+						class="contact-modal__close">
 						×
 					</button>
 					<div id="contactFormWrap">
-						<span
-							style="
-								display: block;
-								font-family: &quot;JetBrains Mono&quot;, monospace;
-								font-size: 11px;
-								font-weight: 600;
-								letter-spacing: 0.16em;
-								text-transform: uppercase;
-								color: var(--mono);
-								margin-bottom: 12px;
-							"
-							>Start a project</span
-						>
-						<h2
-							style="
-								margin: 0;
-								font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-								font-size: clamp(1.5rem, 3vw, 1.9rem);
-								font-weight: 800;
-								letter-spacing: -0.025em;
-								line-height: 1.1;
-							">
-							Tell me what you're building.
-						</h2>
-						<p
-							style="
-								margin: 10px 0 0;
-								font-size: 15px;
-								line-height: 1.6;
-								color: var(--mut);
-							">
+						<span class="contact-modal__eyebrow">Start a project</span>
+						<h2 class="contact-modal__title">Tell me what you're building.</h2>
+						<p class="contact-modal__description">
 							A few details and I'll get back to you within one working day.
 						</p>
-						<form
-							onsubmit="submitContact(event)"
-							style="margin-top: 22px; display: grid; gap: 13px">
-							<div
-								style="
-									display: grid;
-									gap: 13px;
-									grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-								">
-								<label
-									style="
-										display: grid;
-										gap: 6px;
-										font-size: 13px;
-										font-weight: 600;
-										color: var(--ink);
-									"
+						<form data-contact-form class="contact-form">
+							<div class="contact-form__row">
+								<label class="contact-form__label"
 									>Your name
 									<input
 										type="text"
 										name="name"
 										required
 										placeholder="Jane Smith"
-										style="
-											width: 100%;
-											padding: 11px 13px;
-											border: 1.5px solid var(--line);
-											border-radius: 10px;
-											font-family: inherit;
-											font-size: 15px;
-											color: var(--ink);
-											background: #fff;
-											outline: none;
-											transition: border-color 0.18s;
-										"
-										class="fx9" />
+										class="fx9 contact-form__input" />
 								</label>
-								<label
-									style="
-										display: grid;
-										gap: 6px;
-										font-size: 13px;
-										font-weight: 600;
-										color: var(--ink);
-									"
+								<label class="contact-form__label"
 									>Email
 									<input
 										type="email"
 										name="email"
 										required
 										placeholder="jane@company.co.uk"
-										style="
-											width: 100%;
-											padding: 11px 13px;
-											border: 1.5px solid var(--line);
-											border-radius: 10px;
-											font-family: inherit;
-											font-size: 15px;
-											color: var(--ink);
-											background: #fff;
-											outline: none;
-											transition: border-color 0.18s;
-										"
-										class="fx10" />
+										class="fx10 contact-form__input" />
 								</label>
 							</div>
-							<label
-								style="
-									display: grid;
-									gap: 6px;
-									font-size: 13px;
-									font-weight: 600;
-									color: var(--ink);
-								"
+							<label class="contact-form__message-label"
 								>What are you building?
 								<textarea
 									name="message"
 									required
 									placeholder="Tell me about the project, where you're at, and what you need…"
-									style="
-										width: 100%;
-										padding: 11px 13px;
-										border: 1.5px solid var(--line);
-										border-radius: 10px;
-										font-family: inherit;
-										font-size: 15px;
-										color: var(--ink);
-										background: #fff;
-										outline: none;
-										resize: vertical;
-										min-height: 108px;
-										line-height: 1.6;
-										transition: border-color 0.18s;
-									"
-									class="fx11"></textarea>
+									class="fx11 contact-form__textarea"></textarea>
 							</label>
-							<button
-								type="submit"
-								style="
-									width: 100%;
-									justify-content: center;
-									background: var(--ink);
-									color: var(--paper);
-									border: none;
-									border-radius: 11px;
-									padding: 14px;
-									font-family: inherit;
-									font-size: 15px;
-									font-weight: 600;
-									cursor: pointer;
-									margin-top: 2px;
-									transition: background 0.25s;
-								"
-								class="fx12">
+							<button type="submit" class="fx12 contact-form__submit">
 								Send enquiry
 							</button>
 						</form>
 					</div>
-					<div
-						id="contactSuccess"
-						style="
-							display: none;
-							place-items: center;
-							text-align: center;
-							gap: 10px;
-							padding: 24px 0 8px;
-						">
-						<div
-							style="
-								width: 52px;
-								height: 52px;
-								border-radius: 14px;
-								background: var(--ink);
-								color: var(--paper);
-								font-size: 22px;
-								display: flex;
-								align-items: center;
-								justify-content: center;
-								margin-bottom: 4px;
-							">
-							✓
-						</div>
-						<h3
-							style="
-								margin: 0;
-								font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
-								font-size: 1.4rem;
-								font-weight: 800;
-								letter-spacing: -0.02em;
-							">
-							Enquiry sent.
-						</h3>
-						<p
-							style="
-								margin: 0;
-								font-size: 15px;
-								color: var(--mut);
-								line-height: 1.6;
-								max-width: 26rem;
-							">
+					<div id="contactSuccess" class="contact-success">
+						<div class="contact-success__icon">✓</div>
+						<h3 class="contact-success__title">Enquiry sent.</h3>
+						<p class="contact-success__message">
 							Thanks — I'll be in touch within one working day.
 						</p>
-						<button
-							onclick="closeContact()"
-							style="
-								margin-top: 8px;
-								background: #fff;
-								color: var(--ink);
-								border: 1px solid var(--line);
-								border-radius: 11px;
-								padding: 11px 22px;
-								font-family: inherit;
-								font-size: 14px;
-								font-weight: 600;
-								cursor: pointer;
-							">
+						<button data-action="close-contact" class="contact-success__close">
 							Close
 						</button>
 					</div>

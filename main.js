@@ -25,7 +25,7 @@
     });
   }
 
-  window.openContact = function () {
+  function openContact() {
     var m = document.getElementById('contactModal');
     if (!m) return;
     m.style.display = 'flex';
@@ -35,9 +35,9 @@
       var c = m.querySelector('[data-modal-card]');
       if (c) c.style.transform = 'none';
     });
-  };
+  }
 
-  window.closeContact = function () {
+  function closeContact() {
     var m = document.getElementById('contactModal');
     if (!m) return;
     m.style.opacity = '0';
@@ -45,24 +45,40 @@
     if (c) c.style.transform = 'translateY(18px) scale(0.98)';
     document.body.style.overflow = '';
     setTimeout(function () { m.style.display = 'none'; }, 300);
-  };
+  }
 
-  window.submitContact = function (e) {
+  function submitContact(e) {
     if (e && e.preventDefault) e.preventDefault();
     var f = document.getElementById('contactFormWrap');
     var s = document.getElementById('contactSuccess');
     if (f) f.style.display = 'none';
     if (s) s.style.display = 'grid';
     return false;
-  };
+  }
+
+  function initContactControls() {
+    document.querySelectorAll('[data-action="open-contact"]').forEach(function (button) {
+      button.addEventListener('click', openContact);
+    });
+    document.querySelectorAll('[data-action="close-contact"]').forEach(function (button) {
+      button.addEventListener('click', closeContact);
+    });
+    document.querySelectorAll('[data-contact-form]').forEach(function (form) {
+      form.addEventListener('submit', submitContact);
+    });
+  }
 
   document.addEventListener('click', function (e) {
     var m = document.getElementById('contactModal');
-    if (m && e.target === m) window.closeContact();
+    if (m && e.target === m) closeContact();
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') window.closeContact();
+    if (e.key === 'Escape') closeContact();
   });
 
-  document.addEventListener('DOMContentLoaded', function () { initHeader(); initTiles(); });
+  document.addEventListener('DOMContentLoaded', function () {
+    initHeader();
+    initTiles();
+    initContactControls();
+  });
 })();
