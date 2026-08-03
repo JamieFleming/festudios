@@ -6,17 +6,17 @@
 		<title>FE Studios — Independent Web &amp; App Design Studio, UK</title>
 		<meta
 			name="description"
-			content="Independent UK web & app design studio. Custom websites, apps and product interfaces for founders and small businesses, by Jamie." />
+			content="Independent UK web &amp; app design studio. Custom websites, apps and product interfaces for founders and small businesses, by Jamie." />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;family=Manrope:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap"
 			rel="stylesheet" />
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
 		<div class="site-shell">
-			<!-- TOP META BAR -->
+			<!-- Site header -->
 			<header id="siteHeader" class="site-header">
 				<div class="site-header__content">
 					<a href="#top" class="site-header__brand">
@@ -27,43 +27,18 @@
 							class="site-header__logo" />
 					</a>
 					<div class="site-header__nav">
-						<!-- <a
-							href="#work"
-
-						 class="fx0 site-header__link"
-							>work</a
-						> -->
-						<button data-action="open-contact" class="fx2 site-header__cta">
+						<button
+							type="button"
+							data-action="open-contact"
+							class="site-header__cta">
 							Start a Project
 						</button>
 					</div>
 				</div>
 			</header>
 
-			<!-- HERO -->
+			<!-- Hero -->
 			<section id="top" class="hero">
-				<!-- pixel clouds -->
-				<div aria-hidden="true" class="hero__clouds">
-					<svg viewBox="0 0 34 18" width="120" class="pix hero__cloud--large">
-						<g fill="#cdd9ea">
-							<rect x="10" y="4" width="14" height="6"></rect>
-							<rect x="6" y="8" width="22" height="4"></rect>
-							<rect x="8" y="6" width="6" height="2"></rect>
-							<rect x="18" y="2" width="8" height="2"></rect>
-						</g>
-						<g fill="#bccbe0">
-							<rect x="6" y="12" width="22" height="2"></rect>
-						</g>
-					</svg>
-					<svg viewBox="0 0 34 18" width="84" class="pix hero__cloud--small">
-						<g fill="#d7dfec">
-							<rect x="10" y="4" width="14" height="6"></rect>
-							<rect x="6" y="8" width="22" height="4"></rect>
-							<rect x="18" y="2" width="8" height="2"></rect>
-						</g>
-					</svg>
-				</div>
-
 				<div class="hero__eyebrow">
 					<span class="hero__eyebrow-label">Studio</span>
 					<span class="hero__eyebrow-label--muted">Personal</span>
@@ -90,20 +65,23 @@
 				</p>
 
 				<div class="hero__actions">
-					<button data-action="open-contact" class="fx3 hero__primary-cta">
+					<button
+						type="button"
+						data-action="open-contact"
+						class="hero__primary-cta">
 						Start a project <span aria-hidden="true">→</span>
 					</button>
 					<div class="hero__secondary-links">
-						<a href="mailto:jamie@festudios.co.uk" class="fx4 text-link"
+						<a href="mailto:jamie@festudios.co.uk" class="text-link"
 							>email</a
 						>
 						<span class="link-separator"></span>
-						<a href="#work" class="fx5 text-link">see the work</a>
+						<a href="#work" class="text-link">see the work</a>
 					</div>
 				</div>
 			</section>
 
-			<!-- STACK -->
+			<!-- Toolkit -->
 			<section class="toolkit-section">
 				<span class="section-eyebrow">Toolkit</span>
 				<div class="toolkit-list">
@@ -117,7 +95,7 @@
 				</div>
 			</section>
 
-			<!-- WORK -->
+			<!-- Selected work -->
 			<section id="work" class="work-section">
 				<div class="section-heading-row">
 					<h2 class="section-title">Recent work</h2>
@@ -131,20 +109,18 @@
 							href="https://www.munchsprouts.co.uk"
 							target="_blank"
 							rel="noreferrer"
-							data-tile
 							class="work-card">
-							<div data-card class="work-card__visual--munch-website">
-								<div class="work-card__shadow--green"></div>
-								<div class="work-card__preview--green">
+							<div class="work-card__visual work-card__visual--mint">
+								<div class="work-card__preview work-card__preview--left">
 									<div class="work-card__media">
 										<img
 											src="assets/munchsprouts_dash.jpg"
 											alt="MunchSprouts website"
 											loading="lazy"
 											draggable="false"
-											class="work-card__image--top" />
+											class="work-card__image work-card__image--top" />
 									</div>
-									<p class="work-card__caption--green">munchsprouts.co.uk</p>
+									<p class="work-card__caption">munchsprouts.co.uk</p>
 								</div>
 							</div>
 							<div class="work-card__details">
@@ -161,20 +137,18 @@
 							href="https://apps.apple.com/gb/app/munch-sprouts-baby-tracker/id6763142582"
 							target="_blank"
 							rel="noreferrer"
-							data-tile
 							class="work-card">
-							<div data-card class="work-card__visual--munch-app">
-								<div class="work-card__shadow--purple"></div>
-								<div class="work-card__preview--purple">
-									<div class="work-card__media--light">
+							<div class="work-card__visual work-card__visual--lilac">
+								<div class="work-card__preview work-card__preview--right">
+									<div class="work-card__media">
 										<img
 											src="assets/munchsprouts_app.jpg"
 											alt="MunchSprouts app"
 											loading="lazy"
 											draggable="false"
-											class="work-card__image--center" />
+											class="work-card__image" />
 									</div>
-									<p class="work-card__caption--purple">iOS · Android</p>
+									<p class="work-card__caption">iOS · Android</p>
 								</div>
 							</div>
 							<div class="work-card__details">
@@ -192,20 +166,18 @@
 							href="https://mmanimalrescue.netlify.app"
 							target="_blank"
 							rel="noreferrer"
-							data-tile
 							class="work-card">
-							<div data-card class="work-card__visual--munch-website">
-								<div class="work-card__shadow--green"></div>
-								<div class="work-card__preview--green">
+							<div class="work-card__visual work-card__visual--mint">
+								<div class="work-card__preview work-card__preview--left">
 									<div class="work-card__media">
 										<img
 											src="assets/Screenshot 2026-08-02 at 18.18.04.png"
 											alt="MM Animal Rescue"
 											loading="lazy"
 											draggable="false"
-											class="work-card__image--top" />
+											class="work-card__image work-card__image--top" />
 									</div>
-									<p class="work-card__caption--green">
+									<p class="work-card__caption">
 										Volunteer Website · CMS
 									</p>
 								</div>
@@ -225,20 +197,18 @@
 							href="https://jamiefleming.github.io/ePCR-App/"
 							target="_blank"
 							rel="noreferrer"
-							data-tile
 							class="work-card">
-							<div data-card class="work-card__visual--crewmate">
-								<div class="work-card__shadow--neutral"></div>
-								<div class="work-card__preview--neutral">
-									<div class="work-card__media--crewmate">
+							<div class="work-card__visual work-card__visual--butter">
+								<div class="work-card__preview work-card__preview--right">
+									<div class="work-card__media">
 										<img
 											src="assets/crewmate_dash.jpg"
 											alt="CrewMate clinical app"
 											loading="lazy"
 											draggable="false"
-											class="work-card__image--top" />
+											class="work-card__image work-card__image--top" />
 									</div>
-									<p class="work-card__caption--neutral">clinical · web app</p>
+									<p class="work-card__caption">clinical · web app</p>
 								</div>
 							</div>
 							<div class="work-card__details">
@@ -255,20 +225,18 @@
 							href="https://apps.apple.com/gb/app/sussd/id6774063502"
 							target="_blank"
 							rel="noreferrer"
-							data-tile
 							class="work-card">
-							<div data-card class="work-card__visual--sussd">
-								<div class="work-card__shadow--coral"></div>
-								<div class="work-card__preview--coral">
-									<div class="work-card__media--dark">
+							<div class="work-card__visual work-card__visual--peach">
+								<div class="work-card__preview work-card__preview--left">
+									<div class="work-card__media">
 										<img
 											src="assets/sussd_image.jpg"
 											alt="Suss'd game"
 											loading="lazy"
 											draggable="false"
-											class="work-card__image--center" />
+											class="work-card__image" />
 									</div>
-									<p class="work-card__caption--coral">game UI · iOS</p>
+									<p class="work-card__caption">game UI · iOS</p>
 								</div>
 							</div>
 							<div class="work-card__details">
@@ -285,20 +253,18 @@
 							href="#"
 							target="_blank"
 							rel="noreferrer"
-							data-tile
 							class="work-card">
-							<div data-card class="work-card__visual--crewmate">
-								<div class="work-card__shadow--neutral"></div>
-								<div class="work-card__preview--neutral">
-									<div class="work-card__media--crewmate">
+							<div class="work-card__visual work-card__visual--butter">
+								<div class="work-card__preview work-card__preview--right">
+									<div class="work-card__media">
 										<img
 											src="assets/aestheticsFigma.png"
 											alt="Aesthetics web design on figma"
 											loading="lazy"
 											draggable="false"
-											class="work-card__image--top" />
+											class="work-card__image work-card__image--top" />
 									</div>
-									<p class="work-card__caption--neutral">
+									<p class="work-card__caption">
 										figma design · aesthetics website
 									</p>
 								</div>
@@ -334,7 +300,7 @@
 				</div>
 			</section>
 
-			<!-- WHAT I DO -->
+			<!-- Services -->
 			<section class="services-section">
 				<div class="section-heading-row">
 					<h2 class="section-title">What I Can Do</h2>
@@ -371,7 +337,7 @@
 				</div>
 			</section>
 
-			<!-- PROCESS -->
+			<!-- Process -->
 			<section id="process" class="process-section">
 				<div class="section-heading-row">
 					<h2 class="section-title">How I work</h2>
@@ -438,7 +404,7 @@
 				</div>
 			</section>
 
-			<!-- FAQ -->
+			<!-- Frequently asked questions -->
 			<section id="faq" class="faq-section">
 				<span class="section-eyebrow">Good to know</span>
 				<h2 class="faq-title">A few common questions.</h2>
@@ -479,15 +445,9 @@
 				</div>
 			</section>
 
-			<!-- CTA CARD -->
+			<!-- Project call to action -->
 			<section class="project-cta-section">
 				<div class="project-cta-card">
-					<img
-						src="assets/logo-light.png"
-						alt=""
-						aria-hidden="true"
-						draggable="false"
-						class="project-cta-card__watermark" />
 					<div class="project-cta-card__content">
 						<span class="project-cta-card__eyebrow">Start a project</span>
 						<h2 class="project-cta-card__title">
@@ -499,42 +459,52 @@
 							step.
 						</p>
 						<button
+							type="button"
 							data-action="open-contact"
-							class="fx6 project-cta-card__button">
+							class="project-cta-card__button">
 							Get a project quote <span aria-hidden="true">→</span>
 						</button>
 					</div>
 				</div>
 			</section>
 
-			<!-- CLOSING SIGN-OFF -->
+			<!-- Closing statement -->
 			<section id="contact" class="closing-section">
 				<h2 class="closing-section__title">Let's build<br />something real.</h2>
 				<div class="closing-section__links">
-					<a href="mailto:jamie@festudios.co.uk" class="fx7 text-link">Email</a>
+					<a href="mailto:jamie@festudios.co.uk" class="text-link">Email</a>
 					<span class="closing-section__separator"></span>
-					<a href="#work" class="fx8 text-link">Work</a>
+					<a href="#work" class="text-link">Work</a>
 				</div>
 			</section>
 
-			<!-- FOOTER -->
+			<!-- Footer -->
 			<footer class="site-footer">
 				<span>© 2026 FE Studios</span>
 				<span>Designed &amp; built by hand</span>
 			</footer>
 
-			<!-- CONTACT MODAL -->
-			<div id="contactModal" class="contact-modal">
-				<div data-modal-card class="contact-modal__card">
+			<!-- Contact dialog -->
+			<div
+				id="contactModal"
+				class="contact-modal"
+				role="dialog"
+				aria-modal="true"
+				aria-hidden="true"
+				aria-labelledby="contactModalTitle">
+				<div class="contact-modal__card">
 					<button
+						type="button"
 						data-action="close-contact"
-						aria-label="Close"
+						aria-label="Close contact form"
 						class="contact-modal__close">
 						×
 					</button>
 					<div id="contactFormWrap">
 						<span class="contact-modal__eyebrow">Start a project</span>
-						<h2 class="contact-modal__title">Tell me what you're building.</h2>
+						<h2 id="contactModalTitle" class="contact-modal__title">
+							Tell me what you're building.
+						</h2>
 						<p class="contact-modal__description">
 							A few details and I'll get back to you within one working day.
 						</p>
@@ -551,7 +521,7 @@
 										name="name"
 										required
 										placeholder="Jane Smith"
-										class="fx9 contact-form__input" />
+										class="contact-form__input" />
 								</label>
 								<label class="contact-form__label"
 									>Email
@@ -560,7 +530,7 @@
 										name="email"
 										required
 										placeholder="jane@company.co.uk"
-										class="fx10 contact-form__input" />
+										class="contact-form__input" />
 								</label>
 							</div>
 							<label class="contact-form__message-label"
@@ -569,9 +539,9 @@
 									name="message"
 									required
 									placeholder="Tell me about the project, where you're at, and what you need…"
-									class="fx11 contact-form__textarea"></textarea>
+									class="contact-form__textarea"></textarea>
 							</label>
-							<button type="submit" class="fx12 contact-form__submit">
+							<button type="submit" class="contact-form__submit">
 								Send enquiry
 							</button>
 							<p
@@ -589,7 +559,10 @@
 						<p class="contact-success__message">
 							Thanks — I'll be in touch within seven working days.
 						</p>
-						<button data-action="close-contact" class="contact-success__close">
+						<button
+							type="button"
+							data-action="close-contact"
+							class="contact-success__close">
 							Close
 						</button>
 					</div>

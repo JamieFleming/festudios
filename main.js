@@ -1,138 +1,198 @@
-// FE Studios — Playful — site behaviour (vanilla JS)
-(function () {
-  function initHeader() {
-    var p = document.getElementById('siteHeader');
-    if (!p) return;
-    function onScroll() {
-      if (window.scrollY > 12) {
-        p.style.background = 'rgba(255,255,255,0.96)';
-        p.style.borderBottomColor = 'rgba(17,17,17,0.14)';
-      } else {
-        p.style.background = 'rgba(255,255,255,0.9)';
-        p.style.borderBottomColor = 'transparent';
-      }
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
+/**
+ * FE Studios site interactions.
+ * Presentation is controlled by CSS state classes; JavaScript only manages
+ * behaviour and accessibility state.
+ */
+(() => {
+	"use strict";
 
-  function initTiles() {
-    document.querySelectorAll('[data-tile]').forEach(function (t) {
-      var card = t.querySelector('[data-card]');
-      if (!card) return;
-      t.addEventListener('mouseenter', function () { card.style.transform = 'translateY(-6px)'; });
-      t.addEventListener('mouseleave', function () { card.style.transform = 'none'; });
-    });
-  }
+	const SELECTORS = {
+		header: "#siteHeader",
+		carousel: "[data-work-carousel]",
+		track: "[data-work-track]",
+		previous: "[data-work-previous]",
+		next: "[data-work-next]",
+		modal: "#contactModal",
+		contactForm: "[data-contact-form]",
+		formWrap: "#contactFormWrap",
+		success: "#contactSuccess",
+		error: "#contactError",
+	};
 
-  function initWorkCarousel() {
-    document.querySelectorAll('[data-work-carousel]').forEach(function (carousel) {
-      var track = carousel.querySelector('[data-work-track]');
-      var previous = carousel.querySelector('[data-work-previous]');
-      var next = carousel.querySelector('[data-work-next]');
-      var firstCard = track && track.querySelector('.work-card');
-      if (!track || !previous || !next || !firstCard) return;
+	const CLASS_NAMES = {
+		headerScrolled: "site-header--scrolled",
+		modalOpen: "contact-modal--open",
+		bodyModalOpen: "modal-open",
+		formHidden: "contact-form-wrap--hidden",
+		successVisible: "contact-success--visible",
+	};
 
-      function updateControls() {
-        var maxScroll = track.scrollWidth - track.clientWidth;
-        previous.disabled = track.scrollLeft <= 2;
-        next.disabled = track.scrollLeft >= maxScroll - 2;
-      }
+	let contactModal = null;
+	let previouslyFocusedElement = null;
 
-      function scrollByCard(direction) {
-        var gap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
-        var amount = firstCard.getBoundingClientRect().width + gap;
-        track.scrollBy({ left: amount * direction, behavior: 'smooth' });
-      }
+	function initHeader() {
+		const header = document.querySelector(SELECTORS.header);
+		if (!header) return;
 
-      previous.addEventListener('click', function () { scrollByCard(-1); });
-      next.addEventListener('click', function () { scrollByCard(1); });
-      track.addEventListener('scroll', updateControls, { passive: true });
-      window.addEventListener('resize', updateControls);
-      updateControls();
-    });
-  }
+		const updateHeader = () => {
+			header.classList.toggle(CLASS_NAMES.headerScrolled, window.scrollY > 12);
+		};
 
-  function openContact() {
-    var m = document.getElementById('contactModal');
-    if (!m) return;
-    m.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    requestAnimationFrame(function () {
-      m.style.opacity = '1';
-      var c = m.querySelector('[data-modal-card]');
-      if (c) c.style.transform = 'none';
-    });
-  }
+		window.addEventListener("scroll", updateHeader, { passive: true });
+		updateHeader();
+	}
 
-  function closeContact() {
-    var m = document.getElementById('contactModal');
-    if (!m) return;
-    m.style.opacity = '0';
-    var c = m.querySelector('[data-modal-card]');
-    if (c) c.style.transform = 'translateY(18px) scale(0.98)';
-    document.body.style.overflow = '';
-    setTimeout(function () { m.style.display = 'none'; }, 300);
-  }
+	function initCarousels() {
+		document.querySelectorAll(SELECTORS.carousel).forEach((carousel) => {
+			const track = carousel.querySelector(SELECTORS.track);
+			const previousButton = carousel.querySelector(SELECTORS.previous);
+			const nextButton = carousel.querySelector(SELECTORS.next);
+			const firstCard = track?.querySelector(".work-card");
 
-  async function submitContact(e) {
-    e.preventDefault();
-    var form = e.currentTarget;
-    var f = document.getElementById('contactFormWrap');
-    var s = document.getElementById('contactSuccess');
-    var error = document.getElementById('contactError');
-    var submit = form.querySelector('[type="submit"]');
-    var originalLabel = submit ? submit.textContent : '';
-    if (error) error.hidden = true;
-    if (submit) {
-      submit.disabled = true;
-      submit.textContent = 'Sending…';
-    }
+			if (!track || !previousButton || !nextButton || !firstCard) return;
 
-    try {
-      var response = await fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: { Accept: 'application/json' }
-      });
-      if (!response.ok) throw new Error('Form submission failed');
-      form.reset();
-      if (f) f.style.display = 'none';
-      if (s) s.style.display = 'grid';
-    } catch (err) {
-      if (error) error.hidden = false;
-    } finally {
-      if (submit) {
-        submit.disabled = false;
-        submit.textContent = originalLabel;
-      }
-    }
-  }
+			const updateControls = () => {
+				const maximumScroll = track.scrollWidth - track.clientWidth;
+				previousButton.disabled = track.scrollLeft <= 2;
+				nextButton.disabled = track.scrollLeft >= maximumScroll - 2;
+			};
 
-  function initContactControls() {
-    document.querySelectorAll('[data-action="open-contact"]').forEach(function (button) {
-      button.addEventListener('click', openContact);
-    });
-    document.querySelectorAll('[data-action="close-contact"]').forEach(function (button) {
-      button.addEventListener('click', closeContact);
-    });
-    document.querySelectorAll('[data-contact-form]').forEach(function (form) {
-      form.addEventListener('submit', submitContact);
-    });
-  }
+			const scrollByCard = (direction) => {
+				const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
+				const distance = firstCard.getBoundingClientRect().width + gap;
+				track.scrollBy({ left: distance * direction, behavior: "smooth" });
+			};
 
-  document.addEventListener('click', function (e) {
-    var m = document.getElementById('contactModal');
-    if (m && e.target === m) closeContact();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeContact();
-  });
+			previousButton.addEventListener("click", () => scrollByCard(-1));
+			nextButton.addEventListener("click", () => scrollByCard(1));
+			track.addEventListener("scroll", updateControls, { passive: true });
+			window.addEventListener("resize", updateControls);
+			updateControls();
+		});
+	}
 
-  document.addEventListener('DOMContentLoaded', function () {
-    initHeader();
-    initTiles();
-    initWorkCarousel();
-    initContactControls();
-  });
+	function openContactModal(trigger) {
+		if (!contactModal) return;
+
+		previouslyFocusedElement = trigger ?? document.activeElement;
+		contactModal.classList.add(CLASS_NAMES.modalOpen);
+		contactModal.setAttribute("aria-hidden", "false");
+		document.body.classList.add(CLASS_NAMES.bodyModalOpen);
+
+		requestAnimationFrame(() => {
+			contactModal.querySelector("input")?.focus();
+		});
+	}
+
+	function closeContactModal() {
+		if (!contactModal) return;
+
+		contactModal.classList.remove(CLASS_NAMES.modalOpen);
+		contactModal.setAttribute("aria-hidden", "true");
+		document.body.classList.remove(CLASS_NAMES.bodyModalOpen);
+
+		if (previouslyFocusedElement instanceof HTMLElement) {
+			previouslyFocusedElement.focus();
+		}
+	}
+
+	function keepFocusInsideModal(event) {
+		if (event.key !== "Tab" || !contactModal) return;
+
+		const focusableElements = Array.from(
+			contactModal.querySelectorAll(
+				'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+			),
+		).filter((element) => element.offsetParent !== null);
+
+		if (focusableElements.length === 0) return;
+
+		const firstElement = focusableElements[0];
+		const lastElement = focusableElements.at(-1);
+
+		if (event.shiftKey && document.activeElement === firstElement) {
+			event.preventDefault();
+			lastElement.focus();
+		} else if (!event.shiftKey && document.activeElement === lastElement) {
+			event.preventDefault();
+			firstElement.focus();
+		}
+	}
+
+	async function submitContactForm(event) {
+		event.preventDefault();
+
+		const form = event.currentTarget;
+		const formWrap = document.querySelector(SELECTORS.formWrap);
+		const success = document.querySelector(SELECTORS.success);
+		const error = document.querySelector(SELECTORS.error);
+		const submitButton = form.querySelector('[type="submit"]');
+		const originalLabel = submitButton?.textContent ?? "Send enquiry";
+
+		if (error) error.hidden = true;
+		if (submitButton) {
+			submitButton.disabled = true;
+			submitButton.textContent = "Sending…";
+		}
+
+		try {
+			const response = await fetch(form.action, {
+				method: form.method,
+				body: new FormData(form),
+				headers: { Accept: "application/json" },
+			});
+
+			if (!response.ok) throw new Error(`Form submission failed: ${response.status}`);
+
+			form.reset();
+			formWrap?.classList.add(CLASS_NAMES.formHidden);
+			success?.classList.add(CLASS_NAMES.successVisible);
+			success?.querySelector("button")?.focus();
+		} catch (submissionError) {
+			if (error) error.hidden = false;
+			console.error("Unable to submit the contact form.", submissionError);
+		} finally {
+			if (submitButton) {
+				submitButton.disabled = false;
+				submitButton.textContent = originalLabel;
+			}
+		}
+	}
+
+	function initContactModal() {
+		contactModal = document.querySelector(SELECTORS.modal);
+		if (!contactModal) return;
+
+		document.addEventListener("click", (event) => {
+			const actionElement =
+				event.target instanceof Element
+					? event.target.closest("[data-action]")
+					: null;
+			const action = actionElement?.dataset.action;
+
+			if (action === "open-contact") openContactModal(actionElement);
+			if (action === "close-contact" || event.target === contactModal) {
+				closeContactModal();
+			}
+		});
+
+		document.addEventListener("keydown", (event) => {
+			if (!contactModal.classList.contains(CLASS_NAMES.modalOpen)) return;
+
+			if (event.key === "Escape") closeContactModal();
+			keepFocusInsideModal(event);
+		});
+
+		document
+			.querySelector(SELECTORS.contactForm)
+			?.addEventListener("submit", submitContactForm);
+	}
+
+	function init() {
+		initHeader();
+		initCarousels();
+		initContactModal();
+	}
+
+	document.addEventListener("DOMContentLoaded", init);
 })();
