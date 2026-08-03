@@ -5,10 +5,10 @@
     if (!p) return;
     function onScroll() {
       if (window.scrollY > 12) {
-        p.style.background = 'rgba(255,255,255,0.96)';
-        p.style.borderBottomColor = 'rgba(17,17,17,0.14)';
+        p.style.background = 'rgba(246,244,238,0.92)';
+        p.style.borderBottomColor = 'rgba(26,24,20,0.1)';
       } else {
-        p.style.background = 'rgba(255,255,255,0.9)';
+        p.style.background = 'rgba(246,244,238,0.7)';
         p.style.borderBottomColor = 'transparent';
       }
     }
