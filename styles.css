@@ -879,7 +879,6 @@ a:focus-visible {
 	top: 0;
 	width: clamp(70px, 10vw, 120px);
 	height: 10px;
-	background: var(--peach);
 }
 .project-cta-card__content {
 	position: relative;
