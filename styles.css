@@ -5,6 +5,11 @@
 	--ink: #111111;
 	--muted: #626262;
 	--line: #d9d9d9;
+	--charcoal: #18191c;
+	--charcoal-surface: #202125;
+	--charcoal-ink: #f5f5f3;
+	--charcoal-muted: #aaa9a5;
+	--charcoal-line: #38393d;
 	--mint: #dff3e7;
 	--lilac: #ebe4f7;
 	--peach: #f8e2da;
@@ -66,7 +71,7 @@ a:focus-visible {
 	position: fixed;
 	inset: 0 0 auto;
 	z-index: 60;
-	background: rgba(255, 255, 255, 0.9);
+	background: rgba(255, 255, 255, 0.92);
 	border-bottom: 1px solid transparent;
 	backdrop-filter: blur(12px);
 	transition:
@@ -74,7 +79,7 @@ a:focus-visible {
 		background 0.2s;
 }
 .site-header--scrolled {
-	background: rgba(255, 255, 255, 0.96);
+	background: rgba(255, 255, 255, 0.97);
 	border-bottom-color: rgba(17, 17, 17, 0.14);
 }
 .site-header__content {
@@ -112,13 +117,25 @@ a:focus-visible {
 .site-header__cta {
 	padding: 9px 15px;
 	font-size: 12px;
+	border-color: var(--ink);
+	background: var(--ink);
+	color: #fff;
 }
-.site-header__cta:hover,
 .hero__primary-cta:hover,
 .contact-form__submit:hover {
 	background: #303030;
 	color: #fff;
 	transform: translateY(-1px);
+}
+.site-header__cta:hover {
+	background: #303030;
+	color: #fff;
+	transform: translateY(-1px);
+}
+.hero a:focus-visible,
+.hero button:focus-visible,
+.closing-section a:focus-visible {
+	outline-color: #fff;
 }
 
 /* Shared page layout */
@@ -143,18 +160,19 @@ a:focus-visible {
 	position: relative;
 	padding-top: clamp(150px, 18vw, 220px);
 	padding-bottom: clamp(72px, 10vw, 120px);
-	border-bottom: 1px solid var(--line);
+	background: var(--charcoal);
+	box-shadow: 0 0 0 100vmax var(--charcoal);
+	clip-path: inset(0 -100vmax);
+	color: var(--charcoal-ink);
+	border-bottom: 1px solid var(--charcoal-line);
 }
 .hero::before {
 	content: "";
 	position: absolute;
-	top: 50%;
-	right: clamp(-90px, -4vw, -30px);
-	width: clamp(420px, 62vw, 820px);
-	height: 72%;
-	background: url("assets/lg_logo-light.png") center / contain no-repeat;
-	opacity: 0.045;
-	transform: translateY(-45%);
+	inset: 0 clamp(-170px, -8vw, -70px) 0 auto;
+	width: min(76vw, 920px);
+	background: url("assets/fe-studios-splash.png") center / contain no-repeat;
+	opacity: 0.24;
 	pointer-events: none;
 	user-select: none;
 }
@@ -172,17 +190,17 @@ a:focus-visible {
 	letter-spacing: 0.08em;
 }
 .hero__eyebrow-label {
-	color: var(--ink);
+	color: var(--charcoal-ink);
 }
 .hero__eyebrow-label--muted {
-	color: var(--muted);
+	color: var(--charcoal-muted);
 }
 .hero__availability {
 	margin: 26px 0 0;
 	font:
 		400 12px/1.7 "JetBrains Mono",
 		monospace;
-	color: var(--muted);
+	color: var(--charcoal-muted);
 }
 .hero__title,
 .section-title,
@@ -209,7 +227,7 @@ a:focus-visible {
 .hero__intro {
 	margin: 24px 0 0;
 	max-width: 650px;
-	color: var(--muted);
+	color: var(--charcoal-muted);
 	font-size: 16px;
 	line-height: 1.75;
 }
@@ -219,6 +237,24 @@ a:focus-visible {
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 20px 28px;
+}
+.hero__primary-cta {
+	border-color: #fff;
+	background: #fff;
+	color: var(--charcoal);
+}
+.hero__primary-cta:hover {
+	background: transparent;
+	color: #fff;
+}
+.hero .text-link {
+	color: var(--charcoal-muted);
+}
+.hero .text-link:hover {
+	color: #fff;
+}
+.hero .link-separator {
+	background: var(--charcoal-muted);
 }
 .hero__primary-cta,
 .project-cta-card__button {
@@ -308,7 +344,6 @@ a:focus-visible {
 	font-size: 15px;
 	line-height: 1.75;
 }
-
 /* Selected work */
 .work-section,
 .process-section {
@@ -331,6 +366,36 @@ a:focus-visible {
 		400 12px/1 "JetBrains Mono",
 		monospace;
 	color: var(--muted);
+}
+.work-section {
+	background: var(--charcoal);
+	box-shadow: 0 0 0 100vmax var(--charcoal);
+	clip-path: inset(0 -100vmax);
+	color: var(--charcoal-ink);
+}
+.work-section .section-meta,
+.work-section .work-carousel__hint,
+.work-section .work-card__arrow,
+.work-section .work-card__description {
+	color: var(--charcoal-muted);
+}
+.work-section .work-carousel__button {
+	background: var(--charcoal-surface);
+	border-color: var(--charcoal-line);
+	color: var(--charcoal-ink);
+}
+.work-section .work-carousel__button:hover:not(:disabled) {
+	background: #fff;
+	border-color: #fff;
+	color: var(--charcoal);
+}
+.work-section a:focus-visible,
+.work-section button:focus-visible,
+.services-section a:focus-visible,
+.services-section button:focus-visible,
+.faq-section a:focus-visible,
+.faq-section button:focus-visible {
+	outline-color: #fff;
 }
 .work-carousel {
 	margin-top: 44px;
@@ -551,6 +616,36 @@ a:focus-visible {
 	padding-bottom: 72px;
 	border-top: 1px solid var(--line);
 }
+.services-section,
+.faq-section {
+	background: var(--charcoal);
+	box-shadow: 0 0 0 100vmax var(--charcoal);
+	clip-path: inset(0 -100vmax);
+	color: var(--charcoal-ink);
+	border-top-color: var(--charcoal-line);
+}
+.services-section .section-meta,
+.services-section .section-eyebrow,
+.services-section .services-intro,
+.services-section .services-item__description,
+.services-section .care-plans__intro,
+.services-section .care-plans__note,
+.faq-section .section-eyebrow,
+.faq-section .faq-answer {
+	color: var(--charcoal-muted);
+}
+.services-section .services-list,
+.services-section .care-plans,
+.faq-section .faq-list {
+	border-top-color: var(--charcoal-ink);
+}
+.services-section .services-item,
+.faq-section .faq-item {
+	border-bottom-color: var(--charcoal-line);
+}
+.services-section .services-item__price {
+	color: var(--charcoal-ink);
+}
 .services-list,
 .faq-list {
 	margin-top: 34px;
@@ -628,6 +723,7 @@ a:focus-visible {
 	border: 1px solid var(--line);
 	border-radius: 14px;
 	background: #fff;
+	color: var(--ink);
 }
 .care-plan--featured {
 	background: var(--butter);
@@ -818,6 +914,19 @@ a:focus-visible {
 .closing-section {
 	padding-top: clamp(90px, 12vw, 150px);
 	padding-bottom: clamp(70px, 9vw, 110px);
+	background: var(--charcoal);
+	box-shadow: 0 0 0 100vmax var(--charcoal);
+	clip-path: inset(0 -100vmax);
+	color: var(--charcoal-ink);
+}
+.closing-section .text-link {
+	color: var(--charcoal-muted);
+}
+.closing-section .text-link:hover {
+	color: #fff;
+}
+.closing-section__separator {
+	background: var(--charcoal-muted);
 }
 .closing-section__title {
 	margin: 0;
@@ -830,6 +939,7 @@ a:focus-visible {
 .site-footer {
 	padding-top: 24px;
 	padding-bottom: 36px;
+	background: #fff;
 	border-top: 1px solid var(--line);
 	display: flex;
 	justify-content: space-between;
@@ -850,6 +960,9 @@ a:focus-visible {
 	text-decoration: underline;
 	text-decoration-thickness: 1px;
 	text-underline-offset: 3px;
+}
+.site-footer__links a:hover {
+	color: var(--muted);
 }
 
 /* Privacy notice */
@@ -1126,10 +1239,10 @@ body.modal-open {
 		padding-top: 130px;
 	}
 	.hero::before {
-		right: -160px;
-		width: 520px;
-		height: 60%;
-		opacity: 0.04;
+		inset: 50px -190px auto auto;
+		width: 580px;
+		height: 420px;
+		opacity: 0.18;
 	}
 	.work-carousel .work-card {
 		flex-basis: 88%;
