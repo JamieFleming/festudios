@@ -1,198 +1,107 @@
-/**
- * FE Studios site interactions.
- * Presentation is controlled by CSS state classes; JavaScript only manages
- * behaviour and accessibility state.
- */
-(() => {
-	"use strict";
+const sidebar = document.querySelector('.sidebar');
+const toggle = document.querySelector('.menu-toggle');
+const links = [...document.querySelectorAll('#site-nav a')];
+const sections = [...document.querySelectorAll('main > section[id]')];
 
-	const SELECTORS = {
-		header: "#siteHeader",
-		carousel: "[data-work-carousel]",
-		track: "[data-work-track]",
-		previous: "[data-work-previous]",
-		next: "[data-work-next]",
-		modal: "#contactModal",
-		contactForm: "[data-contact-form]",
-		formWrap: "#contactFormWrap",
-		success: "#contactSuccess",
-		error: "#contactError",
-	};
+toggle.addEventListener('click', () => {
+  const open = sidebar.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', String(open));
+});
 
-	const CLASS_NAMES = {
-		headerScrolled: "site-header--scrolled",
-		modalOpen: "contact-modal--open",
-		bodyModalOpen: "modal-open",
-		formHidden: "contact-form-wrap--hidden",
-		successVisible: "contact-success--visible",
-	};
+links.forEach(link => link.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+}));
 
-	let contactModal = null;
-	let previouslyFocusedElement = null;
+const observer = new IntersectionObserver(entries => {
+  const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+  if (!visible) return;
+  links.forEach(link => link.classList.toggle('active', link.hash === `#${visible.target.id}`));
+}, { rootMargin: '-20% 0px -55%', threshold: [0, .2, .5] });
 
-	function initHeader() {
-		const header = document.querySelector(SELECTORS.header);
-		if (!header) return;
+sections.forEach(section => observer.observe(section));
 
-		const updateHeader = () => {
-			header.classList.toggle(CLASS_NAMES.headerScrolled, window.scrollY > 12);
-		};
+const contactModal = document.querySelector('#contactModal');
+const contactForm = document.querySelector('[data-contact-form]');
+const contactFormWrap = document.querySelector('#contactFormWrap');
+const contactSuccess = document.querySelector('#contactSuccess');
+const contactError = document.querySelector('#contactError');
+let previouslyFocusedElement = null;
 
-		window.addEventListener("scroll", updateHeader, { passive: true });
-		updateHeader();
-	}
+function openContactModal(trigger) {
+  if (!contactModal) return;
+  if (contactSuccess.classList.contains('contact-success--visible')) {
+    contactSuccess.classList.remove('contact-success--visible');
+    contactFormWrap.classList.remove('contact-form-wrap--hidden');
+  }
+  previouslyFocusedElement = trigger || document.activeElement;
+  contactModal.classList.add('contact-modal--open');
+  contactModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+  requestAnimationFrame(() => contactModal.querySelector('input')?.focus());
+}
 
-	function initCarousels() {
-		document.querySelectorAll(SELECTORS.carousel).forEach((carousel) => {
-			const track = carousel.querySelector(SELECTORS.track);
-			const previousButton = carousel.querySelector(SELECTORS.previous);
-			const nextButton = carousel.querySelector(SELECTORS.next);
-			const firstCard = track?.querySelector(".work-card");
+function closeContactModal() {
+  if (!contactModal) return;
+  contactModal.classList.remove('contact-modal--open');
+  contactModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+  if (previouslyFocusedElement instanceof HTMLElement) previouslyFocusedElement.focus();
+}
 
-			if (!track || !previousButton || !nextButton || !firstCard) return;
+function keepFocusInsideModal(event) {
+  if (event.key !== 'Tab' || !contactModal) return;
+  const focusable = [...contactModal.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),textarea:not([disabled])')]
+    .filter(element => element.offsetParent !== null);
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable.at(-1);
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
 
-			const updateControls = () => {
-				const maximumScroll = track.scrollWidth - track.clientWidth;
-				previousButton.disabled = track.scrollLeft <= 2;
-				nextButton.disabled = track.scrollLeft >= maximumScroll - 2;
-			};
+document.addEventListener('click', event => {
+  const actionElement = event.target instanceof Element ? event.target.closest('[data-action]') : null;
+  const action = actionElement?.dataset.action;
+  if (action === 'open-contact') openContactModal(actionElement);
+  if (action === 'close-contact' || event.target === contactModal) closeContactModal();
+});
 
-			const scrollByCard = (direction) => {
-				const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
-				const distance = firstCard.getBoundingClientRect().width + gap;
-				track.scrollBy({ left: distance * direction, behavior: "smooth" });
-			};
+document.addEventListener('keydown', event => {
+  if (!contactModal?.classList.contains('contact-modal--open')) return;
+  if (event.key === 'Escape') closeContactModal();
+  keepFocusInsideModal(event);
+});
 
-			previousButton.addEventListener("click", () => scrollByCard(-1));
-			nextButton.addEventListener("click", () => scrollByCard(1));
-			track.addEventListener("scroll", updateControls, { passive: true });
-			window.addEventListener("resize", updateControls);
-			updateControls();
-		});
-	}
+contactForm?.addEventListener('submit', async event => {
+  event.preventDefault();
+  const submitButton = contactForm.querySelector('[type="submit"]');
+  const originalLabel = submitButton.innerHTML;
+  contactError.hidden = true;
+  submitButton.disabled = true;
+  submitButton.textContent = 'Sending…';
 
-	function openContactModal(trigger) {
-		if (!contactModal) return;
-
-		previouslyFocusedElement = trigger ?? document.activeElement;
-		contactModal.classList.add(CLASS_NAMES.modalOpen);
-		contactModal.setAttribute("aria-hidden", "false");
-		document.body.classList.add(CLASS_NAMES.bodyModalOpen);
-
-		requestAnimationFrame(() => {
-			contactModal.querySelector("input")?.focus();
-		});
-	}
-
-	function closeContactModal() {
-		if (!contactModal) return;
-
-		contactModal.classList.remove(CLASS_NAMES.modalOpen);
-		contactModal.setAttribute("aria-hidden", "true");
-		document.body.classList.remove(CLASS_NAMES.bodyModalOpen);
-
-		if (previouslyFocusedElement instanceof HTMLElement) {
-			previouslyFocusedElement.focus();
-		}
-	}
-
-	function keepFocusInsideModal(event) {
-		if (event.key !== "Tab" || !contactModal) return;
-
-		const focusableElements = Array.from(
-			contactModal.querySelectorAll(
-				'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
-			),
-		).filter((element) => element.offsetParent !== null);
-
-		if (focusableElements.length === 0) return;
-
-		const firstElement = focusableElements[0];
-		const lastElement = focusableElements.at(-1);
-
-		if (event.shiftKey && document.activeElement === firstElement) {
-			event.preventDefault();
-			lastElement.focus();
-		} else if (!event.shiftKey && document.activeElement === lastElement) {
-			event.preventDefault();
-			firstElement.focus();
-		}
-	}
-
-	async function submitContactForm(event) {
-		event.preventDefault();
-
-		const form = event.currentTarget;
-		const formWrap = document.querySelector(SELECTORS.formWrap);
-		const success = document.querySelector(SELECTORS.success);
-		const error = document.querySelector(SELECTORS.error);
-		const submitButton = form.querySelector('[type="submit"]');
-		const originalLabel = submitButton?.textContent ?? "Send enquiry";
-
-		if (error) error.hidden = true;
-		if (submitButton) {
-			submitButton.disabled = true;
-			submitButton.textContent = "Sending…";
-		}
-
-		try {
-			const response = await fetch(form.action, {
-				method: form.method,
-				body: new FormData(form),
-				headers: { Accept: "application/json" },
-			});
-
-			if (!response.ok) throw new Error(`Form submission failed: ${response.status}`);
-
-			form.reset();
-			formWrap?.classList.add(CLASS_NAMES.formHidden);
-			success?.classList.add(CLASS_NAMES.successVisible);
-			success?.querySelector("button")?.focus();
-		} catch (submissionError) {
-			if (error) error.hidden = false;
-			console.error("Unable to submit the contact form.", submissionError);
-		} finally {
-			if (submitButton) {
-				submitButton.disabled = false;
-				submitButton.textContent = originalLabel;
-			}
-		}
-	}
-
-	function initContactModal() {
-		contactModal = document.querySelector(SELECTORS.modal);
-		if (!contactModal) return;
-
-		document.addEventListener("click", (event) => {
-			const actionElement =
-				event.target instanceof Element
-					? event.target.closest("[data-action]")
-					: null;
-			const action = actionElement?.dataset.action;
-
-			if (action === "open-contact") openContactModal(actionElement);
-			if (action === "close-contact" || event.target === contactModal) {
-				closeContactModal();
-			}
-		});
-
-		document.addEventListener("keydown", (event) => {
-			if (!contactModal.classList.contains(CLASS_NAMES.modalOpen)) return;
-
-			if (event.key === "Escape") closeContactModal();
-			keepFocusInsideModal(event);
-		});
-
-		document
-			.querySelector(SELECTORS.contactForm)
-			?.addEventListener("submit", submitContactForm);
-	}
-
-	function init() {
-		initHeader();
-		initCarousels();
-		initContactModal();
-	}
-
-	document.addEventListener("DOMContentLoaded", init);
-})();
+  try {
+    const response = await fetch(contactForm.action, {
+      method: contactForm.method,
+      body: new FormData(contactForm),
+      headers: { Accept: 'application/json' }
+    });
+    if (!response.ok) throw new Error(`Form submission failed: ${response.status}`);
+    contactForm.reset();
+    contactFormWrap.classList.add('contact-form-wrap--hidden');
+    contactSuccess.classList.add('contact-success--visible');
+    contactSuccess.querySelector('button')?.focus();
+  } catch (error) {
+    contactError.hidden = false;
+    console.error('Unable to submit the contact form.', error);
+  } finally {
+    submitButton.disabled = false;
+    submitButton.innerHTML = originalLabel;
+  }
+});
