@@ -33,6 +33,24 @@ body {
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
 }
+
+.legal-skip-link {
+	position: fixed;
+	top: 12px;
+	left: 12px;
+	z-index: 1000;
+	padding: 12px 16px;
+	border-radius: 8px;
+	background: #111111;
+	color: #ffffff;
+	font-weight: 700;
+	text-decoration: none;
+	transform: translateY(-150%);
+}
+
+.legal-skip-link:focus {
+	transform: none;
+}
 img {
 	display: block;
 	max-width: 100%;

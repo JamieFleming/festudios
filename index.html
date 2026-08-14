@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Independent web designer and developer in Blyth, Northumberland. Modern websites, apps and UI/UX for local businesses, UK teams and clients worldwide.">
+  <meta name="description" content="Independent web designer and developer in Blyth, Northumberland, creating modern websites, apps and UI/UX for businesses across the UK and worldwide.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Jamie Fleming, FE Studios">
   <meta name="theme-color" content="#111111">
   <title>Web Designer in Blyth, Northumberland | FE Studios</title>
   <link rel="canonical" href="https://festudios.co.uk/">
   <link rel="icon" href="assets/logo-light.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/logo-light.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_GB">
   <meta property="og:site_name" content="FE Studios">
@@ -18,10 +19,14 @@
   <meta property="og:url" content="https://festudios.co.uk/">
   <meta property="og:image" content="https://festudios.co.uk/assets/lg_logo_transparent.png">
   <meta property="og:image:alt" content="FE Studios logo">
+  <meta property="og:image:width" content="1774">
+  <meta property="og:image:height" content="887">
+  <meta property="og:image:type" content="image/png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Web Designer in Blyth, Northumberland | FE Studios">
   <meta name="twitter:description" content="Modern websites, apps and digital products for local and global clients.">
   <meta name="twitter:image" content="https://festudios.co.uk/assets/lg_logo_transparent.png">
+  <meta name="twitter:image:alt" content="FE Studios — web design and development in Northumberland">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -35,6 +40,16 @@
           "publisher": { "@id": "https://festudios.co.uk/#business" }
         },
         {
+          "@type": "WebPage",
+          "@id": "https://festudios.co.uk/#webpage",
+          "url": "https://festudios.co.uk/",
+          "name": "Web Designer in Blyth, Northumberland | FE Studios",
+          "description": "Independent web designer and developer in Blyth, Northumberland, creating modern websites, apps and UI/UX for businesses across the UK and worldwide.",
+          "isPartOf": { "@id": "https://festudios.co.uk/#website" },
+          "about": { "@id": "https://festudios.co.uk/#business" },
+          "inLanguage": "en-GB"
+        },
+        {
           "@type": "ProfessionalService",
           "@id": "https://festudios.co.uk/#business",
           "name": "FE Studios",
@@ -43,6 +58,8 @@
           "telephone": "+44 7464 504179",
           "logo": "https://festudios.co.uk/assets/logo-light.png",
           "image": "https://festudios.co.uk/assets/lg_logo_transparent.png",
+          "founder": { "@id": "https://festudios.co.uk/#jamie-fleming" },
+          "sameAs": ["https://www.facebook.com/FEStudios"],
           "description": "Independent web design, app development and UI/UX studio based in Blyth, Northumberland, working with clients across the UK and worldwide.",
           "address": {
             "@type": "PostalAddress",
@@ -50,7 +67,54 @@
             "addressRegion": "Northumberland",
             "addressCountry": "GB"
           },
-          "areaServed": ["Blyth", "Northumberland", "United Kingdom", "Worldwide"]
+          "areaServed": ["Blyth", "Northumberland", "United Kingdom", "Worldwide"],
+          "knowsAbout": ["Web design", "Web development", "App development", "UI design", "UX design", "Brand identity"],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Digital design and development services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Web Design and Development",
+                  "description": "Responsive custom websites and redesigns, including strategy, UI, UX and development."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "App and Digital Product Design",
+                  "description": "User journeys, prototypes and polished interfaces for web, iOS and Android products."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Branding and Identity",
+                  "description": "Logo, colour, typography and practical brand guidelines."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Website Care and Support",
+                  "description": "Hosting, maintenance, backups and ongoing website support."
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://festudios.co.uk/#jamie-fleming",
+          "name": "Jamie Fleming",
+          "jobTitle": "Founder and Web Designer",
+          "worksFor": { "@id": "https://festudios.co.uk/#business" },
+          "image": "https://festudios.co.uk/assets/jamieImage.jpg"
         }
       ]
     }
@@ -61,11 +125,17 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="site-skip-link" href="#main-content">Skip to main content</a>
   <header class="sidebar" aria-label="Primary navigation">
     <a class="brand" href="#home" aria-label="FE Studios home">
-      <img src="assets/lg_logo_transparent.png" alt="FE Studios">
+      <img src="assets/lg_logo_transparent.png" alt="FE Studios" width="1774" height="887">
     </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Menu</span></button>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span class="sr-only">Menu</span>
+    </button>
     <nav id="site-nav">
       <a class="active" href="#home">Home</a>
       <a href="#about">About</a>
@@ -77,7 +147,7 @@
     <button class="button button-outline sidebar-cta" type="button" data-action="open-contact">Start a Project</button>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="panel hero dark" id="home">
       <div class="hero-copy">
         <p class="eyebrow">Web designer · Blyth, Northumberland<br>Available across the UK and worldwide</p>
@@ -88,10 +158,14 @@
         <p class="hero-intro">I’m Jamie, an independent web designer and developer based in Blyth, Northumberland. I create modern websites, apps and digital products for businesses across North East England, UK founders and clients worldwide. From the first conversation and initial design through to launch, you work directly with me—no unnecessary agency layers, just thoughtful work and clear communication.</p>
         <div class="actions">
           <button class="button button-light" type="button" data-action="open-contact">Start a Project <span aria-hidden="true">→</span></button>
-          <span class="hero-links"><a class="text-link" href="#work">View my work</a><span aria-hidden="true">·</span><a class="text-link" href="#contact">Enquiries</a></span>
+          <span class="hero-links">
+            <a class="text-link" href="#work">View my work</a>
+            <span aria-hidden="true">·</span>
+            <a class="text-link" href="#contact">Enquiries</a>
+          </span>
         </div>
       </div>
-      <img class="hero-mark" src="assets/lg_logo_transparent.png" alt="" aria-hidden="true">
+      <img class="hero-mark" src="assets/lg_logo_transparent.png" alt="" width="1774" height="887" aria-hidden="true">
     </section>
 
     <section class="panel about" id="about">
@@ -105,42 +179,132 @@
           <div>
             <h3>Jamie Fleming</h3>
             <p class="profile-role">Founder of FE Studios</p>
-            <img src="assets/jamieImage.png" alt="Jamie Fleming, founder of FE Studios">
+            <img src="assets/jamieImage.jpg" alt="Jamie Fleming, founder of FE Studios" width="1023" height="1537" loading="lazy" decoding="async">
           </div>
           <p>I’m Jamie, the founder of FE Studios, where I design and build modern, user-focused websites and digital experiences. I combine thoughtful design with practical functionality to help businesses create a strong, professional presence online. From the first idea to the finished product, I work closely with every client to deliver something distinctive, effective, and built around their goals.</p>
         </div>
       </div>
       <aside class="toolkit">
         <p class="eyebrow">Toolkit</p>
-        <ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Figma</li><li>React</li><li>UI/UX</li><li>Brand &amp; Identity</li></ul>
+        <ul>
+          <li>Figma</li>
+          <li>Web Design</li>
+          <li>HTML &amp; CSS</li>
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>App Development</li>
+          <li>UI / UX</li>
+          <li>CMS</li>
+          <li>Technical SEO</li>
+          <li>Brand Identity</li>
+        </ul>
       </aside>
     </section>
 
     <section class="panel dark work" id="work">
-      <h2>Recent Work</h2>
+      <div class="work-title-row">
+        <h2>Recent Work</h2>
+        <a class="button work-page-link" href="work.html">View all work <span aria-hidden="true">→</span></a>
+      </div>
       <p class="eyebrow">Check out my latest work</p>
       <div class="work-grid">
-        <article class="project mint"><div class="project-image"><img src="assets/munchsprouts_dash.jpg" alt="MunchSprouts website"><span>Bespoke web design · Hosted live</span></div><h3>MunchSprouts Website</h3><p>A warm, parent-friendly launch site for a baby weaning app.</p></article>
-        <article class="project lilac"><div class="project-image"><img src="assets/munchsprouts_app.jpg" alt="MunchSprouts app"><span>iOS · Android</span></div><h3>MunchSprouts App</h3><p>A gentle tracker for foods, feeds &amp; growth. Live on both app stores.</p></article>
-        <article class="project butter"><div class="project-image"><img src="assets/crewmate_dash.jpg" alt="CrewMate app"><span>iOS · Android</span></div><h3>CrewMate</h3><p>A calm, fast assistant that ambulance crews rely on mid-shift.</p></article>
-        <article class="project peach"><div class="project-image"><img src="assets/sussd_image.jpg" alt="Suss'd game"><span>iOS · Android</span></div><h3>Suss’d</h3><p>A quick, inclusive family game that gets everyone talking and laughing.</p></article>
-        <div class="more-work" aria-label="More work coming soon">More work<br>coming soon</div>
+        <article class="project lilac">
+          <div class="project-image">
+            <img src="assets/munchsprouts_app.jpg" alt="MunchSprouts baby weaning app designed by FE Studios" width="416" height="900" loading="lazy" decoding="async">
+            <span>iOS · Android</span>
+          </div>
+          <h3><a href="work.html#munchsprouts-app">MunchSprouts App</a></h3>
+          <p>A gentle tracker for foods, feeds &amp; growth. Live on both app stores.</p>
+        </article>
+        <article class="project butter">
+          <div class="project-image">
+            <img src="assets/crewmate_dash.jpg" alt="CrewMate ambulance crew app designed by FE Studios" width="637" height="900" loading="lazy" decoding="async">
+            <span>Clinical tool · Web app</span>
+          </div>
+          <h3><a href="work.html#crewmate">CrewMate</a></h3>
+          <p>A calm, fast assistant that ambulance crews rely on mid-shift.</p>
+        </article>
+        <article class="project peach">
+          <div class="project-image">
+            <img src="assets/sussd_image.jpg" alt="Suss’d family game app designed by FE Studios" width="416" height="900" loading="lazy" decoding="async">
+            <span>Game UI · iOS</span>
+          </div>
+          <h3><a href="work.html#sussd">Suss’d</a></h3>
+          <p>A quick, inclusive family game that gets everyone talking and laughing.</p>
+        </article>
+        <a class="more-work" href="work.html">Explore all work <span aria-hidden="true">→</span></a>
       </div>
       <p class="eyebrow testimonials-heading">And what people have said</p>
       <div class="testimonials">
-        <blockquote class="mint">“FE Studios brought the MunchSprouts website and app to life in a way that feels completely right for the business.”<footer><strong>Chloe</strong><br>Founder, MunchSprouts</footer></blockquote>
-        <blockquote class="butter">“CrewMate has been a real help on shift. It makes paperwork more straightforward and helps reduce downtime.”<footer><strong>Anonymous Paramedic</strong><br>CrewMate User</footer></blockquote>
-        <blockquote class="peach">“Suss’d is a game I really enjoy playing with my family. It’s easy to understand, quick to get into and suitable for kids too.”<footer><strong>Finley</strong><br>Suss’d Player</footer></blockquote>
+        <blockquote class="lilac">
+          “FE Studios brought the MunchSprouts website and app to life in a way that feels completely right for the business.”
+          <footer><strong>Chloe</strong><br>Founder, MunchSprouts</footer>
+        </blockquote>
+        <blockquote class="butter">
+          “CrewMate has been a real help on shift. It makes paperwork more straightforward and helps reduce downtime.”
+          <footer><strong>Anonymous Paramedic</strong><br>CrewMate User</footer>
+        </blockquote>
+        <blockquote class="peach">
+          “Suss’d is a game I really enjoy playing with my family. It’s easy to understand, quick to get into and suitable for kids too.”
+          <footer><strong>Finley</strong><br>Suss’d Player</footer>
+        </blockquote>
       </div>
     </section>
 
     <section class="panel services" id="services">
-      <div class="services-intro"><p class="eyebrow">What I can help with</p><h2>Services</h2><p class="eyebrow">Thoughtful design, development and guidance, from the first idea through to launch and beyond</p></div>
+      <div class="services-intro">
+        <p class="eyebrow">What I can help with</p>
+        <div class="services-title-row">
+          <h2>Services</h2>
+          <a class="button services-page-link" href="services.html">View all services <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="eyebrow">Thoughtful design, development and guidance, from the first idea through to launch and beyond</p>
+      </div>
       <div class="service-grid">
-        <article><h3>Web Design &amp;<br>Development</h3><p><strong>Websites that look credible and work hard for your business.</strong><br>Custom websites and redesigns built around your audience, content and goals. Providing clear strategy, thoughtful UI and UX, and responsive design.</p><ul><li>Responsive</li><li>UI/UX</li><li>Development</li><li>Strategy</li></ul><span class="service-label">Website Services</span></article>
-        <article><h3>Apps &amp; Digital<br>Products</h3><p><strong>Turn an idea into a product people can actually use.</strong><br>User journeys, prototypes and polished interfaces for web and mobile products. Custom apps to match your business, website and ideas.</p><ul><li>User Flow</li><li>UI/UX</li><li>iOS</li><li>Android</li></ul><span class="service-label">App Services</span></article>
-        <article><h3>Branding &amp;<br>Identity</h3><p><strong>A visual identity your business can grow with.</strong><br>Logo, colour, typography and practical guidelines that create a consistent, recognisable presence.</p><ul><li>Branding</li><li>Logo</li><li>Colour</li><li>Typography</li></ul><span class="service-label">Branding Services</span></article>
-        <article><h3>Website Care, Support &amp;<br>Services</h3><p><strong>Support that continues after launch.</strong><br>Optional hosting, maintenance and content support to keep your website secure, current and performing properly.</p><ul><li>Hosting</li><li>Backups</li><li>Maintenance</li><li>Advice</li></ul><span class="service-label">Care Plans</span></article>
+        <article>
+          <h3>Web Design &amp;<br>Development</h3>
+          <p><strong>Websites that look credible and work hard for your business.</strong><br>Custom websites and redesigns built around your audience, content and goals. Providing clear strategy, thoughtful UI and UX, and responsive design.</p>
+          <ul>
+            <li>Responsive</li>
+            <li>UI/UX</li>
+            <li>Development</li>
+            <li>Strategy</li>
+          </ul>
+          <a class="service-label" href="services.html#websites">Explore Web Design <span aria-hidden="true">→</span></a>
+        </article>
+        <article>
+          <h3>Apps &amp; Digital<br>Products</h3>
+          <p><strong>Turn an idea into a product people can actually use.</strong><br>User journeys, prototypes and polished interfaces for web and mobile products. Custom apps to match your business, website and ideas.</p>
+          <ul>
+            <li>User Flow</li>
+            <li>UI/UX</li>
+            <li>iOS</li>
+            <li>Android</li>
+          </ul>
+          <a class="service-label" href="services.html#products">Explore Apps <span aria-hidden="true">→</span></a>
+        </article>
+        <article>
+          <h3>Branding &amp;<br>Identity</h3>
+          <p><strong>A visual identity your business can grow with.</strong><br>Logo, colour, typography and practical guidelines that create a consistent, recognisable presence.</p>
+          <ul>
+            <li>Branding</li>
+            <li>Logo</li>
+            <li>Colour</li>
+            <li>Typography</li>
+          </ul>
+          <a class="service-label" href="services.html#branding">Explore Branding <span aria-hidden="true">→</span></a>
+        </article>
+        <article>
+          <h3>Website Care, Support &amp;<br>Services</h3>
+          <p><strong>Support that continues after launch.</strong><br>Optional hosting, maintenance and content support to keep your website secure, current and performing properly.</p>
+          <ul>
+            <li>Hosting</li>
+            <li>Backups</li>
+            <li>Maintenance</li>
+            <li>Advice</li>
+          </ul>
+          <a class="service-label" href="services.html#care">Explore Care Plans <span aria-hidden="true">→</span></a>
+        </article>
       </div>
     </section>
 
@@ -152,10 +316,14 @@
       <div class="contact-card">
         <p class="eyebrow">Start a project</p>
         <h3>Ready for something you’re proud to show off?</h3>
-        <p>Send over your idea, current website, or just a rough brief. I’ll respond within seven working days with practical next steps.</p>
+        <p>Send over your idea, current website, or just a rough brief. I’ll respond within three working days with practical next steps.</p>
         <button class="button button-outline" type="button" data-action="open-contact">Get a project quote <span aria-hidden="true">→</span></button>
       </div>
-      <address><a href="mailto:jamie@festudios.co.uk"><span>Email</span> jamie@festudios.co.uk</a><a href="https://www.facebook.com/FEStudios" target="_blank" rel="noreferrer"><span>Social</span> FE Studios</a><a href="tel:+447464504179"><span>Phone</span> 07464 504 179</a></address>
+      <address>
+        <a href="mailto:jamie@festudios.co.uk"><span>Email</span> jamie@festudios.co.uk</a>
+        <a href="https://www.facebook.com/FEStudios" target="_blank" rel="noreferrer"><span>Social</span> FE Studios</a>
+        <a href="tel:+447464504179"><span>Phone</span> 07464 504 179</a>
+      </address>
     </section>
   </main>
 
@@ -163,33 +331,108 @@
     <span>© 2026 FE Studios</span>
     <div class="site-footer__links">
       <span>Web design in Blyth, Northumberland · Working worldwide</span>
+      <a href="work.html">Work</a>
+      <a href="services.html">Services</a>
       <a href="terms.html">Client terms</a>
       <a href="privacy.html">Privacy notice</a>
     </div>
   </footer>
 
-  <div id="contactModal" class="contact-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="contactModalTitle">
+  <div id="contactModal" class="contact-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="contactModalTitle" aria-describedby="contactModalDescription">
     <div class="contact-modal__card">
       <button type="button" data-action="close-contact" aria-label="Close contact form" class="contact-modal__close">×</button>
       <div id="contactFormWrap">
         <p class="eyebrow">Start a project</p>
         <h2 id="contactModalTitle" class="contact-modal__title">Tell me what you’re building.</h2>
-        <p class="contact-modal__description">A few details and I’ll get back to you within seven working days.</p>
+        <p id="contactModalDescription" class="contact-modal__description">A few details and I’ll get back to you within three working days.</p>
         <form action="https://formspree.io/f/xaqgnbpe" method="POST" data-contact-form class="contact-form">
+          <input type="hidden" name="_subject" value="New FE Studios website enquiry">
+          <input type="hidden" name="page" value="Homepage">
+          <label hidden>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
           <div class="contact-form__row">
-            <label>Your name<input type="text" name="name" required autocomplete="name" placeholder="Jane Smith"></label>
-            <label>Email<input type="email" name="email" required autocomplete="email" placeholder="jane@company.co.uk"></label>
+            <label>
+              Name
+              <input type="text" name="name" required autocomplete="name" placeholder="Jane Smith">
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" required autocomplete="email" placeholder="jane@company.co.uk">
+            </label>
           </div>
-          <label>What are you building?<textarea name="message" required placeholder="Tell me about the project, where you’re at, and what you need…"></textarea></label>
+          <div class="contact-form__row">
+            <label>
+              Company <span class="contact-form__optional">Optional</span>
+              <input type="text" name="company" autocomplete="organization" placeholder="Company name">
+            </label>
+            <label>
+              Service required
+              <select name="service" required>
+                <option value="" selected disabled>Select a service</option>
+                <option>Web design and development</option>
+                <option>Website redesign</option>
+                <option>App or digital product</option>
+                <option>UI/UX or design system</option>
+                <option>Branding and identity</option>
+                <option>Website care and support</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            Project description
+            <textarea name="project_description" required placeholder="Tell me what you need, what it should achieve and where you are in the process…"></textarea>
+          </label>
+          <div class="contact-form__row">
+            <label>
+              Budget range
+              <select name="budget" required>
+                <option value="" selected disabled>Select a range</option>
+                <option>Under £500</option>
+                <option>£500–£1,000</option>
+                <option>£1,000–£2,500</option>
+                <option>£2,500–£5,000</option>
+                <option>£5,000+</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+            <label>
+              Desired timeline
+              <select name="timeline" required>
+                <option value="" selected disabled>Select a timeline</option>
+                <option>As soon as possible</option>
+                <option>Within one month</option>
+                <option>Within 1–3 months</option>
+                <option>Within 3–6 months</option>
+                <option>Flexible / no fixed date</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            How did you find FE Studios?
+            <select name="referral_source" required>
+              <option value="" selected disabled>Select an option</option>
+              <option>Google or another search engine</option>
+              <option>Recommendation or referral</option>
+              <option>Social media</option>
+              <option>Local business or community</option>
+              <option>Previous client</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>
+            Further information <span class="contact-form__optional">Optional</span>
+            <textarea class="contact-form__textarea--compact" name="further_information" placeholder="Anything else that would be useful to know?"></textarea>
+          </label>
           <button type="submit" class="contact-form__submit">Send enquiry <span aria-hidden="true">→</span></button>
+          <p class="contact-form__direct">Prefer email? Write directly to <a href="mailto:jamie@festudios.co.uk">jamie@festudios.co.uk</a></p>
           <p class="contact-form__privacy">Your details will only be used to respond to your enquiry. Read the <a href="privacy.html" target="_blank" rel="noopener noreferrer">privacy notice</a>.</p>
           <p id="contactError" class="contact-form__error" hidden aria-live="polite">Something went wrong. Please try again or email me directly.</p>
         </form>
       </div>
-      <div id="contactSuccess" class="contact-success">
+      <div id="contactSuccess" class="contact-success" role="status" aria-live="polite">
         <div class="contact-success__icon">✓</div>
         <h3>Enquiry sent.</h3>
-        <p>Thanks — I’ll be in touch within seven working days.</p>
+        <p>Thanks — I’ll be in touch within three working days.</p>
         <button type="button" data-action="close-contact">Close</button>
       </div>
     </div>
