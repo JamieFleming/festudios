@@ -1,257 +1,549 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="See how FE Studios designed, developed and launched MunchSprouts: a React Native baby-led weaning, feeding, recipe and allergen tracking app for parents.">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="author" content="Jamie Fleming, FE Studios">
-  <meta name="theme-color" content="#111111">
-  <title>MunchSprouts App Case Study | FE Studios</title>
-  <link rel="canonical" href="https://festudios.co.uk/munchsprouts-case-study.html">
-  <link rel="icon" href="assets/logo-light.png" type="image/png">
-  <link rel="apple-touch-icon" href="assets/logo-light.png">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			name="description"
+			content="See how FE Studios designed, developed and launched MunchSprouts: a React Native baby-led weaning, feeding, recipe and allergen tracking app for parents." />
+		<meta name="robots" content="index, follow, max-image-preview:large" />
+		<meta name="author" content="Jamie Fleming, FE Studios" />
+		<meta name="theme-color" content="#111111" />
+		<title>MunchSprouts App Case Study | FE Studios</title>
+		<link
+			rel="canonical"
+			href="https://festudios.co.uk/munchsprouts-case-study.html" />
+		<link rel="icon" href="assets/logo-light.png" type="image/png" />
+		<link rel="apple-touch-icon" href="assets/logo-light.png" />
 
-  <meta property="og:type" content="article">
-  <meta property="og:locale" content="en_GB">
-  <meta property="og:site_name" content="FE Studios">
-  <meta property="og:title" content="MunchSprouts App Case Study | FE Studios">
-  <meta property="og:description" content="From a vulnerable paper weaning diary to a native iOS and Android product for feeding, recipes, allergens and weaning insights.">
-  <meta property="og:url" content="https://festudios.co.uk/munchsprouts-case-study.html">
-  <meta property="og:image" content="https://festudios.co.uk/assets/munchsprouts-feature-overview.jpg">
-  <meta property="og:image:alt" content="MunchSprouts app designed and developed by FE Studios">
-  <meta property="og:image:width" content="1600">
-  <meta property="og:image:height" content="781">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="MunchSprouts App Case Study | FE Studios">
-  <meta name="twitter:description" content="How FE Studios took a parent-led idea from early web app to native iOS and Android release.">
-  <meta name="twitter:image" content="https://festudios.co.uk/assets/munchsprouts-feature-overview.jpg">
+		<meta property="og:type" content="article" />
+		<meta property="og:locale" content="en_GB" />
+		<meta property="og:site_name" content="FE Studios" />
+		<meta
+			property="og:title"
+			content="MunchSprouts App Case Study | FE Studios" />
+		<meta
+			property="og:description"
+			content="From a vulnerable paper weaning diary to a native iOS and Android product for feeding, recipes, allergens and weaning insights." />
+		<meta
+			property="og:url"
+			content="https://festudios.co.uk/munchsprouts-case-study.html" />
+		<meta
+			property="og:image"
+			content="https://festudios.co.uk/assets/munchsprouts-feature-overview.jpg" />
+		<meta
+			property="og:image:alt"
+			content="MunchSprouts app designed and developed by FE Studios" />
+		<meta property="og:image:width" content="1600" />
+		<meta property="og:image:height" content="781" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta
+			name="twitter:title"
+			content="MunchSprouts App Case Study | FE Studios" />
+		<meta
+			name="twitter:description"
+			content="How FE Studios took a parent-led idea from early web app to native iOS and Android release." />
+		<meta
+			name="twitter:image"
+			content="https://festudios.co.uk/assets/munchsprouts-feature-overview.jpg" />
 
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebPage",
-          "@id": "https://festudios.co.uk/munchsprouts-case-study.html#webpage",
-          "url": "https://festudios.co.uk/munchsprouts-case-study.html",
-          "name": "MunchSprouts App Case Study | FE Studios",
-          "description": "A case study covering the design, development and launch of the MunchSprouts baby-led weaning and feeding tracker.",
-          "isPartOf": { "@id": "https://festudios.co.uk/#website" },
-          "about": { "@id": "https://festudios.co.uk/munchsprouts-case-study.html#app" },
-          "inLanguage": "en-GB"
-        },
-        {
-          "@type": "SoftwareApplication",
-          "@id": "https://festudios.co.uk/munchsprouts-case-study.html#app",
-          "name": "MunchSprouts",
-          "applicationCategory": "LifestyleApplication",
-          "operatingSystem": "iOS, Android",
-          "description": "A parent-friendly app for recording feeds and foods, tracking allergens, finding recipes, planning meals, exporting reports and understanding a child's weaning journey.",
-          "url": "https://www.munchsprouts.co.uk",
-          "author": { "@id": "https://festudios.co.uk/#business" }
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://festudios.co.uk/" },
-            { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://festudios.co.uk/work.html" },
-            { "@type": "ListItem", "position": 3, "name": "MunchSprouts case study", "item": "https://festudios.co.uk/munchsprouts-case-study.html" }
-          ]
-        }
-      ]
-    }
-  </script>
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@graph": [
+					{
+						"@type": "WebPage",
+						"@id": "https://festudios.co.uk/munchsprouts-case-study.html#webpage",
+						"url": "https://festudios.co.uk/munchsprouts-case-study.html",
+						"name": "MunchSprouts App Case Study | FE Studios",
+						"description": "A case study covering the design, development and launch of the MunchSprouts baby-led weaning and feeding tracker.",
+						"isPartOf": { "@id": "https://festudios.co.uk/#website" },
+						"about": {
+							"@id": "https://festudios.co.uk/munchsprouts-case-study.html#app"
+						},
+						"inLanguage": "en-GB"
+					},
+					{
+						"@type": "SoftwareApplication",
+						"@id": "https://festudios.co.uk/munchsprouts-case-study.html#app",
+						"name": "MunchSprouts",
+						"applicationCategory": "LifestyleApplication",
+						"operatingSystem": "iOS, Android",
+						"description": "A parent-friendly app for recording feeds and foods, tracking allergens, finding recipes, planning meals, exporting reports and understanding a child's weaning journey.",
+						"url": "https://www.munchsprouts.co.uk",
+						"author": { "@id": "https://festudios.co.uk/#business" }
+					},
+					{
+						"@type": "BreadcrumbList",
+						"itemListElement": [
+							{
+								"@type": "ListItem",
+								"position": 1,
+								"name": "Home",
+								"item": "https://festudios.co.uk/"
+							},
+							{
+								"@type": "ListItem",
+								"position": 2,
+								"name": "Work",
+								"item": "https://festudios.co.uk/work.html"
+							},
+							{
+								"@type": "ListItem",
+								"position": 3,
+								"name": "MunchSprouts case study",
+								"item": "https://festudios.co.uk/munchsprouts-case-study.html"
+							}
+						]
+					}
+				]
+			}
+		</script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=JetBrains+Mono:wght@400;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="case-study.css">
-</head>
-<body class="case-page">
-  <a class="site-skip-link" href="#main-content">Skip to case study</a>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=JetBrains+Mono:wght@400;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+			rel="stylesheet" />
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="stylesheet" href="case-study.css" />
+	</head>
+	<body class="case-page">
+		<a class="site-skip-link" href="#main-content">Skip to case study</a>
 
-  <header class="case-header">
-    <a class="case-header__brand" href="index.html" aria-label="FE Studios homepage">
-      <img src="assets/lg_logo_transparent.png" alt="FE Studios" width="1774" height="887">
-    </a>
-    <nav aria-label="Case study navigation">
-      <a href="work.html"><span aria-hidden="true">←</span> All work</a>
-      <a class="button button-outline" href="index.html#contact">Start a project</a>
-    </nav>
-  </header>
+		<header class="case-header">
+			<a
+				class="case-header__brand"
+				href="index.html"
+				aria-label="FE Studios homepage">
+				<img
+					src="assets/lg_logo_transparent.png"
+					alt="FE Studios"
+					width="1774"
+					height="887" />
+			</a>
+			<nav aria-label="Case study navigation">
+				<a href="work.html"><span aria-hidden="true">←</span> All work</a>
+				<a class="button button-outline" href="index.html#contact"
+					>Start a project</a
+				>
+			</nav>
+		</header>
 
-  <main id="main-content">
-    <section class="case-hero dark">
-      <div class="case-hero__copy">
-        <p class="eyebrow">MunchSprouts · Product strategy · Native app · Brand</p>
-        <h1>Turning everyday<br>weaning into one<br>calmer journey.</h1>
-        <p>FE Studios took MunchSprouts from a parent’s experience with a paper weaning diary to a complete iOS and Android product—bringing feeds, first foods, allergens, recipes and useful insights together in one approachable place.</p>
-        <div class="actions">
-          <a class="button button-light" href="https://www.munchsprouts.co.uk" target="_blank" rel="noopener noreferrer">Visit MunchSprouts <span aria-hidden="true">↗</span></a>
-          <a class="button button-outline case-hero__secondary" href="https://apps.apple.com/gb/app/munch-sprouts-baby-tracker/id6763142582" target="_blank" rel="noopener noreferrer">View on App Store <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-      <div class="case-hero__visual">
-        <img src="assets/munchsprouts-dashboard.jpg" alt="MunchSprouts dashboard showing food, feeding and allergen progress" width="900" height="1948" decoding="async">
-      </div>
-    </section>
+		<main id="main-content">
+			<section class="case-hero dark">
+				<div class="case-hero__copy">
+					<p class="eyebrow">
+						MunchSprouts · Product strategy · Native app · Brand
+					</p>
+					<h1>Turning everyday<br />weaning into one<br />calmer journey.</h1>
+					<p>
+						FE Studios took MunchSprouts from a parent’s experience with a paper
+						weaning diary to a complete iOS and Android product—bringing feeds,
+						first foods, allergens, recipes and useful insights together in one
+						approachable place.
+					</p>
+					<div class="actions">
+						<a
+							class="button button-light"
+							href="https://www.munchsprouts.co.uk"
+							target="_blank"
+							rel="noopener noreferrer"
+							>Visit MunchSprouts <span aria-hidden="true">↗</span></a
+						>
+						<a
+							class="button button-outline case-hero__secondary"
+							href="https://apps.apple.com/gb/app/munch-sprouts-baby-tracker/id6763142582"
+							target="_blank"
+							rel="noopener noreferrer"
+							>View on App Store <span aria-hidden="true">↗</span></a
+						>
+					</div>
+				</div>
+				<div class="case-hero__visual">
+					<img
+						src="assets/munchsprouts-dashboard.jpg"
+						alt="MunchSprouts dashboard showing food, feeding and allergen progress"
+						width="900"
+						height="1948"
+						decoding="async" />
+				</div>
+			</section>
 
-    <section class="case-summary">
-      <h2 class="sr-only">Project overview</h2>
-      <p class="eyebrow">Project overview</p>
-      <dl>
-        <div><dt>Client</dt><dd>Chloe, founder of MunchSprouts</dd></div>
-        <div><dt>Audience</dt><dd>Parents of babies and young children beginning solid foods</dd></div>
-        <div><dt>Delivery</dt><dd>Approximately four weeks to initial release</dd></div>
-        <div><dt>Platforms</dt><dd>Native iOS and Android</dd></div>
-        <div><dt>Role</dt><dd>Strategy, brand, UX/UI, development and launch</dd></div>
-        <div><dt>Ongoing</dt><dd>Testing, maintenance, promotion and product improvements</dd></div>
-      </dl>
-    </section>
+			<section class="case-summary">
+				<h2 class="sr-only">Project overview</h2>
+				<p class="eyebrow">Project overview</p>
+				<dl>
+					<div>
+						<dt>Client</dt>
+						<dd>Chloe, founder of MunchSprouts</dd>
+					</div>
+					<div>
+						<dt>Audience</dt>
+						<dd>Parents of babies and young children beginning solid foods</dd>
+					</div>
+					<div>
+						<dt>Delivery</dt>
+						<dd>Approximately four weeks to initial release</dd>
+					</div>
+					<div>
+						<dt>Platforms</dt>
+						<dd>Native iOS and Android</dd>
+					</div>
+					<div>
+						<dt>Role</dt>
+						<dd>Strategy, brand, UX/UI, development and launch</dd>
+					</div>
+					<div>
+						<dt>Ongoing</dt>
+						<dd>Testing, maintenance, promotion and product improvements</dd>
+					</div>
+				</dl>
+			</section>
 
-    <section class="case-story" id="challenge">
-      <div class="case-story__heading">
-        <p class="eyebrow">01 · The challenge</p>
-        <h2>A useful paper diary—with one fragile weakness.</h2>
-      </div>
-      <div class="case-story__body">
-        <p>Chloe was using an Ella’s Kitchen paper weaning diary to record her baby’s feeds and baby-led weaning journey. After a spill destroyed it, the tracking history she had carefully built was lost.</p>
-        <p>Recipes created a second point of friction. Suitable ideas were spread across different websites, making parents repeatedly search, save screenshots and piece together their own system. The opportunity was to replace both problems with one dependable, easy-to-use product.</p>
-        <div class="case-insight"><strong>The founding idea</strong><p>Give parents one dependable place for the information they need, without risking the journey they have already recorded.</p></div>
-      </div>
-    </section>
+			<section class="case-story" id="challenge">
+				<div class="case-story__heading">
+					<p class="eyebrow">01 · The challenge</p>
+					<h2>A useful paper diary—with one fragile weakness.</h2>
+				</div>
+				<div class="case-story__body">
+					<p>
+						Chloe was using an Ella’s Kitchen paper weaning diary to record her
+						baby’s feeds and baby-led weaning journey. After a spill destroyed
+						it, the tracking history she had carefully built was lost.
+					</p>
+					<p>
+						Recipes created a second point of friction. Suitable ideas were
+						spread across different websites, making parents repeatedly search,
+						save screenshots and piece together their own system. The
+						opportunity was to replace both problems with one dependable,
+						easy-to-use product.
+					</p>
+					<div class="case-insight">
+						<strong>The founding idea</strong>
+						<p>
+							Give parents one dependable place for the information they need,
+							without risking the journey they have already recorded.
+						</p>
+					</div>
+				</div>
+			</section>
 
-    <section class="case-feature dark" id="approach">
-      <div class="case-feature__copy">
-        <p class="eyebrow">02 · The approach</p>
-        <h2>Build around real routines, not extra admin.</h2>
-        <p>The product was structured around quick, repeatable actions that fit into an already busy day. A single dashboard brings food progress, likes and dislikes, allergen introductions and recent milk intake together, while focused forms keep each new entry manageable.</p>
-        <ul>
-          <li>Fast food, feed and bottle logging</li>
-          <li>Food reactions, textures, favourites and progress</li>
-          <li>Allergen introduction and reaction tracking</li>
-          <li>Recipes, meal ideas and shopping-list support</li>
-          <li>Growth, feeding and allergen history exports</li>
-          <li>Personalised insights based on recorded activity</li>
-        </ul>
-      </div>
-      <figure>
-        <img src="assets/munchsprouts-feature-overview.jpg" alt="Overview of MunchSprouts feeding, recipe, allergen, growth and insight features" width="1600" height="781" loading="lazy" decoding="async">
-        <figcaption>A consistent product and promotional experience was created around the same friendly visual system.</figcaption>
-      </figure>
-    </section>
+			<section class="case-feature dark" id="approach">
+				<div class="case-feature__copy">
+					<p class="eyebrow">02 · The approach</p>
+					<h2>Build around real routines, not extra admin.</h2>
+					<p>
+						The product was structured around quick, repeatable actions that fit
+						into an already busy day. A single dashboard brings food progress,
+						likes and dislikes, allergen introductions and recent milk intake
+						together, while focused forms keep each new entry manageable.
+					</p>
+					<ul>
+						<li>Fast food, feed and bottle logging</li>
+						<li>Food reactions, textures, favourites and progress</li>
+						<li>Allergen introduction and reaction tracking</li>
+						<li>Recipes, meal ideas and shopping-list support</li>
+						<li>Growth, feeding and allergen history exports</li>
+						<li>Personalised insights based on recorded activity</li>
+					</ul>
+				</div>
+				<figure>
+					<img
+						src="assets/munchsprouts-feature-overview.jpg"
+						alt="Overview of MunchSprouts feeding, recipe, allergen, growth and insight features"
+						width="1600"
+						height="781"
+						loading="lazy"
+						decoding="async" />
+					<figcaption>
+						A consistent product and promotional experience was created around
+						the same friendly visual system.
+					</figcaption>
+				</figure>
+			</section>
 
-    <section class="case-gallery" aria-labelledby="coreJourneysTitle">
-      <header>
-        <p class="eyebrow">Core product journeys</p>
-        <h2 id="coreJourneysTitle">Detailed enough to be useful. Clear enough to use quickly.</h2>
-        <p>The interface separates complex information into focused tasks, helping parents record what happened without navigating an overwhelming clinical-style system.</p>
-      </header>
-      <div class="case-gallery__grid">
-        <figure>
-          <img src="assets/munchsprouts-food-log.jpg" alt="MunchSprouts food log with meal time, category, texture and reaction fields" width="900" height="1948" loading="lazy" decoding="async">
-          <figcaption><strong>Food logging</strong><span>Records meal time, category, texture and reaction alongside the food itself.</span></figcaption>
-        </figure>
-        <figure>
-          <img src="assets/munchsprouts-allergens.jpg" alt="MunchSprouts allergen tracker with a 48-hour reaction check" width="900" height="1948" loading="lazy" decoding="async">
-          <figcaption><strong>Allergen awareness</strong><span>Tracks introductions and prompts parents to record whether a delayed reaction was observed.</span></figcaption>
-        </figure>
-        <figure>
-          <img src="assets/munchsprouts-recipes.jpg" alt="MunchSprouts searchable baby-friendly recipe library" width="900" height="1948" loading="lazy" decoding="async">
-          <figcaption><strong>Recipe discovery</strong><span>Brings age filters, featured recipes and saved ideas into one searchable library.</span></figcaption>
-        </figure>
-      </div>
-    </section>
+			<section class="case-gallery" aria-labelledby="coreJourneysTitle">
+				<header>
+					<p class="eyebrow">Core product journeys</p>
+					<h2 id="coreJourneysTitle">
+						Detailed enough to be useful. Clear enough to use quickly.
+					</h2>
+					<p>
+						The interface separates complex information into focused tasks,
+						helping parents record what happened without navigating an
+						overwhelming clinical-style system.
+					</p>
+				</header>
+				<div class="case-gallery__grid">
+					<figure>
+						<img
+							src="assets/munchsprouts-food-log.jpg"
+							alt="MunchSprouts food log with meal time, category, texture and reaction fields"
+							width="900"
+							height="1948"
+							loading="lazy"
+							decoding="async" />
+						<figcaption>
+							<strong>Food logging</strong
+							><span
+								>Records meal time, category, texture and reaction alongside the
+								food itself.</span
+							>
+						</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/munchsprouts-allergens.jpg"
+							alt="MunchSprouts allergen tracker with a 48-hour reaction check"
+							width="900"
+							height="1948"
+							loading="lazy"
+							decoding="async" />
+						<figcaption>
+							<strong>Allergen awareness</strong
+							><span
+								>Tracks introductions and prompts parents to record whether a
+								delayed reaction was observed.</span
+							>
+						</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/munchsprouts-recipes.jpg"
+							alt="MunchSprouts searchable baby-friendly recipe library"
+							width="900"
+							height="1948"
+							loading="lazy"
+							decoding="async" />
+						<figcaption>
+							<strong>Recipe discovery</strong
+							><span
+								>Brings age filters, featured recipes and saved ideas into one
+								searchable library.</span
+							>
+						</figcaption>
+					</figure>
+				</div>
+			</section>
 
-    <section class="case-story" id="delivery">
-      <div class="case-story__heading">
-        <p class="eyebrow">03 · From prototype to release</p>
-        <h2>One connected process from product thinking to launch.</h2>
-      </div>
-      <div class="case-story__body">
-        <p>MunchSprouts began as a web app, allowing the core idea and user journeys to take shape quickly. It then developed into a native React Native application for iOS and Android, supported by a reusable design system and a promotional website.</p>
-        <p>FE Studios handled the UX, interface design, branding, development, research, testing, publishing and App Store release. Supporting posters and promotional materials carried the same identity beyond the product itself.</p>
-        <div class="case-deliverables">
-          <article><span>01</span><h3>Discover</h3><p>Translate a lived problem into clear product priorities and parent-focused journeys.</p></article>
-          <article><span>02</span><h3>Design</h3><p>Create a reassuring identity, clear hierarchy and reusable interface system.</p></article>
-          <article><span>03</span><h3>Develop</h3><p>Move from an early web app into a native React Native product for both platforms.</p></article>
-          <article><span>04</span><h3>Launch</h3><p>Test, publish, support the store release and continue improving the live product.</p></article>
-        </div>
-        <figure class="case-launch-asset">
-          <img src="assets/munchsprouts-launch-card.jpg" alt="Front and back of a printed MunchSprouts promotional download card" width="1400" height="933" loading="lazy" decoding="async">
-          <figcaption>The launch system extended beyond the app into practical promotional material with store download prompts and a concise feature overview.</figcaption>
-        </figure>
-      </div>
-    </section>
+			<section class="case-story" id="delivery">
+				<div class="case-story__heading">
+					<p class="eyebrow">03 · From prototype to release</p>
+					<h2>One connected process from product thinking to launch.</h2>
+				</div>
+				<div class="case-story__body">
+					<p>
+						MunchSprouts began as a web app, allowing the core idea and user
+						journeys to take shape quickly. It then developed into a native
+						React Native application for iOS and Android, supported by a
+						reusable design system and a promotional website.
+					</p>
+					<p>
+						FE Studios handled the UX, interface design, branding, development,
+						research, testing, publishing and App Store release. Supporting
+						posters and promotional materials carried the same identity beyond
+						the product itself.
+					</p>
+					<div class="case-deliverables">
+						<article>
+							<span>01</span>
+							<h3>Discover</h3>
+							<p>
+								Translate a lived problem into clear product priorities and
+								parent-focused journeys.
+							</p>
+						</article>
+						<article>
+							<span>02</span>
+							<h3>Design</h3>
+							<p>
+								Create a reassuring identity, clear hierarchy and reusable
+								interface system.
+							</p>
+						</article>
+						<article>
+							<span>03</span>
+							<h3>Develop</h3>
+							<p>
+								Move from an early web app into a native React Native product
+								for both platforms.
+							</p>
+						</article>
+						<article>
+							<span>04</span>
+							<h3>Launch</h3>
+							<p>
+								Test, publish, support the store release and continue improving
+								the live product.
+							</p>
+						</article>
+					</div>
+					<figure class="case-launch-asset">
+						<img
+							src="assets/1.4.0 Promo Poster.png"
+							alt="Front and back of a printed MunchSprouts promotional download card"
+							width="1400"
+							height="933"
+							loading="lazy"
+							decoding="async" />
+						<figcaption>
+							The launch system extended beyond the app into practical
+							promotional material with store download prompts and a concise
+							feature overview.
+						</figcaption>
+					</figure>
+				</div>
+			</section>
 
-    <section class="case-intelligence dark" aria-labelledby="connectedDataTitle">
-      <header>
-        <p class="eyebrow">Connected information</p>
-        <h2 id="connectedDataTitle">Recorded once, made useful in more places.</h2>
-        <p>The product does more than store individual entries. It uses the growing history to surface patterns, support meal planning and produce portable records selected by the parent.</p>
-      </header>
-      <div class="case-intelligence__grid">
-        <figure>
-          <img src="assets/munchsprouts-insights.jpg" alt="MunchSprouts personalised insight screen showing variety, nutrition and progress summaries" width="900" height="1948" loading="lazy" decoding="async">
-          <figcaption><strong>Personalised insights</strong><span>Summarises variety, food groups, feeding patterns and recorded milestones.</span></figcaption>
-        </figure>
-        <figure>
-          <img src="assets/munchsprouts-meal-ideas.jpg" alt="MunchSprouts personalised meal ideas based on age and recorded food history" width="900" height="1948" loading="lazy" decoding="async">
-          <figcaption><strong>Meal inspiration</strong><span>Uses age, texture stage, liked foods and food history to offer relevant starting points.</span></figcaption>
-        </figure>
-        <figure>
-          <img src="assets/munchsprouts-export.jpg" alt="MunchSprouts PDF export controls for food, feeding, weight and allergen history" width="900" height="1948" loading="lazy" decoding="async">
-          <figcaption><strong>Parent-controlled exports</strong><span>Lets parents choose a date range and include food, milk, weight and allergen records in a PDF.</span></figcaption>
-        </figure>
-      </div>
-    </section>
+			<section
+				class="case-intelligence dark"
+				aria-labelledby="connectedDataTitle">
+				<header>
+					<p class="eyebrow">Connected information</p>
+					<h2 id="connectedDataTitle">
+						Recorded once, made useful in more places.
+					</h2>
+					<p>
+						The product does more than store individual entries. It uses the
+						growing history to surface patterns, support meal planning and
+						produce portable records selected by the parent.
+					</p>
+				</header>
+				<div class="case-intelligence__grid">
+					<figure>
+						<img
+							src="assets/munchsprouts-insights.jpg"
+							alt="MunchSprouts personalised insight screen showing variety, nutrition and progress summaries"
+							width="900"
+							height="1948"
+							loading="lazy"
+							decoding="async" />
+						<figcaption>
+							<strong>Personalised insights</strong
+							><span
+								>Summarises variety, food groups, feeding patterns and recorded
+								milestones.</span
+							>
+						</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/munchsprouts-meal-ideas.jpg"
+							alt="MunchSprouts personalised meal ideas based on age and recorded food history"
+							width="900"
+							height="1948"
+							loading="lazy"
+							decoding="async" />
+						<figcaption>
+							<strong>Meal inspiration</strong
+							><span
+								>Uses age, texture stage, liked foods and food history to offer
+								relevant starting points.</span
+							>
+						</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/munchsprouts-export.jpg"
+							alt="MunchSprouts PDF export controls for food, feeding, weight and allergen history"
+							width="900"
+							height="1948"
+							loading="lazy"
+							decoding="async" />
+						<figcaption>
+							<strong>Parent-controlled exports</strong
+							><span
+								>Lets parents choose a date range and include food, milk, weight
+								and allergen records in a PDF.</span
+							>
+						</figcaption>
+					</figure>
+				</div>
+			</section>
 
-    <section class="case-problem lilac" id="refinement">
-      <div>
-        <p class="eyebrow">04 · Solving the difficult parts</p>
-        <h2>Useful intelligence needed reliable foundations.</h2>
-      </div>
-      <div>
-        <p>Building a useful recipe library at launch was a significant content challenge. AI-assisted functionality helped support personalised insights and recipe ideas, while the product experience kept those tools grounded in each child’s recorded history.</p>
-        <p>Performance issues also emerged as the feature set grew. These were diagnosed and refined before release so the experience remained responsive. Product marketing proved to be the longer-term challenge, leading to continued work across the website, promotional assets and product messaging after launch.</p>
-        <p class="case-note"><strong>Responsible positioning:</strong> MunchSprouts supports organisation and awareness. It is not presented as a substitute for professional medical or allergy advice.</p>
-      </div>
-    </section>
+			<section class="case-problem lilac" id="refinement">
+				<div>
+					<p class="eyebrow">04 · Solving the difficult parts</p>
+					<h2>Useful intelligence needed reliable foundations.</h2>
+				</div>
+				<div>
+					<p>
+						Building a useful recipe library at launch was a significant content
+						challenge. AI-assisted functionality helped support personalised
+						insights and recipe ideas, while the product experience kept those
+						tools grounded in each child’s recorded history.
+					</p>
+					<p>
+						Performance issues also emerged as the feature set grew. These were
+						diagnosed and refined before release so the experience remained
+						responsive. Product marketing proved to be the longer-term
+						challenge, leading to continued work across the website, promotional
+						assets and product messaging after launch.
+					</p>
+					<p class="case-note">
+						<strong>Responsible positioning:</strong> MunchSprouts supports
+						organisation and awareness. It is not presented as a substitute for
+						professional medical or allergy advice.
+					</p>
+				</div>
+			</section>
 
-    <section class="case-outcome dark" id="outcome">
-      <div>
-        <p class="eyebrow">05 · The outcome</p>
-        <h2>A live product shaped by genuine parental need.</h2>
-      </div>
-      <div>
-        <p>The initial product moved from idea to release in approximately four weeks. MunchSprouts is now available as a native mobile app, supported by its own promotional website and an expanding feature set.</p>
-        <p>The result is a single, persistent place for a child’s feeding journey—replacing vulnerable paper records and scattered recipe searches with a product that can continue to improve as parents use it.</p>
-        <blockquote>“FE Studios brought the MunchSprouts website and app to life in a way that feels completely right for the business. I use the app daily with my child, and other mothers now use it too.”<footer>Chloe · Founder, MunchSprouts</footer></blockquote>
-      </div>
-    </section>
+			<section class="case-outcome dark" id="outcome">
+				<div>
+					<p class="eyebrow">05 · The outcome</p>
+					<h2>A live product shaped by genuine parental need.</h2>
+				</div>
+				<div>
+					<p>
+						The initial product moved from idea to release in approximately four
+						weeks. MunchSprouts is now available as a native mobile app,
+						supported by its own promotional website and an expanding feature
+						set.
+					</p>
+					<p>
+						The result is a single, persistent place for a child’s feeding
+						journey—replacing vulnerable paper records and scattered recipe
+						searches with a product that can continue to improve as parents use
+						it.
+					</p>
+					<blockquote>
+						“FE Studios brought the MunchSprouts website and app to life in a
+						way that feels completely right for the business. I use the app
+						daily with my child, and other mothers now use it too.”
+						<footer>Chloe · Founder, MunchSprouts</footer>
+					</blockquote>
+				</div>
+			</section>
 
-    <section class="case-next">
-      <p class="eyebrow">Have an idea that needs shaping?</p>
-      <h2>Let’s turn the useful part into something people can use.</h2>
-      <p>You do not need a finished brief. Send over the problem, the audience and what you would like to change, and I’ll respond within three working days.</p>
-      <div class="actions">
-        <a class="button button-light" href="index.html#contact">Start a project <span aria-hidden="true">→</span></a>
-        <a class="button button-outline" href="work.html">Explore more work</a>
-      </div>
-    </section>
-  </main>
+			<section class="case-next">
+				<p class="eyebrow">Have an idea that needs shaping?</p>
+				<h2>Let’s turn the useful part into something people can use.</h2>
+				<p>
+					You do not need a finished brief. Send over the problem, the audience
+					and what you would like to change, and I’ll respond within three
+					working days.
+				</p>
+				<div class="actions">
+					<a class="button button-light" href="index.html#contact"
+						>Start a project <span aria-hidden="true">→</span></a
+					>
+					<a class="button button-outline" href="work.html"
+						>Explore more work</a
+					>
+				</div>
+			</section>
+		</main>
 
-  <footer class="site-footer">
-    <span>© 2026 FE Studios</span>
-    <div class="site-footer__links">
-      <a href="index.html">Home</a>
-      <a href="work.html">Work</a>
-      <a href="services.html">Services</a>
-      <a href="terms.html">Client terms</a>
-      <a href="privacy.html">Privacy notice</a>
-    </div>
-  </footer>
-</body>
+		<footer class="site-footer">
+			<span>© 2026 FE Studios</span>
+			<div class="site-footer__links">
+				<a href="index.html">Home</a>
+				<a href="work.html">Work</a>
+				<a href="services.html">Services</a>
+				<a href="terms.html">Client terms</a>
+				<a href="privacy.html">Privacy notice</a>
+			</div>
+		</footer>
+	</body>
 </html>
