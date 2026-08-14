@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /old-website-aug2026/
+
+Sitemap: https://festudios.co.uk/sitemap.xml

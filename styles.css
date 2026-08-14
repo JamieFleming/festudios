@@ -54,12 +54,30 @@ body {
 	object-fit: cover;
 }
 .sidebar nav {
+	position: relative;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
 }
+.sidebar nav::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	width: 100%;
+	height: var(--indicator-height, 64px);
+	background: var(--ink);
+	transform: translateY(var(--indicator-y, 0px));
+	transition:
+		transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+		height 0.3s ease;
+	pointer-events: none;
+}
 .sidebar nav a {
+	position: relative;
+	z-index: 1;
 	height: 64px;
 	display: grid;
 	place-items: center;
@@ -73,6 +91,16 @@ body {
 .sidebar nav a.active {
 	background: var(--ink);
 	color: var(--paper);
+}
+.sidebar nav a.active {
+	background: transparent;
+	transition:
+		color 0.35s ease,
+		letter-spacing 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+	letter-spacing: 0.03em;
+}
+.mobile-nav-cta {
+	display: none;
 }
 .button {
 	display: inline-flex;
@@ -91,6 +119,16 @@ body {
 .sidebar-cta {
 	width: 198px;
 	font-size: 16px;
+	background: transparent;
+	color: var(--ink);
+	border: 1px solid var(--ink);
+	cursor: pointer;
+}
+
+.sidebar-cta:hover,
+.sidebar-cta:focus-visible {
+	background: var(--ink);
+	color: var(--paper);
 }
 .menu-toggle {
 	display: none;
@@ -175,6 +213,16 @@ h2 {
 	font-family: "JetBrains Mono";
 	color: var(--muted);
 	text-decoration: none;
+}
+.hero-links {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	color: var(--muted);
+	font-family: "JetBrains Mono", monospace;
+}
+.hero-links .text-link:hover {
+	color: var(--paper);
 }
 .hero-mark {
 	position: absolute;
@@ -390,7 +438,8 @@ h2 {
 	border-radius: 50px;
 	padding: 7px 12px;
 }
-.service-grid a {
+.service-grid a,
+.service-grid .service-label {
 	align-self: center;
 	background: var(--paper);
 	color: var(--text);
@@ -398,6 +447,9 @@ h2 {
 	padding: 9px 14px;
 	font: 600 15px "JetBrains Mono";
 	text-decoration: none;
+}
+.service-grid .service-label {
+	cursor: default;
 }
 .contact {
 	display: flex;
@@ -508,6 +560,23 @@ h2 {
 		height: 58px;
 		font-size: 20px;
 	}
+	.mobile-nav-cta {
+		display: block;
+		margin: 14px 18px 18px;
+		padding: 13px 18px;
+		border: 1px solid var(--ink);
+		border-radius: 8px;
+		background: transparent;
+		color: var(--ink);
+		font-size: 15px;
+		font-weight: 600;
+		cursor: pointer;
+	}
+	.mobile-nav-cta:hover,
+	.mobile-nav-cta:focus-visible {
+		background: var(--ink);
+		color: var(--paper);
+	}
 	.sidebar-cta {
 		display: none;
 	}
@@ -608,6 +677,185 @@ h2 {
 	.contact address span {
 		font-size: 28px;
 		width: 38px;
+	}
+}
+
+/* Each page section is its own card. */
+main > .panel {
+	position: relative;
+	top: auto;
+	isolation: isolate;
+	box-shadow: 0 12px 34px rgba(17, 17, 17, 0.12);
+}
+
+main > .panel:first-child {
+	box-shadow: none;
+}
+
+@media (max-width: 900px) {
+	main > .panel {
+		top: auto;
+		box-shadow: 0 8px 24px rgba(17, 17, 17, 0.14);
+	}
+}
+
+/* Tilted, staggered card reveals. */
+.scroll-reveal {
+	opacity: 0;
+	translate: 0 48px;
+	scale: 0.975;
+	transition:
+		opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+		translate 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+		scale 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+		rotate 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+	transition-delay: var(--reveal-delay, 0ms);
+	will-change: opacity, translate, scale;
+}
+
+.scroll-reveal:nth-child(odd):not(.panel) {
+	rotate: -1deg;
+}
+
+.scroll-reveal:nth-child(even):not(.panel) {
+	rotate: 1deg;
+}
+
+.scroll-reveal.is-visible {
+	opacity: 1;
+	translate: 0 0;
+	scale: 1;
+	rotate: 0deg;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.scroll-reveal,
+	.scroll-reveal.is-visible {
+		opacity: 1;
+		translate: none;
+		scale: 1;
+		rotate: 0deg;
+	}
+}
+
+/* Final visual-system normalization */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 4px;
+}
+
+.sidebar nav a:hover:not(.active) {
+	background: rgba(17, 17, 17, 0.08);
+	color: var(--ink);
+}
+
+.button {
+	font-weight: 600;
+}
+
+.project-image span {
+	font-size: 11px;
+}
+
+.service-grid article > p {
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+.service-grid li {
+	font-size: 11px;
+}
+
+.contact-heading h2 {
+	font-size: clamp(60px, 7vw, 104px);
+}
+
+.contact-card h3 {
+	font-size: clamp(34px, 3.4vw, 52px);
+}
+
+.contact-card p:not(.eyebrow) {
+	font-size: clamp(16px, 1.25vw, 20px);
+	line-height: 1.4;
+}
+
+.contact-card .button,
+.contact address a {
+	font-size: 16px;
+}
+
+.contact-modal__title {
+	font-size: clamp(36px, 5vw, 56px);
+}
+
+.contact-modal__description {
+	font-size: 16px;
+}
+
+@media (max-width: 900px) {
+	.contact-heading h2 {
+		font-size: clamp(54px, 15vw, 76px);
+	}
+	.contact-card h3 {
+		font-size: 34px;
+	}
+	.contact-modal__title {
+		font-size: 36px;
+	}
+	.contact address span {
+		font-size: 10px;
+	}
+}
+
+/* Keep the About toolkit visibly contained inside its own section card. */
+main > .panel:nth-child(n) {
+	z-index: auto;
+}
+
+.about {
+	contain: paint;
+}
+
+.toolkit {
+	position: relative;
+	margin: 16px 16px 16px 0;
+	min-height: calc(100% - 32px);
+}
+
+@media (max-width: 900px) {
+	.toolkit {
+		margin: 0;
+		min-height: 0;
+	}
+}
+
+/* Sections remain fully separate with no stacking or visual overlap. */
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+main > .panel,
+main > .panel:first-child {
+	position: relative;
+	top: auto;
+	margin: 0;
+	box-shadow: none;
+	z-index: auto;
+	overflow: clip;
+}
+
+main > .panel + .panel {
+	margin-top: 0;
+}
+
+@media (max-width: 900px) {
+	main {
+		gap: 0;
 	}
 }
 
@@ -1234,4 +1482,145 @@ textarea:focus-visible {
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
 	}
+}
+
+/* Canonical final states — kept last so legacy rules cannot override them. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 4px;
+}
+.sidebar nav a:hover:not(.active) {
+	background: rgba(17, 17, 17, 0.08);
+	color: var(--ink);
+}
+.button { font-weight: 600; }
+.project-image span { font-size: 11px; }
+.service-grid article > p { font-size: 16px; line-height: 1.4; }
+.service-grid li { font-size: 11px; }
+.contact-heading h2 { font-size: clamp(60px, 7vw, 104px); }
+.contact-card h3 { font-size: clamp(34px, 3.4vw, 52px); }
+.contact-card p:not(.eyebrow) { font-size: clamp(16px, 1.25vw, 20px); line-height: 1.4; }
+.contact-card .button,
+.contact address a { font-size: 16px; }
+.contact-modal__title { font-size: clamp(36px, 5vw, 56px); }
+.contact-modal__description { font-size: 16px; }
+@media (max-width: 900px) {
+	.contact-heading h2 { font-size: clamp(54px, 15vw, 76px); }
+	.contact-card h3 { font-size: 34px; }
+	.contact-modal__title { font-size: 36px; }
+	.contact address span { font-size: 10px; }
+}
+
+/* Responsive audit fixes */
+html,
+body {
+	max-width: 100%;
+	overflow-x: clip;
+}
+
+img {
+	max-width: 100%;
+}
+
+.profile img {
+	width: min(274px, 100%);
+	height: auto;
+	aspect-ratio: 1;
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+	.about {
+		display: block;
+	}
+	.toolkit {
+		margin: 0;
+		min-height: 0;
+		border-left: 0;
+		border-top: 1px solid var(--muted);
+		border-radius: 0;
+		padding: 28px 22px;
+	}
+	.toolkit ul {
+		display: flex;
+		height: auto;
+		flex-wrap: wrap;
+		gap: 10px;
+		justify-content: flex-start;
+	}
+	.toolkit li {
+		flex: 1 1 120px;
+		max-width: 180px;
+		padding: 8px 14px;
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 900px) {
+	.panel {
+		scroll-margin-top: 82px;
+	}
+	.service-grid article {
+		min-height: 0;
+		padding: 22px 18px;
+	}
+	.toolkit li {
+		flex: 1 1 120px;
+	}
+	.contact-card,
+	.contact-modal__card {
+		width: 100%;
+	}
+}
+
+@media (max-width: 420px) {
+	.sidebar {
+		padding-inline: 14px;
+	}
+	.panel {
+		padding: 40px 18px;
+	}
+	.about-main,
+	.toolkit {
+		padding-inline: 18px;
+	}
+	.actions .button,
+	.contact-card .button {
+		width: 100%;
+	}
+	.contact address a {
+		max-width: 100%;
+		font-size: 14px;
+	}
+}
+
+@media (hover: none) {
+	.button:hover,
+	.service-grid a:hover,
+	.more-work:hover {
+		transform: none;
+	}
+}
+
+@media (max-width: 1100px) {
+	.toolkit ul {
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+	.toolkit li {
+		flex: 0 0 auto;
+		width: auto;
+		max-width: none;
+		padding: 8px 13px;
+		font-size: 13px;
+	}
+}
+
+.service-grid .service-label {
+	font-size: 13px;
+	line-height: 1.35;
 }
