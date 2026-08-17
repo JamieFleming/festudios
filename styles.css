@@ -59,6 +59,7 @@ img {
 
 button,
 input,
+select,
 textarea {
   font: inherit;
 }
@@ -75,6 +76,7 @@ button {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
+select:focus-visible,
 textarea:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 4px;
@@ -950,12 +952,56 @@ main {
   min-height: 90px;
 }
 
+.contact-form__optional-fields {
+  border: 1px solid var(--muted);
+  border-radius: 10px;
+}
+
+.contact-form__optional-fields summary {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 15px;
+  font: 600 13px / 1.4 var(--font-mono);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+  list-style: none;
+}
+
+.contact-form__optional-fields summary::-webkit-details-marker {
+  display: none;
+}
+
+.contact-form__optional-fields summary::after {
+  content: "+";
+  font-size: 20px;
+  line-height: 1;
+}
+
+.contact-form__optional-fields[open] summary::after {
+  content: "−";
+}
+
+.contact-form__optional-fields summary > span {
+  margin-left: auto;
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.contact-form__optional-fields > :not(summary) {
+  margin: 0 15px 15px;
+}
+
 .contact-form__optional {
   position: absolute;
   top: 1px;
   right: 0;
   color: var(--text);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.03em;
 }
@@ -979,7 +1025,7 @@ main {
 .contact-form__privacy {
   margin: 0;
   color: var(--text);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
   text-align: center;
 }
@@ -1239,7 +1285,8 @@ main {
   }
 
   h2 {
-    font-size: clamp(40px, 12vw, 58px);
+    font-size: clamp(36px, 9.5vw, 52px);
+    line-height: 0.96;
   }
 
   .hero {
@@ -1251,7 +1298,8 @@ main {
   }
 
   .hero h1 {
-    font-size: clamp(56px, 17vw, 82px);
+    font-size: clamp(50px, 14vw, 72px);
+    line-height: 0.94;
   }
 
   .hero-subtitle {
@@ -1354,7 +1402,7 @@ main {
   }
 
   .contact-heading h2 {
-    font-size: clamp(54px, 15vw, 76px);
+    font-size: clamp(40px, 11vw, 60px);
   }
 
   .contact-card {
@@ -1362,7 +1410,7 @@ main {
   }
 
   .contact-card h3 {
-    font-size: 34px;
+    font-size: clamp(28px, 8vw, 34px);
   }
 
   .contact address {
@@ -1374,7 +1422,7 @@ main {
 
   .contact address span {
     width: 48px;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .site-footer {
@@ -1395,11 +1443,12 @@ main {
 
   .contact-modal__card {
     width: 100%;
-    padding: 30px 20px;
+    max-height: calc(100svh - 20px);
+    padding: 28px 20px;
   }
 
   .contact-modal__title {
-    font-size: 36px;
+    font-size: clamp(30px, 9vw, 38px);
   }
 
   .contact-form__row {
@@ -1415,6 +1464,29 @@ main {
 
   .panel {
     padding: 40px 18px;
+  }
+
+  h2 {
+    font-size: clamp(34px, 9.5vw, 42px);
+  }
+
+  .hero {
+    min-height: auto;
+    padding-block: 54px 64px;
+  }
+
+  .hero h1 {
+    font-size: clamp(46px, 13.5vw, 58px);
+  }
+
+  .hero h1 br,
+  .section-intro h2 br,
+  .contact-heading h2 br {
+    display: none;
+  }
+
+  .hero-copy {
+    gap: 28px;
   }
 
   .hero-mark {
@@ -1444,6 +1516,18 @@ main {
   .contact address a {
     max-width: 100%;
     font-size: 14px;
+    overflow-wrap: anywhere;
+  }
+
+  .contact-form {
+    gap: 16px;
+    margin-top: 22px;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    min-height: 48px;
   }
 }
 
