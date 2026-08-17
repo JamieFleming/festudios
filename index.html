@@ -548,13 +548,13 @@
 							name="_subject"
 							value="New FE Studios website enquiry" />
 						<input type="hidden" name="page" value="Homepage" />
-						<label hidden
-							>Leave this field empty<input
-								type="text"
-								name="_gotcha"
-								tabindex="-1"
-								autocomplete="off"
-						/></label>
+						<input
+							class="contact-form__honeypot"
+							type="text"
+							name="_gotcha"
+							tabindex="-1"
+							autocomplete="off"
+							aria-hidden="true" />
 						<div class="contact-form__row">
 							<label>
 								Name

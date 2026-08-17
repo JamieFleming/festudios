@@ -403,7 +403,7 @@
         <form action="https://formspree.io/f/xaqgnbpe" method="POST" data-contact-form class="contact-form">
           <input type="hidden" name="_subject" value="New FE Studios services enquiry">
           <input type="hidden" name="page" value="Services page">
-          <label hidden>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+          <input class="contact-form__honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="contact-form__row">
             <label>
               Name

@@ -271,7 +271,7 @@
         <form action="https://formspree.io/f/xaqgnbpe" method="POST" data-contact-form class="contact-form">
           <input type="hidden" name="_subject" value="New FE Studios portfolio enquiry">
           <input type="hidden" name="page" value="Work page">
-          <label hidden>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+          <input class="contact-form__honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="contact-form__row">
             <label>Name<input type="text" name="name" required autocomplete="name" placeholder="Jane Smith"></label>
             <label>Email<input type="email" name="email" required autocomplete="email" placeholder="jane@company.co.uk"></label>
