@@ -306,6 +306,19 @@ main {
   font-size: clamp(64px, 8vw, 112px);
 }
 
+.hero .hero-split-char,
+.hero .hero-split-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.hero .hero-split-char-mask,
+.hero .hero-split-word-mask {
+  overflow: clip;
+  padding-block: 0.08em;
+  margin-block: -0.08em;
+}
+
 .hero-subtitle {
   margin: 0;
   font-size: clamp(20px, 2vw, 28px);
@@ -1612,5 +1625,10 @@ main {
     rotate: 0deg;
     scale: 1;
     translate: none;
+  }
+
+  .hero .hero-split-char,
+  .hero .hero-split-word {
+    will-change: auto;
   }
 }
