@@ -12,7 +12,7 @@ const MOTION = {
 	reducedMotionQuery: "(prefers-reduced-motion: reduce)",
 	revealStart: "top 88%",
 	revealEnd: "bottom 12%",
-	reversibleActions: "play reverse play reverse",
+	reversibleActions: "play none none none",
 	ease: "power3.out",
 };
 
@@ -45,7 +45,7 @@ function initNavigation() {
 	const navLinks = [...document.querySelectorAll(SELECTORS.navLinks)];
 	const sections = document.querySelectorAll(SELECTORS.sections);
 
-	if (!sidebar || !menuToggle || !navLinks.length) return;
+	if (!sidebar || !menuToggle || !navLinks.length || !sections.length) return;
 
 	const closeMenu = () => {
 		sidebar.classList.remove("open");
@@ -103,34 +103,30 @@ function initNavigation() {
 		menuToggle.focus();
 	});
 
-	if ("IntersectionObserver" in window) {
-		const sectionObserver = new IntersectionObserver(
-			(entries) => {
-				const visibleSection = entries
-					.filter((entry) => entry.isIntersecting)
-					.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-				if (visibleSection) setActiveLink(visibleSection.target.id);
-			},
-			{
-				rootMargin: "-20% 0px -55%",
-				threshold: [0, 0.2, 0.5],
-			},
+	const updateActiveSection = () => {
+		const scrollMarker = window.scrollY + window.innerHeight * 0.45;
+		const activeSection = [...sections].reduce((current, section) =>
+			section.offsetTop <= scrollMarker ? section : current,
 		);
 
-		sections.forEach((section) => sectionObserver.observe(section));
-	}
-
-	const refreshIndicator = () => {
-		const currentSection = document
-			.querySelector(`${SELECTORS.navLinks}.active`)
-			?.hash.slice(1);
-		setActiveLink(currentSection || sections[0]?.id || "home");
+		setActiveLink(activeSection?.id || "home");
 	};
 
-	setActiveLink(location.hash.slice(1) || sections[0]?.id || "home");
-	window.addEventListener("load", refreshIndicator);
-	window.addEventListener("resize", refreshIndicator);
+	let scrollUpdatePending = false;
+	const requestSectionUpdate = () => {
+		if (scrollUpdatePending) return;
+		scrollUpdatePending = true;
+
+		requestAnimationFrame(() => {
+			updateActiveSection();
+			scrollUpdatePending = false;
+		});
+	};
+
+	updateActiveSection();
+	window.addEventListener("load", updateActiveSection);
+	window.addEventListener("resize", requestSectionUpdate);
+	window.addEventListener("scroll", requestSectionUpdate, { passive: true });
 }
 
 function initContactModal() {
@@ -345,7 +341,7 @@ function initAboutScrollAnimation() {
 	const about = document.querySelector("#about");
 	const revealGroups = about
 		? [
-				about.querySelector(".section-intro"),
+				about.querySelector(".section-intro .eyebrow"),
 				about.querySelector(".profile > div:first-child"),
 				...about.querySelectorAll(".profile-copy p"),
 				about.querySelector(".toolkit .eyebrow"),
@@ -360,7 +356,182 @@ function initAboutScrollAnimation() {
 			duration: 0.42,
 			start: "top 86%",
 			end: "bottom 14%",
-			toggleActions: "play none none reverse",
+			toggleActions: MOTION.reversibleActions,
+		});
+	});
+}
+
+function initHeroParallax() {
+	const hero = document.querySelector(
+		".home-page #home, .work-page .work-hero, .services-page .services-hero",
+	);
+	const heroCopy = hero?.querySelector(
+		".hero-copy, .work-hero__copy, .services-hero__copy",
+	);
+	const heroMark = hero?.querySelector(".hero-mark");
+
+	if (!hero || !heroCopy || !heroMark) return;
+
+	const isMobile = window.matchMedia("(max-width: 900px)").matches;
+
+	window.gsap
+		.timeline({
+			scrollTrigger: {
+				trigger: hero,
+				start: "top top",
+				end: "bottom top",
+				scrub: 0.7,
+				invalidateOnRefresh: true,
+			},
+		})
+		.to(
+			heroCopy,
+			{
+				y: isMobile ? 38 : 82,
+				ease: "none",
+			},
+			0,
+		)
+		.to(
+			heroMark,
+			{
+				y: isMobile ? -52 : -125,
+				rotate: isMobile ? -2 : -5,
+				scale: 1.05,
+				ease: "none",
+			},
+			0,
+		);
+}
+
+function initStandaloneHeroAnimation() {
+	const hero = document.querySelector(".work-hero, .services-hero");
+	const heroCopy = hero?.querySelector(
+		".work-hero__copy, .services-hero__copy",
+	);
+	const title = heroCopy?.querySelector("h1");
+
+	if (!hero || !heroCopy || !title) return;
+
+	const splitTitle = window.SplitText.create(title, {
+		type: "words, chars",
+		mask: "chars",
+		wordsClass: "section-title-word",
+		charsClass: "section-title-char",
+	});
+	const supportingContent = [...heroCopy.children].filter(
+		(element) => element !== title,
+	);
+
+	window.gsap
+		.timeline({ defaults: { ease: "power4.out" } })
+		.from(splitTitle.chars, {
+			yPercent: 110,
+			rotate: 4,
+			autoAlpha: 0,
+			duration: 0.72,
+			stagger: 0.025,
+		})
+		.from(
+			supportingContent,
+			{
+				y: 24,
+				autoAlpha: 0,
+				duration: 0.52,
+				stagger: 0.08,
+			},
+			"-=0.32",
+		);
+}
+
+function initStandaloneSectionTitleAnimations() {
+	const titles = document.querySelectorAll("main > .panel:not(:first-child) h2");
+
+	titles.forEach((title) => {
+		const splitTitle = window.SplitText.create(title, {
+			type: "words, chars",
+			mask: "chars",
+			wordsClass: "section-title-word",
+			charsClass: "section-title-char",
+		});
+
+		window.gsap.from(splitTitle.chars, {
+			yPercent: 110,
+			rotate: 4,
+			autoAlpha: 0,
+			duration: 0.58,
+			stagger: 0.025,
+			ease: "power4.out",
+			scrollTrigger: {
+				trigger: title,
+				start: "top 86%",
+				toggleActions: MOTION.reversibleActions,
+			},
+		});
+	});
+}
+
+function initStandaloneCardAnimations() {
+	const isWorkPage = document.body.classList.contains("work-page");
+	const selector = isWorkPage
+		? ".portfolio-card, .work-testimonials blockquote, .work-about__portrait, .work-about__copy, .work-project-cta, .work-contact .contact-card"
+		: ".service-offer, .pricing-list article, .process-grid > li, .care-grid article, .faq-list details, .services-contact .contact-card";
+	const cards = document.querySelectorAll(selector);
+
+	cards.forEach((card, index) => {
+		window.gsap.from(card, {
+			x: -72,
+			y: 20,
+			scale: 0.975,
+			autoAlpha: 0,
+			duration: 0.62,
+			delay: (index % 2) * 0.08,
+			ease: MOTION.ease,
+			scrollTrigger: {
+				trigger: card,
+				start: "top 88%",
+				toggleActions: MOTION.reversibleActions,
+			},
+		});
+	});
+}
+
+async function initStandalonePageAnimations() {
+	if (document.fonts?.ready) await document.fonts.ready;
+
+	initStandaloneHeroAnimation();
+	initStandaloneSectionTitleAnimations();
+	initStandaloneCardAnimations();
+	initHeroParallax();
+	window.ScrollTrigger.refresh();
+}
+
+function initPanelExitAnimations() {
+	const panels = [...document.querySelectorAll(".home-page main > .panel")];
+	if (panels.length < 2) return;
+
+	const isMobile = window.matchMedia("(max-width: 900px)").matches;
+
+	panels.slice(0, -1).forEach((panel, index) => {
+		const nextPanel = panels[index + 1];
+		const content = [...panel.children].filter(
+			(element) => !element.classList.contains("hero-mark"),
+		);
+
+		if (!content.length) return;
+
+		window.gsap.to(content, {
+			xPercent: isMobile ? -18 : -32,
+			autoAlpha: 0,
+			stagger: 0.04,
+			ease: "none",
+			scrollTrigger: {
+				trigger: nextPanel,
+				start: isMobile ? "top 82%" : "top 72%",
+				end: isMobile ? "top 18%" : "top 12%",
+				scrub: 0.6,
+				invalidateOnRefresh: true,
+			},
 		});
 	});
 }
@@ -370,28 +541,35 @@ function initWorkScrollAnimations() {
 	if (!work) return;
 
 	[
-		work.querySelector(".work-title-row"),
+		work.querySelector(".work-page-link"),
 		work.querySelector(":scope > .eyebrow"),
 		work.querySelector(".more-work"),
 		work.querySelector(".testimonials-heading"),
-		...work.querySelectorAll(".testimonials blockquote"),
 	].forEach((element) => createReversibleReveal(element));
 
 	const projects = [...work.querySelectorAll(".project")];
+	const testimonials = [...work.querySelectorAll(".testimonials blockquote")];
+
 	if (projects.length) {
-		window.gsap.from(projects, {
-			x: (index) => (index % 2 === 0 ? -90 : 90),
-			autoAlpha: 0,
-			duration: 0.82,
+		const cardTimeline = window.gsap.timeline({
 			delay: 0.14,
-			stagger: 0.82,
-			ease: MOTION.ease,
 			scrollTrigger: {
 				trigger: work.querySelector(".work-grid"),
 				start: "top 86%",
 				end: "bottom 14%",
 				toggleActions: MOTION.reversibleActions,
 			},
+		});
+
+		projects.forEach((project, index) => {
+			const cardPair = [project, testimonials[index]].filter(Boolean);
+
+			cardTimeline.from(cardPair, {
+				x: -90,
+				autoAlpha: 0,
+				duration: 0.82,
+				ease: MOTION.ease,
+			});
 		});
 	}
 }
@@ -401,9 +579,83 @@ function initServicesScrollAnimations() {
 	if (!services) return;
 
 	[
-		services.querySelector(".services-intro"),
-		...services.querySelectorAll(".service-grid article"),
+		...services.querySelectorAll(".services-intro > .eyebrow"),
+		services.querySelector(".services-page-link"),
 	].forEach((element) => createReversibleReveal(element));
+
+	const serviceCards = [...services.querySelectorAll(".service-grid article")];
+	if (!serviceCards.length) return;
+
+	const servicesTitle = services.querySelector("h2");
+	const servicesTimeline = window.gsap.timeline({
+		scrollTrigger: {
+			trigger: services,
+			start: "top 78%",
+			end: "bottom 14%",
+			toggleActions: MOTION.reversibleActions,
+		},
+	});
+
+	if (servicesTitle && hasAnimationLibraries("SplitText")) {
+		const splitTitle = window.SplitText.create(servicesTitle, {
+			type: "words, chars",
+			mask: "chars",
+			wordsClass: "section-title-word",
+			charsClass: "section-title-char",
+		});
+
+		servicesTimeline.from(splitTitle.chars, {
+			yPercent: 110,
+			rotate: 4,
+			autoAlpha: 0,
+			duration: 0.58,
+			stagger: 0.025,
+			ease: "power4.out",
+		});
+	}
+
+	servicesTimeline.from(
+		serviceCards,
+		{
+			y: 54,
+			scale: 0.96,
+			autoAlpha: 0,
+			duration: 0.62,
+			stagger: 0.12,
+			ease: MOTION.ease,
+		},
+		"-=0.12",
+	);
+}
+
+function initSectionTitleAnimations() {
+	const titles = document.querySelectorAll(
+		"#about h2, #work h2, #contact h2",
+	);
+
+	titles.forEach((title) => {
+		const splitTitle = window.SplitText.create(title, {
+			type: "words, chars",
+			mask: "chars",
+			wordsClass: "section-title-word",
+			charsClass: "section-title-char",
+		});
+
+		window.gsap.from(splitTitle.chars, {
+			yPercent: 110,
+			rotate: 4,
+			autoAlpha: 0,
+			duration: 0.58,
+			stagger: 0.025,
+			ease: "power4.out",
+			scrollTrigger: {
+				trigger: title,
+				start: "top 86%",
+				end: "bottom 14%",
+				toggleActions: MOTION.reversibleActions,
+			},
+		});
+	});
 }
 
 function initContactScrollAnimations() {
@@ -434,13 +686,28 @@ function initContactScrollAnimations() {
 
 function initAnimations() {
 	const isHomepage = Boolean(document.querySelector("#home"));
+	const isStandalonePage = document.body.matches(".work-page, .services-page");
 
-	if (!isHomepage) {
+	if (!isHomepage && !isStandalonePage) {
 		initLegacyScrollReveal();
 		return;
 	}
 
 	if (prefersReducedMotion()) return;
+
+	if (isStandalonePage) {
+		if (
+			hasAnimationLibraries("SplitText") &&
+			hasAnimationLibraries("ScrollTrigger")
+		) {
+			window.gsap.registerPlugin(window.SplitText, window.ScrollTrigger);
+			void initStandalonePageAnimations();
+		} else {
+			initLegacyScrollReveal();
+		}
+
+		return;
+	}
 
 	if (hasAnimationLibraries("SplitText")) {
 		window.gsap.registerPlugin(window.SplitText);
@@ -449,10 +716,16 @@ function initAnimations() {
 
 	if (hasAnimationLibraries("ScrollTrigger")) {
 		window.gsap.registerPlugin(window.ScrollTrigger);
+		initHeroParallax();
+		initPanelExitAnimations();
 		initAboutScrollAnimation();
 		initWorkScrollAnimations();
 		initServicesScrollAnimations();
 		initContactScrollAnimations();
+
+		if (hasAnimationLibraries("SplitText")) {
+			initSectionTitleAnimations();
+		}
 	}
 }
 
