@@ -87,7 +87,32 @@ function initNavigation() {
 		);
 	});
 
-	navLinks.forEach((link) => link.addEventListener("click", closeMenu));
+	navLinks.forEach((link) => {
+		link.addEventListener("click", (event) => {
+			closeMenu();
+
+			if (!document.body.classList.contains("home-page") || !link.hash) return;
+
+			const targetSection = document.querySelector(link.hash);
+			if (!targetSection) return;
+
+			event.preventDefault();
+
+			const hasHorizontalEntry = ["work", "services"].includes(
+				targetSection.id,
+			);
+			const entryOffset =
+				hasHorizontalEntry && window.matchMedia("(min-width: 901px)").matches
+					? window.innerHeight * 0.65
+					: 0;
+
+			window.scrollTo({
+				top: targetSection.offsetTop + entryOffset,
+				behavior: prefersReducedMotion() ? "auto" : "smooth",
+			});
+			setActiveLink(targetSection.id);
+		});
+	});
 	document
 		.querySelector(".mobile-nav-cta")
 		?.addEventListener("click", closeMenu);
@@ -279,62 +304,128 @@ function initLegacyScrollReveal() {
 	items.forEach((item) => revealObserver.observe(item));
 }
 
-async function initHeroTextAnimation() {
-	const title = document.querySelector("[data-hero-title]");
-	const subtitle = document.querySelector(".hero-subtitle");
-	const intro = document.querySelector(".hero-intro");
-	if (!title || !subtitle || !intro) return;
+function initPageIntro() {
+	const loader = document.querySelector("[data-intro-loader]");
+	const echoesContainer = loader?.querySelector("[data-intro-echoes]");
+	const title = loader?.querySelector("[data-intro-title]");
+	const brand = loader?.querySelector(".intro-loader__brand");
+	const topPanel = loader?.querySelector(".intro-loader__panel--top");
+	const bottomPanel = loader?.querySelector(".intro-loader__panel--bottom");
 
-	if (document.fonts?.ready) await document.fonts.ready;
+	if (!loader || !echoesContainer || !title || !topPanel || !bottomPanel) {
+		return false;
+	}
 
+	loader.classList.add("intro-loader--active");
+	document.body.classList.add("intro-active");
+
+	const echoPositions = [
+		[6, 12],
+		[58, 9],
+		[18, 31],
+		[70, 38],
+		[3, 68],
+		[54, 72],
+		[25, 88],
+	];
+	const echoSplits = echoPositions.map(([left, top]) => {
+		const echo = document.createElement("p");
+		const randomLeft = window.gsap.utils.clamp(
+			2,
+			72,
+			left + window.gsap.utils.random(-5, 5, 0.5),
+		);
+		const randomTop = window.gsap.utils.clamp(
+			4,
+			90,
+			top + window.gsap.utils.random(-5, 5, 0.5),
+		);
+		echo.className = "intro-loader__echo";
+		echo.textContent = "FE Studios";
+		echo.style.left = `${randomLeft}%`;
+		echo.style.top = `${randomTop}%`;
+		echo.style.rotate = `${window.gsap.utils.random(-5, 5, 0.5)}deg`;
+		echoesContainer.append(echo);
+
+		return window.SplitText.create(echo, {
+			type: "words, chars",
+			wordsClass: "intro-loader__word",
+			charsClass: "intro-loader__char",
+		});
+	});
 	const titleSplit = window.SplitText.create(title, {
 		type: "words, chars",
-		mask: "chars",
-		wordsClass: "hero-split-word",
-		charsClass: "hero-split-char",
+		wordsClass: "intro-loader__word",
+		charsClass: "intro-loader__char",
 	});
-	const subtitleSplit = window.SplitText.create(subtitle, {
-		type: "words",
-		mask: "words",
-		wordsClass: "hero-split-word",
+	const timeline = window.gsap.timeline({
+		onComplete() {
+			document.body.classList.remove("intro-active");
+			loader.classList.add("intro-loader--complete");
+			loader.remove();
+			requestAnimationFrame(() => window.ScrollTrigger?.refresh());
+		},
 	});
 
-	window.gsap
-		.timeline({
-			defaults: { ease: "power4.out" },
-			onComplete() {
-				titleSplit.revert();
-				subtitleSplit.revert();
-			},
-		})
-		.from(titleSplit.chars, {
-			yPercent: 110,
-			rotate: 5,
-			autoAlpha: 0,
-			duration: 0.9,
-			stagger: 0.045,
-		})
-		.from(
-			subtitleSplit.words,
+	echoSplits.forEach((split, index) => {
+		const startTime = index * 0.14;
+
+		timeline
+			.fromTo(
+				split.chars,
+				{ yPercent: () => window.gsap.utils.random(-80, 80), autoAlpha: 0 },
+				{
+					yPercent: 0,
+					autoAlpha: 1,
+					duration: 0.32,
+					stagger: { each: 0.016, from: "random" },
+					ease: "power2.out",
+				},
+				startTime,
+			)
+			.to(
+				split.chars,
+				{
+					autoAlpha: 0,
+					duration: 0.14,
+					stagger: { each: 0.01, from: "random" },
+				},
+				startTime + 0.44,
+			);
+	});
+
+	timeline
+		.fromTo(
+			titleSplit.chars,
+			{ yPercent: () => window.gsap.utils.random(-120, 120), autoAlpha: 0 },
 			{
-				yPercent: 105,
-				autoAlpha: 0,
-				duration: 0.7,
-				stagger: 0.035,
-			},
-			"-=0.28",
-		)
-		.from(
-			intro,
-			{
-				y: 24,
-				autoAlpha: 0,
-				duration: 0.8,
+				yPercent: 0,
+				autoAlpha: 1,
+				duration: 0.34,
+				stagger: { each: 0.03, from: "random" },
 				ease: "power3.out",
-				clearProps: "transform,opacity,visibility",
 			},
-			"-=0.3",
-		);
+			1.35,
+		)
+		.to(title, { scale: 1.035, duration: 0.25, ease: "power2.inOut" })
+		.to(
+			[echoesContainer, title],
+			{
+				autoAlpha: 0,
+				duration: 0.18,
+				ease: "power2.in",
+			},
+			"+=0.22",
+		)
+		.to(topPanel, { yPercent: -101, duration: 0.82, ease: "power4.inOut" })
+		.to(
+			bottomPanel,
+			{ yPercent: 101, duration: 0.82, ease: "power4.inOut" },
+			"<",
+		)
+		.to(brand, { autoAlpha: 0, duration: 0.32, ease: "power2.out" }, "<");
+
+	return true;
 }
 
 function initAboutScrollAnimation() {
@@ -346,8 +437,7 @@ function initAboutScrollAnimation() {
 				...about.querySelectorAll(".profile-copy p"),
 				about.querySelector(".toolkit .eyebrow"),
 				...about.querySelectorAll(".toolkit li"),
-			]
-			.filter(Boolean)
+			].filter(Boolean)
 		: [];
 	if (!about || !revealGroups.length) return;
 
@@ -405,9 +495,11 @@ function initHeroParallax() {
 }
 
 function initStandaloneHeroAnimation() {
-	const hero = document.querySelector(".work-hero, .services-hero");
+	const hero = document.querySelector(
+		".work-hero, .services-hero, .case-hero",
+	);
 	const heroCopy = hero?.querySelector(
-		".work-hero__copy, .services-hero__copy",
+		".work-hero__copy, .services-hero__copy, .case-hero__copy",
 	);
 	const title = heroCopy?.querySelector("h1");
 
@@ -422,6 +514,7 @@ function initStandaloneHeroAnimation() {
 	const supportingContent = [...heroCopy.children].filter(
 		(element) => element !== title,
 	);
+	const heroVisual = hero.querySelector(".case-hero__visual");
 
 	window.gsap
 		.timeline({ defaults: { ease: "power4.out" } })
@@ -442,10 +535,23 @@ function initStandaloneHeroAnimation() {
 			},
 			"-=0.32",
 		);
+
+	if (heroVisual) {
+		window.gsap.from(heroVisual, {
+			x: 72,
+			autoAlpha: 0,
+			duration: 0.72,
+			delay: 0.2,
+			ease: MOTION.ease,
+		});
+	}
 }
 
 function initStandaloneSectionTitleAnimations() {
-	const titles = document.querySelectorAll("main > .panel:not(:first-child) h2");
+	const titleSelector = document.body.classList.contains("case-page")
+		? ".case-page main section:not(.case-hero) h2:not(.sr-only)"
+		: "main > .panel:not(:first-child) h2";
+	const titles = document.querySelectorAll(titleSelector);
 
 	titles.forEach((title) => {
 		const splitTitle = window.SplitText.create(title, {
@@ -473,9 +579,12 @@ function initStandaloneSectionTitleAnimations() {
 
 function initStandaloneCardAnimations() {
 	const isWorkPage = document.body.classList.contains("work-page");
+	const isCasePage = document.body.classList.contains("case-page");
 	const selector = isWorkPage
 		? ".portfolio-card, .work-testimonials blockquote, .work-about__portrait, .work-about__copy, .work-project-cta, .work-contact .contact-card"
-		: ".service-offer, .pricing-list article, .process-grid > li, .care-grid article, .faq-list details, .services-contact .contact-card";
+		: isCasePage
+			? ".case-summary > *, .case-story__body, .case-insight, .case-feature__visual, .case-gallery figure, .case-deliverables article, .case-launch-asset, .case-intelligence__grid > *, .case-problem > *, .case-outcome > *, .case-next"
+			: ".service-offer, .pricing-list article, .process-grid > li, .care-grid article, .faq-list details, .services-contact .contact-card";
 	const cards = document.querySelectorAll(selector);
 
 	cards.forEach((card, index) => {
@@ -532,6 +641,35 @@ function initPanelExitAnimations() {
 				scrub: 0.6,
 				invalidateOnRefresh: true,
 			},
+		});
+	});
+}
+
+function initDesktopPanelEntryAnimations() {
+	const panelTransitions = [
+		{ panel: document.querySelector("#work"), xPercent: 100 },
+		{ panel: document.querySelector("#services"), xPercent: -100 },
+	];
+
+	window.gsap.matchMedia().add("(min-width: 901px)", () => {
+		panelTransitions.forEach(({ panel, xPercent }) => {
+			if (!panel) return;
+
+			window.gsap.fromTo(
+				panel,
+				{ xPercent },
+				{
+					xPercent: 0,
+					ease: "none",
+					scrollTrigger: {
+						trigger: panel,
+						start: "top top",
+						end: () => `+=${window.innerHeight * 0.65}`,
+						scrub: 0.7,
+						invalidateOnRefresh: true,
+					},
+				},
+			);
 		});
 	});
 }
@@ -629,9 +767,7 @@ function initServicesScrollAnimations() {
 }
 
 function initSectionTitleAnimations() {
-	const titles = document.querySelectorAll(
-		"#about h2, #work h2, #contact h2",
-	);
+	const titles = document.querySelectorAll("#about h2, #work h2, #contact h2");
 
 	titles.forEach((title) => {
 		const splitTitle = window.SplitText.create(title, {
@@ -686,14 +822,20 @@ function initContactScrollAnimations() {
 
 function initAnimations() {
 	const isHomepage = Boolean(document.querySelector("#home"));
-	const isStandalonePage = document.body.matches(".work-page, .services-page");
+	const isStandalonePage = document.body.matches(
+		".work-page, .services-page, .case-page",
+	);
+	const introLoader = document.querySelector("[data-intro-loader]");
 
 	if (!isHomepage && !isStandalonePage) {
 		initLegacyScrollReveal();
 		return;
 	}
 
-	if (prefersReducedMotion()) return;
+	if (prefersReducedMotion()) {
+		introLoader?.remove();
+		return;
+	}
 
 	if (isStandalonePage) {
 		if (
@@ -711,12 +853,15 @@ function initAnimations() {
 
 	if (hasAnimationLibraries("SplitText")) {
 		window.gsap.registerPlugin(window.SplitText);
-		void initHeroTextAnimation();
+		initPageIntro();
+	} else {
+		introLoader?.remove();
 	}
 
 	if (hasAnimationLibraries("ScrollTrigger")) {
 		window.gsap.registerPlugin(window.ScrollTrigger);
 		initHeroParallax();
+		initDesktopPanelEntryAnimations();
 		initPanelExitAnimations();
 		initAboutScrollAnimation();
 		initWorkScrollAnimations();

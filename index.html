@@ -75,7 +75,9 @@
 						"logo": "https://festudios.co.uk/assets/logo-light.png",
 						"image": "https://festudios.co.uk/assets/lg_logo_transparent.png",
 						"founder": { "@id": "https://festudios.co.uk/#jamie-fleming" },
-						"sameAs": ["https://www.facebook.com/profile.php?id=61591257781296"],
+						"sameAs": [
+							"https://www.facebook.com/profile.php?id=61591257781296"
+						],
 						"description": "Independent web design, app development and UI/UX studio based in Blyth, Northumberland, working with clients across the UK and worldwide.",
 						"address": {
 							"@type": "PostalAddress",
@@ -155,6 +157,18 @@
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body class="home-page">
+		<div class="intro-loader" data-intro-loader aria-hidden="true">
+			<div class="intro-loader__panel intro-loader__panel--top"></div>
+			<div class="intro-loader__panel intro-loader__panel--bottom"></div>
+			<img
+				class="intro-loader__brand"
+				src="assets/lg_logo_transparent.png"
+				alt=""
+				width="1774"
+				height="887" />
+			<div class="intro-loader__echoes" data-intro-echoes></div>
+			<p class="intro-loader__title" data-intro-title>FE Studios</p>
+		</div>
 		<a class="site-skip-link" href="#main-content">Skip to main content</a>
 		<header class="sidebar" aria-label="Primary navigation">
 			<a class="brand" href="#home" aria-label="FE Studios home">
@@ -201,7 +215,7 @@
 						and worldwide
 					</p>
 					<div>
-						<h1 data-hero-title>FE Studios</h1>
+						<h1>FE Studios</h1>
 						<p class="hero-subtitle">
 							Modern websites and apps, designed in Northumberland.
 						</p>
@@ -211,8 +225,7 @@
 						Northumberland. I create modern websites, apps and digital products
 						for businesses across North East England, UK founders and clients
 						worldwide. From the first conversation and initial design through to
-						launch, you work directly with me—no unnecessary agency layers, just
-						thoughtful work and clear communication.
+						launch, you will work directly with me.
 					</p>
 					<div class="actions">
 						<button
@@ -257,21 +270,22 @@
 						</div>
 						<div class="profile-copy">
 							<p>
-								I first found web design while studying computer science at
+								I first found web design while studying Computer Science at
 								university. I had always enjoyed both design and computing, and
-								websites gave me a place to bring the two together. After years of
-								continuing to practise in the background, I started FE Studios to
-								properly return to the work I enjoy.
+								websites gave me a place to bring the two together. After years
+								of continuing to practise in the background, I started FE
+								Studios to properly return to the work I enjoy.
 							</p>
 							<p>
-								I’m also a dad of two and, when time allows, a runner, cyclist and
-								enthusiastic explorer of the outdoors. Balancing work, family and
-								the studio has taught me the value of clear communication, careful
-								planning and making every hour count. My favourite part is taking
-								an idea from a blank screen to a finished product that someone is
-								proud to use. I especially enjoy working with people who care deeply
-								about their business and see their website as an investment—not
-								just another box to tick.
+								I’m also a dad of two and, when time allows, a runner, cyclist
+								and enthusiastic explorer of the outdoors. Balancing work,
+								family and the studio has taught me the value of clear
+								communication, careful planning and making every hour count. My
+								favourite part is taking an idea from a blank screen to a
+								finished product that someone is proud to use. I especially
+								enjoy working with people who care deeply about their business
+								and see their website as an investment—not just another box to
+								tick.
 							</p>
 						</div>
 					</div>
@@ -332,7 +346,8 @@
 						</div>
 						<h3><a href="work.html#crewmate">CrewMate</a></h3>
 						<p>
-							A calm, fast assistant designed to support ambulance crews mid-shift.
+							A calm, fast assistant designed to support ambulance crews
+							mid-shift.
 						</p>
 					</article>
 					<article class="project peach">
@@ -387,7 +402,7 @@
 							>View all services <span aria-hidden="true">→</span></a
 						>
 					</div>
-					<p class="eyebrow">
+					<p class="eyebrow services-summary">
 						Thoughtful design, development and guidance, from the first idea
 						through to launch and beyond
 					</p>
@@ -606,52 +621,59 @@
 								placeholder="Tell me what you need, what it should achieve and where you are in the process…"></textarea>
 						</label>
 						<details class="contact-form__optional-fields">
-							<summary>Add budget, timing and other details <span>Optional</span></summary>
-						<div class="contact-form__row">
+							<summary>
+								Add budget, timing and other details <span>Optional</span>
+							</summary>
+							<div class="contact-form__row">
+								<label>
+									Budget range
+									<span class="contact-form__optional">Optional</span>
+									<select name="budget">
+										<option value="" selected disabled>Select a range</option>
+										<option>Under £500</option>
+										<option>£500–£1,000</option>
+										<option>£1,000–£2,500</option>
+										<option>£2,500–£5,000</option>
+										<option>£5,000+</option>
+										<option>Not sure yet</option>
+									</select>
+								</label>
+								<label>
+									Desired timeline
+									<span class="contact-form__optional">Optional</span>
+									<select name="timeline">
+										<option value="" selected disabled>
+											Select a timeline
+										</option>
+										<option>As soon as possible</option>
+										<option>Within one month</option>
+										<option>Within 1–3 months</option>
+										<option>Within 3–6 months</option>
+										<option>Flexible / no fixed date</option>
+									</select>
+								</label>
+							</div>
 							<label>
-							Budget range <span class="contact-form__optional">Optional</span>
-							<select name="budget">
-									<option value="" selected disabled>Select a range</option>
-									<option>Under £500</option>
-									<option>£500–£1,000</option>
-									<option>£1,000–£2,500</option>
-									<option>£2,500–£5,000</option>
-									<option>£5,000+</option>
-									<option>Not sure yet</option>
+								How did you find FE Studios?
+								<span class="contact-form__optional">Optional</span>
+								<select name="referral_source">
+									<option value="" selected disabled>Select an option</option>
+									<option>Google or another search engine</option>
+									<option>Recommendation or referral</option>
+									<option>Social media</option>
+									<option>Local business or community</option>
+									<option>Previous client</option>
+									<option>Other</option>
 								</select>
 							</label>
 							<label>
-							Desired timeline <span class="contact-form__optional">Optional</span>
-							<select name="timeline">
-									<option value="" selected disabled>Select a timeline</option>
-									<option>As soon as possible</option>
-									<option>Within one month</option>
-									<option>Within 1–3 months</option>
-									<option>Within 3–6 months</option>
-									<option>Flexible / no fixed date</option>
-								</select>
+								Further information
+								<span class="contact-form__optional">Optional</span>
+								<textarea
+									class="contact-form__textarea--compact"
+									name="further_information"
+									placeholder="Anything else that would be useful to know?"></textarea>
 							</label>
-						</div>
-						<label>
-							How did you find FE Studios? <span class="contact-form__optional">Optional</span>
-							<select name="referral_source">
-								<option value="" selected disabled>Select an option</option>
-								<option>Google or another search engine</option>
-								<option>Recommendation or referral</option>
-								<option>Social media</option>
-								<option>Local business or community</option>
-								<option>Previous client</option>
-								<option>Other</option>
-							</select>
-						</label>
-						<label>
-							Further information
-							<span class="contact-form__optional">Optional</span>
-							<textarea
-								class="contact-form__textarea--compact"
-								name="further_information"
-								placeholder="Anything else that would be useful to know?"></textarea>
-						</label>
 						</details>
 						<button type="submit" class="contact-form__submit">
 							Send enquiry <span aria-hidden="true">→</span>

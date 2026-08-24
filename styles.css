@@ -52,6 +52,105 @@ body.modal-open {
   overflow: hidden;
 }
 
+body.intro-active {
+  overflow: hidden;
+}
+
+/* Homepage intro --------------------------------------------------------- */
+.intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  overflow: hidden;
+  color: var(--paper);
+  pointer-events: none;
+  animation: intro-loader-fallback 0.3s 4s forwards;
+}
+
+.intro-loader--active {
+  animation: none;
+}
+
+.intro-loader--complete {
+  display: none;
+}
+
+.intro-loader__panel {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  height: 50.1%;
+  background: var(--ink);
+  will-change: transform;
+}
+
+.intro-loader__panel--top {
+  top: 0;
+}
+
+.intro-loader__panel--bottom {
+  bottom: 0;
+}
+
+.intro-loader__brand,
+.intro-loader__echoes,
+.intro-loader__title {
+  position: absolute;
+  z-index: 2;
+}
+
+.intro-loader__brand {
+  top: 50%;
+  left: 50%;
+  width: min(78vw, 1120px);
+  max-width: none;
+  opacity: 0.14;
+  filter: invert(1);
+  transform: translate(-50%, -50%);
+  will-change: opacity;
+}
+
+.intro-loader__echoes {
+  inset: 0;
+}
+
+.intro-loader__echoes,
+.intro-loader__title {
+  z-index: 3;
+}
+
+.intro-loader__echo {
+  position: absolute;
+  margin: 0;
+  color: rgb(245 245 243 / 72%);
+  font: 700 clamp(18px, 3vw, 42px) / 0.9 var(--font-display);
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+}
+
+.intro-loader__title {
+  top: 50%;
+  left: 50%;
+  width: max-content;
+  margin: 0;
+  font: 700 clamp(58px, 11vw, 154px) / 0.86 var(--font-display);
+  letter-spacing: -0.065em;
+  transform: translate(-50%, -50%);
+}
+
+.intro-loader__char,
+.intro-loader__word {
+  display: inline-block;
+}
+
+@keyframes intro-loader-fallback {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -302,6 +401,13 @@ main {
 .home-page main > .panel:nth-child(4) { z-index: 4; }
 .home-page main > .panel:nth-child(5) { z-index: 5; }
 
+@media (min-width: 901px) {
+  .home-page #work,
+  .home-page #services {
+    margin-bottom: 75vh;
+  }
+}
+
 /* 5. Hero ----------------------------------------------------------------- */
 .hero {
   min-height: 100vh;
@@ -321,19 +427,6 @@ main {
 .hero h1 {
   margin: 0 0 18px;
   font-size: clamp(64px, 8vw, 112px);
-}
-
-.hero .hero-split-char,
-.hero .hero-split-word {
-  display: inline-block;
-  will-change: transform, opacity;
-}
-
-.hero .hero-split-char-mask,
-.hero .hero-split-word-mask {
-  overflow: clip;
-  padding-block: 0.08em;
-  margin-block: -0.08em;
 }
 
 .section-title-char,
@@ -653,6 +746,10 @@ main {
 }
 
 .services-intro {
+  width: 100%;
+}
+
+.services-summary {
   max-width: 915px;
 }
 
@@ -1241,10 +1338,21 @@ main {
     inset: 0 0 auto;
     width: 100%;
     height: 82px;
+    overflow: hidden;
     flex-direction: row;
+    align-items: flex-start;
     padding: 8px 18px;
     border-bottom: 1px solid var(--muted);
     border-radius: 0 0 var(--radius-panel) var(--radius-panel);
+    box-shadow: 0 0 0 rgb(0 0 0 / 0%);
+    transition:
+      height 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s ease;
+  }
+
+  .sidebar.open {
+    height: min(470px, 100dvh);
+    box-shadow: 0 18px 32px rgb(0 0 0 / 14%);
   }
 
   .brand {
@@ -1277,6 +1385,23 @@ main {
     width: 100%;
     height: 2px;
     background: var(--paper);
+    transform-origin: center;
+    transition:
+      opacity 0.22s ease,
+      transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sidebar.open .menu-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .sidebar.open .menu-toggle span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .sidebar.open .menu-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 
   .sidebar nav {
@@ -1285,29 +1410,50 @@ main {
     left: 0;
     z-index: 1;
     gap: 0;
-    overflow: hidden;
-    border-radius: 0 0 var(--radius-panel) var(--radius-panel);
-    background: var(--paper);
-    box-shadow: 0 18px 28px rgb(0 0 0 / 13%);
+    max-height: calc(100vh - 81px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: transparent;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-16px);
+    transform: translateY(-18px);
     transition:
-      opacity 0.25s,
-      visibility 0s linear 0.25s,
-      transform 0.25s;
+      opacity 0.28s ease,
+      visibility 0s linear 0.5s,
+      transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .sidebar.open nav {
     opacity: 1;
     visibility: visible;
-    transform: none;
-    transition-delay: 0s;
+    transform: translateY(0);
+    transition-delay: 0.12s, 0s, 0.12s;
   }
 
   .sidebar nav a {
     height: 58px;
     font-size: 18px;
+    opacity: 0;
+    transform: translateY(-22px);
+    transition:
+      color 0.25s ease,
+      opacity 0.3s ease,
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sidebar.open nav a {
+    opacity: 1;
+    transform: none;
+  }
+
+  .sidebar.open nav a:nth-of-type(1) { transition-delay: 0.2s; }
+  .sidebar.open nav a:nth-of-type(2) { transition-delay: 0.25s; }
+  .sidebar.open nav a:nth-of-type(3) { transition-delay: 0.3s; }
+  .sidebar.open nav a:nth-of-type(4) { transition-delay: 0.35s; }
+  .sidebar.open nav a:nth-of-type(5) { transition-delay: 0.4s; }
+
+  .sidebar:not(.open) nav a {
+    transition-delay: 0s;
   }
 
   .mobile-nav-cta {
@@ -1321,6 +1467,19 @@ main {
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
+    opacity: 0;
+    transform: translateY(-18px);
+    transition:
+      color 0.2s,
+      background-color 0.2s,
+      opacity 0.3s ease,
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sidebar.open .mobile-nav-cta {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s, 0s, 0.45s, 0.45s;
   }
 
   .mobile-nav-cta:hover,
@@ -1345,10 +1504,15 @@ main {
   }
 
   .home-page main > .panel {
-    position: sticky;
-    top: 82px;
+    position: relative;
+    top: auto;
+    bottom: auto;
     min-height: calc(100vh - 82px);
     box-shadow: 0 -10px 28px rgb(0 0 0 / 12%);
+  }
+
+  .home-page main > .panel + .panel {
+    margin-top: -18px;
   }
 
   h2 {
@@ -1656,6 +1820,10 @@ main {
     animation-iteration-count: 1 !important;
   }
 
+  .intro-loader {
+    display: none !important;
+  }
+
   .scroll-reveal,
   .scroll-reveal.is-visible {
     opacity: 1;
@@ -1667,11 +1835,7 @@ main {
   .home-page main > .panel {
     position: relative;
     top: auto;
-  }
-
-  .hero .hero-split-char,
-  .hero .hero-split-word {
-    will-change: auto;
+    bottom: auto;
   }
 
   .hero-copy,
