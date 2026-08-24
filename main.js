@@ -60,7 +60,11 @@ function syncScrollAnimations() {
 	window.ScrollTrigger?.update();
 	// Numeric scrub animations otherwise continue easing after an instant nav jump.
 	window.ScrollTrigger?.getAll().forEach((trigger) => {
-		trigger.getTween?.()?.progress(1);
+		const scrubTween = trigger.getTween?.();
+
+		if (typeof scrubTween?.progress === "function") {
+			scrubTween.progress(1);
+		}
 	});
 }
 
@@ -238,6 +242,25 @@ function initNavigation() {
 			return;
 		}
 
+		const mobileHeaderHeight = 82;
+		const desktopSidebarWidth = 247;
+		const isDesktop = isDesktopViewport();
+		const probeX = isDesktop
+			? desktopSidebarWidth + (window.innerWidth - desktopSidebarWidth) / 2
+			: window.innerWidth / 2;
+		const probeY = isDesktop
+			? window.innerHeight / 2
+			: mobileHeaderHeight + (window.innerHeight - mobileHeaderHeight) / 2;
+		const visibleSection = document
+			.elementFromPoint(probeX, probeY)
+			?.closest("main > section[id]");
+
+		if (visibleSection) {
+			setActiveLink(visibleSection.id);
+			return;
+		}
+
+		// Retain an offset-based fallback for browsers without a probeable panel.
 		const scrollMarker = window.scrollY + window.innerHeight * 0.45;
 		const activeSection = sections.reduce((current, section) => {
 			return getSectionPosition(section) <= scrollMarker ? section : current;
