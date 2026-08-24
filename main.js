@@ -1,5 +1,9 @@
 "use strict";
 
+/* --------------------------------------------------------------------------
+ * Configuration
+ * -------------------------------------------------------------------------- */
+
 const SELECTORS = {
 	modal: "#contactModal",
 	navLinks: "#site-nav a",
@@ -8,21 +12,77 @@ const SELECTORS = {
 		".project, .more-work, .testimonials blockquote, .service-grid article, .contact-card, [data-reveal]",
 };
 
+const VIEWPORT = {
+	desktop: "(min-width: 901px)",
+	mobile: "(max-width: 900px)",
+};
+
 const MOTION = {
 	reducedMotionQuery: "(prefers-reduced-motion: reduce)",
 	revealStart: "top 88%",
 	revealEnd: "bottom 12%",
-	reversibleActions: "play none none none",
+	revealToggleActions: "play none none none",
 	ease: "power3.out",
 };
+
+const SPLIT_TEXT_CLASSES = {
+	section: {
+		wordsClass: "section-title-word",
+		charsClass: "section-title-char",
+	},
+	intro: {
+		wordsClass: "intro-loader__word",
+		charsClass: "intro-loader__char",
+	},
+};
+
+/* --------------------------------------------------------------------------
+ * Shared utilities
+ * -------------------------------------------------------------------------- */
 
 const prefersReducedMotion = () =>
 	window.matchMedia(MOTION.reducedMotionQuery).matches;
 
+const isDesktopViewport = () => window.matchMedia(VIEWPORT.desktop).matches;
+
 const hasAnimationLibraries = (...libraries) =>
 	Boolean(window.gsap && libraries.every((library) => window[library]));
 
-function createReversibleReveal(element, options = {}) {
+function splitElement(element, classNames, useMask = true) {
+	return window.SplitText.create(element, {
+		type: "words, chars",
+		...(useMask && { mask: "chars" }),
+		...classNames,
+	});
+}
+
+function syncScrollAnimations() {
+	window.ScrollTrigger?.update();
+	// Numeric scrub animations otherwise continue easing after an instant nav jump.
+	window.ScrollTrigger?.getAll().forEach((trigger) => {
+		trigger.getTween?.()?.progress(1);
+	});
+}
+
+function jumpToScrollPosition(position, syncAnimations = false) {
+	const root = document.documentElement;
+	const scrollingElement = document.scrollingElement ?? root;
+	const previousScrollBehavior = root.style.scrollBehavior;
+	const applyPosition = () => {
+		scrollingElement.scrollTop = position;
+		if (syncAnimations) syncScrollAnimations();
+	};
+
+	root.style.scrollBehavior = "auto";
+	applyPosition();
+
+	requestAnimationFrame(() => {
+		applyPosition();
+		root.style.scrollBehavior = previousScrollBehavior;
+	});
+}
+
+function createScrollReveal(element, options = {}) {
 	if (!element) return null;
 
 	return window.gsap.from(element, {
@@ -34,18 +94,70 @@ function createReversibleReveal(element, options = {}) {
 			trigger: element,
 			start: options.start ?? MOTION.revealStart,
 			end: options.end ?? MOTION.revealEnd,
-			toggleActions: options.toggleActions ?? MOTION.reversibleActions,
+			toggleActions: options.toggleActions ?? MOTION.revealToggleActions,
 		},
 	});
 }
+
+function createSplitTitleReveal(title, scrollTriggerOptions = {}) {
+	const splitTitle = splitElement(title, SPLIT_TEXT_CLASSES.section);
+
+	return window.gsap.from(splitTitle.chars, {
+		yPercent: 110,
+		rotate: 4,
+		autoAlpha: 0,
+		duration: 0.58,
+		stagger: 0.025,
+		ease: "power4.out",
+		scrollTrigger: {
+			trigger: title,
+			start: "top 86%",
+			toggleActions: MOTION.revealToggleActions,
+			...scrollTriggerOptions,
+		},
+	});
+}
+
+/* --------------------------------------------------------------------------
+ * Navigation
+ * -------------------------------------------------------------------------- */
 
 function initNavigation() {
 	const sidebar = document.querySelector(".sidebar");
 	const menuToggle = document.querySelector(".menu-toggle");
 	const navLinks = [...document.querySelectorAll(SELECTORS.navLinks)];
-	const sections = document.querySelectorAll(SELECTORS.sections);
+	const sections = [...document.querySelectorAll(SELECTORS.sections)];
+	const isHomepage = document.body.classList.contains("home-page");
 
 	if (!sidebar || !menuToggle || !navLinks.length || !sections.length) return;
+
+	const sectionPositions = new Map();
+	// Cache flow positions before sticky transforms alter the rendered card state.
+	const cacheSectionPositions = () => {
+		sections.forEach((section) => {
+			sectionPositions.set(section.id, section.offsetTop);
+		});
+	};
+	const getSectionPosition = (section) => {
+		const panelTrigger = window.ScrollTrigger?.getById(
+			`panel-stack-${section.id}`,
+		);
+
+		if (panelTrigger) return panelTrigger.start;
+
+		if (section === sections.at(-1)) {
+			const previousSection = sections.at(-2);
+			const previousTrigger = window.ScrollTrigger?.getById(
+				`panel-stack-${previousSection?.id}`,
+			);
+
+			if (previousTrigger) return previousTrigger.end;
+		}
+
+		return sectionPositions.get(section.id) ?? section.offsetTop;
+	};
+
+	cacheSectionPositions();
 
 	const closeMenu = () => {
 		sidebar.classList.remove("open");
@@ -61,8 +173,6 @@ function initNavigation() {
 					link.hash === `#${sectionId}` || mappedSections.includes(sectionId)
 				);
 			}) ?? navLinks[0];
-		const nav = activeLink.closest("nav");
-
 		navLinks.forEach((link) => {
 			const isActive = link === activeLink;
 			link.classList.toggle("active", isActive);
@@ -70,12 +180,6 @@ function initNavigation() {
 				? link.setAttribute("aria-current", "page")
 				: link.removeAttribute("aria-current");
 		});
-
-		nav?.style.setProperty("--indicator-y", `${activeLink.offsetTop}px`);
-		nav?.style.setProperty(
-			"--indicator-height",
-			`${activeLink.offsetHeight}px`,
-		);
 	};
 
 	menuToggle.addEventListener("click", () => {
@@ -91,25 +195,25 @@ function initNavigation() {
 		link.addEventListener("click", (event) => {
 			closeMenu();
 
-			if (!document.body.classList.contains("home-page") || !link.hash) return;
+			if (!isHomepage || !link.hash) return;
 
 			const targetSection = document.querySelector(link.hash);
 			if (!targetSection) return;
 
 			event.preventDefault();
 
-			const hasHorizontalEntry = ["work", "services"].includes(
-				targetSection.id,
-			);
-			const entryOffset =
-				hasHorizontalEntry && window.matchMedia("(min-width: 901px)").matches
-					? window.innerHeight * 0.65
-					: 0;
+			const isDesktop = isDesktopViewport();
+			const targetPosition = getSectionPosition(targetSection);
 
-			window.scrollTo({
-				top: targetSection.offsetTop + entryOffset,
-				behavior: prefersReducedMotion() ? "auto" : "smooth",
-			});
+			if (isDesktop) {
+				jumpToScrollPosition(targetPosition, true);
+			} else {
+				window.scrollTo({
+					top: targetPosition,
+					behavior: prefersReducedMotion() ? "auto" : "smooth",
+				});
+			}
+
 			setActiveLink(targetSection.id);
 		});
 	});
@@ -129,10 +233,15 @@ function initNavigation() {
 	});
 
 	const updateActiveSection = () => {
+		if (document.body.classList.contains("intro-active")) {
+			setActiveLink("home");
+			return;
+		}
+
 		const scrollMarker = window.scrollY + window.innerHeight * 0.45;
-		const activeSection = [...sections].reduce((current, section) =>
-			section.offsetTop <= scrollMarker ? section : current,
-		);
+		const activeSection = sections.reduce((current, section) => {
+			return getSectionPosition(section) <= scrollMarker ? section : current;
+		});
 
 		setActiveLink(activeSection?.id || "home");
 	};
@@ -149,10 +258,24 @@ function initNavigation() {
 	};
 
 	updateActiveSection();
-	window.addEventListener("load", updateActiveSection);
-	window.addEventListener("resize", requestSectionUpdate);
+	window.addEventListener("load", () => {
+		if (!isHomepage) cacheSectionPositions();
+		updateActiveSection();
+	});
+	window.addEventListener("resize", () => {
+		if (isHomepage) {
+			window.ScrollTrigger?.refresh();
+		} else {
+			cacheSectionPositions();
+		}
+		requestSectionUpdate();
+	});
 	window.addEventListener("scroll", requestSectionUpdate, { passive: true });
 }
+
+/* --------------------------------------------------------------------------
+ * Contact modal and form
+ * -------------------------------------------------------------------------- */
 
 function initContactModal() {
 	const modal = document.querySelector(SELECTORS.modal);
@@ -160,6 +283,9 @@ function initContactModal() {
 	const formWrap = document.querySelector("#contactFormWrap");
 	const successMessage = document.querySelector("#contactSuccess");
 	const errorMessage = document.querySelector("#contactError");
+	const backgroundContent = document.querySelectorAll(
+		"body > header, body > main, body > footer",
+	);
 
 	if (!modal) return;
 
@@ -168,6 +294,7 @@ function initContactModal() {
 	const resetModal = () => {
 		successMessage?.classList.remove("contact-success--visible");
 		formWrap?.classList.remove("contact-form-wrap--hidden");
+		if (errorMessage) errorMessage.hidden = true;
 	};
 
 	const openModal = (trigger) => {
@@ -176,11 +303,9 @@ function initContactModal() {
 		modal.classList.add("contact-modal--open");
 		modal.setAttribute("aria-hidden", "false");
 		document.body.classList.add("modal-open");
-		document
-			.querySelectorAll("body > header, body > main, body > footer")
-			.forEach((element) => {
-				element.inert = true;
-			});
+		backgroundContent.forEach((element) => {
+			element.inert = true;
+		});
 		requestAnimationFrame(() =>
 			modal
 				.querySelector('input:not([type="hidden"]):not([tabindex="-1"])')
@@ -192,11 +317,9 @@ function initContactModal() {
 		modal.classList.remove("contact-modal--open");
 		modal.setAttribute("aria-hidden", "true");
 		document.body.classList.remove("modal-open");
-		document
-			.querySelectorAll("body > header, body > main, body > footer")
-			.forEach((element) => {
-				element.inert = false;
-			});
+		backgroundContent.forEach((element) => {
+			element.inert = false;
+		});
 		if (previouslyFocused instanceof HTMLElement) previouslyFocused.focus();
 	};
 
@@ -257,8 +380,9 @@ function initContactModal() {
 				headers: { Accept: "application/json" },
 			});
 
-			if (!response.ok)
+			if (!response.ok) {
 				throw new Error(`Form submission failed: ${response.status}`);
+			}
 
 			form.reset();
 			formWrap?.classList.add("contact-form-wrap--hidden");
@@ -273,6 +397,10 @@ function initContactModal() {
 		}
 	});
 }
+
+/* --------------------------------------------------------------------------
+ * CSS fallback animations
+ * -------------------------------------------------------------------------- */
 
 function initLegacyScrollReveal() {
 	const items = [...document.querySelectorAll(SELECTORS.revealItems)];
@@ -304,6 +432,10 @@ function initLegacyScrollReveal() {
 	items.forEach((item) => revealObserver.observe(item));
 }
 
+/* --------------------------------------------------------------------------
+ * Homepage intro
+ * -------------------------------------------------------------------------- */
+
 function initPageIntro() {
 	const loader = document.querySelector("[data-intro-loader]");
 	const echoesContainer = loader?.querySelector("[data-intro-echoes]");
@@ -315,6 +447,17 @@ function initPageIntro() {
 	if (!loader || !echoesContainer || !title || !topPanel || !bottomPanel) {
 		return false;
 	}
+
+	if ("scrollRestoration" in window.history) {
+		window.history.scrollRestoration = "manual";
+	}
+	// The splash always reveals the hero, regardless of restored scroll or hashes.
+	window.history.replaceState(
+		null,
+		"",
+		`${window.location.pathname}${window.location.search}#home`,
+	);
+	jumpToScrollPosition(0, true);
 
 	loader.classList.add("intro-loader--active");
 	document.body.classList.add("intro-active");
@@ -347,19 +490,12 @@ function initPageIntro() {
 		echo.style.rotate = `${window.gsap.utils.random(-5, 5, 0.5)}deg`;
 		echoesContainer.append(echo);
 
-		return window.SplitText.create(echo, {
-			type: "words, chars",
-			wordsClass: "intro-loader__word",
-			charsClass: "intro-loader__char",
-		});
+		return splitElement(echo, SPLIT_TEXT_CLASSES.intro, false);
 	});
-	const titleSplit = window.SplitText.create(title, {
-		type: "words, chars",
-		wordsClass: "intro-loader__word",
-		charsClass: "intro-loader__char",
-	});
+	const titleSplit = splitElement(title, SPLIT_TEXT_CLASSES.intro, false);
 	const timeline = window.gsap.timeline({
 		onComplete() {
+			jumpToScrollPosition(0, true);
 			document.body.classList.remove("intro-active");
 			loader.classList.add("intro-loader--complete");
 			loader.remove();
@@ -428,7 +564,11 @@ function initPageIntro() {
 	return true;
 }
 
-function initAboutScrollAnimation() {
+/* --------------------------------------------------------------------------
+ * Shared GSAP animations
+ * -------------------------------------------------------------------------- */
+
+function initAboutScrollAnimations() {
 	const about = document.querySelector("#about");
 	const revealGroups = about
 		? [
@@ -442,11 +582,11 @@ function initAboutScrollAnimation() {
 	if (!about || !revealGroups.length) return;
 
 	revealGroups.forEach((group) => {
-		createReversibleReveal(group, {
+		createScrollReveal(group, {
 			duration: 0.42,
 			start: "top 86%",
 			end: "bottom 14%",
-			toggleActions: MOTION.reversibleActions,
+			toggleActions: MOTION.revealToggleActions,
 		});
 	});
 }
@@ -462,7 +602,7 @@ function initHeroParallax() {
 
 	if (!hero || !heroCopy || !heroMark) return;
 
-	const isMobile = window.matchMedia("(max-width: 900px)").matches;
+	const isMobile = window.matchMedia(VIEWPORT.mobile).matches;
 
 	window.gsap
 		.timeline({
@@ -494,6 +634,10 @@ function initHeroParallax() {
 		);
 }
 
+/* --------------------------------------------------------------------------
+ * Standalone work, services and case-study pages
+ * -------------------------------------------------------------------------- */
+
 function initStandaloneHeroAnimation() {
 	const hero = document.querySelector(
 		".work-hero, .services-hero, .case-hero",
@@ -505,12 +649,7 @@ function initStandaloneHeroAnimation() {
 
 	if (!hero || !heroCopy || !title) return;
 
-	const splitTitle = window.SplitText.create(title, {
-		type: "words, chars",
-		mask: "chars",
-		wordsClass: "section-title-word",
-		charsClass: "section-title-char",
-	});
+	const splitTitle = splitElement(title, SPLIT_TEXT_CLASSES.section);
 	const supportingContent = [...heroCopy.children].filter(
 		(element) => element !== title,
 	);
@@ -554,37 +693,26 @@ function initStandaloneSectionTitleAnimations() {
 	const titles = document.querySelectorAll(titleSelector);
 
 	titles.forEach((title) => {
-		const splitTitle = window.SplitText.create(title, {
-			type: "words, chars",
-			mask: "chars",
-			wordsClass: "section-title-word",
-			charsClass: "section-title-char",
-		});
-
-		window.gsap.from(splitTitle.chars, {
-			yPercent: 110,
-			rotate: 4,
-			autoAlpha: 0,
-			duration: 0.58,
-			stagger: 0.025,
-			ease: "power4.out",
-			scrollTrigger: {
-				trigger: title,
-				start: "top 86%",
-				toggleActions: MOTION.reversibleActions,
-			},
-		});
+		createSplitTitleReveal(title);
 	});
 }
 
 function initStandaloneCardAnimations() {
-	const isWorkPage = document.body.classList.contains("work-page");
-	const isCasePage = document.body.classList.contains("case-page");
-	const selector = isWorkPage
-		? ".portfolio-card, .work-testimonials blockquote, .work-about__portrait, .work-about__copy, .work-project-cta, .work-contact .contact-card"
-		: isCasePage
-			? ".case-summary > *, .case-story__body, .case-insight, .case-feature__visual, .case-gallery figure, .case-deliverables article, .case-launch-asset, .case-intelligence__grid > *, .case-problem > *, .case-outcome > *, .case-next"
-			: ".service-offer, .pricing-list article, .process-grid > li, .care-grid article, .faq-list details, .services-contact .contact-card";
+	const cardSelectors = {
+		"work-page":
+			".portfolio-card, .work-testimonials blockquote, .work-about__portrait, .work-about__copy, .work-project-cta, .work-contact .contact-card",
+		"case-page":
+			".case-summary > *, .case-story__body, .case-insight, .case-feature__visual, .case-gallery figure, .case-deliverables article, .case-launch-asset, .case-intelligence__grid > *, .case-problem > *, .case-outcome > *, .case-next",
+		"services-page":
+			".service-offer, .pricing-list article, .process-grid > li, .care-grid article, .faq-list details, .services-contact .contact-card",
+	};
+	const pageClass = Object.keys(cardSelectors).find((className) =>
+		document.body.classList.contains(className),
+	);
+	const selector = cardSelectors[pageClass];
+
+	if (!selector) return;
+
 	const cards = document.querySelectorAll(selector);
 
 	cards.forEach((card, index) => {
@@ -599,7 +727,7 @@ function initStandaloneCardAnimations() {
 			scrollTrigger: {
 				trigger: card,
 				start: "top 88%",
-				toggleActions: MOTION.reversibleActions,
+				toggleActions: MOTION.revealToggleActions,
 			},
 		});
 	});
@@ -615,63 +743,38 @@ async function initStandalonePageAnimations() {
 	window.ScrollTrigger.refresh();
 }
 
-function initPanelExitAnimations() {
+/* --------------------------------------------------------------------------
+ * Homepage section-card animations
+ * -------------------------------------------------------------------------- */
+
+function initPanelStacking() {
 	const panels = [...document.querySelectorAll(".home-page main > .panel")];
 	if (panels.length < 2) return;
 
-	const isMobile = window.matchMedia("(max-width: 900px)").matches;
+	const media = window.gsap.matchMedia();
 
-	panels.slice(0, -1).forEach((panel, index) => {
-		const nextPanel = panels[index + 1];
-		const content = [...panel.children].filter(
-			(element) => !element.classList.contains("hero-mark"),
-		);
+	media.add(
+		{
+			desktop: VIEWPORT.desktop,
+			mobile: VIEWPORT.mobile,
+		},
+		(context) => {
+			const headerOffset = context.conditions.mobile ? 82 : 0;
 
-		if (!content.length) return;
-
-		window.gsap.to(content, {
-			xPercent: isMobile ? -18 : -32,
-			autoAlpha: 0,
-			stagger: 0.04,
-			ease: "none",
-			scrollTrigger: {
-				trigger: nextPanel,
-				start: isMobile ? "top 82%" : "top 72%",
-				end: isMobile ? "top 18%" : "top 12%",
-				scrub: 0.6,
-				invalidateOnRefresh: true,
-			},
-		});
-	});
-}
-
-function initDesktopPanelEntryAnimations() {
-	const panelTransitions = [
-		{ panel: document.querySelector("#work"), xPercent: 100 },
-		{ panel: document.querySelector("#services"), xPercent: -100 },
-	];
-
-	window.gsap.matchMedia().add("(min-width: 901px)", () => {
-		panelTransitions.forEach(({ panel, xPercent }) => {
-			if (!panel) return;
-
-			window.gsap.fromTo(
-				panel,
-				{ xPercent },
-				{
-					xPercent: 0,
-					ease: "none",
-					scrollTrigger: {
-						trigger: panel,
-						start: "top top",
-						end: () => `+=${window.innerHeight * 0.65}`,
-						scrub: 0.7,
-						invalidateOnRefresh: true,
-					},
-				},
-			);
-		});
-	});
+			panels.slice(0, -1).forEach((panel) => {
+				window.ScrollTrigger.create({
+					id: `panel-stack-${panel.id}`,
+					trigger: panel,
+					start: "bottom bottom",
+					end: headerOffset ? `bottom ${headerOffset}px` : "bottom top",
+					pin: true,
+					pinSpacing: false,
+					anticipatePin: 1,
+					invalidateOnRefresh: true,
+				});
+			});
+		},
+	);
 }
 
 function initWorkScrollAnimations() {
@@ -683,19 +786,19 @@ function initWorkScrollAnimations() {
 		work.querySelector(":scope > .eyebrow"),
 		work.querySelector(".more-work"),
 		work.querySelector(".testimonials-heading"),
-	].forEach((element) => createReversibleReveal(element));
+	].forEach((element) => createScrollReveal(element));
 
 	const projects = [...work.querySelectorAll(".project")];
 	const testimonials = [...work.querySelectorAll(".testimonials blockquote")];
 
 	if (projects.length) {
 		const cardTimeline = window.gsap.timeline({
-			delay: 0.14,
+			delay: 0.06,
 			scrollTrigger: {
 				trigger: work.querySelector(".work-grid"),
 				start: "top 86%",
 				end: "bottom 14%",
-				toggleActions: MOTION.reversibleActions,
+				toggleActions: MOTION.revealToggleActions,
 			},
 		});
 
@@ -705,7 +808,7 @@ function initWorkScrollAnimations() {
 			cardTimeline.from(cardPair, {
 				x: -90,
 				autoAlpha: 0,
-				duration: 0.82,
+				duration: 0.56,
 				ease: MOTION.ease,
 			});
 		});
@@ -719,7 +822,7 @@ function initServicesScrollAnimations() {
 	[
 		...services.querySelectorAll(".services-intro > .eyebrow"),
 		services.querySelector(".services-page-link"),
-	].forEach((element) => createReversibleReveal(element));
+	].forEach((element) => createScrollReveal(element));
 
 	const serviceCards = [...services.querySelectorAll(".service-grid article")];
 	if (!serviceCards.length) return;
@@ -730,17 +833,15 @@ function initServicesScrollAnimations() {
 			trigger: services,
 			start: "top 78%",
 			end: "bottom 14%",
-			toggleActions: MOTION.reversibleActions,
+			toggleActions: MOTION.revealToggleActions,
 		},
 	});
 
 	if (servicesTitle && hasAnimationLibraries("SplitText")) {
-		const splitTitle = window.SplitText.create(servicesTitle, {
-			type: "words, chars",
-			mask: "chars",
-			wordsClass: "section-title-word",
-			charsClass: "section-title-char",
-		});
+		const splitTitle = splitElement(
+			servicesTitle,
+			SPLIT_TEXT_CLASSES.section,
+		);
 
 		servicesTimeline.from(splitTitle.chars, {
 			yPercent: 110,
@@ -770,27 +871,7 @@ function initSectionTitleAnimations() {
 	const titles = document.querySelectorAll("#about h2, #work h2, #contact h2");
 
 	titles.forEach((title) => {
-		const splitTitle = window.SplitText.create(title, {
-			type: "words, chars",
-			mask: "chars",
-			wordsClass: "section-title-word",
-			charsClass: "section-title-char",
-		});
-
-		window.gsap.from(splitTitle.chars, {
-			yPercent: 110,
-			rotate: 4,
-			autoAlpha: 0,
-			duration: 0.58,
-			stagger: 0.025,
-			ease: "power4.out",
-			scrollTrigger: {
-				trigger: title,
-				start: "top 86%",
-				end: "bottom 14%",
-				toggleActions: MOTION.reversibleActions,
-			},
-		});
+		createSplitTitleReveal(title, { end: "bottom 14%" });
 	});
 }
 
@@ -802,7 +883,7 @@ function initContactScrollAnimations() {
 	const contactCard = contact.querySelector(".contact-card");
 	const contactLinks = contact.querySelectorAll("address a");
 
-	contactLinks.forEach((link) => createReversibleReveal(link));
+	contactLinks.forEach((link) => createScrollReveal(link));
 
 	if (!contactHeading || !contactCard) return;
 
@@ -812,7 +893,7 @@ function initContactScrollAnimations() {
 				trigger: contact,
 				start: "top 78%",
 				end: "bottom 16%",
-				toggleActions: MOTION.reversibleActions,
+				toggleActions: MOTION.revealToggleActions,
 			},
 			defaults: { duration: 0.68, ease: MOTION.ease },
 		})
@@ -820,12 +901,18 @@ function initContactScrollAnimations() {
 		.from(contactCard, { xPercent: 65, autoAlpha: 0 });
 }
 
+/* --------------------------------------------------------------------------
+ * Animation bootstrap
+ * -------------------------------------------------------------------------- */
+
 function initAnimations() {
 	const isHomepage = Boolean(document.querySelector("#home"));
 	const isStandalonePage = document.body.matches(
 		".work-page, .services-page, .case-page",
 	);
 	const introLoader = document.querySelector("[data-intro-loader]");
+	const hasSplitText = hasAnimationLibraries("SplitText");
+	const hasScrollTrigger = hasAnimationLibraries("ScrollTrigger");
 
 	if (!isHomepage && !isStandalonePage) {
 		initLegacyScrollReveal();
@@ -838,10 +925,7 @@ function initAnimations() {
 	}
 
 	if (isStandalonePage) {
-		if (
-			hasAnimationLibraries("SplitText") &&
-			hasAnimationLibraries("ScrollTrigger")
-		) {
+		if (hasSplitText && hasScrollTrigger) {
 			window.gsap.registerPlugin(window.SplitText, window.ScrollTrigger);
 			void initStandalonePageAnimations();
 		} else {
@@ -851,28 +935,31 @@ function initAnimations() {
 		return;
 	}
 
-	if (hasAnimationLibraries("SplitText")) {
+	if (hasSplitText) {
 		window.gsap.registerPlugin(window.SplitText);
 		initPageIntro();
 	} else {
 		introLoader?.remove();
 	}
 
-	if (hasAnimationLibraries("ScrollTrigger")) {
+	if (hasScrollTrigger) {
 		window.gsap.registerPlugin(window.ScrollTrigger);
 		initHeroParallax();
-		initDesktopPanelEntryAnimations();
-		initPanelExitAnimations();
-		initAboutScrollAnimation();
+		initPanelStacking();
+		initAboutScrollAnimations();
 		initWorkScrollAnimations();
 		initServicesScrollAnimations();
 		initContactScrollAnimations();
 
-		if (hasAnimationLibraries("SplitText")) {
+		if (hasSplitText) {
 			initSectionTitleAnimations();
 		}
 	}
 }
+
+/* --------------------------------------------------------------------------
+ * Application entry point
+ * -------------------------------------------------------------------------- */
 
 initNavigation();
 initContactModal();
