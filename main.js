@@ -779,20 +779,97 @@ function initPanelStacking() {
 	const panels = [...document.querySelectorAll(".home-page main > .panel")];
 	if (panels.length < 2) return;
 
-	window.gsap.matchMedia().add(VIEWPORT.desktop, () => {
-		panels.slice(0, -1).forEach((panel) => {
-			window.ScrollTrigger.create({
-				id: `panel-stack-${panel.id}`,
-				trigger: panel,
-				start: "bottom bottom",
-				end: "bottom top",
-				pin: true,
-				pinSpacing: false,
-				anticipatePin: 1,
-				invalidateOnRefresh: true,
-			});
+	panels.slice(0, -1).forEach((panel) => {
+		window.ScrollTrigger.create({
+			id: `panel-stack-${panel.id}`,
+			trigger: panel,
+			start: "bottom bottom",
+			end: "bottom top",
+			pin: true,
+			pinSpacing: false,
+			anticipatePin: 1,
+			invalidateOnRefresh: true,
 		});
 	});
+}
+
+function initMobileHomepageAnimations() {
+	const panels = document.querySelectorAll(
+		".home-page main > .panel:not(#home)",
+	);
+
+	panels.forEach((panel) => {
+		const content = [...panel.children].filter((element) => {
+			if (panel.id === "work") {
+				return !element.matches(".work-grid, .testimonials");
+			}
+
+			if (panel.id === "services") {
+				return !element.matches(".service-grid");
+			}
+
+			return true;
+		});
+
+		window.gsap.from(content, {
+			y: 24,
+			autoAlpha: 0,
+			duration: 0.48,
+			stagger: 0.06,
+			ease: MOTION.ease,
+			scrollTrigger: {
+				trigger: panel,
+				start: "top 88%",
+				toggleActions: MOTION.revealToggleActions,
+			},
+		});
+	});
+}
+
+function initMobileCardAnimations() {
+	const work = document.querySelector("#work");
+	const workGrid = work?.querySelector(".work-grid");
+	const projects = [...(work?.querySelectorAll(".project") ?? [])];
+	const testimonials = [
+		...(work?.querySelectorAll(".testimonials blockquote") ?? []),
+	];
+
+	if (workGrid && projects.length) {
+		const workTimeline = window.gsap.timeline({
+			scrollTrigger: {
+				trigger: workGrid,
+				start: "top 90%",
+				toggleActions: MOTION.revealToggleActions,
+			},
+		});
+
+		projects.forEach((project, index) => {
+			workTimeline.from([project, testimonials[index]].filter(Boolean), {
+				x: -42,
+				autoAlpha: 0,
+				duration: 0.44,
+				ease: MOTION.ease,
+			});
+		});
+	}
+
+	const serviceGrid = document.querySelector("#services .service-grid");
+	const serviceCards = serviceGrid?.querySelectorAll("article");
+
+	if (serviceGrid && serviceCards?.length) {
+		window.gsap.from(serviceCards, {
+			y: 30,
+			autoAlpha: 0,
+			duration: 0.44,
+			stagger: 0.08,
+			ease: MOTION.ease,
+			scrollTrigger: {
+				trigger: serviceGrid,
+				start: "top 90%",
+				toggleActions: MOTION.revealToggleActions,
+			},
+		});
+	}
 }
 
 function initWorkScrollAnimations() {
@@ -885,11 +962,17 @@ function initServicesScrollAnimations() {
 	);
 }
 
-function initSectionTitleAnimations() {
-	const titles = document.querySelectorAll("#about h2, #work h2, #contact h2");
+function initSectionTitleAnimations(
+	selector = "#about h2, #work h2, #contact h2",
+	scrollTriggerOptions = {},
+) {
+	const titles = document.querySelectorAll(selector);
 
 	titles.forEach((title) => {
-		createSplitTitleReveal(title, { end: "bottom 14%" });
+		createSplitTitleReveal(title, {
+			end: "bottom 14%",
+			...scrollTriggerOptions,
+		});
 	});
 }
 
@@ -965,15 +1048,33 @@ function initAnimations() {
 		window.gsap.registerPlugin(window.ScrollTrigger);
 		configureScrollTrigger();
 		initHeroParallax();
-		initPanelStacking();
-		initAboutScrollAnimations();
-		initWorkScrollAnimations();
-		initServicesScrollAnimations();
-		initContactScrollAnimations();
+		window.gsap.matchMedia().add(
+			{
+				desktop: VIEWPORT.desktop,
+				mobile: VIEWPORT.mobile,
+			},
+			(context) => {
+				if (context.conditions.mobile) {
+					initMobileHomepageAnimations();
+					initMobileCardAnimations();
+					if (hasSplitText) {
+						initSectionTitleAnimations(
+							"#about h2, #work h2, #services h2, #contact h2",
+							{ toggleActions: "play reverse play reverse" },
+						);
+					}
+					return;
+				}
 
-		if (hasSplitText) {
-			initSectionTitleAnimations();
-		}
+				initPanelStacking();
+				initAboutScrollAnimations();
+				initWorkScrollAnimations();
+				initServicesScrollAnimations();
+				initContactScrollAnimations();
+
+				if (hasSplitText) initSectionTitleAnimations();
+			},
+		);
 	}
 }
 

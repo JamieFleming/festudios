@@ -103,8 +103,10 @@ body.intro-active {
 .intro-loader__brand {
   top: 50%;
   left: 50%;
-  width: min(78vw, 1120px);
+  width: min(60vw, 820px);
+  height: auto;
   max-width: none;
+  object-fit: contain;
   opacity: 0.14;
   filter: invert(1);
   transform: translate(-50%, -50%);
@@ -1482,16 +1484,15 @@ main {
   }
 
   .home-page main > .panel {
-    position: sticky;
-    top: 82px;
+    position: relative;
+    top: auto;
     bottom: auto;
-    min-height: calc(100vh - 82px);
-    min-height: calc(100svh - 82px);
+    min-height: auto;
     box-shadow: 0 -10px 28px rgb(0 0 0 / 12%);
   }
 
   .home-page main > .panel + .panel {
-    margin-top: -18px;
+    margin-top: 0;
   }
 
   h2 {
