@@ -68,6 +68,10 @@ function syncScrollAnimations() {
 	});
 }
 
+function configureScrollTrigger() {
+	window.ScrollTrigger.config({ ignoreMobileResize: true });
+}
+
 function jumpToScrollPosition(position, syncAnimations = false) {
 	const root = document.documentElement;
 	const scrollingElement = document.scrollingElement ?? root;
@@ -626,6 +630,7 @@ function initHeroParallax() {
 	if (!hero || !heroCopy || !heroMark) return;
 
 	const isMobile = window.matchMedia(VIEWPORT.mobile).matches;
+	if (isMobile) return;
 
 	window.gsap
 		.timeline({
@@ -640,7 +645,7 @@ function initHeroParallax() {
 		.to(
 			heroCopy,
 			{
-				y: isMobile ? 38 : 82,
+				y: 82,
 				ease: "none",
 			},
 			0,
@@ -648,8 +653,8 @@ function initHeroParallax() {
 		.to(
 			heroMark,
 			{
-				y: isMobile ? -52 : -125,
-				rotate: isMobile ? -2 : -5,
+				y: -125,
+				rotate: -5,
 				scale: 1.05,
 				ease: "none",
 			},
@@ -774,30 +779,20 @@ function initPanelStacking() {
 	const panels = [...document.querySelectorAll(".home-page main > .panel")];
 	if (panels.length < 2) return;
 
-	const media = window.gsap.matchMedia();
-
-	media.add(
-		{
-			desktop: VIEWPORT.desktop,
-			mobile: VIEWPORT.mobile,
-		},
-		(context) => {
-			const headerOffset = context.conditions.mobile ? 82 : 0;
-
-			panels.slice(0, -1).forEach((panel) => {
-				window.ScrollTrigger.create({
-					id: `panel-stack-${panel.id}`,
-					trigger: panel,
-					start: "bottom bottom",
-					end: headerOffset ? `bottom ${headerOffset}px` : "bottom top",
-					pin: true,
-					pinSpacing: false,
-					anticipatePin: 1,
-					invalidateOnRefresh: true,
-				});
+	window.gsap.matchMedia().add(VIEWPORT.desktop, () => {
+		panels.slice(0, -1).forEach((panel) => {
+			window.ScrollTrigger.create({
+				id: `panel-stack-${panel.id}`,
+				trigger: panel,
+				start: "bottom bottom",
+				end: "bottom top",
+				pin: true,
+				pinSpacing: false,
+				anticipatePin: 1,
+				invalidateOnRefresh: true,
 			});
-		},
-	);
+		});
+	});
 }
 
 function initWorkScrollAnimations() {
@@ -950,6 +945,7 @@ function initAnimations() {
 	if (isStandalonePage) {
 		if (hasSplitText && hasScrollTrigger) {
 			window.gsap.registerPlugin(window.SplitText, window.ScrollTrigger);
+			configureScrollTrigger();
 			void initStandalonePageAnimations();
 		} else {
 			initLegacyScrollReveal();
@@ -967,6 +963,7 @@ function initAnimations() {
 
 	if (hasScrollTrigger) {
 		window.gsap.registerPlugin(window.ScrollTrigger);
+		configureScrollTrigger();
 		initHeroParallax();
 		initPanelStacking();
 		initAboutScrollAnimations();
